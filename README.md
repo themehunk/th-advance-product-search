@@ -1,1 +1,0 @@
-# th-advanced-product-search
