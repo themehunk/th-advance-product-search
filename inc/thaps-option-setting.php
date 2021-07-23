@@ -68,9 +68,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 						)
 					)
 				 )
-			  )
-		    ),
-		  );
+			   )
+		     ),
+		   );
 
 		}
 

@@ -1,0 +1,52 @@
+.thaps-search-box{
+max-width:550px;
+}
+.thaps-search-box {
+    position: relative;
+    line-height: 100%;
+    display: block;
+    min-width: 230px;
+    width: 100%;
+    text-align: left;
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.thaps-search-form{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.thaps-from-wrap{
+display:flex;
+padding:0.3rem;
+background:#fff;
+border-radius:4px;
+}
+
+#thaps-search-button {
+background: #111;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:4px;
+    padding: 0;
+    border: 0;
+}
+#thaps-search-button:hover{
+background:#888;
+}
+#thaps-search-text{
+min-height:35px;
+line-height:35px;
+border:none;
+font-size: 14px;
+width: 100%;
+padding-top: 0;
+padding-bottom: 0;
+margin: 0;
+}

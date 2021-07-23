@@ -54,6 +54,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 
 		 }
+		 
 		public function settings_form() {
 			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
