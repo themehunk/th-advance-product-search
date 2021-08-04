@@ -26,7 +26,9 @@ padding:0.3rem;
 background:#fff;
 border-radius:4px;
 }
-
+#thaps-search-text:focus{
+        outline: 0;
+}
 #thaps-search-button {
 background: #111;
     width: 70px;
@@ -36,6 +38,7 @@ background: #111;
     border-radius:4px;
     padding: 0;
     border: 0;
+        margin: 0;
 }
 #thaps-search-button:hover{
 background:#888;

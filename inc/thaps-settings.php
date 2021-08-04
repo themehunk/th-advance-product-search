@@ -11,29 +11,36 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		private $plugin_class;
 		private $defaults = array();
 		private $fields = array();
+		private $reserved_key = '';
+		private $reserved_fields = array();
 		
              public function __construct() {
              $this->settings_name   = apply_filters( 'thaps_settings_name', $this->setting_name );
              $this->fields          = apply_filters( 'thaps_settings', $this->fields );
+             $this->reserved_key    = sprintf( '%s_reserved', $this->settings_name );
+		     $this->reserved_fields = apply_filters( 'thaps_reserved_fields', array() );
  
              add_action( 'admin_menu', array( $this, 'add_menu' ) );
              add_action( 'init', array( $this, 'set_defaults' ), 8 );
              add_action( 'admin_init', array( $this, 'settings_init' ), 90 );
              add_action( 'admin_enqueue_scripts', array( $this, 'script_enqueue' ) );
-             
+
+             add_action('wp_ajax_thaps_form_setting', array($this, 'thaps_form_setting'));
+			 add_action( 'wp_ajax_nopriv_thaps_form_setting', array($this, 'thaps_form_setting'));
 
             }
          public function script_enqueue(){
 			
 			wp_enqueue_media();
 			wp_enqueue_style( 'wp-color-picker' );
+			wp_enqueue_script('imagesloaded');
 			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
             
 			wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
 			wp_enqueue_script( 'wp-color-picker-alpha' );
             wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-setting.js', array('jquery'),true);
 			wp_localize_script(
-				'thaps-setting-script', 'THVSPluginObject', array(
+				'thaps-setting-script', 'THAPSPluginObject', array(
 					'media_title'   => esc_html__( 'Choose an Image', 'th-advance-product-search' ),
 					'button_title'  => esc_html__( 'Use Image', 'th-advance-product-search' ),
 					'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
@@ -111,7 +118,23 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			<?php
 			
 		}
+	    public function thaps_form_setting(){  
+	             if( isset($_POST['th_advance_product_search']) ){
+	             	        $th_advance_product_search =  $_POST['th_advance_product_search']; 
+	                      $sanitize_data_array = $this->thaps_form_sanitize($th_advance_product_search);
+	                      update_option('th_advance_product_search',$sanitize_data_array);         
+		            }
+		            die();  
+	    }
+        
+	    public function thaps_form_sanitize( $input ){
+				$new_input = array();
+				foreach ( $input as $key => $val ){
+					$new_input[ $key ] = ( isset( $input[ $key ] ) ) ? sanitize_text_field( $val ) :'';
+		   }
+		   return $new_input;
 
+	    }
 		public function options_tabs() {
 			?>
 			<div class="nav-tab-wrapper wp-clearfix">
@@ -302,7 +325,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 				case 'html':
 					$this->html_field_callback( $field );
-					break;	
+					break;
+			    case 'file':
+					$this->file_field_callback( $field );
+					break;			
 
 				default:
 					$this->text_field_callback( $field );
@@ -311,6 +337,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			do_action( 'thaps_settings_field_callback', $field );
 		}
 
+     
       public function checkbox_field_callback( $args ) {
                
 			$value = wc_string_to_bool( $this->get_option( $args['id'] ) );
@@ -394,6 +421,18 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			echo $html;
 		}
 		
+        public function file_field_callback( $args ) {
+        $value = esc_attr( $this->get_option( $args['id'] ) );
+        $size = ( isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular' );
+        $attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+        $label = ( isset( $args['options']['button_label'] ) ? $args['options']['button_label'] : __( 'Choose File' ) );
+        $html = sprintf( '<input %5$s type="text" class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"/>', $size, $args['id'], $value, $this->settings_name, $attrs );
+        $html .= '<input type="button" class="button thaps_upload_image_button ' . $this->prefix . 'browse" value="' . $label . '" />';
+        $html .= $this->get_field_description( $args );
+        echo  $html ;
+      }
+
+
 
 		public function iframe_field_callback( $args ) {
 			$is_html = isset( $args['html'] );
