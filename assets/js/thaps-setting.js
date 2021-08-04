@@ -47,9 +47,9 @@
 
                     // Create the media frame.
                     file_frame = wp.media.frames.select_image = wp.media({
-                        title: THVSPluginObject.media_title,
+                        title: THAPSPluginObject.media_title,
                         button: {
-                            text: THVSPluginObject.button_title
+                            text: THAPSPluginObject.button_title
                         },
                         multiple: false
                     });
@@ -111,7 +111,7 @@
         
         var form_settting = $(".thaps-setting-form").serialize();
         $.ajax({
-          url: THVSPluginObject.ajaxurl,
+          url: THAPSPluginObject.ajaxurl,
           type: "POST",
           data: form_settting,
           success: function (response) {

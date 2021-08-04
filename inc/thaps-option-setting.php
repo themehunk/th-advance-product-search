@@ -64,13 +64,60 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 								'default' => 3,
 								'min'     => 1,
 								'max'     => 10,
+							),
+							array(
+								'id'      => 'set_form_width',
+								'type'    => 'number',
+								'title'   => esc_html__( 'Max Width', 'th-advance-product-search' ),
+								
+								'desc'    => esc_html__( 'To set 100% width leave blank', 'th-advance-product-search' ),
+								'default' => 550,
+								'min'     => 1,
+								'max'     => 2400,
+								'suffix'  => 'px'
 							),	
+							array(
+								'id'      => 'show_submit',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Submit Button', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => true
+							),
+
+							array(
+								'id'      => 'level_submit',
+								'type'    => 'text',
+								'title'   => esc_html__( 'Submit Button Level', 'th-variation-swatches' ),
+								
+							),
+							array(
+								'id'      => 'placeholder_text',
+								'type'    => 'text',
+								'title'   => esc_html__( 'Placeholder Text', 'th-variation-swatches' ),
+								
+							),
 						)
 					)
-				 )
-			  )
-		    ),
-		  );
+				 ),
+				array(
+					'title'  => esc_html__( 'Loader', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_search_bar_setting_fields', array(
+							array(
+								'id'      => 'show_loader',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable loader', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => false
+							    ),	
+						
+						)
+					)
+				 ),
+
+			   )
+		     ),
+		   );
 
 		}
 

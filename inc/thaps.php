@@ -46,8 +46,10 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
         public function hooks() {
             if($this->is_wc_active()){
                 add_action( 'init', array( $this, 'settings_api' ), 5 );
+                add_shortcode( 'th-aps', array( $this, 'register_shortcode' ), 5 );
                 add_filter( 'body_class', array( $this, 'body_class' ) );
                 add_action( 'wp_enqueue_scripts', array( $this, 'th_advance_product_search_scripts' ), 15 );
+
             }
 
         }
@@ -104,9 +106,9 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
         public function th_advance_product_search_scripts(){
 
-          wp_enqueue_style( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI. '/assets/css/thaps-front-style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
+          wp_enqueue_style( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/thaps-front-style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
 
-          wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI. '/assets/js/thaps-front.js', array(
+          wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-search.js', array(
                     'jquery',
                     'wp-util',
                     'underscore',
@@ -141,8 +143,14 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
             }
             );
         }
-       
-    }
+
+       public function register_shortcode(){
+
+         require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-search-from.php';
+
+       }
+ 
+}
 // Load Plugin
     function th_advance_product_search(){
         return TH_Advance_Product_Search::instance();
