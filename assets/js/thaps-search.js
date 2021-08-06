@@ -73,8 +73,8 @@
         that.noSuggestionsContainer = null;
         that.options = $.extend(true, {}, Autocomplete.defaults, options);
         that.classes = {
-            selected: 'autocomplete-selected',
-            suggestion: 'autocomplete-suggestion'
+            selected: 'thaps-autocomplete-selected',
+            suggestion: 'thaps-autocomplete-suggestion'
         };
         that.hint = null;
         that.hintValue = '';
@@ -112,7 +112,9 @@
             onSearchComplete: noop,
             onSearchError: noop,
             preserveInput: false,
-            containerClass: 'autocomplete-suggestions',
+            containerClass: 'thaps-autocomplete-suggestions',
+            preloaderClass: 'thaps-preloader',
+            closeTrigger: 'thaps-close',
             tabDisabled: false,
             dataType: 'text',
             currentRequest: null,
@@ -1012,24 +1014,29 @@
         $.fn.autocomplete = $.fn.thapsAutocomplete;
     }
 
+/**************************************************/
+// Run Code
+/**************************************************/
+ $(document).ready(function (){
 
+ $('#thaps-search-autocomplete').thapsAutocomplete({
+    serviceUrl:th_advance_product_search_options.thaps_ajax_get_search_value,
+    showNoSuggestionNotice: true,
+    noSuggestionNotice: "Sorry, no matching results",
+    minChars:1,
+    autoSelectFirst: false,
+    triggerSelectOnValidInput: false,
+    paramName: 'match',
+    dataType: 'json',
+    transformResult: function (response) {
+            console.log(response); 
+
+        }
+ });
+
+});
 
 
 
 }));
-/**************************************************/
-/**************************************************/
-jQuery(document).ready(function(){
-// testcode
-var options = [
-   { value: 'Adam', data: 'AD' },
-   // ...
-   { value: 'Tim', data: 'TM' }
-];
-jQuery('#thaps-search-autocomplete').thapsAutocomplete({
-    lookup: options,
-    onSelect: function (suggestion) {
-        $('#selected_option').html(suggestion.value);
-    }
- });
-});
+
