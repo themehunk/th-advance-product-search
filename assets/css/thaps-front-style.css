@@ -53,13 +53,50 @@ margin: 0;
 border-radius: 4px;
 }
 
-.thaps-autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
-.thaps-autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-.thaps-autocomplete-selected { background: #F0F0F0; }
+.thaps-autocomplete-suggestions {border: 1px solid #eee; background: #FFF; overflow: auto; }
+.thaps-autocomplete-suggestion { padding: 0.5rem; white-space: nowrap; overflow: hidden; }
+.thaps-autocomplete-selected { background: #f0f0f166; }
 .thaps-autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
-.thaps-autocomplete-group { padding: 2px 5px; }
+.thaps-autocomplete-group { padding: 0.5rem; }
 .thaps-autocomplete-group strong { display: block; border-bottom: 1px solid #000; 
 }
 .thaps-autocomplete-suggestion { 
     cursor: pointer;
+}
+
+.thaps-autocomplete-suggestion{
+display:flex;
+}
+
+.thaps-autocomplete-suggestion .thaps-img{
+width:45px;
+ margin-right: 1rem;
+}
+
+.thaps-autocomplete-suggestion .thaps-title{
+font-size:1rem;
+}
+
+.thaps-autocomplete-suggestion .thaps-img img{
+border-radius:3px;
+}
+
+.thaps-autocomplete-suggestion .thaps-price{
+font-size:0.89rem;
+font-weight:500;
+}
+
+.thaps-content-wrapp{
+line-height:normal;
+}
+.thaps-price del{
+color:#949494;
+margin-right:0.3rem;
+}
+.thaps-price ins{
+text-decoration:none;
+}
+.nonce_result_show{
+opacity:0.5;
+pointer-events: none;
 }

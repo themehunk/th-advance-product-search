@@ -50,8 +50,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
                 add_filter( 'body_class', array( $this, 'body_class' ) );
                 add_action( 'wp_enqueue_scripts', array( $this, 'th_advance_product_search_scripts' ), 15 );
 
-                add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value', array( $this, 'thaps_ajax_get_search_value' ) );
-                add_action( 'wp_ajax_thaps_ajax_get_search_value', array( $this, 'thaps_ajax_get_search_value' ) );
+          
             }
 
         }
@@ -117,7 +116,6 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
                 'th-advance-product-search-front', 'th_advance_product_search_options', apply_filters(
                     'th_advance_product_search_js_options', array(
                         'ajaxUrl'   => esc_url(admin_url( 'admin-ajax.php' )),
-                        'thaps_ajax_get_search_value'    => $this->thaps_ajax_get_search_value(),
                         'thvs_nonce'                     => wp_create_nonce( 'th_advance_product_search' ),
                     )
                 )
@@ -150,39 +148,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
        }
 
-       /*************************/
-       // search result function
-       /*************************/
-       public function thaps_ajax_get_search_value(){
 
-         if (isset($_POST['match']) && $_POST['match'] != '') {
-             $match_ = sanitize_text_field($_POST['match']);
-              $results = new WP_Query(array(
-              'post_type'     => 'product',
-              'post_status'   => 'publish',
-              'nopaging'      => true,
-              'posts_per_page' => 100,
-              's'             => $match_,
-            ));
-             $items = array();
-             if (!empty($results->posts)) {
-              foreach ($results->posts as $result) {
-                $product = wc_get_product($result->ID);
-                $items[] = array(
-                  'label' => $result->post_title,
-                  'link' => get_permalink($result->ID),
-                  'imglink' => wp_get_attachment_url($product->get_image_id()),
-                  'price' => $product->get_price_html(),
-                  'urli' => $urli
-                );
-              }
-            }
-            echo  json_encode($items);
-           
-
-         }
-
-       }
  
 }
 // Load Plugin

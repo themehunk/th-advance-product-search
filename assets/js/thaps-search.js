@@ -678,13 +678,52 @@
                 return;
             }
 
-            // Build suggestions inner HTML:
+            /************************************/
+            // thaps html suggestions inner HTML:
+            /************************************/
             $.each(that.suggestions, function (i, suggestion) {
+
+                var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
+                    postid = suggestion.id ? suggestion.id : '',
+                    isImg  = '',
+                    attr_title ='',
+                    title = suggestion.title ? suggestion.title : '',
+                    isPrice  = '',
+                    price = suggestion.price ? suggestion.price : '',
+                    no_result_class = '';
+
+                    if(postid==''){
+                    var no_result_class = 'nonce_result_show';
+                    }
+                
+
                 if (groupBy){
                     html += formatGroup(suggestion, value, i);
                 }
 
-                html += '<div class="' + className + '" data-index="' + i + '">' + formatResult(suggestion, value, i) + '</div>';
+                // Image
+                if (typeof suggestion.imgsrc != 'undefined' && suggestion.imgsrc) {
+                        isImg = true;
+                }
+                // Price
+                if (typeof suggestion.price != 'undefined' && suggestion.price) {
+                        isPrice = true;
+                }
+                //attr title
+                attr_title = title.length > 0 ? ' title="' + title + '"' : '';
+
+                html += '<a href="' + url + '" class="' + className + ' ' + no_result_class +' " post-id="' + postid + '" data-index="' + i + '">'; 
+                if(isImg) {
+                        html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
+                }
+
+                html += '<div class="thaps-content-wrapp">'
+                html += '<div class="thaps-title">' + formatResult(suggestion, value, i) + '</div>';
+                if(isPrice) {
+                        html += '<span class="thaps-price">' + suggestion.price + '</span>';
+                }
+                html += '</div>';
+                html += '</a>';
             });
 
             this.adjustContainerWidth();
@@ -1018,25 +1057,17 @@
 // Run Code
 /**************************************************/
  $(document).ready(function (){
-
  $('#thaps-search-autocomplete').thapsAutocomplete({
-    serviceUrl:th_advance_product_search_options.thaps_ajax_get_search_value,
+    serviceUrl:th_advance_product_search_options.ajaxUrl + '?action=' + 'thaps_ajax_get_search_value',
     showNoSuggestionNotice: true,
-    noSuggestionNotice: "Sorry, no matching results",
     minChars:1,
     autoSelectFirst: false,
     triggerSelectOnValidInput: false,
     paramName: 'match',
     dataType: 'json',
-    transformResult: function (response) {
-            console.log(response); 
-
-        }
- });
+   });
 
 });
 
 
-
 }));
-
