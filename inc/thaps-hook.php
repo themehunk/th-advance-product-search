@@ -27,6 +27,7 @@ function thaps_ajax_get_search_value(){
                   'price'    => $product->get_price_html(),
                 );
               }
+             
             }else{
                 $items['suggestions'][] = array(
                   'value'  => esc_html__('No Result','thaps'),

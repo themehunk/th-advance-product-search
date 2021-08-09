@@ -94,6 +94,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 								'id'      => 'placeholder_text',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Placeholder Text', 'th-variation-swatches' ),
+								'default' => esc_html__('Product Search','th-advance-product-search'),
 								
 							),
 						)
@@ -106,7 +107,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 							array(
 								'id'      => 'show_loader',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable loader', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Disable loader', 'th-variation-swatches' ),
 								'desc'    => '',
 								'default' => false
 							    ),	

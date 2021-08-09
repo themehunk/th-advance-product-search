@@ -168,7 +168,8 @@
                 container;
 
             that.element.setAttribute('autocomplete', 'off');
-
+            //custom event 
+            that.registerEventsSearchBar();
             // html() deals with many types: htmlString or Element or Array or jQuery
             that.noSuggestionsContainer = $('<div class="autocomplete-no-suggestion"></div>')
                                           .html(this.options.noSuggestionNotice).get(0);
@@ -219,6 +220,32 @@
             that.el.on('change.autocomplete', function (e) { that.onKeyUp(e); });
             that.el.on('input.autocomplete', function (e) { that.onKeyUp(e); });
         },
+
+        registerEventsSearchBar: function () {
+            var that = this;
+            var $submit = $('.thaps-search-form').find('#thaps-search-button');
+
+            if (document.readyState === 'complete') {
+                if ($submit.length > 0) {
+                    $submit.each(function () {   
+                var $preloader = $(this).closest('.thaps-search-form').find('.thaps-preloader');
+                        $preloader.css('right', $(this).outerWidth() + 'px');
+                });
+              }
+            } else {
+
+                $(window).on('load', function () {
+                    if ($submit.length > 0) {
+                    $submit.each(function () {   
+                    var $preloader = $(this).closest('.thaps-search-form').find('.thaps-preloader');
+                        $preloader.css('right', $(this).outerWidth() + 'px');
+                });
+              }
+                });
+            }
+
+        },
+
 
         onFocus: function () {
             var that = this;
@@ -1060,11 +1087,17 @@
  $('#thaps-search-autocomplete').thapsAutocomplete({
     serviceUrl:th_advance_product_search_options.ajaxUrl + '?action=' + 'thaps_ajax_get_search_value',
     showNoSuggestionNotice: true,
-    minChars:1,
+    minChars:parseInt(th_advance_product_search_options.thvs_length),
     autoSelectFirst: false,
     triggerSelectOnValidInput: false,
     paramName: 'match',
     dataType: 'json',
+    onSearchStart: function(){
+              $('.thaps-preloader').addClass('thaps-loading');   
+    },
+    onSearchComplete:function(){
+              $('.thaps-preloader').removeClass('thaps-loading'); 
+    },
    });
 
 });

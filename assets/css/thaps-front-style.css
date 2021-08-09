@@ -100,3 +100,54 @@ text-decoration:none;
 opacity:0.5;
 pointer-events: none;
 }
+
+.thaps-preloader{
+height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45px;
+    z-index: 1;
+    background:none;
+
+}
+.thaps-loading {
+    height: 0;
+    width: 0;
+    padding: 10px;
+    border: 3px solid #cccccc6e;
+    border-right-color: #8888887a;
+    border-radius: 50%;
+    -webkit-animation: rotate 1s infinite linear;
+    position: absolute;
+    top: 9px;
+    margin-right: 10px;
+}
+
+@-webkit-keyframes rotate {
+  /* 100% keyframe for  clockwise. 
+     use 0% instead for anticlockwise */
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes thaps-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.submit-no-active .thaps-from-wrap svg{
+position:absolute;
+left:0.5rem
+}
+.submit-no-active #thaps-search-autocomplete{
+padding: 0.3rem 0.3rem 0.3rem 2.8rem;
+}
+.submit-no-active .thaps-from-wrap{
+    align-items: center;
+}
