@@ -708,8 +708,9 @@
             /************************************/
             // thaps html suggestions inner HTML:
             /************************************/
-            $.each(that.suggestions, function (i, suggestion) {
+            $.each(that.suggestions, function (i, suggestion){
 
+                console.log(suggestion);
                 var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
                     postid = suggestion.id ? suggestion.id : '',
                     isImg  = '',
@@ -736,6 +737,11 @@
                 if (typeof suggestion.price != 'undefined' && suggestion.price) {
                         isPrice = true;
                 }
+                //more product
+                if(suggestion.type == 'more_products') {
+                 className += ' thaps-suggestion-more';
+                 suggestion.value = suggestion.text + ' (' + suggestion.total + ')';
+                }
                 //attr title
                 attr_title = title.length > 0 ? ' title="' + title + '"' : '';
 
@@ -747,8 +753,9 @@
                 html += '<div class="thaps-content-wrapp">'
                 html += '<div class="thaps-title">' + formatResult(suggestion, value, i) + '</div>';
                 if(isPrice) {
-                        html += '<span class="thaps-price">' + suggestion.price + '</span>';
+                html += '<span class="thaps-price">' + suggestion.price + '</span>';
                 }
+
                 html += '</div>';
                 html += '</a>';
             });
@@ -1085,6 +1092,7 @@
 /**************************************************/
  $(document).ready(function (){
  $('#thaps-search-autocomplete').thapsAutocomplete({
+    lookupLimit:5,
     serviceUrl:th_advance_product_search_options.ajaxUrl + '?action=' + 'thaps_ajax_get_search_value',
     showNoSuggestionNotice: true,
     minChars:parseInt(th_advance_product_search_options.thvs_length),
@@ -1098,6 +1106,8 @@
     onSearchComplete:function(){
               $('.thaps-preloader').removeClass('thaps-loading'); 
     },
+
+   
    });
 
 });
