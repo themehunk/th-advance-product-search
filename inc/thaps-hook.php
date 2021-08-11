@@ -9,8 +9,15 @@ function thaps_ajax_get_search_value(){
         $limit =  esc_html(th_advance_product_search()->get_option( 'result_length' ));
         $no_reult_label =  esc_html(th_advance_product_search()->get_option( 'no_reult_label' ));
         $more_reult_label =  esc_html(th_advance_product_search()->get_option( 'more_reult_label' ));
+        $enable_product_image =  esc_html(th_advance_product_search()->get_option( 'enable_product_image' ));
+        $enable_product_price =  esc_html(th_advance_product_search()->get_option( 'enable_product_price' ));
+        $enable_product_desc =  esc_html(th_advance_product_search()->get_option( 'enable_product_desc' ));
+        $enable_product_sku =  esc_html(th_advance_product_search()->get_option( 'enable_product_sku' ));
 
-         if (isset($_REQUEST['match']) && $_REQUEST['match'] != '') {
+        /*********************/
+        //fetch product result
+        /*********************/
+         if (isset($_REQUEST['match']) && $_REQUEST['match'] != ''){
               $match_ = sanitize_text_field($_REQUEST['match']);
               $results = new WP_Query(array(
               'post_type'     => 'product',
@@ -22,22 +29,37 @@ function thaps_ajax_get_search_value(){
 
              $count = ( isset( $results->posts ) ? count( $results->posts ) : 0 );
              $items = array();
-             if (!empty($results->posts)) {
-              foreach (array_slice($results->posts,0,$limit) as $result) {
+
+            
+
+             if (!empty($results->posts)){
+              foreach (array_slice($results->posts,0,$limit) as $result){
                 $product = wc_get_product($result->ID);
-                $items['suggestions'][] = array(
-                  'value'  => $result->post_title,
+                $r = array(
+                  'value'   => $result->post_title,
                   'title'   => $result->post_title,
                   'id'      => $result->ID,
-                  'url'    => get_permalink($result->ID),
-                  'imgsrc' => wp_get_attachment_url($product->get_image_id()),
-                  'price'    => $product->get_price_html(),
+                  'url'     => get_permalink($result->ID), 
                 );
+                if ( $enable_product_image == true) {
+                        $r['imgsrc'] = wp_get_attachment_url($product->get_image_id());
+                }
+                if ( $enable_product_price == true) {
+                        $r['price'] = $product->get_price_html();
+                }
+                if ( $enable_product_sku == true) {
+                        $r['sku'] = $product->get_sku();
+                }
+                if ( $enable_product_desc == true) {
+                        $r['desc'] = $product->get_short_description();
+                }
+
+                $items['suggestions'][] = $r;
               }
 
-              if($limit < $count){
-                $moreproduct = array(
-                    'id' => 'more-result',
+            if($limit < $count){
+                 $moreproduct = array(
+                    'id'    => 'more-result',
                     'value' => '',
                     'text'  => $more_reult_label,
                     'total' => $count,
@@ -47,13 +69,15 @@ function thaps_ajax_get_search_value(){
                 ), home_url() ),
                     'type'  => 'more_products',
                 );
+
+
                  $items['suggestions'][] = $moreproduct; 
-             }
+              }
              
             }else{
                 $items['suggestions'][] = array(
-                  'value'  => $no_reult_label,
-              );
+                   'value'  => $no_reult_label,
+                );
             }
             echo json_encode($items);
             die();

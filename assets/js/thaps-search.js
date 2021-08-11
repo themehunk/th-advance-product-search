@@ -713,14 +713,13 @@
                 console.log(suggestion);
                 var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
                     postid = suggestion.id ? suggestion.id : '',
-                    isImg  = '',
+                    isImg  = suggestion.imgsrc ? suggestion.imgsrc:'' ,
                     attr_title ='',
                     title = suggestion.title ? suggestion.title : '',
-                    isPrice  = '',
-                    price = suggestion.price ? suggestion.price : '',
-                    no_result_class = '',
-                    Imgshw  = th_advance_product_search_options.thvs_shw_prd_img ,
-                    Priceshw  = th_advance_product_search_options.thvs_shw_prd_price ;
+                    isPrice  = suggestion.price ? suggestion.price:'',
+                    Descshw  = suggestion.desc ? suggestion.desc : '' ,
+                    Skushw  = suggestion.sku ? suggestion.sku : '' ,
+                    no_result_class = '';
 
                     if(postid==''){
                     var no_result_class = 'nonce_result_show';
@@ -731,14 +730,6 @@
                     html += formatGroup(suggestion, value, i);
                 }
 
-                // Image
-                if (typeof suggestion.imgsrc != 'undefined' && suggestion.imgsrc) {
-                        isImg = true;
-                }
-                // Price
-                if (typeof suggestion.price != 'undefined' && suggestion.price) {
-                        isPrice = true;
-                }
                 //more product
                 if(suggestion.type == 'more_products') {
                  className += ' thaps-suggestion-more';
@@ -748,17 +739,27 @@
                 attr_title = title.length > 0 ? ' title="' + title + '"' : '';
 
                 html += '<a href="' + url + '" class="' + className + ' ' + no_result_class +' " post-id="' + postid + '" data-index="' + i + '">'; 
-                if(isImg && Imgshw == true) {
+                if(isImg) {
                         html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
                 }
 
-                html += '<div class="thaps-content-wrapp">'
+                html += '<div class="thaps-content-wrapp"><div class="thaps-content-left">'
                 html += '<div class="thaps-title">' + formatResult(suggestion, value, i) + '</div>';
-                if(isPrice && Priceshw == true) {
-                html += '<span class="thaps-price">' + suggestion.price + '</span>';
+               
+                if(Skushw){
+                html += '<span class="thaps-sku">( SKU : ' + suggestion.sku + ' )</span>';
+                }
+
+                if(Descshw){
+                html += '<span class="thaps-desc">' + suggestion.desc + '</span>';
                 }
 
                 html += '</div>';
+                if(isPrice) {
+                html += '<div class="thaps-content-right"><span class="thaps-price">' + suggestion.price + '</span></div>';
+                }
+                html += '</div>';
+
                 html += '</a>';
             });
 

@@ -163,3 +163,29 @@ text-align:center;
 .thaps-suggestion-more .thaps-title{
 font-size:.89rem;
 }
+.thaps-autocomplete-suggestion .thaps-title{
+display:inline-flex;
+margin-right: 0.6rem;
+}
+.thaps-autocomplete-suggestion .thaps-price{
+display:block;
+}
+.thaps-sku{
+font-size:0.8rem;
+}
+.thaps-desc{
+font-size:0.8rem;
+display:flex;
+}
+
+.thaps-content-wrapp {
+    line-height: normal;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 2;
+}
+
+.thaps-suggestion-more .thaps-content-wrapp {
+
+    justify-content: center;
+}
