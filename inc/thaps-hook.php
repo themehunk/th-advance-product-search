@@ -5,9 +5,13 @@ add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value','thaps_ajax_get_search_
 // search result function
 /*************************/
 function thaps_ajax_get_search_value(){
-         $limit = 5;
+        //setting value
+        $limit =  esc_html(th_advance_product_search()->get_option( 'result_length' ));
+        $no_reult_label =  esc_html(th_advance_product_search()->get_option( 'no_reult_label' ));
+        $more_reult_label =  esc_html(th_advance_product_search()->get_option( 'more_reult_label' ));
+
          if (isset($_REQUEST['match']) && $_REQUEST['match'] != '') {
-             $match_ = sanitize_text_field($_REQUEST['match']);
+              $match_ = sanitize_text_field($_REQUEST['match']);
               $results = new WP_Query(array(
               'post_type'     => 'product',
               'post_status'   => 'publish',
@@ -35,7 +39,7 @@ function thaps_ajax_get_search_value(){
                 $moreproduct = array(
                     'id' => 'more-result',
                     'value' => '',
-                    'text'  => esc_html__('See more product...','thaps'),
+                    'text'  => $more_reult_label,
                     'total' => $count,
                     'url'   => add_query_arg( array(
                     's'         => $match_,
@@ -48,7 +52,7 @@ function thaps_ajax_get_search_value(){
              
             }else{
                 $items['suggestions'][] = array(
-                  'value'  => esc_html__('No Result','thaps'),
+                  'value'  => $no_reult_label,
               );
             }
             echo json_encode($items);

@@ -119,6 +119,11 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
                         'thvs_nonce'                     => wp_create_nonce( 'th_advance_product_search' ),
 
                         'thvs_length'                    => esc_html(th_advance_product_search()->get_option( 'set_autocomplete_length' )),
+                        'thvs_shw_prd_img'                    => (bool)(th_advance_product_search()->get_option( 'enable_product_image' )),
+                        'thvs_shw_prd_img'                    => (bool)(th_advance_product_search()->get_option( 'enable_product_image' )),
+                        'thvs_shw_prd_price'                    => (bool)(th_advance_product_search()->get_option( 'enable_product_price' )),
+                        'thvs_shw_prd_desc'                    => (bool)(th_advance_product_search()->get_option( 'enable_product_desc' )),
+                         'thvs_shw_prd_sku'                    => (bool)(th_advance_product_search()->get_option( 'enable_product_sku' )),
 
                     )
                 )

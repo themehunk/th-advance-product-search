@@ -718,7 +718,9 @@
                     title = suggestion.title ? suggestion.title : '',
                     isPrice  = '',
                     price = suggestion.price ? suggestion.price : '',
-                    no_result_class = '';
+                    no_result_class = '',
+                    Imgshw  = th_advance_product_search_options.thvs_shw_prd_img ,
+                    Priceshw  = th_advance_product_search_options.thvs_shw_prd_price ;
 
                     if(postid==''){
                     var no_result_class = 'nonce_result_show';
@@ -746,13 +748,13 @@
                 attr_title = title.length > 0 ? ' title="' + title + '"' : '';
 
                 html += '<a href="' + url + '" class="' + className + ' ' + no_result_class +' " post-id="' + postid + '" data-index="' + i + '">'; 
-                if(isImg) {
+                if(isImg && Imgshw == true) {
                         html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
                 }
 
                 html += '<div class="thaps-content-wrapp">'
                 html += '<div class="thaps-title">' + formatResult(suggestion, value, i) + '</div>';
-                if(isPrice) {
+                if(isPrice && Priceshw == true) {
                 html += '<span class="thaps-price">' + suggestion.price + '</span>';
                 }
 
