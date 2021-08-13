@@ -38,7 +38,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
             if ( $this->is_required_php_version() && $this->is_wc_active() ) {
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-settings.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-option-setting.php';
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-hook.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-function.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-front-custom-style.php';
             }
         }

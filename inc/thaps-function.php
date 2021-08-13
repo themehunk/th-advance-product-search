@@ -16,6 +16,9 @@ function thaps_ajax_get_search_value(){
 
         $show_category_in =  esc_html(th_advance_product_search()->get_option( 'show_category_in' ));
 
+        $category_hd = __('Category','th-advance-product-search');
+        $product_hd  = __('Product','th-advance-product-search');
+
         /*********************/
         //fetch product result
         /*********************/
@@ -35,30 +38,20 @@ function thaps_ajax_get_search_value(){
              
              // category show 
              if($show_category_in == true){
-                $items['suggestions'][] = array(
-                    'value'  => 'Category',
-                    'type'   => 'heading',
-                );
+               $items['suggestions'][] = thaps_show_heading($category_hd);
                $categories = thaps_ajax_getCategories( $match_, $limit );
                if(!empty($categories)){
-               foreach ( $categories as $result ) {
+               foreach ( $categories as $result ){
                     $items['suggestions'][] = $result;
                 }
-                }else{
-                    $items['suggestions'][] = array(
-                   'value'  => $no_reult_label,
-                   'type'   => 'no-result',
-                    );   
+              }else{
+                    $items['suggestions'][] = thaps_show_no_result($no_reult_label);
                 }
              
               }
 
-
-             if (!empty($results->posts)){
-              $items['suggestions'][] = array(
-                    'value'  => 'Product',
-                    'type'   => 'heading',
-                );  
+              if (!empty($results->posts)){
+              $items['suggestions'][] = thaps_show_heading($product_hd);
               foreach (array_slice($results->posts,0,$limit) as $result){
                 $product = wc_get_product($result->ID);
                 $r = array(
@@ -84,38 +77,43 @@ function thaps_ajax_get_search_value(){
                 $items['suggestions'][] = $r;
               }
 
-            
-
-            // show more product
             if($limit < $count){
-                 $moreproduct = array(
-                    'id'    => 'more-result',
-                    'value' => '',
-                    'text'  => $more_reult_label,
-                    'total' => $count,
-                    'url'   => add_query_arg( array(
-                    's'         => $match_,
-                    'post_type' => 'product',
-                ), home_url() ),
-                    'type'  => 'more_products',
-                );
-                 $items['suggestions'][] = $moreproduct; 
-              }
-             
-
-            }else{
-                $items['suggestions'][] = array(
-                   'value'  => $no_reult_label,
-                   'type'   => 'no-result',
-                );
+                $items['suggestions'][] = thaps_show_more($count, $more_reult_label, $match_);
             }
+             
+            }else{
+                $items['suggestions'][] = thaps_show_no_result($no_reult_label);
+            }
+            
             echo json_encode($items);
+
             die();
          }
 
 }
 
-function thaps_ajax_getCategories( $keyword, $limit = 3 ){
+/**************/
+//Heading Show
+/**************/
+function thaps_show_heading($heading_label){
+      return  array(
+                    'value'  => $heading_label,
+                    'type'   => 'heading',
+                );
+}
+/**************/
+//No Reult Show
+/**************/
+function thaps_show_no_result($no_reult_label){
+      return  array(
+                   'value'  => $no_reult_label,
+                   'type'   => 'no-result',
+                );
+}
+/**************/
+//Get Category
+/**************/
+function thaps_ajax_getCategories( $keyword, $limit){
         $results = array();
         $args = array(
             'taxonomy' => 'product_cat',
@@ -144,6 +142,26 @@ function thaps_ajax_getCategories( $keyword, $limit = 3 ){
         
         }
 
-        
         return $results;
+}
+
+/*************/
+//Show More
+/*************/
+function thaps_show_more( $count, $more_reult_label, $match){
+            
+                 $moreproduct = array(
+                    'id'    => 'more-result',
+                    'value' => '',
+                    'text'  => $more_reult_label,
+                    'total' => $count,
+                    'url'   => add_query_arg( array(
+                    's'         => $match,
+                    'post_type' => 'product',
+                ), home_url() ),
+                    'type'  => 'more_products',
+                );
+
+                return $moreproduct; 
+         
 }
