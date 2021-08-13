@@ -712,35 +712,47 @@
 
                 console.log(suggestion);
                 var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
-                    postid = suggestion.id ? suggestion.id : '',
+                    
                     isImg  = suggestion.imgsrc ? suggestion.imgsrc:'' ,
                     attr_title ='',
                     title = suggestion.title ? suggestion.title : '',
                     isPrice  = suggestion.price ? suggestion.price:'',
                     Descshw  = suggestion.desc ? suggestion.desc : '' ,
                     Skushw  = suggestion.sku ? suggestion.sku : '' ,
+                    classNameT = '',
                     no_result_class = '';
 
-                    if(postid==''){
-                    var no_result_class = 'nonce_result_show';
-                    }
+                
                 
 
                 if (groupBy){
                     html += formatGroup(suggestion, value, i);
                 }
-
+                //attr title
+                attr_title = title.length > 0 ? ' title="' + title + '"' : '';
                 //more product
                 if(suggestion.type == 'more_products') {
                  className += ' thaps-suggestion-more';
                  suggestion.value = suggestion.text + ' (' + suggestion.total + ')';
+                }else if(suggestion.type == 'heading'){
+                //heading product
+                classNameT += 'thaps-suggestion-heading';
+                }else if(suggestion.type == 'taxonomy-cat'){
+                //cat
+                classNameT += 'thaps-suggestion-taxonomy-cat';
+                }else if(suggestion.type == 'product'){
+                //product
+                classNameT += 'thaps-suggestion-product';
+                }else if(suggestion.type=='no-result'){
+                classNameT = 'nonce_result_show';
+                }else{
+                classNameT += '';   
                 }
-                //attr title
-                attr_title = title.length > 0 ? ' title="' + title + '"' : '';
-
-                html += '<a href="' + url + '" class="' + className + ' ' + no_result_class +' " post-id="' + postid + '" data-index="' + i + '">'; 
+                
+               
+                html += '<a href="' + url + '" class="' + className + ' ' + classNameT + '"  data-index="' + i + '">'; 
                 if(isImg) {
-                        html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
+                html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
                 }
 
                 html += '<div class="thaps-content-wrapp"><div class="thaps-content-left">'

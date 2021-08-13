@@ -178,6 +178,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 								'desc'    => '',
 								'default' => false
 							    ),
+							array(
+								'id'      => 'show_category_in',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Show Category', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => false
+							    ),
 						)
 					)
 				 )

@@ -54,7 +54,7 @@ border-radius: 4px;
 }
 
 .thaps-autocomplete-suggestions {border: 1px solid #eee; background: #FFF; overflow: auto; }
-.thaps-autocomplete-suggestion { padding: 0.5rem; white-space: nowrap; overflow: hidden; }
+.thaps-autocomplete-suggestion { padding: 0.5rem; white-space: nowrap; overflow: hidden;margin:0rem  0.7rem; }
 .thaps-autocomplete-selected { background: #f0f0f166; }
 .thaps-autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
 .thaps-autocomplete-group { padding: 0.5rem; }
@@ -84,6 +84,22 @@ border-radius:3px;
 .thaps-autocomplete-suggestion .thaps-price{
 font-size:0.89rem;
 font-weight:500;
+}
+
+.thaps-suggestion-heading .thaps-title{
+font-size:1rem;
+}
+.thaps-suggestion-heading{
+border-bottom:1px solid #eee;
+margin-bottom: 0.5rem;
+opacity: 0.8;
+pointer-events: none;
+}
+.thaps-suggestion-taxonomy-cat .thaps-title{
+font-size:0.89rem;
+}
+.thaps-suggestion-taxonomy-cat{
+    padding: 0 0.5rem;
 }
 
 .thaps-content-wrapp{
@@ -154,6 +170,7 @@ padding: 0.3rem 0.3rem 0.3rem 2.8rem;
 .thaps-suggestion-more{
 background:#eee;
 text-align:center;
+margin: 0;
 }
 .thaps-suggestion-more .thaps-content-wrapp {
     line-height: normal;

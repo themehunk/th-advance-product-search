@@ -14,6 +14,8 @@ function thaps_ajax_get_search_value(){
         $enable_product_desc =  esc_html(th_advance_product_search()->get_option( 'enable_product_desc' ));
         $enable_product_sku =  esc_html(th_advance_product_search()->get_option( 'enable_product_sku' ));
 
+        $show_category_in =  esc_html(th_advance_product_search()->get_option( 'show_category_in' ));
+
         /*********************/
         //fetch product result
         /*********************/
@@ -29,10 +31,34 @@ function thaps_ajax_get_search_value(){
 
              $count = ( isset( $results->posts ) ? count( $results->posts ) : 0 );
              $items = array();
+              
+             
+             // category show 
+             if($show_category_in == true){
+                $items['suggestions'][] = array(
+                    'value'  => 'Category',
+                    'type'   => 'heading',
+                );
+               $categories = thaps_ajax_getCategories( $match_, $limit );
+               if(!empty($categories)){
+               foreach ( $categories as $result ) {
+                    $items['suggestions'][] = $result;
+                }
+                }else{
+                    $items['suggestions'][] = array(
+                   'value'  => $no_reult_label,
+                   'type'   => 'no-result',
+                    );   
+                }
+             
+              }
 
-            
 
              if (!empty($results->posts)){
+              $items['suggestions'][] = array(
+                    'value'  => 'Product',
+                    'type'   => 'heading',
+                );  
               foreach (array_slice($results->posts,0,$limit) as $result){
                 $product = wc_get_product($result->ID);
                 $r = array(
@@ -40,6 +66,7 @@ function thaps_ajax_get_search_value(){
                   'title'   => $result->post_title,
                   'id'      => $result->ID,
                   'url'     => get_permalink($result->ID), 
+                  'type'    => 'product', 
                 );
                 if ( $enable_product_image == true) {
                         $r['imgsrc'] = wp_get_attachment_url($product->get_image_id());
@@ -57,6 +84,9 @@ function thaps_ajax_get_search_value(){
                 $items['suggestions'][] = $r;
               }
 
+            
+
+            // show more product
             if($limit < $count){
                  $moreproduct = array(
                     'id'    => 'more-result',
@@ -69,18 +99,51 @@ function thaps_ajax_get_search_value(){
                 ), home_url() ),
                     'type'  => 'more_products',
                 );
-
-
                  $items['suggestions'][] = $moreproduct; 
               }
              
+
             }else{
                 $items['suggestions'][] = array(
                    'value'  => $no_reult_label,
+                   'type'   => 'no-result',
                 );
             }
             echo json_encode($items);
             die();
          }
 
+}
+
+function thaps_ajax_getCategories( $keyword, $limit = 3 ){
+        $results = array();
+        $args = array(
+            'taxonomy' => 'product_cat',
+        );
+        $productCategories = get_terms( 'product_cat', $args );
+        $keywordUnslashed = wp_unslash( $keyword );
+  
+        $i = 0;
+        foreach ( $productCategories as $cat ) {
+
+            if ( $i < $limit ) {
+                $catName = html_entity_decode( $cat->name );
+                $pos = strpos( mb_strtolower( $catName ), mb_strtolower( $keywordUnslashed ) );
+                if ( $pos !== false ) {
+                    $results[$i] = array(
+                        'term_id'     => $cat->term_id,
+                        'taxonomy'    => 'product_cat',
+                        'value'       => $catName,
+                        'url'         => get_term_link( $cat, 'product_cat' ),
+                        'type'        => 'taxonomy-cat',
+                    );
+                    $i++;
+                }
+            
+            }
+        
+        }
+
+        
+        return $results;
 }
