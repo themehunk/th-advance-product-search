@@ -44,6 +44,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
         }
 
         public function hooks() {
+               add_action( 'init', array( $this, 'setImageSize' ));
             if($this->is_wc_active()){
                 add_action( 'init', array( $this, 'settings_api' ), 5 );
                 add_shortcode( 'th-aps', array( $this, 'register_shortcode' ), 5 );
@@ -150,6 +151,11 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
          require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-search-from.php';
 
        }
+
+       public function setImageSize() {
+        add_image_size( 'thaps-thumb-img', 48, 0, true );
+      }
+       
 
 
  

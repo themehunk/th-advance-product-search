@@ -79,7 +79,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 							array(
 								'id'      => 'show_submit',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Submit Button', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Enable Submit Button', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => true
 							),
@@ -87,13 +87,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 							array(
 								'id'      => 'level_submit',
 								'type'    => 'text',
-								'title'   => esc_html__( 'Submit Button Level', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Submit Button Level', 'th-advance-product-search' ),
 								
 							),
 							array(
 								'id'      => 'placeholder_text',
 								'type'    => 'text',
-								'title'   => esc_html__( 'Placeholder Text', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Placeholder Text', 'th-advance-product-search' ),
 								'default' => esc_html__('Product Search','th-advance-product-search'),
 								
 							),
@@ -107,7 +107,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 							array(
 								'id'      => 'show_loader',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Disable loader', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Disable loader', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							    ),	
@@ -132,9 +132,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 								'title'   => esc_html__( 'Select Search Type', 'th-advance-product-search' ),
 								'default' => 'product_srch',
 								'options' => array(
-									'post_srch'   => esc_html__( 'Post', 'th-variation-swatches-pro' ),
-									'product_srch' => esc_html__( 'Product', 'th-variation-swatches-pro' ),
-									'page_srch'  => esc_html__( 'Page', 'th-variation-swatches-pro' )
+									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search-pro' ),
+									'product_srch' => esc_html__( 'Product', 'th-advance-product-search-pro' ),
+									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search-pro' )
 								)
 								
 							),
@@ -151,55 +151,118 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 							array(
 								'id'      => 'no_reult_label',
 								'type'    => 'text',
-								'title'   => esc_html__( 'No Result label', 'th-variation-swatches' ),
-								'default' => esc_html__( 'No reult found', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'No Result label', 'th-advance-product-search' ),
+								'default' => esc_html__( 'No reult found', 'th-advance-product-search' ),
 								
 							),
 							array(
 								'id'      => 'more_reult_label',
 								'type'    => 'text',
-								'title'   => esc_html__( 'More Result label', 'th-variation-swatches' ),
-								'default' => esc_html__( 'See more product..', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'More Result label', 'th-advance-product-search' ),
+								'default' => esc_html__( 'See more product..', 'th-advance-product-search' ),
 								
 							),
-							array(
+						  array(
+								'id'      => 'enable_group_heading',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Group Heading', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => true
+							    ),	
+						   array(
+								'id'      => 'show_category_in',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Show Category', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => false
+							    ),
+							
+						)
+					)
+				 ),array(
+					'title'  => esc_html__( 'Product', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_product_setting_fields', array(
+								array(
 								'id'      => 'enable_product_image',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Product Image', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Enable Product Image', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => true
 							    ),
 							array(
 								'id'      => 'enable_product_price',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Product price', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Enable Product price', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => true
 							    ),
 							array(
 								'id'      => 'enable_product_desc',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Product Description', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Enable Product Description', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							    ),
 							array(
 								'id'      => 'enable_product_sku',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Product SKU', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Enable Product SKU', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							    ),
-							array(
-								'id'      => 'show_category_in',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Show Category', 'th-variation-swatches' ),
-								'desc'    => '',
-								'default' => false
-							    ),
+							
 						)
 					)
-				 )
+				 ),
+				 array(
+					'title'  => esc_html__( 'Post', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_post_setting_fields', array(
+								array(
+								'id'      => 'enable_post_image',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Post Image', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => true
+							    ),
+							
+							array(
+								'id'      => 'enable_post_desc',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Post Description', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => false
+							    ),
+							
+							
+						)
+					)
+				 ),
+				 array(
+					'title'  => esc_html__( 'Pages', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_pages_setting_fields', array(
+								array(
+								'id'      => 'enable_page_image',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Page Image', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => true
+							    ),
+							
+							array(
+								'id'      => 'enable_page_desc',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Page Description', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => false
+							    ),
+							
+							
+						)
+					)
+				 ),
 			  )
 		    )
 		  );

@@ -95,10 +95,10 @@ margin-bottom: 0.5rem;
 opacity: 0.8;
 pointer-events: none;
 }
-.thaps-suggestion-taxonomy-cat .thaps-title{
+.thaps-suggestion-taxonomy-product-cat .thaps-title,.thaps-suggestion-taxonomy-post-cat .thaps-title{
 font-size:0.89rem;
 }
-.thaps-suggestion-taxonomy-cat{
+.thaps-suggestion-taxonomy-product-cat,.thaps-suggestion-taxonomy-post-cat{
     padding: 0 0.5rem;
 }
 
@@ -170,7 +170,7 @@ padding: 0.3rem 0.3rem 0.3rem 2.8rem;
 .thaps-suggestion-more{
 background:#eee;
 text-align:center;
-margin: 0;
+margin: 0.5rem 0 0 0 ;
 }
 .thaps-suggestion-more .thaps-content-wrapp {
     line-height: normal;

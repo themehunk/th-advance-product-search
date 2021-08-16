@@ -731,15 +731,18 @@
                 //attr title
                 attr_title = title.length > 0 ? ' title="' + title + '"' : '';
                 //more product
-                if(suggestion.type == 'more_products') {
+                if(suggestion.type == 'more_item') {
                  className += ' thaps-suggestion-more';
                  suggestion.value = suggestion.text + ' (' + suggestion.total + ')';
                 }else if(suggestion.type == 'heading'){
                 //heading product
                 classNameT += 'thaps-suggestion-heading';
-                }else if(suggestion.type == 'taxonomy-cat'){
-                //cat
-                classNameT += 'thaps-suggestion-taxonomy-cat';
+                }else if(suggestion.type == 'taxonomy-product-cat'){
+                //product cat
+                classNameT += 'thaps-suggestion-taxonomy-product-cat';
+                }else if(suggestion.type == 'taxonomy-post-cat'){
+                //post cat
+                classNameT += 'thaps-suggestion-taxonomy-post-cat';
                 }else if(suggestion.type == 'product'){
                 //product
                 classNameT += 'thaps-suggestion-product';
