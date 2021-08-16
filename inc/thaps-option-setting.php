@@ -94,6 +94,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 								'id'      => 'placeholder_text',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Placeholder Text', 'th-variation-swatches' ),
+								'default' => esc_html__('Product Search','th-advance-product-search'),
 								
 							),
 						)
@@ -106,7 +107,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 							array(
 								'id'      => 'show_loader',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable loader', 'th-variation-swatches' ),
+								'title'   => esc_html__( 'Disable loader', 'th-variation-swatches' ),
 								'desc'    => '',
 								'default' => false
 							    ),	
@@ -118,6 +119,90 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 			   )
 		     ),
 		   );
+          th_advance_product_search()->add_setting(
+			'autosetting', esc_html__( 'Search Setting', 'th-advance-product-search' ), apply_filters(
+			'thaps_autosetting_section', array(
+				array(
+					'title'  => esc_html__( 'Search Autocomplete Settings', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_autosetting_fields', array(
+							array(
+								'id'      => 'select_srch_type',
+								'type'    => 'select',
+								'title'   => esc_html__( 'Select Search Type', 'th-advance-product-search' ),
+								'default' => 'product_srch',
+								'options' => array(
+									'post_srch'   => esc_html__( 'Post', 'th-variation-swatches-pro' ),
+									'product_srch' => esc_html__( 'Product', 'th-variation-swatches-pro' ),
+									'page_srch'  => esc_html__( 'Page', 'th-variation-swatches-pro' )
+								)
+								
+							),
+							array(
+								'id'      => 'result_length',
+								'type'    => 'number',
+								'title'   => esc_html__( 'Limit', 'th-advance-product-search' ),
+								
+								'desc'    => esc_html__( 'Show Search Result', 'th-advance-product-search' ),
+								'default' => 5,
+								'min'     => 1,
+								'max'     => 100,
+							),
+							array(
+								'id'      => 'no_reult_label',
+								'type'    => 'text',
+								'title'   => esc_html__( 'No Result label', 'th-variation-swatches' ),
+								'default' => esc_html__( 'No reult found', 'th-variation-swatches' ),
+								
+							),
+							array(
+								'id'      => 'more_reult_label',
+								'type'    => 'text',
+								'title'   => esc_html__( 'More Result label', 'th-variation-swatches' ),
+								'default' => esc_html__( 'See more product..', 'th-variation-swatches' ),
+								
+							),
+							array(
+								'id'      => 'enable_product_image',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Product Image', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => true
+							    ),
+							array(
+								'id'      => 'enable_product_price',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Product price', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => true
+							    ),
+							array(
+								'id'      => 'enable_product_desc',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Product Description', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => false
+							    ),
+							array(
+								'id'      => 'enable_product_sku',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Product SKU', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => false
+							    ),
+							array(
+								'id'      => 'show_category_in',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Show Category', 'th-variation-swatches' ),
+								'desc'    => '',
+								'default' => false
+							    ),
+						)
+					)
+				 )
+			  )
+		    )
+		  );
 
 		}
 

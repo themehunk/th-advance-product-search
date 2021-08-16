@@ -38,7 +38,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
             if ( $this->is_required_php_version() && $this->is_wc_active() ) {
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-settings.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-option-setting.php';
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-hook.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-function.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-front-custom-style.php';
             }
         }
@@ -50,6 +50,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
                 add_filter( 'body_class', array( $this, 'body_class' ) );
                 add_action( 'wp_enqueue_scripts', array( $this, 'th_advance_product_search_scripts' ), 15 );
 
+          
             }
 
         }
@@ -107,18 +108,18 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
         public function th_advance_product_search_scripts(){
 
           wp_enqueue_style( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/thaps-front-style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
-
+          wp_add_inline_style('th-advance-product-search-front', th_advance_product_search_style());
           wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-search.js', array(
                     'jquery',
-                    'wp-util',
-                    'underscore',
-                    'wc-add-to-cart-variation'
                 ),true);
           wp_localize_script(
                 'th-advance-product-search-front', 'th_advance_product_search_options', apply_filters(
                     'th_advance_product_search_js_options', array(
-                        'is_product_page'           => is_product(),
-                        'thvs_nonce'                => wp_create_nonce( 'th_advance_product_search' ),
+                        'ajaxUrl'   => esc_url(admin_url( 'admin-ajax.php' )),
+                        'thvs_nonce'                     => wp_create_nonce( 'th_advance_product_search' ),
+
+                        'thvs_length'                    => esc_html(th_advance_product_search()->get_option( 'set_autocomplete_length' )),
+
                     )
                 )
             );
@@ -149,6 +150,8 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
          require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-search-from.php';
 
        }
+
+
  
 }
 // Load Plugin
