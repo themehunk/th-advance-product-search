@@ -6,6 +6,8 @@ add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value','thaps_ajax_get_search_
 /*************************/
 function thaps_ajax_get_search_value(){
         //setting value
+        $select_srch_type = esc_html(th_advance_product_search()->get_option( 'select_srch_type' ));
+
         $limit =  esc_html(th_advance_product_search()->get_option( 'result_length' ));
         $no_reult_label =  esc_html(th_advance_product_search()->get_option( 'no_reult_label' ));
         $more_reult_label =  esc_html(th_advance_product_search()->get_option( 'more_reult_label' ));
@@ -31,11 +33,8 @@ function thaps_ajax_get_search_value(){
               'posts_per_page' => 100,
               's'             => $match_,
             ));
-
              $count = ( isset( $results->posts ) ? count( $results->posts ) : 0 );
              $items = array();
-              
-             
              // category show 
              if($show_category_in == true){
                $items['suggestions'][] = thaps_show_heading($category_hd);
@@ -77,9 +76,9 @@ function thaps_ajax_get_search_value(){
                 $items['suggestions'][] = $r;
               }
 
-            if($limit < $count){
-                $items['suggestions'][] = thaps_show_more($count, $more_reult_label, $match_);
-            }
+                if($limit < $count){
+                    $items['suggestions'][] = thaps_show_more($count, $more_reult_label, $match_);
+                }
              
             }else{
                 $items['suggestions'][] = thaps_show_no_result($no_reult_label);
@@ -144,13 +143,12 @@ function thaps_ajax_getCategories( $keyword, $limit){
 
         return $results;
 }
-
 /*************/
 //Show More
 /*************/
 function thaps_show_more( $count, $more_reult_label, $match){
             
-                 $moreproduct = array(
+                $moreproduct = array(
                     'id'    => 'more-result',
                     'value' => '',
                     'text'  => $more_reult_label,

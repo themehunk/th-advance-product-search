@@ -127,6 +127,18 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 					'fields' => apply_filters(
 						'thaps_autosetting_fields', array(
 							array(
+								'id'      => 'select_srch_type',
+								'type'    => 'select',
+								'title'   => esc_html__( 'Select Search Type', 'th-advance-product-search' ),
+								'default' => 'product_srch',
+								'options' => array(
+									'post_srch'   => esc_html__( 'Post', 'th-variation-swatches-pro' ),
+									'product_srch' => esc_html__( 'Product', 'th-variation-swatches-pro' ),
+									'page_srch'  => esc_html__( 'Page', 'th-variation-swatches-pro' )
+								)
+								
+							),
+							array(
 								'id'      => 'result_length',
 								'type'    => 'number',
 								'title'   => esc_html__( 'Limit', 'th-advance-product-search' ),
