@@ -83,6 +83,7 @@
         // Initialize and set options:
         that.initialize();
         that.setOptions(options);
+        that.registerIconHandler();
     }
 
     Autocomplete.utils = utils;
@@ -112,9 +113,12 @@
             onSearchComplete: noop,
             onSearchError: noop,
             preserveInput: false,
+            searchFormClass: 'thaps-search-box',
+            searchInputClass: 'thaps-search-autocomplete',
             containerClass: 'thaps-autocomplete-suggestions',
             preloaderClass: 'thaps-preloader',
             closeTrigger: 'thaps-close',
+            formClass: 'thaps-search-form',
             tabDisabled: false,
             dataType: 'text',
             currentRequest: null,
@@ -567,12 +571,78 @@
 
             return data;
         },
+         getFormWrapper: function () {
+            var that = this;
 
+            return that.el.closest('.' + that.options.searchFormClass);
+        },
+        positionIconSearchMode: function ($formWrapper) {
+            var that = this,
+                side = 'right',
+                formLeftValue = -20;
+
+            var $form = $formWrapper.find('.' + that.options.formClass);
+            var formWidth = $form.width(),
+                windowWidth = $(window).width();
+
+            var iconLeftOffset = $formWrapper[0].getBoundingClientRect().left;
+            var formLeftOffset = $form[0].getBoundingClientRect().left;
+
+            // Is the icon on left or right side of screen?
+            if (iconLeftOffset + 10 < windowWidth / 2) {
+                side = 'left';
+            }
+
+            var iconLeftRatio = (iconLeftOffset + 10) / windowWidth;
+
+            formLeftValue = Math.floor(-1 * (formWidth * iconLeftRatio));
+
+            // Prevent shifting to the left more than the icon position (also positioned from the left)
+            formLeftValue = Math.max(formLeftValue, -1 * iconLeftOffset);
+
+            $form.css({'left': formLeftValue + 'px'});
+
+        },
+        registerIconHandler: function () {
+            var that = this,
+                $formWrapper = that.getFormWrapper();
+            var $form = $formWrapper.find('.' + that.options.formClass);
+
+            $formWrapper.on('click.autocomplete', '.click-icon', function (e) {
+
+                var $input = $formWrapper.find('.' + that.options.searchInputClass);
+
+                if ($formWrapper.hasClass('thaps-box-open')) {
+
+                    that.hide();
+                    $form.hide(true);
+
+                    $formWrapper.removeClass('thaps-box-open');
+
+
+                } else {
+                    var $arrow = $formWrapper.find('.thaps-icon-arrow');
+                    $form.hide();
+                    $arrow.hide();
+                    $formWrapper.addClass('thaps-box-open');
+                    that.positionIconSearchMode($formWrapper);
+
+                    $form.fadeIn(100, function () {
+                        $arrow.show(); 
+                        $input.focus();
+                    });
+
+                }
+
+
+            });
+        },
         getSuggestions: function (q) {
             var response,
                 that = this,
                 options = that.options,
                 serviceUrl = options.serviceUrl,
+                searchForm = that.getFormWrapper(),
                 params,
                 cacheKey,
                 ajaxSettings;
@@ -1069,7 +1139,9 @@
             that.el.off('.autocomplete').removeData('autocomplete');
             $(window).off('resize.autocomplete', that.fixPositionCapture);
             $(that.suggestionsContainer).remove();
-        }
+        },
+
+
     };
 
     // Create chainable jQuery plugin:
@@ -1109,7 +1181,7 @@
 // Run Code
 /**************************************************/
  $(document).ready(function (){
- $('#thaps-search-autocomplete').thapsAutocomplete({
+ $('.thaps-search-autocomplete').thapsAutocomplete({
     lookupLimit:5,
     serviceUrl:th_advance_product_search_options.ajaxUrl + '?action=' + 'thaps_ajax_get_search_value',
     showNoSuggestionNotice: true,

@@ -24,8 +24,9 @@ max-width:550px;
 display:flex;
 background:#fff;
 border-radius:4px;
+    position: relative;
 }
-#thaps-search-autocomplete:focus{
+.thaps-search-autocomplete:focus{
         outline: 0;
 }
 #thaps-search-button {
@@ -42,10 +43,10 @@ background: #111;
 #thaps-search-button:hover{
 background:#888;
 }
-#thaps-search-autocomplete{
+.thaps-search-form .thaps-search-autocomplete {
 min-height:35px;
 line-height:35px;
-border:none;
+border:none!important;
 font-size: 14px;
 width: 100%;
 padding: 0.3rem 0.8rem;
@@ -157,14 +158,14 @@ height: 100%;
     }
 }
 
-.submit-no-active .thaps-from-wrap svg{
+.submit-no-active .thaps-from-wrap svg, .bar_style svg,.icon_style .thaps-from-wrap svg{
 position:absolute;
 left:0.5rem
 }
-.submit-no-active #thaps-search-autocomplete{
+.submit-no-active .thaps-search-autocomplete,.bar_style .thaps-search-autocomplete,.icon_style .thaps-search-autocomplete{
 padding: 0.3rem 0.3rem 0.3rem 2.8rem;
 }
-.submit-no-active .thaps-from-wrap{
+.submit-no-active .thaps-from-wrap, .bar_style .thaps-from-wrap,.icon_style .thaps-from-wrap{
     align-items: center;
 }
 .thaps-suggestion-more{
@@ -200,9 +201,49 @@ display:flex;
     display: flex;
     justify-content: space-between;
     flex-grow: 2;
+    align-items: center;
 }
 
 .thaps-suggestion-more .thaps-content-wrapp {
 
     justify-content: center;
+}
+
+.icon_style .thaps-search-form {
+    opacity:0;
+    display:none;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    min-width: 500px;
+    z-index: 1000;
+}
+.icon_style.thaps-box-open .thaps-search-form{
+    opacity:1;
+    display:block;
+}
+
+.icon_style .click-icon{
+    height: auto;
+    cursor: pointer;
+}
+.thaps-box-open .thaps-icon-arrow {
+    display: block;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    z-index: 5;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    -webkit-transform: rotate(
+45deg
+);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(
+45deg
+);
 }

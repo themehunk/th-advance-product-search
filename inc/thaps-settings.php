@@ -460,7 +460,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		   <h4><?php _e( 'There are 3 easy ways to display the search bar in your theme', 'ajax-search-for-woocommerce' ); ?>: </h4>
 			<ol>
 				
-				<li><?php printf( __( 'Using a shortcode - %s', 'th-advance-product-search' ), '<code>[th-aps]</code>' ); ?></li>
+				<li><?php printf( __( 'Using a Multiple Style shortcode - %s', 'th-advance-product-search' ), '<code>[th-aps]</code>, <code>[th-aps layout="bar_style"]</code>, <code>[th-aps layout="icon_style"]</code>, <code>[th-aps layout="flexible-style"]</code>' ); ?></li>
 				<li><?php printf( __( 'As a widget - go to the %s and choose "TH Advance Product Search"', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ) ?>
 				<li><?php printf( __( 'Using PHP - %s', 'th-advance-product-search' ), '<code>&lt;?php echo do_shortcode(\'[th-aps]\'); ?&gt;</code>' ); ?></li>
 			</ol>
