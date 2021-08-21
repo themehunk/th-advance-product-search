@@ -69,10 +69,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		
 			?>
 			<div id="thaps" class="settings-wrap">
-                
-				<div class="top-wrap"><div id="logo"></div>
-				  <h1><?php echo get_admin_page_title() ?></h1>
-			     </div>
+				
 				<form method="post" action="" enctype="multipart/form-data" class="thaps-setting-form">
                  <input type="hidden" name="action" value="thaps_form_setting">
 					<?php $this->options_tabs(); ?>
@@ -113,6 +110,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					</p> 
 
             </div>
+            <div class="thaps-notes-wrap">
+            	<h3><?php esc_html_e( 'How to correctly measure your website’s loading time', 'th-advance-product-search' ) ?></h3>
+            	<div class="thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( 'How to correctly measure your website’s loading time', 'th-advance-product-search' ) ?></p><a href="#"><?php esc_html_e( 'Read Documentation', 'th-advance-product-search' ) ?></a></div>
+            </div>
 				</form>
 			</div>
 			<?php
@@ -137,7 +138,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 	    }
 		public function options_tabs() {
 			?>
+
 			<div class="nav-tab-wrapper wp-clearfix">
+				<div class="top-wrap"><div id="logo"></div>
+				  <h1><?php echo get_admin_page_title() ?></h1>
+			     </div>
 				<?php foreach ( $this->fields as $tabs ): ?>
 					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thaps-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><?php echo esc_html($tabs['title']); ?></a>
 				<?php endforeach; ?>
@@ -460,7 +465,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		   <h4><?php _e( 'There are 3 easy ways to display the search bar in your theme', 'ajax-search-for-woocommerce' ); ?>: </h4>
 			<ol>
 				
-				<li><?php printf( __( 'Using a Multiple Style shortcode - %s', 'th-advance-product-search' ), '<code>[th-aps]</code>, <code>[th-aps layout="bar_style"]</code>, <code>[th-aps layout="icon_style"]</code>, <code>[th-aps layout="flexible-style"]</code>' ); ?></li>
+				<li><?php printf( __( 'Using a Multiple Style shortcode - <br /> <br />%s    ', 'th-advance-product-search' ), '<code>[th-aps]</code> , <code>[th-aps layout="bar_style"]</code> , <code>[th-aps layout="icon_style"]</code> , <code>[th-aps layout="flexible-style"]</code>' ); ?></li>
 				<li><?php printf( __( 'As a widget - go to the %s and choose "TH Advance Product Search"', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ) ?>
 				<li><?php printf( __( 'Using PHP - %s', 'th-advance-product-search' ), '<code>&lt;?php echo do_shortcode(\'[th-aps]\'); ?&gt;</code>' ); ?></li>
 			</ol>
