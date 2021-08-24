@@ -31,7 +31,7 @@ display:flex;
 #thaps .nav-tab-wrapper {
     display: flex;
     flex-direction: column;
-    width: 27%;
+    width: 28%;
     border: none;
     padding: 0;
 }
@@ -48,10 +48,9 @@ border-top: 1px solid #E0E4E9;
 }
 .thaps-notes-wrap{
 display: flex;
-    flex-direction: column;
-    padding: 1.5rem 1rem;
-        width: 27%;
-
+flex-direction: column;
+padding: 1.5rem 1rem;
+width: 28%;
 }
 #thaps .thaps-setting-nav-tab.nav-tab-active, 
 #thaps .thaps-setting-nav-tab.nav-tab-active:focus, 
@@ -99,16 +98,16 @@ color:#444;
 .thaps-setting-form #submit.button-primary,.thaps-button-wrapper .reset{
 border:0;
 box-shadow:none;
-padding:0.5rem 1rem;
+padding:0.4rem 1rem;
 border-radius:0;
 font-size:1rem;
 margin-right:1rem;
 margin-top:2.5rem;
-background:#f4a51c;
+background:#da4c4e;
 color: #fff;
 line-height: 2.15384615;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.74rem;
     font-weight: 500;
         position: relative;
 }
@@ -129,11 +128,11 @@ font-family: dashicons;
     align-items: center;
 }
 .thaps-setting-form #submit.button-primary:hover,.thaps-button-wrapper .reset:hover{
-background:#f4a51c;
+background:#F56640;
 }
 
 .thaps-button-wrapper .reset{
-    background: #f4a51c;
+    background:#da4c4e;
 }
 .thaps-button-wrapper{
 display:flex;

@@ -1,9 +1,9 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
+if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 
-	class TH_Advancde_Product_Search_Functions {
+	class TH_Advancde_Product_Search_Options {
 
 		/**
 		 * Member Variable
@@ -176,6 +176,16 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 								'desc'    => '',
 								'default' => false
 							    ),
+						   array(
+								'id'      => 'desc_excpt_length',
+								'type'    => 'number',
+								'title'   => esc_html__( 'Description Length', 'th-advance-product-search' ),
+								
+								'desc'    => esc_html__( 'Given a Excerpt length', 'th-advance-product-search' ),
+								'default' => 60,
+								'min'     => 1,
+								'max'     => 500,
+							),
 							
 						)
 					)
@@ -211,6 +221,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 								'desc'    => '',
 								'default' => false
 							    ),
+							array(
+								'id'      => 'exclude_product_sku',
+								'type'    => 'text',
+								'title'   => esc_html__( 'Exclude Product', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'Exclude Product by SKU ID seperated by " , "', 'th-advance-product-search' ),
+								'default' =>  false,
+								
+							),
 							
 						)
 					)
@@ -271,4 +289,4 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
 	}
 endif;	
-TH_Advancde_Product_Search_Functions::get_instance();
+TH_Advancde_Product_Search_Options::get_instance();
