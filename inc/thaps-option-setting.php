@@ -88,6 +88,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'level_submit',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Submit Button Level', 'th-advance-product-search' ),
+								'default' => esc_html__( 'Submit', 'th-advance-product-search' ),
 								
 							),
 							array(

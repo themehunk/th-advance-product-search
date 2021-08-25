@@ -25,8 +25,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		 * Constructor
 		 */
 		public function __construct(){
+
+          
            add_action( 'wp_ajax_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
            add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
+
+
 		}
 
 	 /**
@@ -220,14 +224,23 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
     // Excerpt Length
     /****************/   
 	public function thaps_excerpt_shw( $id , $length){
-
+       
 		$excerpt = get_the_excerpt($id);
 
-		$excerpt = substr($excerpt, 0, $length);
+		if(strlen($excerpt) <= $length){
 
-		$result  = substr($excerpt, 0, strrpos($excerpt, ' '));
+			return $excerpt;
+
+		}else{
+		$excerpte = substr($excerpt, 0, $length);
+
+		$result  = substr($excerpte, 0, strrpos($excerpte, ' '));
 
 		return $result . '&nbsp;...';
+		
+		}
+
+		
 
 	}
 
@@ -419,7 +432,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
                 
                 if ( $enable_product_desc == true) {
 
-                        $r['desc'] = $product->get_short_description();
+                        $r['desc'] = $this->thaps_excerpt_shw($result->ID , $exp_length);
 
                 }
 

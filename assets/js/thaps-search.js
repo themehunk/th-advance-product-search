@@ -130,7 +130,9 @@
             showNoSuggestionNotice: false,
             noSuggestionNotice: 'No results',
             orientation: 'bottom',
-            forceFixPosition: false
+            forceFixPosition: false,
+            sendgoogleAnalyticsEvents:th_advance_product_search_options.thaps_ga_event,
+            enablegoogleAnalyticsSiteSearchModule:th_advance_product_search_options.thaps_ga_site_search_module,
     };
 
     function _lookupFilter(suggestion, originalQuery, queryLowerCase) {
@@ -694,8 +696,25 @@
                     var result;
                     that.currentRequest = null;
                     result = options.transformResult(data, q);
-                    that.processResponse(result, q, cacheKey);
+
+                    if (typeof result.suggestions !== 'undefined') {
+                            that.processResponse(result, q, cacheKey);
+
+                            if (
+                                result.suggestions.length === 1
+                                && typeof result.suggestions[0].type !== 'undefined'
+                                && result.suggestions[0].type === 'no-results'
+                            ) {
+                                that.googleAnalyticsEvent(q, 'Autocomplete Search without results');
+                            } else {
+                                that.googleAnalyticsEvent(q, 'Autocomplete Search with results');
+                            }
+
+                        }
+
                     options.onSearchComplete.call(that.element, q, result.suggestions);
+
+
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     options.onSearchError.call(that.element, q, jqXHR, textStatus, errorThrown);
                 });
@@ -780,7 +799,7 @@
             /************************************/
             $.each(that.suggestions, function (i, suggestion){
 
-                console.log(suggestion);
+                //console.log(suggestion);
                 var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
                     
                     isImg  = suggestion.imgsrc ? suggestion.imgsrc:'' ,
@@ -1141,6 +1160,47 @@
             $(that.suggestionsContainer).remove();
         },
 
+        // Google Analytics Script
+        googleAnalyticsEvent: function (label, category) {
+            var that = this;
+            var gaObj = window.hasOwnProperty('GoogleAnalyticsObject') && window.hasOwnProperty(window['GoogleAnalyticsObject']) ? window[window['GoogleAnalyticsObject']] : false;
+            if (that.options.sendgoogleAnalyticsEvents) {
+                try {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'autocomplete_search', {
+                            'event_label': label,
+                            'event_category': category
+                        });
+                    } else if (gaObj !== false) {
+                        var tracker = gaObj.getAll()[0];
+                        if (tracker) tracker.send({
+                            hitType: 'event',
+                            eventCategory: category,
+                            eventAction: 'autocomplete_search',
+                            eventLabel: label
+                        });
+                    }
+                } catch (error) {
+                }
+            }
+            if (that.options.enablegoogleAnalyticsSiteSearchModule) {
+                try {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'page_view', {
+                            'page_path': '/?s=' + encodeURI(label) + '&post_type=product&thaps_srch=1',
+                        });
+                    } else if (gaObj !== false) {
+                        var tracker2 = gaObj.getAll()[0];
+                        if (tracker2) {
+                            tracker2.set('page', '/?s=' + encodeURI(label) + '&post_type=product&thaps_srch=1');
+                            tracker2.send('pageview');
+                        }
+                    }
+                } catch (error) {
+                }
+            }
+        }
+
 
     };
 
@@ -1185,7 +1245,7 @@
     lookupLimit:5,
     serviceUrl:th_advance_product_search_options.ajaxUrl + '?action=' + 'thaps_ajax_get_search_value',
     showNoSuggestionNotice: true,
-    minChars:parseInt(th_advance_product_search_options.thvs_length),
+    minChars:parseInt(th_advance_product_search_options.thaps_length),
     autoSelectFirst: false,
     triggerSelectOnValidInput: false,
     paramName: 'match',

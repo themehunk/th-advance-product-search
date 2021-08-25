@@ -39,7 +39,9 @@ background: #111;
     padding: 0;
     border: 0;
    margin:0.3rem;
+   color: #fff;
 }
+
 #thaps-search-button:hover{
 background:#888;
 }
@@ -55,7 +57,7 @@ border-radius: 4px;
 }
 
 .thaps-autocomplete-suggestions {border: 1px solid #eee; background: #FFF; overflow: auto; }
-.thaps-autocomplete-suggestion { padding: 0.5rem; white-space: nowrap; overflow: hidden;margin:0rem  0.7rem; }
+.thaps-autocomplete-suggestion { padding: 0.5rem; overflow: hidden;margin: 0 0.5rem 0.5rem 0.5rem;}
 .thaps-autocomplete-selected { background: #f0f0f166; }
 .thaps-autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
 .thaps-autocomplete-group { padding: 0.5rem; }
@@ -202,6 +204,7 @@ display:flex;
     justify-content: space-between;
     flex-grow: 2;
     align-items: center;
+    width: 100%;
 }
 
 .thaps-suggestion-more .thaps-content-wrapp {

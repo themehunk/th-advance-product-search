@@ -94,7 +94,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
         public function body_class( $classes ) {
            
             $old_classes = $classes;
-            if ( apply_filters( 'disable_thvs_body_class', false ) ) {
+            if ( apply_filters( 'disable_thaps_body_class', false ) ) {
                 return $classes;
             }
             array_push( $classes, 'th-advance-product-search' );
@@ -116,9 +116,12 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
                 'th-advance-product-search-front', 'th_advance_product_search_options', apply_filters(
                     'th_advance_product_search_js_options', array(
                         'ajaxUrl'   => esc_url(admin_url( 'admin-ajax.php' )),
-                        'thvs_nonce'                     => wp_create_nonce( 'th_advance_product_search' ),
+                        'thaps_nonce'                     => wp_create_nonce( 'th_advance_product_search' ),
 
-                        'thvs_length'                    => esc_html(th_advance_product_search()->get_option( 'set_autocomplete_length' )),
+                        'thaps_length'                    => esc_html(th_advance_product_search()->get_option( 'set_autocomplete_length' )),
+
+                        'thaps_ga_event'                    => apply_filters( 'thaps_google_analytics_events', false ),
+                        'thaps_ga_site_search_module'       => apply_filters( 'thaps_enable_ga_site_search_module', false ),
 
                     )
                 )
