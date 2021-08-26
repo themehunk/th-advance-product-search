@@ -24,7 +24,10 @@ max-width:550px;
 display:flex;
 background:#fff;
 border-radius:4px;
-    position: relative;
+position: relative;
+border: 1px solid;
+border-color:#e7f5ff;
+
 }
 .thaps-search-autocomplete:focus{
         outline: 0;
@@ -57,7 +60,7 @@ border-radius: 4px;
 }
 
 .thaps-autocomplete-suggestions {border: 1px solid #eee; background: #FFF; overflow: auto; }
-.thaps-autocomplete-suggestion { padding: 0.5rem; overflow: hidden;margin: 0 0.5rem 0.5rem 0.5rem;}
+.thaps-autocomplete-suggestion { padding: 0.5rem; overflow: hidden;margin:0;}
 .thaps-autocomplete-selected { background: #f0f0f166; }
 .thaps-autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
 .thaps-autocomplete-group { padding: 0.5rem; }
@@ -72,12 +75,8 @@ display:flex;
 }
 
 .thaps-autocomplete-suggestion .thaps-img{
-width:45px;
+width:65px;
  margin-right: 1rem;
-}
-
-.thaps-autocomplete-suggestion .thaps-title{
-font-size:1rem;
 }
 
 .thaps-autocomplete-suggestion .thaps-img img{
@@ -90,27 +89,47 @@ font-weight:500;
 }
 
 .thaps-suggestion-heading .thaps-title{
-font-size:1rem;
+color:#555;
+font-size: .875rem;
+    text-transform: uppercase;
+font-weight:normal;
 }
 .thaps-suggestion-heading{
-border-bottom:1px solid #eee;
+border-bottom:1px solid #e7f5ff;
 margin-bottom: 0.5rem;
-opacity: 0.8;
 pointer-events: none;
 }
-.thaps-suggestion-taxonomy-product-cat .thaps-title,.thaps-suggestion-taxonomy-post-cat .thaps-title{
+
+.thaps-suggestion-taxonomy-post-cat .thaps-title{
 font-size:0.89rem;
 }
 .thaps-suggestion-taxonomy-product-cat,.thaps-suggestion-taxonomy-post-cat{
     padding: 0 0.5rem;
 }
+.thaps-suggestion-taxonomy-product-cat .thaps-title,  .thaps-title{
+color:#333;
+font-size: 1rem;
+font-weight:bold;
+}
+.thaps-suggestion-heading .thaps-title strong{
+color: #555;
+    font-size: .875rem;
+    text-transform: uppercase;
+    font-weight: normal;
+}
 
+.thaps-suggestion-more strong{
+color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+}
 .thaps-content-wrapp{
 line-height:normal;
 }
 .thaps-price del{
 color:#949494;
 margin-right:0.3rem;
+opacity: 0.5;
 }
 .thaps-price ins{
 text-decoration:none;
@@ -173,7 +192,7 @@ padding: 0.3rem 0.3rem 0.3rem 2.8rem;
 .thaps-suggestion-more{
 background:#eee;
 text-align:center;
-margin: 0.5rem 0 0 0 ;
+margin:0;
 }
 .thaps-suggestion-more .thaps-content-wrapp {
     line-height: normal;
@@ -191,7 +210,9 @@ margin-right: 0.6rem;
 display:block;
 }
 .thaps-sku{
-font-size:0.8rem;
+font-size: 0.8rem;
+    font-weight: 500;
+    color: #555;
 }
 .thaps-desc{
 font-size:0.8rem;
@@ -219,7 +240,7 @@ display:flex;
     left: 0;
     top: calc(100% + 8px);
     min-width: 500px;
-    z-index: 1000;
+    z-index: 1;
 }
 .icon_style.thaps-box-open .thaps-search-form{
     opacity:1;
@@ -239,7 +260,8 @@ display:flex;
     width: 15px;
     height: 15px;
     background: #fff;
-    border: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     -webkit-transform: rotate(
 45deg
 );
@@ -249,4 +271,23 @@ display:flex;
     transform: rotate(
 45deg
 );
+}
+
+div.thaps-autocomplete-suggestions::-webkit-scrollbar-track
+{
+    
+    background-color: #f1f1f1;
+}
+
+div.thaps-autocomplete-suggestions::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #E5E6E8;
+}
+
+div.thaps-autocomplete-suggestions::-webkit-scrollbar-thumb
+{
+    background-color: #E5E6E8;
+
+                     
 }

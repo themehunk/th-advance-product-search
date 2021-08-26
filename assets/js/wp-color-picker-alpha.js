@@ -543,6 +543,7 @@
                     // fire change callback if we have one
                     if ($.isFunction(self.options.change)) {
                         self.options.change.call(this, event, ui);
+
                     }
                 }
             });
@@ -558,6 +559,8 @@
              */
             self.wrap.on('click.wpcolorpicker', function (event) {
                 event.stopPropagation();
+                //save button active
+                 $('#submit').removeAttr("disabled");
             });
 
             /**

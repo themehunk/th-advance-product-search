@@ -29,26 +29,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			 add_action( 'wp_ajax_nopriv_thaps_form_setting', array($this, 'thaps_form_setting'));
 
             }
-         public function script_enqueue(){
-			
-			wp_enqueue_media();
-			wp_enqueue_style( 'wp-color-picker' );
-			wp_enqueue_script('imagesloaded');
-			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
-            
-			wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
-			wp_enqueue_script( 'wp-color-picker-alpha' );
-            wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-setting.js', array('jquery'),true);
-			wp_localize_script(
-				'thaps-setting-script', 'THAPSPluginObject', array(
-					'media_title'   => esc_html__( 'Choose an Image', 'th-advance-product-search' ),
-					'button_title'  => esc_html__( 'Use Image', 'th-advance-product-search' ),
-					'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
-					'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
-					'nonce'         => wp_create_nonce( 'thaps_plugin_nonce' ),
-				)
-			);
-		}
+        
 
         public function add_menu(){
 						$page_title = esc_html__( 'Th Advance Product Search', 'th-advance-product-search' );
@@ -477,12 +458,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		public function color_field_callback( $args ){
 			$value = esc_attr( $this->get_option( $args['id'] ) );
 			
-			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? ' data-alpha="true"' : '';
+			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? ' data-alpha-enabled="true"' : '';
 			$html  = sprintf( '<input type="text" %1$s class="thaps-color-picker" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"  data-default-color="%3$s" />', $alpha, $args['id'], $value, $this->settings_name );
 			$html  .= $this->get_field_description( $args );
 
 			echo $html;
 		}
+
 		public function number_field_callback( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'small';
@@ -662,7 +644,28 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				return $data;
 			}
 		}
+		
+        public function script_enqueue(){
+			
+			
+			wp_enqueue_style( 'wp-color-picker' );
+		
+			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
+            
+			wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
 
+            wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-setting.js', array('jquery'),true);
+
+			wp_localize_script(
+				'thaps-setting-script', 'THAPSPluginObject', array(
+					'media_title'   => esc_html__( 'Choose an Image', 'th-advance-product-search' ),
+					'button_title'  => esc_html__( 'Use Image', 'th-advance-product-search' ),
+					'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
+					'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
+					'nonce'         => wp_create_nonce( 'thaps_plugin_nonce' ),
+				)
+			);
+		}
 
 }
 

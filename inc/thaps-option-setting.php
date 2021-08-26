@@ -286,6 +286,107 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		    )
 		  );
 
+		 th_advance_product_search()->add_setting(
+					'style', esc_html__( 'Style', 'th-advance-product-search' ), apply_filters(
+					'thaps_style_settings_section', array(
+						array(
+							'title'  => esc_html__( 'Search Bar', 'th-advance-product-search' ),
+							'fields' => apply_filters(
+								'thaps_style_settings_fields', array(
+									array(
+										'id'      => 'bar_bg_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Background Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'bar_brdr_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Border Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'bar_text_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Text Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'bar_button_bg_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Button BG Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'bar_button_txt_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Button Text Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'bar_button_hvr_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Button Hover Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+								)
+							)
+						 ),
+						array(
+							'title'  => esc_html__( 'Suggestion Box', 'th-advance-product-search' ),
+							'fields' => apply_filters(
+								'thaps_style_settings_fields', array(
+									array(
+										'id'      => 'sus_bg_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Background Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'sus_hglt_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Highlight Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'sus_slect_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Selected Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'sus_brdr_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Border Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'sus_grphd_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Group Title Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'sus_title_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Title Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+
+									array(
+										'id'      => 'sus_text_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Text Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									
+								)
+							)
+						 ),
+					  )
+				),
+			);
+
 		}
 
 	}

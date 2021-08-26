@@ -48,3 +48,19 @@ if (!defined('TH_ADVANCE_PRODUCT_SEARCH_VERSION')) {
 if (!class_exists('TH_Advance_Product_Search')) {
 require_once("inc/thaps.php");
 } 
+
+        /**
+         * Add the settings link to the Lead Form Plugin plugin row
+         *
+         * @param array $links - Links for the plugin
+         * @return array - Links
+         */
+function thaps_plugin_action_links($links) {
+          $settings_page = add_query_arg(array('page' => 'th-advance-product-search'), admin_url('admin.php'));
+          $settings_link = '<a href="'.esc_url($settings_page).'">'.__('Settings', 'th-advance-product-search' ).'</a>';
+          array_unshift($links, $settings_link);
+
+           $links['thaps_pro'] = sprintf( '<a style="color: #39b54a; font-weight:600;" href="%s" target="_blank" class="thvs-plugins-gopro">%s</a>', '#', __( 'Go Pro', 'th-advance-product-search' ) );
+          return $links;
+        }
+add_filter('plugin_action_links_'.TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_BASENAME, 'thaps_plugin_action_links', 10, 1);

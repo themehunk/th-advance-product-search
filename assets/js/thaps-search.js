@@ -37,7 +37,8 @@
                     div.className = containerClass;
                     div.style.position = 'absolute';
                     div.style.display = 'none';
-                    return div;
+                    div.setAttribute('unselectable', 'on');
+                    return div; 
                 }
             };
         }()),
@@ -311,6 +312,10 @@
                 'z-index': options.zIndex
             });
 
+            options.onSearchComplete = function () {
+                that.getFormWrapper().find('.thaps-preloader').removeClass('thaps-loading');
+            
+            };
             this.options = options;
         },
 
@@ -650,6 +655,8 @@
                 ajaxSettings;
 
             options.params[options.paramName] = q;
+
+            that.getFormWrapper().find('.thaps-preloader').addClass('thaps-loading');
 
             if (options.onSearchStart.call(that.element, options.params) === false) {
                 return;
@@ -1250,14 +1257,6 @@
     triggerSelectOnValidInput: false,
     paramName: 'match',
     dataType: 'json',
-    onSearchStart: function(){
-              $('.thaps-preloader').addClass('thaps-loading');   
-    },
-    onSearchComplete:function(){
-              $('.thaps-preloader').removeClass('thaps-loading'); 
-    },
-
-   
    });
 
 });

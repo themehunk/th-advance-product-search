@@ -232,6 +232,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 			return $excerpt;
 
 		}else{
+			
 		$excerpte = substr($excerpt, 0, $length);
 
 		$result  = substr($excerpte, 0, strrpos($excerpte, ' '));
