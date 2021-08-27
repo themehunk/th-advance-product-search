@@ -31,7 +31,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		public function thaps_option_settings(){
 
             th_advance_product_search()->add_setting(
-			'integration', esc_html__( 'Inegration', 'th-advance-product-search' ), apply_filters(
+			'integration', esc_html__( 'Integration', 'th-advance-product-search' ), apply_filters(
 			'thaps_integration_settings_section', array(
 				array(
 					'title'  => esc_html__( 'How to add search bar in your theme?', 'th-advance-product-search' ),
@@ -40,7 +40,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'how-to-integrate',
 								'type'    => 'html',
-								'title'   => esc_html__( 'How To A dd', 'th-advance-product-search' ),
+								'title'   => esc_html__( 'How To Add', 'th-advance-product-search' ),
 							),	
 						)
 					)
@@ -49,7 +49,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		    ),apply_filters( 'thaps_integration_settings_default_active', true )
 		  );
           th_advance_product_search()->add_setting(
-			'search-bar', esc_html__( 'Search Bar', 'th-advance-product-search' ), apply_filters(
+			'search-bar', esc_html__( 'Basic Setting', 'th-advance-product-search' ), apply_filters(
 			'thaps_search_bar_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Basic', 'th-advance-product-search' ),
@@ -58,10 +58,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'set_autocomplete_length',
 								'type'    => 'number',
-								'title'   => esc_html__( 'Minimum Cahracter', 'th-advance-product-search' ),
+								'title'   => esc_html__( 'Minimum Character', 'th-advance-product-search' ),
 								
 								'desc'    => esc_html__( 'Min characters to show autocomplete', 'th-advance-product-search' ),
-								'default' => 3,
+								'default' => 1,
 								'min'     => 1,
 								'max'     => 10,
 							),
@@ -121,10 +121,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		     ),
 		   );
           th_advance_product_search()->add_setting(
-			'autosetting', esc_html__( 'Search Setting', 'th-advance-product-search' ), apply_filters(
+			'autosetting', esc_html__( 'Advance Setting', 'th-advance-product-search' ), apply_filters(
 			'thaps_autosetting_section', array(
 				array(
 					'title'  => esc_html__( 'Search Autocomplete Settings', 'th-advance-product-search' ),
+	
 					'fields' => apply_filters(
 						'thaps_autosetting_fields', array(
 							array(
@@ -170,13 +171,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'desc'    => '',
 								'default' => true
 							    ),	
-						   array(
-								'id'      => 'show_category_in',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Show Category', 'th-advance-product-search' ),
-								'desc'    => '',
-								'default' => false
-							    ),
+						   
 						   array(
 								'id'      => 'desc_excpt_length',
 								'type'    => 'number',
@@ -190,7 +185,33 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							
 						)
 					)
-				 ),array(
+				 ),
+                  array(
+					'title'  => esc_html__( 'Search Category', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_cat_setting_fields', array(
+							 array(
+								'id'      => 'show_category_in',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Show Category', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => false
+							    ),
+								array(
+								'id'      => 'enable_cat_image',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Enable Category Image', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => true
+							    ),
+							
+							
+							
+						)
+					)
+				 ),
+
+				array(
 					'title'  => esc_html__( 'Product', 'th-advance-product-search' ),
 					'fields' => apply_filters(
 						'thaps_product_setting_fields', array(
@@ -386,6 +407,25 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 					  )
 				),
 			);
+
+		 th_advance_product_search()->add_setting(
+			'analytics', esc_html__( 'Search Analytics', 'th-advance-product-search' ), apply_filters(
+			'thaps_analytics_settings_section', array(
+				array(
+					'title'  => esc_html__( 'How to add search Analytics in your theme?', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_analytics_setting_fields', array(
+							array(
+								'id'      => 'how-to-integrate-analytics',
+								'type'    => 'analytics-html',
+								'title'   => esc_html__( 'How To Add', 'th-advance-product-search' ),
+							),	
+						)
+					)
+				 )
+			  )
+		    )
+		  );
 
 		}
 

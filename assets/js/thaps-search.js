@@ -806,10 +806,11 @@
             /************************************/
             $.each(that.suggestions, function (i, suggestion){
 
-                //console.log(suggestion);
+                console.log(suggestion);
                 var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
                     
                     isImg  = suggestion.imgsrc ? suggestion.imgsrc:'' ,
+                    isCatImg  = suggestion.cat_img ? suggestion.cat_img:'' ,
                     attr_title ='',
                     title = suggestion.title ? suggestion.title : '',
                     isPrice  = suggestion.price ? suggestion.price:'',
@@ -852,6 +853,10 @@
                 html += '<a href="' + url + '" class="' + className + ' ' + classNameT + '"  data-index="' + i + '">'; 
                 if(isImg) {
                 html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
+                }
+
+                if(isCatImg){
+                html += '<span class="thaps-img"><img src="' + isCatImg + '" alt="'+ title +'"/></span>';   
                 }
 
                 html += '<div class="thaps-content-wrapp"><div class="thaps-content-left">'

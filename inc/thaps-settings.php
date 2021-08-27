@@ -42,7 +42,22 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 
 		 }
-		 
+
+		public function form_add_class(){
+              $classes='';
+
+			  if($this->get_option( 'show_submit' ) == 1){
+
+			  $classes .= ' show-submit ';
+
+			  }
+
+			  $classes .= $this->get_option( 'select_srch_type' );
+
+			  return $classes;
+				
+		}
+
 		public function settings_form() {
 			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
@@ -51,7 +66,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			?>
 			<div id="thaps" class="settings-wrap">
 				
-				<form method="post" action="" enctype="multipart/form-data" class="thaps-setting-form">
+				<form method="post" action="" enctype="multipart/form-data" class="thaps-setting-form  <?php echo esc_attr($this->form_add_class());?>">
                  <input type="hidden" name="action" value="thaps_form_setting">
 					<?php $this->options_tabs(); ?>
                      <div class="setting-wrap">
@@ -163,10 +178,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			}
 
 			foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
-				if ( $section['title'] ) {
-					echo "<h2>".esc_html($section['title'])."</h2>";	
-				}
 
+				if ( $section['title'] ) {
+
+					echo "<h2 class=".esc_attr($section['id']).">".esc_html($section['title'])."</h2>";
+
+				}
+                
 				if ( $section['callback'] ) {
 					call_user_func( $section['callback'], $section );
 				}
@@ -175,7 +193,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					continue;
 				}
 
-				echo '<table class="form-table">';
+				echo '<table class="form-table" id='.esc_attr($section['id']).'>';
 				$this->do_settings_fields( $page, $section['id'] );
 				echo '</table>';
 			}
@@ -312,6 +330,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				case 'html':
 					$this->html_field_callback( $field );
 					break;
+
+			    case 'analytics-html':
+					$this->analytics_html_field_callback( $field );
+					break;		
 			    case 'file':
 					$this->file_field_callback( $field );
 					break;			
@@ -443,17 +465,46 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 			?>
 			
-		   <h4><?php _e( 'There are 3 easy ways to display the search bar in your theme', 'ajax-search-for-woocommerce' ); ?>: </h4>
+		   <h4><?php _e( 'There are 4 easy ways to display the search bar in your theme', 'th-advance-product-search' ); ?>: </h4>
 			<ol>
 				
 				<li><?php printf( __( 'Using a Multiple Style shortcode - <br /> <br />%s    ', 'th-advance-product-search' ), '<code>[th-aps]</code> , <code>[th-aps layout="bar_style"]</code> , <code>[th-aps layout="icon_style"]</code> , <code>[th-aps layout="flexible-style"]</code>' ); ?></li>
 				<li><?php printf( __( 'As a widget - go to the %s and choose "TH Advance Product Search"', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ) ?>
 				<li><?php printf( __( 'Using PHP - %s', 'th-advance-product-search' ), '<code>&lt;?php echo do_shortcode(\'[th-aps]\'); ?&gt;</code>' ); ?></li>
+
+				<li><?php printf( __( 'As a menu item - go to the %s and add the menu item “TH Advance Product Search”. Done!', 'th-advance-product-search' ), '<a href="' . admin_url( 'nav-menus.php' ) . '" target="_blank">' . __( 'Menu Screen', 'th-advance-product-search' ) . '</a>' ) ?>
 			</ol>
 
 		<?php 		
 			endif;
 		}
+
+        public function analytics_html_field_callback($args){
+
+            if($args[ 'id' ]=='how-to-integrate-analytics'):
+
+			?>
+             <h4><?php _e( 'Enable Site Search module Paste the following code into "functions.php" in your theme.', 'th-advance-product-search' ); ?>: </h4>
+			<ul>
+				
+				
+				<li><?php printf( __( '%s', 'th-advance-product-search' ), '<code> apply_filters("thaps_enable_ga_site_search_module", "__return_true" ); </code>' ); ?></li>
+
+				
+			</ul>
+
+			<h4><?php _e( 'To disable integrarion with Google Analytics paste following code "functions.php" your child', 'th-advance-product-search' ); ?>: </h4>
+           <ul>
+				
+				
+				<li><?php printf( __( '%s', 'th-advance-product-search' ), '<code> thaps_google_analytics_events", "__return_false" ); </code>' ); ?></li>
+
+				
+			</ul>
+
+        <?php endif; }
+
+
 
 		public function color_field_callback( $args ){
 			$value = esc_attr( $this->get_option( $args['id'] ) );

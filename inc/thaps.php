@@ -36,10 +36,13 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
         public function includes() {
             if ( $this->is_required_php_version() && $this->is_wc_active() ) {
+                
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-settings.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-option-setting.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-function.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-front-custom-style.php';
+
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-nav-menu.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/widget.php';
             }
         }
@@ -112,6 +115,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
           wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-search.js', array(
                     'jquery',
                 ),true);
+          
           wp_localize_script(
                 'th-advance-product-search-front', 'th_advance_product_search_options', apply_filters(
                     'th_advance_product_search_js_options', array(
@@ -120,7 +124,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
                         'thaps_length'                    => esc_html(th_advance_product_search()->get_option( 'set_autocomplete_length' )),
 
-                        'thaps_ga_event'                    => apply_filters( 'thaps_google_analytics_events', false ),
+                        'thaps_ga_event'                    => apply_filters( 'thaps_google_analytics_events', true ),
                         'thaps_ga_site_search_module'       => apply_filters( 'thaps_enable_ga_site_search_module', false ),
 
                     )
@@ -182,10 +186,11 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
        /****************short code end**********************/
 
        public function setImageSize() {
+
         add_image_size( 'thaps-thumb-img', 48, 0, true );
+        
       }
        
-
 
  
 }

@@ -46,13 +46,16 @@ class Thaps_Widget extends WP_Widget {
     }
  
     public function form( $instance ){
-        $selec_attr = array('id'=>'thaps-style',
+        $selec_attr = array(
+
+          'id'=>'thaps-style',
           'label'=> __('Choose Product Type ','shopline'),
           'default' => 'default_style',
           'option' => array('default_style'  =>__('Default','th-advance-product-search'),
                             'bar_style'      =>__('Search bar only','th-advance-product-search'),
                             'icon_style'     =>__('Search Icon only','th-advance-product-search'),
-                            'flexible-style' =>__('Icon on mobile, search bar on desktop','th-advance-product-search'))
+                            'flexible-style' =>__('Icon on mobile, search bar on desktop','th-advance-product-search')
+                        )
           );
 
 

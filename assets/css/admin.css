@@ -225,8 +225,8 @@ font-size:1rem;
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 13px;
-    font-size: 1.4rem;
+    top: 9px;
+    font-size: 1.2rem;
     display: none;
 }
 .thaps-setting-form #submit.loader .dashicons.spin{
@@ -248,7 +248,7 @@ background: #11bb8c;
 }
 .thaps-setting-form #submit.button-primary.loader{
 font-size:0;
-background:#f4a51c73;
+background:#da4c4e9c;
 }
 
 .thaps-preview.thaps-color-preview{
@@ -303,12 +303,44 @@ padding: 0.4rem 1.5rem;
     text-transform: uppercase;
         font-weight: 700;
 }
+
 .wrp-title{
 font-size:1rem;
 margin:0;
 }
+
 .thaps-notes-wrap h3{
      margin-bottom: 2rem;
     line-height: normal;
     margin-top: 0;
+}
+
+/*post type option select*/
+.thaps-setting-form.post_srch .autosettingautosetting-section-2,.thaps-setting-form.post_srch #autosettingautosetting-section-2,
+.thaps-setting-form.post_srch .autosettingautosetting-section-4,.thaps-setting-form.post_srch #autosettingautosetting-section-4,
+.thaps-setting-form.post_srch #enable_cat_image-wrapper{
+display: none;
+}
+
+.thaps-setting-form.page_srch .autosettingautosetting-section-2,.thaps-setting-form.page_srch #autosettingautosetting-section-2,
+.thaps-setting-form.page_srch .autosettingautosetting-section-3,.thaps-setting-form.page_srch #autosettingautosetting-section-3,
+.thaps-setting-form.page_srch #enable_cat_image-wrapper{
+display: none;
+}
+
+.thaps-setting-form.product_srch .autosettingautosetting-section-3,.thaps-setting-form.product_srch #autosettingautosetting-section-3,
+.thaps-setting-form.product_srch .autosettingautosetting-section-4,.thaps-setting-form.product_srch #autosettingautosetting-section-4{
+display: none;
+}
+
+.thaps-setting-form #level_submit-wrapper{
+display: none;
+}
+
+.thaps-setting-form.show-submit #level_submit-wrapper{
+display: contents;
+}
+
+tr#how-to-integrate-wrapper th{
+display:none;
 }

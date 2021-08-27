@@ -90,15 +90,41 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	                   'type'   => 'no-result',
 	                );
 	}
+    /**************/
+	//Get image
+	/**************/
+	public function thaps_getImages_src( $id, $size, $enble){
 
+       if($enble == true){
+
+          $thumbnail_id = get_term_meta($id, 'thumbnail_id', true ); 
+
+          $imageSrc = wp_get_attachment_image_src( $thumbnail_id, $size );
+
+				    if ( is_array( $imageSrc ) && !empty($imageSrc[0]) ){
+
+				       $src = $imageSrc[0];
+		  }
+
+		  return $src;
+
+		}else{
+
+			return $src = '';
+		}
+
+
+	}
+   
 	/**********************/
 	//Get Product Category
 	/*********************/
-	public function thaps_ajax_product_getCategories( $keyword, $limit){
+	public function thaps_ajax_product_getCategories( $keyword, $limit, $img_enable){
 
 	        $results = array();
 
 	        $args = array(
+
 	            'taxonomy' => 'product_cat',
 	        );
 
@@ -114,13 +140,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	                $catName = html_entity_decode( $cat->name );
 
 	                $pos = strpos( mb_strtolower( $catName ), mb_strtolower( $keywordUnslashed ) );
-
+				    
 	                if ( $pos !== false ) {
 	                    $results[$i] = array(
 	                        'term_id'     => $cat->term_id,
 	                        'taxonomy'    => 'product_cat',
 	                        'value'       => $catName,
 	                        'url'         => get_term_link( $cat, 'product_cat' ),
+	                        'cat_img'     => $this->thaps_getImages_src($cat->term_id,'woocommerce_thumbnail', $img_enable),
 	                        'type'        => 'taxonomy-product-cat',
 	                    );
 	                    $i++;
@@ -309,6 +336,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
         $show_category_in =  esc_html(th_advance_product_search()->get_option( 'show_category_in' ));
 
+        $enable_cat_image =  esc_html(th_advance_product_search()->get_option( 'enable_cat_image' ));
+
+
         $category_hd = __('Category','th-advance-product-search');
 
         $product_hd  = __('Product','th-advance-product-search');
@@ -380,7 +410,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
                }
 
-               $categories = $this->thaps_ajax_product_getCategories( $match_, $limit );
+               $categories = $this->thaps_ajax_product_getCategories( $match_, $limit, $enable_cat_image );
 
                if(!empty($categories)){
 
@@ -417,7 +447,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
                 if ( $enable_product_image == true) {
 
-                        $r['imgsrc'] = wp_get_attachment_url($product->get_image_id());
+                        $r['imgsrc'] = wp_get_attachment_url($product->get_image_id(), 'woocommerce_thumbnail'); 
 
                 }
                 if ( $enable_product_price == true) {

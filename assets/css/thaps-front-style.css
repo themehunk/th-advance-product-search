@@ -12,6 +12,8 @@ max-width:550px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    align-items: center;
+    display: flex;
 }
 
 .thaps-search-form{
@@ -100,15 +102,15 @@ margin-bottom: 0.5rem;
 pointer-events: none;
 }
 
-.thaps-suggestion-taxonomy-post-cat .thaps-title{
+.thaps-suggestion-taxonomy-post-cat .thaps-title,.thaps-suggestion-taxonomy-product-cat .thaps-title{
 font-size:0.89rem;
 }
 .thaps-suggestion-taxonomy-product-cat,.thaps-suggestion-taxonomy-post-cat{
-    padding: 0 0.5rem;
+padding: 0.5rem;
 }
-.thaps-suggestion-taxonomy-product-cat .thaps-title,  .thaps-title{
+ .thaps-title{
 color:#333;
-font-size: 1rem;
+font-size:0.89rem;
 font-weight:bold;
 }
 .thaps-suggestion-heading .thaps-title strong{
