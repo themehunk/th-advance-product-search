@@ -618,12 +618,10 @@
             $formWrapper.on('click.autocomplete', '.click-icon', function (e) {
 
                 var $input = $formWrapper.find('.' + that.options.searchInputClass);
-
+               
                 if ($formWrapper.hasClass('thaps-box-open')) {
 
                     that.hide();
-                    $form.hide(true);
-
                     $formWrapper.removeClass('thaps-box-open');
 
 
