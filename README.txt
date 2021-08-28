@@ -41,11 +41,9 @@ Just upload the `th-variation-swatches.zip` to the `/wp-content/plugins/` direct
 1. [Support Forum](https://www.support.themehunk.com/#plugin.25)
 
 == Demo ==
-[Sport Shop](https://wpthemes.themehunk.com/sport-shop/), [Top Store Watches](https://wpthemes.themehunk.com/topstore-watches/), [Pet World](https://wpthemes.themehunk.com/pet-world/), [Open Shop Pro Demo 1](https://wpthemes.themehunk.com/open-shop-pro/), [Open Shop Pro Demo 2](https://wpthemes.themehunk.com/open-shop-pro-demo2/)
 
 == Compatible Themes ==
 
-[Astra](https://wordpress.org/themes/astra/), [OceanWP](https://wordpress.org/themes/oceanwp/), [Top Store](https://wordpress.org/themes/top-store/), [Big Store](https://wordpress.org/themes/big-store/), [Open Shop](https://wordpress.org/themes/open-shop/), [Zita](https://wordpress.org/themes/zita/), [Royal Shop](https://wordpress.org/themes/royal-shop/), [Open Mart](https://wordpress.org/themes/open-mart/), [Gogo](https://wordpress.org/themes/gogo/), [Almaira Shop](https://wordpress.org/themes/almaira-shop/), [Oneline](https://wordpress.org/themes/oneline-lite/), [Shopline](https://wordpress.org/themes/shopline/), [Storefront](https://wordpress.org/themes/storefront/), [Envo Shop](https://wordpress.org/themes/envo-shop/), [Orchid Store](https://wordpress.org/themes/orchid-store/)
 
 == Screenshots ==
 

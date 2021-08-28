@@ -16,11 +16,16 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		 * Initiator
 		 */
 		public static function get_instance() {
+
 			if ( ! isset( self::$instance ) ) {
+
 				self::$instance = new self();
 			}
+
 			return self::$instance;
+
 		}
+
         /**
 		 * Constructor
 		 */
@@ -38,15 +43,17 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
      *
      * return array
      */
-     public function getTaxQuery()
-     {
+     public function getTaxQuery(){
+
         $product_visibility_term_ids = wc_get_product_visibility_term_ids();
 
         $tax_query = array(
+
             'relation' => 'AND',
         );
 
         $tax_query[] = array(
+
             'taxonomy' => 'product_visibility',
             'field'    => 'term_taxonomy_id',
             'terms'    => $product_visibility_term_ids['exclude-from-search'],
@@ -58,6 +65,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
         if (get_option('woocommerce_hide_out_of_stock_items')=='yes') {
 
             $tax_query[] = array(
+
                 'taxonomy' => 'product_visibility',
                 'field'    => 'term_taxonomy_id',
                 'terms'    => $product_visibility_term_ids['outofstock'],
@@ -90,6 +98,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	                   'type'   => 'no-result',
 	                );
 	}
+
     /**************/
 	//Get image
 	/**************/
@@ -169,6 +178,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	        $results = array();
 
 	        $args = array(
+
 	            'taxonomy' => 'category',
 	        );
 
@@ -371,7 +381,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
         /*********************/
          if (isset($_REQUEST['match']) && $_REQUEST['match'] != ''){
 
-              $match_ = sanitize_text_field($_REQUEST['match']);
+            $match_ = sanitize_text_field($_REQUEST['match']);
 
             if ($select_srch_type=='product_srch'){ 
               $args = array(
@@ -667,4 +677,5 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
 	}
 endif;	
+
 TH_Advancde_Product_Search_Functions::get_instance();

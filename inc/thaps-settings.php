@@ -107,8 +107,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
             </div>
             <div class="thaps-notes-wrap">
-            	<h3><?php esc_html_e( 'How to correctly measure your website’s loading time', 'th-advance-product-search' ) ?></h3>
-            	<div class="thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( 'How to correctly measure your website’s loading time', 'th-advance-product-search' ) ?></p><a href="#"><?php esc_html_e( 'Read Documentation', 'th-advance-product-search' ) ?></a></div>
+            	<h3><?php esc_html_e( '', 'th-advance-product-search' ) ?></h3>
+            	<div class="thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a href="#"><?php esc_html_e( 'Read Documentation', 'th-advance-product-search' ) ?></a></div>
             </div>
 				</form>
 			</div>
@@ -136,7 +136,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			?>
 
 			<div class="nav-tab-wrapper wp-clearfix">
-				<div class="top-wrap"><div id="logo"></div>
+				<div class="top-wrap"><div id="logo"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/th-logo.png') ?>' alt="th-logo"/></div>
 				  <h1><?php echo get_admin_page_title() ?></h1>
 			     </div>
 				<?php foreach ( $this->fields as $tabs ): ?>

@@ -8,6 +8,11 @@
     padding: 1.3rem 1rem;
     display: flex;
     align-items: baseline;
+    flex-flow: column;
+}
+#thaps #logo{
+
+    margin-bottom: 0.5rem;
 }
 #thaps .top-wrap h1{
 color: #121116;

@@ -87,7 +87,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'level_submit',
 								'type'    => 'text',
-								'title'   => esc_html__( 'Submit Button Level', 'th-advance-product-search' ),
+								'title'   => esc_html__( 'Submit Button Lebel', 'th-advance-product-search' ),
 								'default' => esc_html__( 'Submit', 'th-advance-product-search' ),
 								
 							),
@@ -153,15 +153,15 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'no_reult_label',
 								'type'    => 'text',
-								'title'   => esc_html__( 'No Result label', 'th-advance-product-search' ),
-								'default' => esc_html__( 'No reult found', 'th-advance-product-search' ),
+								'title'   => esc_html__( 'No Result Label', 'th-advance-product-search' ),
+								'default' => esc_html__( 'No Result Found', 'th-advance-product-search' ),
 								
 							),
 							array(
 								'id'      => 'more_reult_label',
 								'type'    => 'text',
-								'title'   => esc_html__( 'More Result label', 'th-advance-product-search' ),
-								'default' => esc_html__( 'See more product..', 'th-advance-product-search' ),
+								'title'   => esc_html__( 'More Result Label', 'th-advance-product-search' ),
+								'default' => esc_html__( 'See More Product..', 'th-advance-product-search' ),
 								
 							),
 						  array(
@@ -177,7 +177,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Description Length', 'th-advance-product-search' ),
 								
-								'desc'    => esc_html__( 'Given a Excerpt length', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'Add a Excerpt Length', 'th-advance-product-search' ),
 								'default' => 60,
 								'min'     => 1,
 								'max'     => 500,

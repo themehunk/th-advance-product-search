@@ -11,7 +11,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 		 * @var object instance
 		 */
 		private static $instance;
-        const SEARCH_PLACEHOLDER = 'thaps_search_box';
+
+            const SEARCH_PLACEHOLDER = 'thaps_search_box';
 		/**
 		 * Initiator
 		 */
@@ -22,7 +23,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 			return self::$instance;
 		}
 
-        /**
+            /**
 		 * Constructor
 		 */
 		public function __construct(){
@@ -43,7 +44,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 
            }
 
-		}
+	}
 
 		/**
 		 * Check if nav-menus screen is active
@@ -247,7 +248,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 								var $menuItem = $(this).closest('.menu-item');
 
 								$menuItem.find('.menu-item-title').text('TH Adavnce Search bar');
-								$menuItem.find('.item-type').text('<?php _e( 'Search bar', 'ajax-search-for-woocommerce' ); ?>');
+								$menuItem.find('.item-type').text('<?php _e( 'Search bar', 'th-advance-product-search' ); ?>');
 								$menuItem.find('.menu-item-settings .edit-menu-item-title').closest('label').hide();
 								$menuItem.find('.field-url').hide();
 
