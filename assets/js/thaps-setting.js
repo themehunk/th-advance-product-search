@@ -10,6 +10,7 @@
             $this.ImageAdd();
             $this.RemoveImage();
             $this.SaveSetting();
+            $this.ChangeSetting();
           
         },
         SettingTab: function (){
@@ -123,6 +124,60 @@
         });
       });
     },
+    ChangeSetting:function(){
+             $(document).on('change', '#select_srch_type-field', function (e){
+                   var optionSelected = $("option:selected", this);
+                   var valueSelected = this.value;
+                   if(valueSelected=='post_srch'){
+
+                        $('#autosettingautosetting-section-2').hide('100');
+                        $('.autosettingautosetting-section-2').hide('100');
+                        $('#autosettingautosetting-section-4').hide('100');
+                        $('.autosettingautosetting-section-4').hide('100');
+                        $('#enable_cat_image-wrapper').hide('100');
+                        $('#autosettingautosetting-section-3').show('100');
+                        $('.autosettingautosetting-section-3').show('100');
+
+                    
+                   }else if(valueSelected=='product_srch'){
+
+                        $('#autosettingautosetting-section-3').hide('100');
+                        $('.autosettingautosetting-section-3').hide('100');
+                        $('#autosettingautosetting-section-4').hide('100');
+                        $('.autosettingautosetting-section-4').hide('100');
+
+                        $('#autosettingautosetting-section-2').show('100');
+                        $('.autosettingautosetting-section-2').show('100');
+                        $('#enable_cat_image-wrapper').show('100');
+                       
+                    
+                   }else if(valueSelected=='page_srch'){
+
+                        $('#autosettingautosetting-section-2').hide('100');
+                        $('.autosettingautosetting-section-2').hide('100');
+                        $('#autosettingautosetting-section-3').hide('100');
+                        $('.autosettingautosetting-section-3').hide('100');
+                        $('#enable_cat_image-wrapper').hide('100');
+                        $('#autosettingautosetting-section-4').show('100');
+                        $('.autosettingautosetting-section-4').show('100');
+                       
+                    
+                   }
+  
+                   
+             });
+
+              $(document).on('click', '#show_submit-field', function (event){
+                   if($(this).is(':checked')){
+                    $('#level_submit-wrapper').show();
+                   }else{
+                      $('#level_submit-wrapper').hide();
+                   }
+                   
+             });
+
+             
+     },
    
 }
 THVSsettingLib.init();

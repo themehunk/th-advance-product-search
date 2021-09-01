@@ -29,26 +29,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			 add_action( 'wp_ajax_nopriv_thaps_form_setting', array($this, 'thaps_form_setting'));
 
             }
-         public function script_enqueue(){
-			
-			wp_enqueue_media();
-			wp_enqueue_style( 'wp-color-picker' );
-			wp_enqueue_script('imagesloaded');
-			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
-            
-			wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
-			wp_enqueue_script( 'wp-color-picker-alpha' );
-            wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-setting.js', array('jquery'),true);
-			wp_localize_script(
-				'thaps-setting-script', 'THAPSPluginObject', array(
-					'media_title'   => esc_html__( 'Choose an Image', 'th-advance-product-search' ),
-					'button_title'  => esc_html__( 'Use Image', 'th-advance-product-search' ),
-					'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
-					'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
-					'nonce'         => wp_create_nonce( 'thaps_plugin_nonce' ),
-				)
-			);
-		}
+        
 
         public function add_menu(){
 						$page_title = esc_html__( 'Th Advance Product Search', 'th-advance-product-search' );
@@ -61,7 +42,22 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 
 		 }
-		 
+
+		public function form_add_class(){
+              $classes='';
+
+			  if($this->get_option( 'show_submit' ) == 1){
+
+			  $classes .= ' show-submit ';
+
+			  }
+
+			  $classes .= $this->get_option( 'select_srch_type' );
+
+			  return $classes;
+				
+		}
+
 		public function settings_form() {
 			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
@@ -69,11 +65,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		
 			?>
 			<div id="thaps" class="settings-wrap">
-                
-				<div class="top-wrap"><div id="logo"></div>
-				  <h1><?php echo get_admin_page_title() ?></h1>
-			     </div>
-				<form method="post" action="" enctype="multipart/form-data" class="thaps-setting-form">
+				
+				<form method="post" action="" enctype="multipart/form-data" class="thaps-setting-form  <?php echo esc_attr($this->form_add_class());?>">
                  <input type="hidden" name="action" value="thaps_form_setting">
 					<?php $this->options_tabs(); ?>
                      <div class="setting-wrap">
@@ -113,6 +106,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					</p> 
 
             </div>
+            <div class="thaps-notes-wrap">
+            	<h3><?php esc_html_e( '', 'th-advance-product-search' ) ?></h3>
+            	<div class="thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a href="#"><?php esc_html_e( 'Read Documentation', 'th-advance-product-search' ) ?></a></div>
+            </div>
 				</form>
 			</div>
 			<?php
@@ -137,7 +134,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 	    }
 		public function options_tabs() {
 			?>
+
 			<div class="nav-tab-wrapper wp-clearfix">
+				<div class="top-wrap"><div id="logo"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/th-logo.png') ?>' alt="th-logo"/></div>
+				  <h1><?php echo get_admin_page_title() ?></h1>
+			     </div>
 				<?php foreach ( $this->fields as $tabs ): ?>
 					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thaps-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><?php echo esc_html($tabs['title']); ?></a>
 				<?php endforeach; ?>
@@ -177,10 +178,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			}
 
 			foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
-				if ( $section['title'] ) {
-					echo "<h2>".esc_html($section['title'])."</h2>";	
-				}
 
+				if ( $section['title'] ) {
+
+					echo "<h2 class=".esc_attr($section['id']).">".esc_html($section['title'])."</h2>";
+
+				}
+                
 				if ( $section['callback'] ) {
 					call_user_func( $section['callback'], $section );
 				}
@@ -189,7 +193,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					continue;
 				}
 
-				echo '<table class="form-table">';
+				echo '<table class="form-table" id='.esc_attr($section['id']).'>';
 				$this->do_settings_fields( $page, $section['id'] );
 				echo '</table>';
 			}
@@ -326,6 +330,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				case 'html':
 					$this->html_field_callback( $field );
 					break;
+
+			    case 'analytics-html':
+					$this->analytics_html_field_callback( $field );
+					break;		
 			    case 'file':
 					$this->file_field_callback( $field );
 					break;			
@@ -457,27 +465,57 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 			?>
 			
-		   <h4><?php _e( 'There are 3 easy ways to display the search bar in your theme', 'ajax-search-for-woocommerce' ); ?>: </h4>
+		   <h4><?php _e( 'There are 4 easy ways to display the search bar in your theme', 'th-advance-product-search' ); ?>: </h4>
 			<ol>
 				
-				<li><?php printf( __( 'Using a shortcode - %s', 'th-advance-product-search' ), '<code>[th-aps]</code>' ); ?></li>
+				<li><?php printf( __( 'Using a Multiple Style shortcode - <br /> <br />%s    ', 'th-advance-product-search' ), '<code>[th-aps]</code> , <code>[th-aps layout="bar_style"]</code> , <code>[th-aps layout="icon_style"]</code> , <code>[th-aps layout="flexible-style"]</code>' ); ?></li>
 				<li><?php printf( __( 'As a widget - go to the %s and choose "TH Advance Product Search"', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ) ?>
 				<li><?php printf( __( 'Using PHP - %s', 'th-advance-product-search' ), '<code>&lt;?php echo do_shortcode(\'[th-aps]\'); ?&gt;</code>' ); ?></li>
+
+				<li><?php printf( __( 'As a menu item - go to the %s and add the menu item “TH Advance Product Search”. Done!', 'th-advance-product-search' ), '<a href="' . admin_url( 'nav-menus.php' ) . '" target="_blank">' . __( 'Menu Screen', 'th-advance-product-search' ) . '</a>' ) ?>
 			</ol>
 
 		<?php 		
 			endif;
 		}
 
+        public function analytics_html_field_callback($args){
+
+            if($args[ 'id' ]=='how-to-integrate-analytics'):
+
+			?>
+             <h4><?php _e( 'Enable Site Search module Paste the following code into "functions.php" in your theme.', 'th-advance-product-search' ); ?>: </h4>
+			<ul>
+				
+				
+				<li><?php printf( __( '%s', 'th-advance-product-search' ), '<code> apply_filters("thaps_enable_ga_site_search_module", "__return_true" ); </code>' ); ?></li>
+
+				
+			</ul>
+
+			<h4><?php _e( 'To disable integrarion with Google Analytics paste following code "functions.php" your child', 'th-advance-product-search' ); ?>: </h4>
+           <ul>
+				
+				
+				<li><?php printf( __( '%s', 'th-advance-product-search' ), '<code> thaps_google_analytics_events", "__return_false" ); </code>' ); ?></li>
+
+				
+			</ul>
+
+        <?php endif; }
+
+
+
 		public function color_field_callback( $args ){
 			$value = esc_attr( $this->get_option( $args['id'] ) );
 			
-			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? ' data-alpha="true"' : '';
+			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? ' data-alpha-enabled="true"' : '';
 			$html  = sprintf( '<input type="text" %1$s class="thaps-color-picker" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"  data-default-color="%3$s" />', $alpha, $args['id'], $value, $this->settings_name );
 			$html  .= $this->get_field_description( $args );
 
 			echo $html;
 		}
+
 		public function number_field_callback( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'small';
@@ -657,7 +695,28 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				return $data;
 			}
 		}
+		
+        public function script_enqueue(){
+			
+			
+			wp_enqueue_style( 'wp-color-picker' );
+		
+			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
+            
+			wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
 
+            wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-setting.js', array('jquery'),true);
+
+			wp_localize_script(
+				'thaps-setting-script', 'THAPSPluginObject', array(
+					'media_title'   => esc_html__( 'Choose an Image', 'th-advance-product-search' ),
+					'button_title'  => esc_html__( 'Use Image', 'th-advance-product-search' ),
+					'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
+					'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
+					'nonce'         => wp_create_nonce( 'thaps_plugin_nonce' ),
+				)
+			);
+		}
 
 }
 

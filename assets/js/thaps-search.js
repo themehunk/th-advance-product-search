@@ -37,7 +37,8 @@
                     div.className = containerClass;
                     div.style.position = 'absolute';
                     div.style.display = 'none';
-                    return div;
+                    div.setAttribute('unselectable', 'on');
+                    return div; 
                 }
             };
         }()),
@@ -83,6 +84,7 @@
         // Initialize and set options:
         that.initialize();
         that.setOptions(options);
+        that.registerIconHandler();
     }
 
     Autocomplete.utils = utils;
@@ -112,9 +114,12 @@
             onSearchComplete: noop,
             onSearchError: noop,
             preserveInput: false,
+            searchFormClass: 'thaps-search-box',
+            searchInputClass: 'thaps-search-autocomplete',
             containerClass: 'thaps-autocomplete-suggestions',
             preloaderClass: 'thaps-preloader',
             closeTrigger: 'thaps-close',
+            formClass: 'thaps-search-form',
             tabDisabled: false,
             dataType: 'text',
             currentRequest: null,
@@ -126,7 +131,9 @@
             showNoSuggestionNotice: false,
             noSuggestionNotice: 'No results',
             orientation: 'bottom',
-            forceFixPosition: false
+            forceFixPosition: false,
+            sendgoogleAnalyticsEvents:th_advance_product_search_options.thaps_ga_event,
+            enablegoogleAnalyticsSiteSearchModule:th_advance_product_search_options.thaps_ga_site_search_module,
     };
 
     function _lookupFilter(suggestion, originalQuery, queryLowerCase) {
@@ -305,6 +312,10 @@
                 'z-index': options.zIndex
             });
 
+            options.onSearchComplete = function () {
+                that.getFormWrapper().find('.thaps-preloader').removeClass('thaps-loading');
+            
+            };
             this.options = options;
         },
 
@@ -567,17 +578,83 @@
 
             return data;
         },
+         getFormWrapper: function () {
+            var that = this;
 
+            return that.el.closest('.' + that.options.searchFormClass);
+        },
+        positionIconSearchMode: function ($formWrapper) {
+            var that = this,
+                side = 'right',
+                formLeftValue = -20;
+
+            var $form = $formWrapper.find('.' + that.options.formClass);
+            var formWidth = $form.width(),
+                windowWidth = $(window).width();
+
+            var iconLeftOffset = $formWrapper[0].getBoundingClientRect().left;
+            var formLeftOffset = $form[0].getBoundingClientRect().left;
+
+            // Is the icon on left or right side of screen?
+            if (iconLeftOffset + 10 < windowWidth / 2) {
+                side = 'left';
+            }
+
+            var iconLeftRatio = (iconLeftOffset + 10) / windowWidth;
+
+            formLeftValue = Math.floor(-1 * (formWidth * iconLeftRatio));
+
+            // Prevent shifting to the left more than the icon position (also positioned from the left)
+            formLeftValue = Math.max(formLeftValue, -1 * iconLeftOffset);
+
+            $form.css({'left': formLeftValue + 'px'});
+
+        },
+        registerIconHandler: function () {
+            var that = this,
+                $formWrapper = that.getFormWrapper();
+            var $form = $formWrapper.find('.' + that.options.formClass);
+
+            $formWrapper.on('click.autocomplete', '.click-icon', function (e) {
+
+                var $input = $formWrapper.find('.' + that.options.searchInputClass);
+               
+                if ($formWrapper.hasClass('thaps-box-open')) {
+
+                    that.hide();
+                    $formWrapper.removeClass('thaps-box-open');
+
+
+                } else {
+                    var $arrow = $formWrapper.find('.thaps-icon-arrow');
+                    $form.hide();
+                    $arrow.hide();
+                    $formWrapper.addClass('thaps-box-open');
+                    that.positionIconSearchMode($formWrapper);
+
+                    $form.fadeIn(100, function () {
+                        $arrow.show(); 
+                        $input.focus();
+                    });
+
+                }
+
+
+            });
+        },
         getSuggestions: function (q) {
             var response,
                 that = this,
                 options = that.options,
                 serviceUrl = options.serviceUrl,
+                searchForm = that.getFormWrapper(),
                 params,
                 cacheKey,
                 ajaxSettings;
 
             options.params[options.paramName] = q;
+
+            that.getFormWrapper().find('.thaps-preloader').addClass('thaps-loading');
 
             if (options.onSearchStart.call(that.element, options.params) === false) {
                 return;
@@ -624,8 +701,25 @@
                     var result;
                     that.currentRequest = null;
                     result = options.transformResult(data, q);
-                    that.processResponse(result, q, cacheKey);
+
+                    if (typeof result.suggestions !== 'undefined') {
+                            that.processResponse(result, q, cacheKey);
+
+                            if (
+                                result.suggestions.length === 1
+                                && typeof result.suggestions[0].type !== 'undefined'
+                                && result.suggestions[0].type === 'no-results'
+                            ) {
+                                that.googleAnalyticsEvent(q, 'Autocomplete Search without results');
+                            } else {
+                                that.googleAnalyticsEvent(q, 'Autocomplete Search with results');
+                            }
+
+                        }
+
                     options.onSearchComplete.call(that.element, q, result.suggestions);
+
+
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     options.onSearchError.call(that.element, q, jqXHR, textStatus, errorThrown);
                 });
@@ -714,6 +808,7 @@
                 var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
                     
                     isImg  = suggestion.imgsrc ? suggestion.imgsrc:'' ,
+                    isCatImg  = suggestion.cat_img ? suggestion.cat_img:'' ,
                     attr_title ='',
                     title = suggestion.title ? suggestion.title : '',
                     isPrice  = suggestion.price ? suggestion.price:'',
@@ -731,15 +826,18 @@
                 //attr title
                 attr_title = title.length > 0 ? ' title="' + title + '"' : '';
                 //more product
-                if(suggestion.type == 'more_products') {
+                if(suggestion.type == 'more_item') {
                  className += ' thaps-suggestion-more';
                  suggestion.value = suggestion.text + ' (' + suggestion.total + ')';
                 }else if(suggestion.type == 'heading'){
                 //heading product
                 classNameT += 'thaps-suggestion-heading';
-                }else if(suggestion.type == 'taxonomy-cat'){
-                //cat
-                classNameT += 'thaps-suggestion-taxonomy-cat';
+                }else if(suggestion.type == 'taxonomy-product-cat'){
+                //product cat
+                classNameT += 'thaps-suggestion-taxonomy-product-cat';
+                }else if(suggestion.type == 'taxonomy-post-cat'){
+                //post cat
+                classNameT += 'thaps-suggestion-taxonomy-post-cat';
                 }else if(suggestion.type == 'product'){
                 //product
                 classNameT += 'thaps-suggestion-product';
@@ -753,6 +851,10 @@
                 html += '<a href="' + url + '" class="' + className + ' ' + classNameT + '"  data-index="' + i + '">'; 
                 if(isImg) {
                 html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
+                }
+
+                if(isCatImg){
+                html += '<span class="thaps-img"><img src="' + isCatImg + '" alt="'+ title +'"/></span>';   
                 }
 
                 html += '<div class="thaps-content-wrapp"><div class="thaps-content-left">'
@@ -1066,7 +1168,50 @@
             that.el.off('.autocomplete').removeData('autocomplete');
             $(window).off('resize.autocomplete', that.fixPositionCapture);
             $(that.suggestionsContainer).remove();
+        },
+
+        // Google Analytics Script
+        googleAnalyticsEvent: function (label, category) {
+            var that = this;
+            var gaObj = window.hasOwnProperty('GoogleAnalyticsObject') && window.hasOwnProperty(window['GoogleAnalyticsObject']) ? window[window['GoogleAnalyticsObject']] : false;
+            if (that.options.sendgoogleAnalyticsEvents) {
+                try {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'autocomplete_search', {
+                            'event_label': label,
+                            'event_category': category
+                        });
+                    } else if (gaObj !== false) {
+                        var tracker = gaObj.getAll()[0];
+                        if (tracker) tracker.send({
+                            hitType: 'event',
+                            eventCategory: category,
+                            eventAction: 'autocomplete_search',
+                            eventLabel: label
+                        });
+                    }
+                } catch (error) {
+                }
+            }
+            if (that.options.enablegoogleAnalyticsSiteSearchModule) {
+                try {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'page_view', {
+                            'page_path': '/?s=' + encodeURI(label) + '&post_type=product&thaps_srch=1',
+                        });
+                    } else if (gaObj !== false) {
+                        var tracker2 = gaObj.getAll()[0];
+                        if (tracker2) {
+                            tracker2.set('page', '/?s=' + encodeURI(label) + '&post_type=product&thaps_srch=1');
+                            tracker2.send('pageview');
+                        }
+                    }
+                } catch (error) {
+                }
+            }
         }
+
+
     };
 
     // Create chainable jQuery plugin:
@@ -1106,23 +1251,15 @@
 // Run Code
 /**************************************************/
  $(document).ready(function (){
- $('#thaps-search-autocomplete').thapsAutocomplete({
+ $('.thaps-search-autocomplete').thapsAutocomplete({
     lookupLimit:5,
     serviceUrl:th_advance_product_search_options.ajaxUrl + '?action=' + 'thaps_ajax_get_search_value',
     showNoSuggestionNotice: true,
-    minChars:parseInt(th_advance_product_search_options.thvs_length),
+    minChars:parseInt(th_advance_product_search_options.thaps_length),
     autoSelectFirst: false,
     triggerSelectOnValidInput: false,
     paramName: 'match',
     dataType: 'json',
-    onSearchStart: function(){
-              $('.thaps-preloader').addClass('thaps-loading');   
-    },
-    onSearchComplete:function(){
-              $('.thaps-preloader').removeClass('thaps-loading'); 
-    },
-
-   
    });
 
 });
