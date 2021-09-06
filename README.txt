@@ -1,19 +1,19 @@
 ====== TH Advance Product Search ========
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
-Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
+Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
 Tested up to: 5.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin will replace default swatches to professionally styled and colourful swatches.
+Th Advaced Product Search plugin is a powerful AJAX search plugin which will display search result for Product, post and pages. This plugin will search Search across all your WooCommerce products ( product title, content, categories, ID and sku ) . Plugin comes with user friendly settings, use shortcodes and widget to showcase your search anywhere in your site. It also supports Google analytics to monitor your website visitor.
 
 
 == Description ==
 
-TH Advance Product Search is a Free easy to use Swatches Plugin.
+TH Advance Product Search is a Free easy to use Search Plugin.
 
 **Key Features:-**
 
@@ -23,20 +23,20 @@ TH Advance Product Search is a Free easy to use Swatches Plugin.
 
 * 24x7 support available for free product too [support](https://www.support.themehunk.com/).
 
-[Sales Page](https://themehunk.com/th-variation-swatches/)|[Docs](https://themehunk.com/docs/th-variation-swatches-plugin/)
+[Sales Page](https://themehunk.com/advanced-product-search/)|[Docs](https://themehunk.com/docs/th-advance-product-search/)
 
 
 
 == Installation ==
 
-1. Upload the `th-variation-swatches.zip` to the `/wp-content/plugins/` directory
+1. Upload the `th-advanced-product-search.zip` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Get started from Dashboard > Wp Popup Builder
+3. Get started from Dashboard > TH Search
 
 == Frequently Asked Questions ==
 
 = How to Install Plugin =
-Just upload the `th-variation-swatches.zip` to the `/wp-content/plugins/` directory, and then activate it from 'Plugins' menu in WordPress.
+Just upload the `th-advanced-product-search.zip` to the `/wp-content/plugins/` directory, and then activate it from 'Plugins' menu in WordPress.
 
 1. [Support Forum](https://www.support.themehunk.com/#plugin.25)
 
@@ -49,8 +49,11 @@ Just upload the `th-variation-swatches.zip` to the `/wp-content/plugins/` direct
 
 == Changelog ==
 
+= 1.0.1 =
+* Security Issue Fixed
+
 = 1.0.0 =
-Initial release
+* Initial release
 
 
 == Upgrade Notice ==
@@ -59,6 +62,6 @@ Initial release
 Initial release
 
 
-Thanks for using our plugin, I am sure you will create a great Product Swatches for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/
+Thanks for using our plugin, I am sure you will create a great Product Search for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/
 
 Thank You

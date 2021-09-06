@@ -62,11 +62,6 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
             return class_exists( 'WooCommerce' );
         }
         
-        public function images_uri( $file ) {
-            $file = ltrim( $file, '/' );
-
-            return TH_VARIATION_SWATCHES_IMAGES_URI . $file;
-        }
 
         public function is_required_php_version() {
             return version_compare( PHP_VERSION, '5.6.0', '>=' );
@@ -167,16 +162,24 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
        }
 
        public function getForm( $args ) {
+
         wp_enqueue_script( 'th-advance-product-search-front' );
+
         ob_start();
+
         $filename = apply_filters( 'thaps_form_path', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-search-from.php' );
+
         if ( file_exists( $filename ) ) {
+
             include $filename;
 
             if ( function_exists( 'opcache_invalidate' ) ) {
-                @opcache_invalidate( $filename, true );
+
+                wp_opcache_invalidate( $filename, true );
+
             }
         }
+        
         $html = ob_get_clean();
 
         return apply_filters( 'thaps_form_html', $html, $args );

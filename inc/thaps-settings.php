@@ -119,12 +119,16 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			<?php
 			
 		}
+
 	    public function thaps_form_setting(){  
-	             if( isset($_POST['th_advance_product_search']) ){
-	             	        $th_advance_product_search =  $_POST['th_advance_product_search']; 
-	                      $sanitize_data_array = $this->thaps_form_sanitize($th_advance_product_search);
+
+	                if( isset($_POST['th_advance_product_search']) ){
+	             	       
+	                      $sanitize_data_array = $this->thaps_form_sanitize($_POST['th_advance_product_search']);
+
 	                      update_option('th_advance_product_search',$sanitize_data_array);         
 		            }
+		            
 		            die();  
 	    }
         
