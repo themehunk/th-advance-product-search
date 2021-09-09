@@ -107,20 +107,28 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
             </div>
             <div class="thaps-notes-wrap">
-            	<h3><?php esc_html_e( '', 'th-advance-product-search' ) ?></h3>
-            	<div class="thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a href="#"><?php esc_html_e( 'Read Documentation', 'th-advance-product-search' ) ?></a></div>
+
+            	<div class="thaps-notes-row thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/'); ?>"><?php esc_html_e( 'Read Documentation', 'th-advance-product-search' ) ?></a></div>
+
+            	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Go Pro', 'th-advance-product-search' ) ?></h4><a href="#"><?php esc_html_e( 'Buy Now', 'th-advance-product-search' ) ?></a><a href="#"><?php esc_html_e( 'Know More', 'th-advance-product-search' ) ?></a></div>
+
+            	
             </div>
 				</form>
 			</div>
 			<?php
 			
 		}
+
 	    public function thaps_form_setting(){  
-	             if( isset($_POST['th_advance_product_search']) ){
-	             	        $th_advance_product_search =  $_POST['th_advance_product_search']; 
-	                      $sanitize_data_array = $this->thaps_form_sanitize($th_advance_product_search);
+
+	                if( isset($_POST['th_advance_product_search']) ){
+	             	       
+	                      $sanitize_data_array = $this->thaps_form_sanitize($_POST['th_advance_product_search']);
+
 	                      update_option('th_advance_product_search',$sanitize_data_array);         
 		            }
+		            
 		            die();  
 	    }
         
@@ -465,14 +473,15 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 			?>
 			
-		   <h4><?php _e( 'There are 4 easy ways to display the search bar in your theme', 'th-advance-product-search' ); ?>: </h4>
+		   <h4><?php _e( 'Easy 4 ways to integrate and display search bar your theme', 'th-advance-product-search' ); ?>: </h4>
 			<ol>
-				
-				<li><?php printf( __( 'Using a Multiple Style shortcode - <br /> <br />%s    ', 'th-advance-product-search' ), '<code>[th-aps]</code> , <code>[th-aps layout="bar_style"]</code> , <code>[th-aps layout="icon_style"]</code> , <code>[th-aps layout="flexible-style"]</code>' ); ?></li>
-				<li><?php printf( __( 'As a widget - go to the %s and choose "TH Advance Product Search"', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ) ?>
-				<li><?php printf( __( 'Using PHP - %s', 'th-advance-product-search' ), '<code>&lt;?php echo do_shortcode(\'[th-aps]\'); ?&gt;</code>' ); ?></li>
-
-				<li><?php printf( __( 'As a menu item - go to the %s and add the menu item “TH Advance Product Search”. Done!', 'th-advance-product-search' ), '<a href="' . admin_url( 'nav-menus.php' ) . '" target="_blank">' . __( 'Menu Screen', 'th-advance-product-search' ) . '</a>' ) ?>
+				<li><?php printf( __( 'Using Shortcode - <br /> <br />%s    ', 'th-advance-product-search' ), '<ul><li>(a) <code>[th-aps]</code> To display default search bar. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-1.png').'"> </li>  <li>(b) <code>[th-aps layout="bar_style"]</code> To display search bar with icon.  <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-2.png').'"> </li>   <li>(c) <code>[th-aps layout="icon_style"]</code> To display search icon only, Search bar will display on click. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-3.png').'"></li> <li>(d) <code>[th-aps layout="flexible-style"]</code> To display search bar in PC and search icon in mobile view. </li></ul>' ); ?></li>
+                <br /> <br />
+				<li><?php printf( __( 'Using Widgets - Go to the Appearance > %s and choose "TH Advance Search Widget" <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-5.png').'">', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ); ?>
+                <br /> <br />
+				<li><?php printf( __( 'Using php - %s', 'th-advance-product-search' ), '<code>&lt;?php echo do_shortcode(\'[th-aps]\'); ?&gt;</code> Add this php code at the desired location in any php file. Search display style depends on shortcode you are using in the php code.' ); ?></li>
+                <br /> <br />
+				<li><?php printf( __( 'Display search bar as a menu. Go to the Appearance > %s . Check "TH Advance Search Bar" and click "Add to menu" button. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-6.png').' " style="border: 1px solid #eee;">', 'th-advance-product-search' ), '<a href="' . admin_url( 'nav-menus.php' ) . '" target="_blank">' . __( 'Menu Screen', 'th-advance-product-search' ) . '</a>' ); ?></li>
 			</ol>
 
 		<?php 		
@@ -484,7 +493,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
             if($args[ 'id' ]=='how-to-integrate-analytics'):
 
 			?>
-             <h4><?php _e( 'Enable Site Search module Paste the following code into "functions.php" in your theme.', 'th-advance-product-search' ); ?>: </h4>
+             <h4><?php _e( 'Enable Site Search module Paste the following code into "functions.php" in your child theme.', 'th-advance-product-search' ); ?>: </h4>
 			<ul>
 				
 				
@@ -493,7 +502,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				
 			</ul>
 
-			<h4><?php _e( 'To disable integrarion with Google Analytics paste following code "functions.php" your child', 'th-advance-product-search' ); ?>: </h4>
+			<h4><?php _e( 'To disable integrarion with Google Analytics paste following code "functions.php" your child theme.', 'th-advance-product-search' ); ?>: </h4>
            <ul>
 				
 				

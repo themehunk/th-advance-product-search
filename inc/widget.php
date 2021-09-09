@@ -32,6 +32,7 @@ class Thaps_Widget extends WP_Widget {
             }
 
         if ( ! empty( $instance['title'] ) ) {
+            
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }
  
@@ -72,11 +73,11 @@ class Thaps_Widget extends WP_Widget {
             $id = $selec_attr['id'];
 	        $optn = isset($instance[$id]) ? $instance[$id]: $selec_attr['default'] ;
 	      ?> 
-         <p><label for="<?php echo $this->get_field_id($id); ?>"><?php  echo $custarr['label']; ?></label>
+         <p><label for="<?php echo esc_attr($this->get_field_id($id)); ?>"><?php  echo esc_attr($custarr['label']); ?></label>
          	
-	     <select id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" >
+	     <select id="<?php echo esc_attr($this->get_field_id($id)); ?>" name="<?php echo esc_attr($this->get_field_name($id)); ?>" >
 	     	<?php foreach( $selec_attr['option'] as $value => $title){ ?>
-	     		<option value ="<?php echo $value; ?>" <?php if($optn==$value){ echo 'selected'; }?> ><?php echo $title; ?> </option>
+	     		<option value ="<?php echo esc_attr($value); ?>" <?php if($optn==$value){ echo 'selected'; }?> ><?php echo esc_attr($title); ?> </option>
 	     		<?php } ?>
 	     </select>
 	        </p>

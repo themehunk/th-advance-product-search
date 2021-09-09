@@ -54,7 +54,7 @@ border-top: 1px solid #E0E4E9;
 .thaps-notes-wrap{
 display: flex;
 flex-direction: column;
-padding: 1.5rem 1rem;
+padding:0rem 1rem;
 width: 28%;
 }
 #thaps .thaps-setting-nav-tab.nav-tab-active, 
@@ -266,14 +266,6 @@ height:100px;
 width:100px;
 }
 
-#show_variation_label-wrapper{
-display: none;
-}
-
-.show-title #show_variation_label-wrapper{
-display: table-row;
-}
-
 .thaps-setting-tab h2{
 padding-bottom:1.5rem;
 border-bottom:1px solid #eee;
@@ -286,20 +278,21 @@ margin-bottom:1rem;
 line-height:24px;
 }
 
-.thaps-wrap-doc
+.thaps-notes-row
 {
 padding: 24px 16px;
     border-radius: 4px;
     color: #fff;
     text-align: center;
-    background: #40BACB;
+    background:#1665a9;
+        margin-bottom: 1rem;
 }
-.thaps-wrap-doc a{
+.thaps-wrap-doc a,.thaps-wrap-pro a{
 padding: 0.4rem 1.5rem;
     letter-spacing: -0.08px;
     font-size: .6875rem;
     line-height: 1.81818;
-    background: #2271b1;
+    background:#f56640;
     color: #fff;
     margin-top: 0.5rem;
     display: inline-flex;
@@ -312,12 +305,6 @@ padding: 0.4rem 1.5rem;
 .wrp-title{
 font-size:1rem;
 margin:0;
-}
-
-.thaps-notes-wrap h3{
-     margin-bottom: 2rem;
-    line-height: normal;
-    margin-top: 0;
 }
 
 /*post type option select*/
@@ -346,6 +333,15 @@ display: none;
 display: contents;
 }
 
-tr#how-to-integrate-wrapper th{
+tr#how-to-integrate-wrapper th,
+tr#how-to-integrate-analytics-wrapper th{
 display:none;
+}
+
+#how-to-integrate-wrapper ol li::marker {
+font-weight: 700;
+}
+
+#how-to-integrate-wrapper img{
+max-width: 560px;
 }

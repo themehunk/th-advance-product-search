@@ -88,9 +88,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 				
 				?>
 				<p class="description description-wide thaps-description">
-					<label for="edit-menu-item-thaps-layout-<?php echo $item_id; ?>">
+					<label for="edit-menu-item-thaps-layout-<?php echo esc_attr($item_id); ?>">
 						<?php _e( 'Layout', 'th-advance-product-search' ); ?>
-						<select id="edit-menu-item-thaps-layout-<?php echo $item_id; ?>" name="menu-item-thaps-layout[<?php echo $item_id; ?>]" class="thaps-menu-layout-select">
+						<select id="edit-menu-item-thaps-layout-<?php echo esc_attr($item_id); ?>" name="menu-item-thaps-layout[<?php echo esc_attr($item_id); ?>]" class="thaps-menu-layout-select">
 							<?php
 							foreach ( $this->getLayoutOptions() as $value => $name ) {
 								$selected = selected( $value, $layout, false );
@@ -106,7 +106,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 
 			public function getLayoutOptions() {
 				return array(
-					        'default_style'  =>__('Default','th-advance-product-search'),
+				    'default_style'  =>__('Default','th-advance-product-search'),
                             'bar_style'      =>__('Search bar only','th-advance-product-search'),
                             'icon_style'     =>__('Search Icon only','th-advance-product-search'),
                             'flexible-style' =>__('Icon on mobile, search bar on desktop','th-advance-product-search')
@@ -124,7 +124,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 				}
 
 				$layout = isset( $_POST['menu-item-thaps-layout'][ $menu_item_db_id ] ) ? $_POST['menu-item-thaps-layout'][ $menu_item_db_id ] : '';
-				update_post_meta( $menu_item_db_id, '_menu_item_thaps_layout', $layout );
+				update_post_meta( $menu_item_db_id, '_menu_item_thaps_layout', sanitize_text_field($layout) );
 
 				
 			}  

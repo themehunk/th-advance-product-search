@@ -60,7 +60,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Minimum Character', 'th-advance-product-search' ),
 								
-								'desc'    => esc_html__( 'Min characters to show autocomplete', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'Min characters to show autocomplete, Search start showing the results after the minimum character value you set here', 'th-advance-product-search' ),
 								'default' => 1,
 								'min'     => 1,
 								'max'     => 10,
@@ -70,7 +70,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Max Width', 'th-advance-product-search' ),
 								
-								'desc'    => esc_html__( 'To set 100% width leave blank', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'It\'s a search bar width. Leave field empty to set 100% width.', 'th-advance-product-search' ),
 								'default' => 550,
 								'min'     => 1,
 								'max'     => 2400,
@@ -80,7 +80,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'show_submit',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Enable Submit Button', 'th-advance-product-search' ),
-								'desc'    => '',
+								'desc'    => esc_html__( 'Uncheck to disable submit button and to enable search icon', 'th-advance-product-search' ),
 								'default' => true
 							),
 
@@ -108,8 +108,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'show_loader',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Disable loader', 'th-advance-product-search' ),
-								'desc'    => '',
+								'title'   => esc_html__( 'Loader', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'Check to disable loader', 'th-advance-product-search' ),
 								'default' => false
 							    ),	
 						
@@ -137,7 +137,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search-pro' ),
 									'product_srch' => esc_html__( 'Product', 'th-advance-product-search-pro' ),
 									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search-pro' )
-								)
+								),
+								'desc'    => esc_html__( 'This setting define what you want to search, For example if you select "Product" then search will display olny products in search result.', 'th-advance-product-search' ),
 								
 							),
 							array(
@@ -154,6 +155,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'no_reult_label',
 								'type'    => 'text',
 								'title'   => esc_html__( 'No Result Label', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'This text will display at the search result dropdown.', 'th-advance-product-search' ),
 								'default' => esc_html__( 'No Result Found', 'th-advance-product-search' ),
 								
 							),
@@ -161,6 +163,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'more_reult_label',
 								'type'    => 'text',
 								'title'   => esc_html__( 'More Result Label', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'This text will display at the search result dropdown.', 'th-advance-product-search' ),
 								'default' => esc_html__( 'See More Product..', 'th-advance-product-search' ),
 								
 							),
@@ -168,7 +171,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'enable_group_heading',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Enable Group Heading', 'th-advance-product-search' ),
-								'desc'    => '',
+
+								'desc'    => esc_html__( 'It\'s a main heading, Display in the search result dropdown.', 'th-advance-product-search' ),
 								'default' => true
 							    ),	
 						   
@@ -177,7 +181,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Description Length', 'th-advance-product-search' ),
 								
-								'desc'    => esc_html__( 'Add a Excerpt Length', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'This option limit searched item description length. Count value in words.', 'th-advance-product-search' ),
 								'default' => 60,
 								'min'     => 1,
 								'max'     => 500,
@@ -194,7 +198,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'show_category_in',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Show Category', 'th-advance-product-search' ),
-								'desc'    => '',
+								'desc'    => esc_html__( 'Check to display categories in the search result dropdown.', 'th-advance-product-search' ),
 								'default' => false
 							    ),
 								array(
@@ -317,7 +321,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 									array(
 										'id'      => 'bar_bg_clr',
 										'type'    => 'color',
-										'title'   => esc_html__( 'Background Color', 'th-advance-product-search' ),
+										'title'   => esc_html__( 'Bar Background Color', 'th-advance-product-search' ),
 										'alpha'   => true,
 									),
 									array(
@@ -329,25 +333,31 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 									array(
 										'id'      => 'bar_text_clr',
 										'type'    => 'color',
-										'title'   => esc_html__( 'Text Color', 'th-advance-product-search' ),
+										'title'   => esc_html__( 'Placeholder Color', 'th-advance-product-search' ),
 										'alpha'   => true,
 									),
 									array(
 										'id'      => 'bar_button_bg_clr',
 										'type'    => 'color',
-										'title'   => esc_html__( 'Button BG Color', 'th-advance-product-search' ),
+										'title'   => esc_html__( 'Submit Button BG Color ', 'th-advance-product-search' ),
 										'alpha'   => true,
 									),
 									array(
 										'id'      => 'bar_button_txt_clr',
 										'type'    => 'color',
-										'title'   => esc_html__( 'Button Text Color', 'th-advance-product-search' ),
+										'title'   => esc_html__( 'Submit Button Text Color', 'th-advance-product-search' ),
 										'alpha'   => true,
 									),
 									array(
 										'id'      => 'bar_button_hvr_clr',
 										'type'    => 'color',
-										'title'   => esc_html__( 'Button Hover Color', 'th-advance-product-search' ),
+										'title'   => esc_html__( 'Submit Button BG Hover Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'bar_button_txt_hvr_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Submit Button Text Hover Color', 'th-advance-product-search' ),
 										'alpha'   => true,
 									),
 								)

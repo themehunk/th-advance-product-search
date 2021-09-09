@@ -2,8 +2,8 @@
 /**
  * Plugin Name:             TH Advance Product Search
  * Plugin URI:              https://themehunk.com
- * Description:             Beautiful Colors, Images and Buttons Variation Swatches For WooCommerce Product Attributes
- * Version:                 1.0.0
+ * Description:             Th Advaced Product Search plugin is a powerful AJAX search plugin which will display search result for Product, post and pages. This plugin will search Search across all your WooCommerce products ( product title, content, categories, ID and sku ) . Plugin comes with user friendly settings, use shortcodes and widget to showcase your search anywhere in your site. It also supports Google analytics to monitor your website visitor.
+ * Version:                 1.0.1
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       4.8
