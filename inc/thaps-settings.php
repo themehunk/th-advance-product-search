@@ -342,9 +342,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			    case 'analytics-html':
 					$this->analytics_html_field_callback( $field );
 					break;		
-			    case 'file':
-					$this->file_field_callback( $field );
-					break;			
+			    			
 
 				default:
 					$this->text_field_callback( $field );
@@ -422,6 +420,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 			$html = sprintf( '<select class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]">%3$s</select>', $size, $args['id'], implode( '', $options ), $this->settings_name );
 			$html .= $this->get_field_description( $args );
+
 			echo $html;
 		}
 
@@ -437,19 +436,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			echo $html;
 		}
 		
-        public function file_field_callback( $args ) {
-        $value = esc_attr( $this->get_option( $args['id'] ) );
-        $size = ( isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular' );
-        $attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
-        $label = ( isset( $args['options']['button_label'] ) ? $args['options']['button_label'] : __( 'Choose File' ) );
-        $html = sprintf( '<input %5$s type="text" class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"/>', $size, $args['id'], $value, $this->settings_name, $attrs );
-        $html .= '<input type="button" class="button thaps_upload_image_button ' . $this->prefix . 'browse" value="' . $label . '" />';
-        $html .= $this->get_field_description( $args );
-        echo  $html ;
-      }
-
-
-
+       
 		public function iframe_field_callback( $args ) {
 			$is_html = isset( $args['html'] );
 			if ( $is_html ){
