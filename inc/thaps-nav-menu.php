@@ -123,8 +123,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 					return;
 				}
 
-				$layout = isset( $_POST['menu-item-thaps-layout'][ $menu_item_db_id ] ) ? $_POST['menu-item-thaps-layout'][ $menu_item_db_id ] : '';
-				update_post_meta( $menu_item_db_id, '_menu_item_thaps_layout', sanitize_text_field($layout) );
+				$layout_ = sanitize_text_field($_POST['menu-item-thaps-layout'][ $menu_item_db_id ]);
+
+				$layout = isset( $layout_ ) ? $layout_ : '';
+
+				update_post_meta($menu_item_db_id, '_menu_item_thaps_layout', $layout);
 
 				
 			}  
@@ -173,7 +176,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 									       value="-1"/> <?php echo __( 'TH advance search bar', 'th-advance-product-search' ); ?>
 								</label>
 								<input type="hidden" class="menu-item-type" name="menu-item[-1][menu-item-type]" value="custom"/>
-								<input type="hidden" class="menu-item-title" name="menu-item[-1][menu-item-title]" value="<?php echo self::SEARCH_PLACEHOLDER; ?>"/>
+								<input type="hidden" class="menu-item-title" name="menu-item[-1][menu-item-title]" value="<?php echo esc_attr(self::SEARCH_PLACEHOLDER); ?>"/>
 								<input type="hidden" class="menu-item-classes" name="menu-item[-1][menu-item-classes]"/>
 							</li>
 						</ul>
@@ -190,14 +193,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 			}
 
 
-			public function getDescription() {
-			$html = '<div class="thaps-admin-menu-item-desc js-thaps-admin-menu-item-desc">';
-			$html .= '';
-			$html .= '<span>' . __( 'TH Advance Search bar will be displayed here.', 'th-advance-product-search' ) . '</span>';
-			$html .= '</div>';
-
-			return $html;
-		}
+		
 
 		public function navMenuStyle() {
 
@@ -253,9 +249,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 								$menuItem.find('.field-url').hide();
 
 
-								if ($menuItem.find('.js-thaps-admin-menu-item-desc').length == 0) {
-									$menuItem.find('.menu-item-settings').prepend('<?php echo $this->getDescription(); ?>');
-								}
+								
 							}
 						});
 					}

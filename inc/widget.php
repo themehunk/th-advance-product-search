@@ -28,7 +28,7 @@ class Thaps_Widget extends WP_Widget {
         
         $layout = '';
             if ( ! empty( $instance['thaps-style'] ) ) {
-                $layout = ' layout="' . $instance['thaps-style'] . '"';
+                $layout = ' layout="' . esc_attr($instance['thaps-style']) . '"';
             }
 
         if ( ! empty( $instance['title'] ) ) {
@@ -36,7 +36,7 @@ class Thaps_Widget extends WP_Widget {
             echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         }
  
-        echo '<div class="thaps-advance-widget-search ' . $instance['thaps-style'] .'">';
+        echo '<div class="thaps-advance-widget-search ' . esc_attr($instance['thaps-style']) .'">';
  
         echo do_shortcode('[th-aps-wdgt ' . $layout . ']');
  
