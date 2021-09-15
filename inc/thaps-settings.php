@@ -307,10 +307,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		public function field_callback( $field ) {
 
 			switch ( $field['type'] ) {
-				case 'radio':
-					$this->radio_field_callback( $field );
-					break;
-
+				
 				case 'checkbox':
 					$this->checkbox_field_callback( $field );
 					break;
@@ -327,22 +324,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					$this->color_field_callback( $field );
 					break;
 
-				case 'post_select':
-					$this->post_select_field_callback( $field );
-					break;
-
-				case 'iframe':
-					$this->iframe_field_callback( $field );
-					break;
-
 				case 'html':
 					$this->html_field_callback( $field );
 					break;
 
 			    case 'analytics-html':
 					$this->analytics_html_field_callback( $field );
-					break;		
-			    			
+					break;		 			
 
 				default:
 					$this->text_field_callback( $field );
@@ -356,48 +344,53 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
                
 			$value = wc_string_to_bool( $this->get_option( $args['id'] ) );
 
-			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';?>
 
-			$html = sprintf( '<fieldset><label><input %1$s type="checkbox" id="%2$s-field" name="%4$s[%2$s]" value="%3$s" %5$s/> %6$s</label> %7$s</fieldset>', $attrs, $args['id'], true, $this->settings_name, checked( $value, true, false ), esc_attr( $args['desc'] ), $this->get_field_description( $args ) );
+            <fieldset>
+            	<label>
+            		<input <?php echo esc_attr($attrs); ?> type="checkbox" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="1" <?php echo esc_attr(checked( $value, true, false ));?>> <?php if ( ! empty( $args['desc'] ) ) {  echo esc_html($args['desc']); } ?>
+            	</label>     
+            </fieldset>
 
-			echo $html;
+
+        <?php 
+			
 		}
-			public function radio_field_callback( $args ) {
-		
-			$options = apply_filters( "thaps_settings_{$args[ 'id' ]}_radio_options", $args['options'] );
-			$value   = esc_attr( $this->get_option( $args['id'] ) );
-
-			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
-
-
-			$html = '<fieldset>';
-			$html .= implode( '<br />', array_map( function ( $key, $option ) use ( $attrs, $args, $value ) {
-				return sprintf( '<label><input %1$s type="radio"  name="%4$s[%2$s]" value="%3$s" %5$s/> %6$s</label>', $attrs, $args['id'], $key, $this->settings_name, checked( $value, $key, false ), $option );
-			}, array_keys( $options ), $options ) );
-			$html .= $this->get_field_description( $args );
-			$html .= '</fieldset>';
-
-			echo $html;
-		}
+			
 		public function select_field_callback( $args ) {
+
 			$options = apply_filters( "thaps_settings_{$args[ 'id' ]}_select_options", $args['options'] );
-			$value   = esc_attr( $this->get_option( $args['id'] ) );
-			$options = array_map( function ( $key, $option ) use ( $value ) {
-				return "<option value='{$key}'" . selected( $key, $value, false ) . ">{$option}</option>";
-			}, array_keys( $options ), $options );
+
+			$valuee   = esc_attr( $this->get_option( $args['id'] ) );
+
+		
 			$size    = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+			?>
 
-			$html = sprintf( '<select %5$s class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]">%3$s</select>', $size, $args['id'], implode( '', $options ), $this->settings_name, $attrs );
-			$html .= $this->get_field_description( $args );
+			<select <?php echo esc_attr($attrs); ?> class="<?php echo esc_attr($size); ?>-text" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]">
 
-			echo $html;
-		}
+				<?php foreach($options as $key => $value){ ?>
+
+                <option <?php echo esc_attr(selected( $key, $valuee, false )) ;?> value="<?php echo esc_attr($key);?>">
+                	
+                	<?php echo esc_html($value);?> 	
+
+                </option> 
+
+               <?php } ?>
+
+			</select>
+
+			<?php if ( ! empty( $args['desc'] ) ) { ?>
+            <p class="description"><?php echo esc_html($args['desc']);?></p>
+		    <?php } }
+
+
 		public function get_field_description( $args ) {
 
 			$desc = '';
-			
 
 			if ( ! empty( $args['desc'] ) ) {
 				$desc .= sprintf( '<p class="description">%s</p>', $args['desc'] );
@@ -407,53 +400,20 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 			return ( ( $args['type'] === 'checkbox' ) ) ? '' : $desc;
 		}
-		public function post_select_field_callback( $args ) {
-
-			$options = apply_filters( "thaps_settings_{$args[ 'id' ]}_post_select_options", $args['options'] );
-
-			$value = esc_attr( $this->get_option( $args['id'] ) );
-
-			$options = array_map( function ( $option ) use ( $value ) {
-				return "<option value='{$option->ID}'" . selected( $option->ID, $value, false ) . ">$option->post_title</option>";
-			}, $options );
-
-			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
-			$html = sprintf( '<select class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]">%3$s</select>', $size, $args['id'], implode( '', $options ), $this->settings_name );
-			$html .= $this->get_field_description( $args );
-
-			echo $html;
-		}
-
+		
 		public function text_field_callback( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
+			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';?>
+           <input type="text" class="<?php echo esc_attr($size); ?>-text" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="<?php echo esc_attr($value); ?>"/>
 
-			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
-
-			$html = sprintf( '<input %5$s type="text" class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"/>', $size, $args['id'], $value, $this->settings_name, $attrs );
-			$html .= $this->get_field_description( $args );
-
-			echo $html;
+          <?php if ( ! empty( $args['desc'] ) ) { ?>
+           <p class="description"><?php echo esc_html($args['desc']);?></p>
+	      <?php 
+	           }
+				
 		}
 		
-       
-		public function iframe_field_callback( $args ) {
-			$is_html = isset( $args['html'] );
-			if ( $is_html ){
-				$html = $args['html'];
-			  } else {
-				$screen_frame = esc_url( $args['screen_frame'] );
-        $doc_link     = esc_url( $args['doc_link'] );
-        $doc_text     = esc_html($args['doc-texti']);
-				$width        = isset( $args['width'] ) ? $args['width'] : '100%';
-				$height       = isset( $args['height'] ) ? $args['height'] : '100%';
-
-        $html = sprintf( '<iframe width="%1s" height="%2s" src="%3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><a target="_blank" href="%4s">%5s</a>',  $width, $height, $screen_frame ,$doc_link, $doc_text);
-
-				$html .= $this->get_field_description( $args );
-			}
-			echo $html;
-		}
 
 		public function html_field_callback( $args ) {
          if($args[ 'id' ]=='how-to-integrate'):
@@ -503,31 +463,49 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 
 		public function color_field_callback( $args ){
+
 			$value = esc_attr( $this->get_option( $args['id'] ) );
 			
-			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? ' data-alpha-enabled="true"' : '';
-			$html  = sprintf( '<input type="text" %1$s class="thaps-color-picker" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"  data-default-color="%3$s" />', $alpha, $args['id'], $value, $this->settings_name );
-			$html  .= $this->get_field_description( $args );
+			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? $args['alpha'] : false;?>
 
-			echo $html;
+			<input type="text" data-alpha-enabled="<?php echo esc_attr($alpha); ?>" class="thaps-color-picker" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="<?php echo esc_attr($value); ?>"  data-default-color="<?php echo esc_attr($value); ?>" />
+          
+          <?php if ( ! empty( $args['desc'] ) ) { ?>
+
+           <p class="description"><?php echo esc_html($args['desc']);?></p>      
+
+		<?php
+	        }
+
 		}
 
+
 		public function number_field_callback( $args ) {
+
 			$value = esc_attr( $this->get_option( $args['id'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'small';
 
-			$min    = isset( $args['min'] ) && ! is_null( $args['min'] ) ? 'min="' . $args['min'] . '"' : '';
-			$max    = isset( $args['max'] ) && ! is_null( $args['max'] ) ? 'max="' . $args['max'] . '"' : '';
-			$step   = isset( $args['step'] ) && ! is_null( $args['step'] ) ? 'step="' . $args['step'] . '"' : '';
-			$suffix = isset( $args['suffix'] ) && ! is_null( $args['suffix'] ) ? ' <span>' . $args['suffix'] . '</span>' : '';
-
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+            ?>
 
+			<input type="number"  <?php echo esc_attr($attrs); ?> class="<?php echo esc_attr($size); ?>-text" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="<?php echo esc_attr($value); ?>"  min="<?php echo esc_attr($args['min']); ?>" max="<?php echo esc_attr($args['max']); ?>" step="<?php  if ( ! empty($args['step']) ) { 
+				echo esc_attr($args['step']); } ?>" />
 
-			$html = sprintf( '<input %9$s type="number" class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]" value="%3$s" %5$s %6$s %7$s /> %8$s', $size, $args['id'], $value, $this->settings_name, $min, $max, $step, $suffix, $attrs );
-			$html .= $this->get_field_description( $args );
+              <?php if(isset( $args['suffix'] ) && ! is_null( $args['suffix'] ) ){ ?>
 
-			echo $html;
+			<span><?php echo esc_attr($args['suffix']); ?></span>
+         
+             <?php
+
+               }
+
+           if ( ! empty( $args['desc'] ) ) { ?>
+
+           <p class="description"><?php echo esc_html($args['desc']);?></p>    
+
+		<?php 	
+
+	         } 
 		}
 
 
