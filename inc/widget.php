@@ -25,11 +25,6 @@ class Thaps_Widget extends WP_Widget {
     public function widget( $args, $instance ) {
  
         echo $args['before_widget'];
-        
-        $layout = '';
-            if ( ! empty( $instance['thaps-style'] ) ) {
-                $layout = ' layout="' . esc_attr($instance['thaps-style']) . '"';
-            }
 
         if ( ! empty( $instance['title'] ) ) {
             
@@ -38,7 +33,7 @@ class Thaps_Widget extends WP_Widget {
  
         echo '<div class="thaps-advance-widget-search ' . esc_attr($instance['thaps-style']) .'">';
  
-        echo do_shortcode('[th-aps-wdgt ' . $layout . ']');
+        echo do_shortcode('[th-aps-wdgt layout="' . esc_attr($instance['thaps-style']) . '"]');
  
         echo '</div>';
  
@@ -50,7 +45,7 @@ class Thaps_Widget extends WP_Widget {
         $selec_attr = array(
 
           'id'=>'thaps-style',
-          'label'=> __('Choose Product Type ','shopline'),
+          'label'=> __('Choose Product Type ','th-advance-product-search'),
           'default' => 'default_style',
           'option' => array('default_style'  =>__('Default','th-advance-product-search'),
                             'bar_style'      =>__('Search bar only','th-advance-product-search'),
