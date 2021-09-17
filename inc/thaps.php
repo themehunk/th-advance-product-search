@@ -173,7 +173,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
             include $filename;
 
-            if ( function_exists( 'opcache_invalidate' ) ) {
+            if ( function_exists( 'wp_opcache_invalidate' ) ) {
 
                 wp_opcache_invalidate( $filename, true );
 
