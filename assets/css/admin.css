@@ -345,3 +345,13 @@ font-weight: 700;
 #how-to-integrate-wrapper img{
 max-width: 560px;
 }
+
+.thaps-wrap-img{
+
+    padding: 0;
+    background: transparent;
+}
+.thaps-wrap-img a{
+
+display: block;
+}

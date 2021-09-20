@@ -112,8 +112,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
             	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Go Pro', 'th-advance-product-search' ) ?></h4><a href="#"><?php esc_html_e( 'Buy Now', 'th-advance-product-search' ) ?></a><a href="#"><?php esc_html_e( 'Know More', 'th-advance-product-search' ) ?></a></div>
 
-            	
-            </div>
+            	<div class="thaps-notes-row thaps-wrap-img">
+	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/product/jot-shop/'); ?>"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/jot-shop.png') ?>' alt="jot-shop">
+	               	</a>
+            	</div>
+               </div>
+
+               
+            
 				</form>
 			</div>
 			<?php
