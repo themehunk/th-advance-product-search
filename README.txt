@@ -57,8 +57,7 @@ Just upload the `th-advanced-product-search.zip` to the `/wp-content/plugins/` d
 
 == Changelog ==
 
-==1.0.4==
-
+= 1.0.4 =
 * Description Update.
 
 = 1.0.3 =
