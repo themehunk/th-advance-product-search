@@ -422,7 +422,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 			'analytics', esc_html__( 'Search Analytics', 'th-advance-product-search' ), apply_filters(
 			'thaps_analytics_settings_section', array(
 				array(
-					'title'  => esc_html__( 'How to add search Analytics in your theme?', 'th-advance-product-search' ),
+					'title'  => esc_html__( 'ADD SEARCH ANALYTICS IN YOUR THEME', 'th-advance-product-search' ),
 					'fields' => apply_filters(
 						'thaps_analytics_setting_fields', array(
 							array(

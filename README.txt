@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
 Tested up to: 5.8.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Th Advaced Product Search plugin is a powerful AJAX search plugin which will dis
 
 == Description ==
 
-TH Advance Product Search is a Free easy to use Search Plugin.
+TH Advance Product Search is a Free easy to use Search Plugin.Th Advaced Product Search plugin is a powerful AJAX search plugin which will display search result for Product, post and pages. This plugin will search Search across all your WooCommerce products ( product title, content, categories, ID and sku ) . Plugin comes with user friendly settings, use shortcodes and widget to showcase your search anywhere in your site. It also supports Google analytics to monitor your website visitor.
 
 **Key Features:-**
 
@@ -48,6 +48,9 @@ Just upload the `th-advanced-product-search.zip` to the `/wp-content/plugins/` d
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.4 =
+* Description Update.
 
 = 1.0.3 =
 * shortcode Issue Fixed.

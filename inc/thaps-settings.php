@@ -108,7 +108,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
             </div>
             <div class="thaps-notes-wrap">
 
-            	<div class="thaps-notes-row thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/'); ?>"><?php esc_html_e( 'Read Documentation', 'th-advance-product-search' ) ?></a></div>
+            	<div class="thaps-notes-row thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/'); ?>"><?php esc_html_e( 'Read Now', 'th-advance-product-search' ) ?></a></div>
 
             	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Go Pro', 'th-advance-product-search' ) ?></h4><a href="#"><?php esc_html_e( 'Buy Now', 'th-advance-product-search' ) ?></a><a href="#"><?php esc_html_e( 'Know More', 'th-advance-product-search' ) ?></a></div>
 
