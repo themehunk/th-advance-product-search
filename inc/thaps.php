@@ -37,13 +37,13 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
         public function includes() {
             if ( $this->is_required_php_version() && $this->is_wc_active() ) {
                 
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-settings.php';
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-option-setting.php';
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-function.php';
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-front-custom-style.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-settings.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-option-setting.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-function.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-front-custom-style.php';
 
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-nav-menu.php';
-                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/widget.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-nav-menu.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/widget.php';
             }
         }
 
@@ -105,9 +105,9 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
         public function th_advance_product_search_scripts(){
 
-          wp_enqueue_style( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/thaps-front-style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
+          wp_enqueue_style( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/css/thaps-front-style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
           wp_add_inline_style('th-advance-product-search-front', th_advance_product_search_style());
-          wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/js/thaps-search.js', array(
+          wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-search.js', array(
                     'jquery',
                 ),true);
           
