@@ -37,7 +37,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 						add_menu_page( $page_title, $menu_title, 'edit_theme_options', 'th-advance-product-search', array(
 							$this,
 							'settings_form'
-						),  esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/icon.png'), 31 );
+						),  esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'icon.png'), 31 );
 
 
 
@@ -113,7 +113,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
             	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Go Pro', 'th-advance-product-search' ) ?></h4><a href="#"><?php esc_html_e( 'Buy Now', 'th-advance-product-search' ) ?></a><a href="#"><?php esc_html_e( 'Know More', 'th-advance-product-search' ) ?></a></div>
 
             	<div class="thaps-notes-row thaps-wrap-img">
-	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/product/jot-shop/'); ?>"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/jot-shop.png') ?>' alt="jot-shop">
+	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/product/jot-shop/'); ?>"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'jot-shop.png') ?>' alt="jot-shop">
 	               	</a>
             	</div>
                </div>
@@ -150,7 +150,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			?>
 
 			<div class="nav-tab-wrapper wp-clearfix">
-				<div class="top-wrap"><div id="logo"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/th-logo.png') ?>' alt="th-logo"/></div>
+				<div class="top-wrap"><div id="logo"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'th-logo.png') ?>' alt="th-logo"/></div>
 				  <h1><?php echo get_admin_page_title() ?></h1>
 			     </div>
 				<?php foreach ( $this->fields as $tabs ): ?>
@@ -428,13 +428,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			
 		   <h4><?php _e( 'Easy 4 ways to integrate and display search bar your theme', 'th-advance-product-search' ); ?>: </h4>
 			<ol>
-				<li><?php printf( __( 'Using Shortcode - <br /> <br />%s    ', 'th-advance-product-search' ), '<ul><li>(a) <code>[th-aps]</code> To display default search bar. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-1.png').'"> </li>  <li>(b) <code>[th-aps layout="bar_style"]</code> To display search bar with icon.  <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-2.png').'"> </li>   <li>(c) <code>[th-aps layout="icon_style"]</code> To display search icon only, Search bar will display on click. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-3.png').'"></li> <li>(d) <code>[th-aps layout="flexible-style"]</code> To display search bar in PC and search icon in mobile view. </li></ul>' ); ?></li>
+				<li><?php printf( __( 'Using Shortcode - <br /> <br />%s    ', 'th-advance-product-search' ), '<ul><li>(a) <code>[th-aps]</code> To display default search bar. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'search-1.png').'"> </li>  <li>(b) <code>[th-aps layout="bar_style"]</code> To display search bar with icon.  <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'search-2.png').'"> </li>   <li>(c) <code>[th-aps layout="icon_style"]</code> To display search icon only, Search bar will display on click. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'search-3.png').'"></li> <li>(d) <code>[th-aps layout="flexible-style"]</code> To display search bar in PC and search icon in mobile view. </li></ul>' ); ?></li>
                 <br /> <br />
-				<li><?php printf( __( 'Using Widgets - Go to the Appearance > %s and choose "TH Advance Search Widget" <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-5.png').'">', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ); ?>
+				<li><?php printf( __( 'Using Widgets - Go to the Appearance > %s and choose "TH Advance Search Widget" <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'search-5.png').'">', 'th-advance-product-search' ), '<a href="' . admin_url( 'widgets.php' ) . '" target="_blank">' . __( 'Widgets Screen', 'th-advance-product-search' ) . '</a>' ); ?>
                 <br /> <br />
 				<li><?php printf( __( 'Using php - %s', 'th-advance-product-search' ), '<code>&lt;?php echo do_shortcode(\'[th-aps]\'); ?&gt;</code> Add this php code at the desired location in any php file. Search display style depends on shortcode you are using in the php code.' ); ?></li>
                 <br /> <br />
-				<li><?php printf( __( 'Display search bar as a menu. Go to the Appearance > %s . Check "TH Advance Search Bar" and click "Add to menu" button. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'/search-6.png').' " style="border: 1px solid #eee;">', 'th-advance-product-search' ), '<a href="' . admin_url( 'nav-menus.php' ) . '" target="_blank">' . __( 'Menu Screen', 'th-advance-product-search' ) . '</a>' ); ?></li>
+				<li><?php printf( __( 'Display search bar as a menu. Go to the Appearance > %s . Check "TH Advance Search Bar" and click "Add to menu" button. <br /> <br /> <img src="'.esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'search-6.png').' " style="border: 1px solid #eee;">', 'th-advance-product-search' ), '<a href="' . admin_url( 'nav-menus.php' ) . '" target="_blank">' . __( 'Menu Screen', 'th-advance-product-search' ) . '</a>' ); ?></li>
 			</ol>
 
 		<?php 		
@@ -681,7 +681,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			
 			wp_enqueue_style( 'wp-color-picker' );
 		
-			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. '/assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
+			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
             
 			wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
 
