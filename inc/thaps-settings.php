@@ -110,7 +110,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
             	<div class="thaps-notes-row thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/'); ?>"><?php esc_html_e( 'Read Now', 'th-advance-product-search' ) ?></a></div>
 
-            	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Go Pro', 'th-advance-product-search' ) ?></h4><a href="#"><?php esc_html_e( 'Buy Now', 'th-advance-product-search' ) ?></a><a href="#"><?php esc_html_e( 'Know More', 'th-advance-product-search' ) ?></a></div>
+            	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Pro Version', 'th-advance-product-search' ) ?></h4><b><?php esc_html_e( 'Coming Soon', 'th-advance-product-search' ) ?></b></div>
 
             	<div class="thaps-notes-row thaps-wrap-img">
 	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/product/jot-shop/'); ?>"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'jot-shop.png') ?>' alt="jot-shop">
@@ -460,7 +460,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				
 				
 				<li><?php printf( __( '%s', 'th-advance-product-search' ), '<code> thaps_google_analytics_events", "__return_false" ); </code>' ); ?></li>
+               </ul>
+           </br>
+               <ul>
 
+				<li><img src="<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'google-analtyitcs-result.png'); ?>"></li>
+			</ul>
+             <p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/#google-analytics');?>" class="explore-google-analytics"><?php _e('Explore Doc','th-advance-product-search');?></a></p>
 				
 			</ul>
 
