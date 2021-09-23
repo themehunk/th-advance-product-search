@@ -41,6 +41,7 @@ $bar_button_bg_clr  = esc_html(th_advance_product_search()->get_option( 'bar_but
 $bar_button_txt_clr = esc_html(th_advance_product_search()->get_option( 'bar_button_txt_clr' ));
 $bar_button_hvr_clr = esc_html(th_advance_product_search()->get_option( 'bar_button_hvr_clr' ));
 $bar_button_txt_hvr_clr = esc_html(th_advance_product_search()->get_option( 'bar_button_txt_hvr_clr' ));
+$icon_clr = esc_html(th_advance_product_search()->get_option( 'icon_clr' ));
 
 $thaps_frnt_custom_css.=".thaps-from-wrap,input[type='text'].thaps-search-autocomplete,.thaps-box-open .thaps-icon-arrow{background-color:{$bar_bg_clr};} .thaps-from-wrap{background-color:{$bar_bg_clr};} input[type='text'].thaps-search-autocomplete, input[type='text'].thaps-search-autocomplete::-webkit-input-placeholder{color:{$bar_text_clr};} .thaps-from-wrap,.thaps-autocomplete-suggestions{border-color:{$bar_brdr_clr};}
 
@@ -48,7 +49,9 @@ $thaps_frnt_custom_css.=".thaps-from-wrap,input[type='text'].thaps-search-autoco
 
  #thaps-search-button{background:{$bar_button_bg_clr}; color:{$bar_button_txt_clr};} 
 
- #thaps-search-button:hover{background:{$bar_button_hvr_clr}; color:{$bar_button_txt_hvr_clr};}";
+ #thaps-search-button:hover{background:{$bar_button_hvr_clr}; color:{$bar_button_txt_hvr_clr};}
+
+ .submit-active #thaps-search-button svg path{fill:{$icon_clr};}";
 
 //suggestion box
 $sus_bg_clr = esc_html(th_advance_product_search()->get_option( 'sus_bg_clr' ));

@@ -88,7 +88,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'level_submit',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Submit Button Lebel', 'th-advance-product-search' ),
-								'default' => esc_html__( 'Submit', 'th-advance-product-search' ),
+								'default' => '',
 								
 							),
 							array(
@@ -337,6 +337,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'alpha'   => true,
 									),
 									array(
+										'id'      => 'icon_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Icon Color', 'th-advance-product-search' ),
+										
+										'alpha'   => true,
+									),
+									array(
 										'id'      => 'bar_button_bg_clr',
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button BG Color ', 'th-advance-product-search' ),
@@ -422,7 +429,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 			'analytics', esc_html__( 'Search Analytics', 'th-advance-product-search' ), apply_filters(
 			'thaps_analytics_settings_section', array(
 				array(
-					'title'  => esc_html__( 'How to add search Analytics in your theme?', 'th-advance-product-search' ),
+					'title'  => esc_html__( 'ADD SEARCH ANALYTICS IN YOUR THEME', 'th-advance-product-search' ),
 					'fields' => apply_filters(
 						'thaps_analytics_setting_fields', array(
 							array(

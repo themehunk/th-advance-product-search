@@ -47,6 +47,10 @@ background: #111;
    color: #fff;
 }
 
+.submit-active #thaps-search-button svg path{
+      fill: #fff;
+}
+
 #thaps-search-button:hover{
 background:#888;
 }

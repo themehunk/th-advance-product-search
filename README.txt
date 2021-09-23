@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
 Tested up to: 5.8.1
-Stable tag: 1.0.3
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,15 +13,28 @@ Th Advaced Product Search plugin is a powerful AJAX search plugin which will dis
 
 == Description ==
 
-TH Advance Product Search is a Free easy to use Search Plugin.
+TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
+This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
+
 
 **Key Features:-**
+* Quick and Fast Search
+* Fully Responsive & Mobile Friendly
+* Search Analytics Support
+* Advanced Search for WooCommerce Product ( Categories, Description, Image, Price, SKU's )
+* Advanced Search for Post ( Categories, Description & Image )
+* Advanced Search for Pages  ( Description & Image )
+* Search using AJAX search
+* Exclude specific content from search results
+* Color Manager options for each Search element
+* Supports multilingual
+* Display Search Forms anywhere on your site.
+* Autocomplete Search
+* Fully compatible with WordPress Themes
+* User Friendly Customize Panel 
 
 
-**Pro Features:-**
-
-
-* 24x7 support available for free product too [support](https://www.support.themehunk.com/).
+* 24x7 support available for free product too [support](https://themehunk.com/contact-us/).
 
 [Sales Page](https://themehunk.com/advanced-product-search/)|[Docs](https://themehunk.com/docs/th-advance-product-search/)
 
@@ -40,14 +53,19 @@ Just upload the `th-advanced-product-search.zip` to the `/wp-content/plugins/` d
 
 1. [Support Forum](https://www.support.themehunk.com/#plugin.25)
 
-== Demo ==
-
-== Compatible Themes ==
-
 
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.6 =
+* Search default style change.
+
+= 1.0.5 =
+* url issue fixed.
+
+= 1.0.4 =
+* Description Update.
 
 = 1.0.3 =
 * shortcode Issue Fixed.

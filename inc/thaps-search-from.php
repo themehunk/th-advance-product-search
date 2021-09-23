@@ -11,7 +11,7 @@ $barClass='submit-active';
 
 }
 
-$icon_clr = esc_html(th_advance_product_search()->get_option( 'bar_text_clr' ));
+$icon_clr = esc_html(th_advance_product_search()->get_option( 'icon_clr' ));
 
 $uniqueID   = ++ TH_Advance_Product_Search()->searchInstances;
 
