@@ -88,7 +88,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'level_submit',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Submit Button Lebel', 'th-advance-product-search' ),
-								'default' => esc_html__( 'Submit', 'th-advance-product-search' ),
+								'default' => '',
 								
 							),
 							array(
@@ -334,6 +334,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'id'      => 'bar_text_clr',
 										'type'    => 'color',
 										'title'   => esc_html__( 'Placeholder Color', 'th-advance-product-search' ),
+										'alpha'   => true,
+									),
+									array(
+										'id'      => 'icon_clr',
+										'type'    => 'color',
+										'title'   => esc_html__( 'Icon Color', 'th-advance-product-search' ),
+										
 										'alpha'   => true,
 									),
 									array(

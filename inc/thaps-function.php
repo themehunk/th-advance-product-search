@@ -436,12 +436,15 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
              
               }
 
-              if (!empty($results->posts)){
 
-                  if($enable_group_heading == true){
+              if($enable_group_heading == true){
 
                   $items['suggestions'][] = $this->thaps_show_heading($product_hd);
               }
+
+              if (!empty($results->posts)){
+
+                 
 
               foreach (array_slice($results->posts,0,$limit) as $result){
 
@@ -538,14 +541,17 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
                 }
              
-              }        
-             if (!empty($results->posts)){
+              }   
 
              if($enable_group_heading == true){   
 
              $items['suggestions'][] = $this->thaps_show_heading($post_hd);
 
-             }
+             }    
+
+             if (!empty($results->posts)){
+
+             
 
              foreach (array_slice($results->posts,0,$limit) as $result){
 
