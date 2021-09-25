@@ -141,7 +141,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'placeholder_text',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Placeholder Text', 'th-advance-product-search' ),
-								'default' => esc_html__('Product Search','th-advance-product-search'),
+								'default' => esc_html__('Search...','th-advance-product-search'),
 								
 							),
 						)
