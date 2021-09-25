@@ -804,7 +804,7 @@
             /************************************/
             $.each(that.suggestions, function (i, suggestion){
 
-                console.log(suggestion);
+                //console.log(suggestion);
                 var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
                     
                     isImg  = suggestion.imgsrc ? suggestion.imgsrc:'' ,

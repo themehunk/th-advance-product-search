@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
 Tested up to: 5.8.1
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,6 +57,9 @@ Just upload the `th-advanced-product-search.zip` to the `/wp-content/plugins/` d
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.7 =
+* Woocommerce plugin deactivate issue fixed.
 
 = 1.0.6 =
 * Search default style change.

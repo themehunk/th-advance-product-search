@@ -35,7 +35,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
         }
 
         public function includes() {
-            if ( $this->is_required_php_version() && $this->is_wc_active() ) {
+           
                 
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-settings.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-option-setting.php';
@@ -44,18 +44,18 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-nav-menu.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/widget.php';
-            }
+            
         }
 
         public function hooks() {
                add_action( 'init', array( $this, 'setImageSize' ));
-            if($this->is_wc_active()){
+           
                 add_action( 'init', array( $this, 'settings_api' ), 5 );
                 add_shortcode( 'th-aps', array( $this, 'addBody' ), 5 );
                 add_shortcode( 'th-aps-wdgt', array( $this, 'addBody' ), 5 );
                 add_filter( 'body_class', array( $this, 'body_class' ) );
                 add_action( 'wp_enqueue_scripts', array( $this, 'th_advance_product_search_scripts' ), 15 );
-            }
+           
         }
 
         public function is_wc_active() {
@@ -69,9 +69,9 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
         public function settings_api() {
 
-            if ( ! $this->_settings_api &&  $this->is_wc_active() )  {
-                $this->_settings_api = new TH_Advancde_Product_Search_Set();
-            }
+           
+           $this->_settings_api = new TH_Advancde_Product_Search_Set();
+            
 
             return $this->_settings_api;
         }

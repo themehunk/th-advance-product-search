@@ -348,7 +348,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
      
       public function checkbox_field_callback( $args ) {
                
-			$value = wc_string_to_bool( $this->get_option( $args['id'] ) );
+			$value = (bool)( $this->get_option( $args['id'] ) );
 
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';?>
 
