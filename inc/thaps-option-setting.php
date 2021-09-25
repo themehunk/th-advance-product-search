@@ -28,6 +28,52 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
            add_action( 'init', array( $this,'thaps_option_settings'), 2 );
 		}
 
+		public function post_type_option(){
+          
+                    if(class_exists( 'WooCommerce' )){    
+
+                            $pst_ary =     array(
+
+									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search-pro' ),
+									'product_srch' => esc_html__( 'Product', 'th-advance-product-search-pro' ),
+									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search-pro' )
+								);
+
+                        }else{
+                              
+
+                              $pst_ary =     array(
+
+									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search-pro' ),
+									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search-pro' )
+								);
+
+                        }
+
+
+                           return $pst_ary;
+
+
+		}
+
+		public function post_type_option_default(){
+                       
+            if(class_exists( 'WooCommerce' )){
+
+                        $option_default = 'product_srch';
+
+                      }else{
+
+                        $option_default = 'post_srch';
+
+                      } 
+
+                      return $option_default;
+
+
+		}
+
+          
 		public function thaps_option_settings(){
 
             th_advance_product_search()->add_setting(
@@ -132,12 +178,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'select_srch_type',
 								'type'    => 'select',
 								'title'   => esc_html__( 'Select Search Type', 'th-advance-product-search' ),
-								'default' => 'product_srch',
-								'options' => array(
-									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search-pro' ),
-									'product_srch' => esc_html__( 'Product', 'th-advance-product-search-pro' ),
-									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search-pro' )
-								),
+								'default' => $this->post_type_option_default(),
+								'options' => $this->post_type_option(),
 								'desc'    => esc_html__( 'This setting define what you want to search, For example if you select "Product" then search will display olny products in search result.', 'th-advance-product-search' ),
 								
 							),

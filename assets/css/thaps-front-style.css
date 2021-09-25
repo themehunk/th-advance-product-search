@@ -209,7 +209,7 @@ margin:0;
 font-size:.89rem;
 }
 .thaps-autocomplete-suggestion .thaps-title{
-display:inline-flex;
+display:inline-block;
 margin-right: 0.6rem;
 }
 .thaps-autocomplete-suggestion .thaps-price{
