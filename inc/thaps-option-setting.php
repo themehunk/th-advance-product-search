@@ -34,9 +34,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 
                             $pst_ary =     array(
 
-									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search-pro' ),
-									'product_srch' => esc_html__( 'Product', 'th-advance-product-search-pro' ),
-									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search-pro' )
+									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search' ),
+									'product_srch' => esc_html__( 'Product', 'th-advance-product-search' ),
+									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search' )
 								);
 
                         }else{
@@ -44,8 +44,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 
                               $pst_ary =     array(
 
-									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search-pro' ),
-									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search-pro' )
+									'post_srch'   => esc_html__( 'Post', 'th-advance-product-search' ),
+									'page_srch'  => esc_html__( 'Page', 'th-advance-product-search' )
 								);
 
                         }
@@ -86,14 +86,15 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'how-to-integrate',
 								'type'    => 'html',
-								'title'   => esc_html__( 'How To Add', 'th-advance-product-search' ),
-							),	
+								'title'   => esc_html__( 'How To Add', 'th-advance-product-search' )
+							)
 						)
 					)
 				 )
 			  )
-		    ),apply_filters( 'thaps_integration_settings_default_active', true )
+		    ), apply_filters( 'thaps_integration_settings_default_active', true )
 		  );
+
           th_advance_product_search()->add_setting(
 			'search-bar', esc_html__( 'Basic Setting', 'th-advance-product-search' ), apply_filters(
 			'thaps_search_bar_settings_section', array(
@@ -109,7 +110,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'desc'    => esc_html__( 'Min characters to show autocomplete, Search start showing the results after the minimum character value you set here', 'th-advance-product-search' ),
 								'default' => 1,
 								'min'     => 1,
-								'max'     => 10,
+								'max'     => 10
 							),
 							array(
 								'id'      => 'set_form_width',
@@ -134,16 +135,16 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'level_submit',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Submit Button Lebel', 'th-advance-product-search' ),
-								'default' => '',
+								'default' => ''
 								
 							),
 							array(
 								'id'      => 'placeholder_text',
 								'type'    => 'text',
 								'title'   => esc_html__( 'Placeholder Text', 'th-advance-product-search' ),
-								'default' => esc_html__('Search...','th-advance-product-search'),
+								'default' => esc_html__('Search...','th-advance-product-search')
 								
-							),
+							)
 						)
 					)
 				 ),
@@ -157,14 +158,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'title'   => esc_html__( 'Loader', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'Check to disable loader', 'th-advance-product-search' ),
 								'default' => false
-							    ),	
+							    )
 						
 						)
 					)
-				 ),
+				 )
 
 			   )
-		     ),
+		     )
 		   );
           th_advance_product_search()->add_setting(
 			'autosetting', esc_html__( 'Advance Setting', 'th-advance-product-search' ), apply_filters(
@@ -180,7 +181,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'title'   => esc_html__( 'Select Search Type', 'th-advance-product-search' ),
 								'default' => $this->post_type_option_default(),
 								'options' => $this->post_type_option(),
-								'desc'    => esc_html__( 'This setting define what you want to search, For example if you select "Product" then search will display olny products in search result.', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'This setting define what you want to search, For example if you select "Product" then search will display olny products in search result.', 'th-advance-product-search' )
 								
 							),
 							array(
@@ -198,7 +199,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'text',
 								'title'   => esc_html__( 'No Result Label', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'This text will display at the search result dropdown.', 'th-advance-product-search' ),
-								'default' => esc_html__( 'No Result Found', 'th-advance-product-search' ),
+								'default' => esc_html__( 'No Result Found', 'th-advance-product-search' )
 								
 							),
 							array(
@@ -206,7 +207,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'text',
 								'title'   => esc_html__( 'More Result Label', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'This text will display at the search result dropdown.', 'th-advance-product-search' ),
-								'default' => esc_html__( 'See More Product..', 'th-advance-product-search' ),
+								'default' => esc_html__( 'See More Product..', 'th-advance-product-search' )
 								
 							),
 						  array(
@@ -226,8 +227,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'desc'    => esc_html__( 'This option limit searched item description length. Count value in words.', 'th-advance-product-search' ),
 								'default' => 60,
 								'min'     => 1,
-								'max'     => 500,
-							),
+								'max'     => 500
+							)
 							
 						)
 					)
@@ -249,7 +250,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'title'   => esc_html__( 'Enable Category Image', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => true
-							    ),
+							    )
 							
 							
 							
@@ -294,9 +295,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'text',
 								'title'   => esc_html__( 'Exclude Product', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'Exclude Product by SKU ID seperated by " , "', 'th-advance-product-search' ),
-								'default' =>  false,
+								'default' =>  false
 								
-							),
+							)
 							
 						)
 					)
@@ -348,7 +349,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							
 						)
 					)
-				 ),
+				 )
 			  )
 		    )
 		  );
@@ -407,8 +408,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'id'      => 'bar_button_txt_hvr_clr',
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button Text Hover Color', 'th-advance-product-search' ),
-										'alpha'   => true,
-									),
+										'alpha'   => true
+									)
 								)
 							)
 						 ),
@@ -457,14 +458,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'id'      => 'sus_text_clr',
 										'type'    => 'color',
 										'title'   => esc_html__( 'Text Color', 'th-advance-product-search' ),
-										'alpha'   => true,
-									),
+										'alpha'   => true
+									)
 									
 								)
 							)
-						 ),
+						 )
 					  )
-				),
+				)
 			);
 
 		 th_advance_product_search()->add_setting(
@@ -477,8 +478,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'how-to-integrate-analytics',
 								'type'    => 'analytics-html',
-								'title'   => esc_html__( 'How To Add', 'th-advance-product-search' ),
-							),	
+								'title'   => esc_html__( 'How To Add', 'th-advance-product-search' )
+							)	
 						)
 					)
 				 )
