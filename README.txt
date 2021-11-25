@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
 Tested up to: 5.8.1
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,28 +17,39 @@ This plugin provide you freedom to choose color and styling to match up with you
 TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
 This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
 
+[Docs](https://themehunk.com/docs/th-advance-product-search/) | [Sales Page](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/).
 
 **Key Features:-**
-* Quick and Fast Search
-* Fully Responsive & Mobile Friendly
-* Search Analytics Support
-* Advanced Search for WooCommerce Product ( Categories, Description, Image, Price, SKU's )
-* Advanced Search for Post ( Categories, Description & Image )
-* Advanced Search for Pages  ( Description & Image )
-* Search using AJAX search
-* Exclude specific content from search results
-* Color Manager options for each Search element
-* Supports multilingual
-* Display Search Forms anywhere on your site.
-* Autocomplete Search
-* Fully compatible with WordPress Themes
-* User Friendly Customize Panel 
 
+⭐ Quick and Fast Search
+⭐ Fully Responsive & Mobile Friendly
+⭐ Search Analytics Support
+⭐ Advanced Search for WooCommerce Product ( Categories, Description, Image, Price, SKU's )
+⭐ Advanced Search for Post ( Categories, Description & Image )
+⭐ Advanced Search for Pages  ( Description & Image )
+⭐ Search using AJAX search
+⭐ Exclude specific content from search results
+⭐ Color Manager options for each Search element
+⭐ Supports multilingual
+⭐ Display Search Forms anywhere on your site.
+⭐ Autocomplete Search
+⭐ Fully compatible with WordPress Themes
+⭐ User Friendly Customize Panel 
+⭐ 24x7 support available for free product too 
 
-* 24x7 support available for free product too [support](https://themehunk.com/contact-us/).
+**Pro Features:-**
 
-[Sales Page](https://themehunk.com/advanced-product-search/)|[Docs](https://themehunk.com/docs/th-advance-product-search/)
-
+⭐ Search Products, Page and Post using AJAX Search.
+⭐ Plugin specially developed for WooCommerce product search, Search content from all your website pages, Search post content (like title, description, category).
+⭐ Product Search Scope like Search in Category, Tag, SKU, Attributes, Description and Short Description.
+⭐ Pro version has Search Bar Display Options like Shortcode, Search Widget, Menu and PHP code.
+⭐ Pro version comes with Unlimited Color options for Search elements
+⭐ It also Supports multilingual
+⭐ Fully Responsive & Mobile Friendly
+⭐ Display Search Forms anywhere on your site.
+⭐ Fully compatible with WordPress Themes
+⭐ User Friendly Customize Pane
+⭐ Priority 24×7 support available
 
 
 == Installation ==
@@ -52,12 +63,35 @@ This plugin provide you freedom to choose color and styling to match up with you
 = How to Install Plugin =
 Just upload the `th-advanced-product-search.zip` to the `/wp-content/plugins/` directory, and then activate it from 'Plugins' menu in WordPress.
 
-1. [Support Forum](https://www.support.themehunk.com/#plugin.25)
+= How can i get Support if my TH Advance Product Search Plugin is not Working ? =
+
+If you're facing any problem while using our TH Advance Product Search plugin, Please first follow the below steps :
+
+1. Deactivate all plugins you are using and check if the problem is still occurring with our TH Advance Product Search.
+2. Check the theme and plugin version, if it is latest or not.
+3. Check the plugin with default theme, to make sure error is not due to theme you're using.
+
+You're free to contact us through mail, via our Contact form and Live chat support. We have also given full documentation of our Plugin, you can go with it and learn how to use our plugin.
+
+= How can i get more advanced features of TH Advance Product Search ? =
+
+You can get more features with the premium version of TH Advance Product Search Plugin, available on [ThemeHunk](https://themehunk.com/). Please [follow this link](https://themehunk.com/advance-product-search/) and get to know about more advanced features.
+
+= Is it Compatible with All WordPress Themes ? =
+
+It is compatible with all [ThemeHunk themes](https://themehunk.com/free-themes/) and almost all WordPress themes, We always try to make our Plugin compatible with All WordPress Themes. If TH Advance Product Search will create any kind of issue with any theme. You're Free to [contact us](https://themehunk.com/contact-us/) , Our Team will be Happy to help you.
+
+= Can I translate TH Advance Product Search plugin to Multi Language ? =
+
+Yes, You can translate our plugin to desired language.
 
 
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.9 =
+* Improve Text.
 
 = 1.0.8 =
 * Synatx issue fixed.

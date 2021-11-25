@@ -2,8 +2,8 @@
 /**
  * Plugin Name:             TH Advance Product Search
  * Plugin URI:              https://themehunk.com
- * Description:             TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
- * Version:                 1.0.8
+ * Description:             TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour. <a href="https://themehunk.com/plugins/" target="_blank">Get more plugins for your website on <strong>ThemeHunk</strong></a>
+ * Version:                 1.0.9
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       4.8
@@ -52,7 +52,7 @@ require_once("inc/thaps.php");
 } 
 
         /**
-         * Add the settings link to the Lead Form Plugin plugin row
+         * Add the settings link to the plugin row
          *
          * @param array $links - Links for the plugin
          * @return array - Links
@@ -63,14 +63,50 @@ require_once("inc/thaps.php");
 
                       $settings_link = '<a href="'.esc_url($settings_page).'">'.__('Settings', 'th-advance-product-search' ).'</a>';
 
-                      array_unshift($links, $settings_link);
-
-                       // $links['thaps_pro'] = sprintf( '<a style="color: #39b54a; font-weight:600;" href="%s" target="_blank" class="thaps-plugins-gopro">%s</a>', '#', __( 'Go Pro', 'th-advance-product-search' ) );
+                      array_unshift($links, $settings_link); 
 
                       return $links;
         }
 
         add_filter('plugin_action_links_'.TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_BASENAME, 'th_advance_product_search_plugin_action_links', 10, 1);
+
+
+    /**
+   * Add links to plugin's description in plugins table
+   *
+   * @param array  $links  Initial list of links.
+   * @param string $file   Basename of current plugin.
+   *
+   * @return array
+   */
+if ( ! function_exists( 'th_advance_product_search_plugin_meta_links' ) ){
+
+  function th_advance_product_search_plugin_meta_links($links, $file){
+
+    if ($file !== plugin_basename(__FILE__)) {
+      return $links;
+    }
+
+    //$demo_link = '<a target="_blank" href="#" title="' . __('Live Demo', 'th-variation-swatches') . '"><span class="dashicons  dashicons-laptop"></span>' . __('Live Demo', 'th-advance-product-search') . '</a>';
+
+    $doc_link = '<a target="_blank" href="https://themehunk.com/docs/th-advance-product-search/" title="' . __('Documentation', 'th-advance-product-search') . '"><span class="dashicons  dashicons-search"></span>' . __('Documentation', 'th-advance-product-search') . '</a>';
+
+    $support_link = '<a target="_blank" href="https://themehunk.com/contact-us/" title="' . __('Support', 'th-advance-product-search') . '"><span class="dashicons  dashicons-admin-users"></span>' . __('Support', 'th-advance-product-search') . '</a>';
+
+    $pro_link = '<a target="_blank" href="https://themehunk.com/advance-product-search/" title="' . __('Premium Version', 'th-advance-product-search') . '"><span class="dashicons  dashicons-cart"></span>' . __('Premium Version', 'th-advance-product-search') . '</a>';
+
+    $links[] = $doc_link;
+    $links[] = $support_link;
+    $links[] = $pro_link;
+
+    return $links;
+
+  } // plugin_meta_links
+
+}
+add_filter('plugin_row_meta', 'th_advance_product_search_plugin_meta_links', 10, 2);
+
+
 
          // svg icon style
 
