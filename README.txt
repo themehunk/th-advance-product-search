@@ -92,6 +92,7 @@ Yes, You can translate our plugin to desired language.
 
 = 1.1.0 =
 * Amaz store banner added.
+* Upgrade now button added.
 
 = 1.0.9 =
 * Improve Text.
