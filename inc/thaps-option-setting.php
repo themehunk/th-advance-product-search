@@ -486,6 +486,52 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 			  )
 		    )
 		  );
+		  th_advance_product_search()->add_setting(
+			'thaps_usefull_plugin', esc_html__( 'Themehunk Useful Plugins', 'th-advance-product-search' ), apply_filters(
+			'thaps_usefull_plugin_settings_section', array(
+				array(
+					'title'  => esc_html__( 'Themehunk Useful Plugins', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_usefull_plugin_setting_fields', array(
+							array(
+								'id'         => 'thaps-th-Variation-Swatches',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/th-variation-swatches/assets/icon-128x128.gif'),
+								'plugin_title'  => esc_html__( 'TH Variation Swatches', 'th-advance-product-search' ),
+								'plugin_link'  => esc_url('https://themehunk.com/th-variation-swatches/'),	
+								
+							),
+							array(
+								'id'         => 'thaps-lead-form-builder',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/lead-form-builder/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'Lead Form Builder', 'th-advance-product-search' ),
+								'plugin_link'  => esc_url('https://themehunk.com/product/lead-form-builder-pro/'),	
+								
+							),
+							array(
+								'id'         => 'thaps-wp-popup-builder',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/wp-popup-builder/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'WP Popup Builder – Popup Forms & Newsletter', 'th-advance-product-search' ),
+								'plugin_link'  => esc_url('https://themehunk.com/product/wp-popup-builder/'),	
+								
+							),
+						)
+					)
+				 )
+			  )
+		    )
+		  );
 
 		}
 
