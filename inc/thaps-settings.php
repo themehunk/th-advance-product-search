@@ -110,7 +110,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
             	<div class="thaps-notes-row thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/'); ?>"><?php esc_html_e( 'Read Now', 'th-advance-product-search' ) ?></a></div>
 
-            	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Pro Version', 'th-advance-product-search' ) ?></h4><a target="_blank" href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>"><?php esc_html_e( 'Upgrade Now', 'th-advance-product-search' ) ?></a>
+            	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Advance Product Search Pro', 'th-advance-product-search' ) ?></h4><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'th-advance-search-pro-banner.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>"><?php esc_html_e( 'Upgrade Now', 'th-advance-product-search' ) ?></a>
 
             	</div>
 
@@ -243,7 +243,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 				printf( '<tr id="%s" %s %s>', $wrapper_id, $custom_attributes, $dependency );
 
-				
+				 if ( isset( $field['args']['usefull'] ) ) {
+					echo '<td colspan="2" style="padding: 0; margin: 0">';
+					$this->usefullplugin_field_callback( $field['args'] );
+					echo '</td>';
+			  	}else{
 					echo '<th scope="row" class="thaps-settings-label">';
 					if ( ! empty( $field['args']['label_for'] ) ) {
 						echo '<label for="' . esc_attr( $field['args']['label_for'] ) . '">' . esc_html($field['title']). '</label>';
@@ -255,6 +259,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					echo '<td class="thaps-settings-field-content">';
 					call_user_func( $field['callback'], $field['args'] );
 					echo '</td>';
+				}
 				
 				   echo '</tr>';
 			}
@@ -338,6 +343,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 			    case 'analytics-html':
 					$this->analytics_html_field_callback( $field );
+					break;
+
+				case 'usefullplugin':
+					$this->usefullplugin_field_callback( $field );
 					break;		 			
 
 				default:
@@ -520,6 +529,25 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		<?php 	
 
 	         } 
+		}
+
+		public function usefullplugin_field_callback( $args ) {
+
+			$is_html = isset( $args['html'] );
+
+			if ( $is_html ) {
+				$html = $args['html'];
+			  } else {
+				$plugin_image  = esc_url( $args['plugin_image'] );
+				$plugin_title  = $args['plugin_title'];
+				$plugin_link   = $args['plugin_link'];
+
+				$html = sprintf( '<div class="thaps-use-plugin"><img src="%s" /><a target="_blank" href="%s">%s</a></div>', $plugin_image, $plugin_link, $plugin_title);
+				
+			}
+
+
+			echo $html;
 		}
 
 

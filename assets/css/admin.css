@@ -282,10 +282,10 @@ line-height:24px;
 {
 padding: 24px 16px;
     border-radius: 4px;
-    color: #fff;
+    color: #111;
     text-align: center;
-    background:#1665a9;
-        margin-bottom: 1rem;
+    background: #fff;
+    margin-bottom: 1rem;
 }
 .thaps-wrap-doc a,.thaps-wrap-pro a{
 padding: 0.4rem 1.5rem;
@@ -375,4 +375,22 @@ color:#fff;
 .thaps-wrap-pro b{
 padding-top: 0.5rem;
     display: block;
+}
+.thaps-use-plugin img{
+width:128px;
+height:128px;
+margin-right:1rem;
+    border: 1px solid #efefef;
+
+}
+
+.thaps-use-plugin{
+display:flex;
+align-items: center;
+margin:1rem 0;
+}
+
+.thaps-use-plugin a{
+font-size:1rem;
+font-weight:500;
 }
