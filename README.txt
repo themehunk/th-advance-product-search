@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
-Tested up to: 5.8.1
-Stable tag: 1.0.9
+Tested up to: 5.8.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +89,10 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1.0 =
+* Amaz store banner added.
+* Upgrade now button added.
 
 = 1.0.9 =
 * Improve Text.
