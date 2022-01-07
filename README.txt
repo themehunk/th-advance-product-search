@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
 Tested up to: 5.8.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ This plugin provide you freedom to choose color and styling to match up with you
 TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
 This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
 
-[Docs](https://themehunk.com/docs/th-advance-product-search/) | [Sales Page](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/).
+[Docs](https://themehunk.com/docs/th-advance-product-search/) | [More Details](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/).
 
 **Key Features:-**
 
@@ -89,6 +89,9 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1.1 =
+* Notice added.
 
 = 1.1.0 =
 * Amaz store banner added.
