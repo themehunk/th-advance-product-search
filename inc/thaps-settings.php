@@ -32,13 +32,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
         
 
         public function add_menu(){
-						$page_title = esc_html__( 'Th Advance Product Search', 'th-advance-product-search' );
-						$menu_title = esc_html__( 'TH Search', 'th-advance-product-search' );
-						add_menu_page( $page_title, $menu_title, 'edit_theme_options', 'th-advance-product-search', array(
-							$this,
-							'settings_form'
-						),  esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'icon.png'), 31 );
+						$page_title = esc_html__( 'TH Advance Search', 'th-advance-product-search' );
+						// $menu_title = esc_html__( 'TH Search', 'th-advance-product-search' );
+						// add_menu_page( $page_title, $menu_title, 'edit_theme_options', 'th-advance-product-search', array(
+						// 	$this,
+						// 	'settings_form'
+						// ),  esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'icon.png'), 31 );
 
+						add_submenu_page( 'themehunk-plugins', $page_title, $page_title, 'manage_options', 'th-advance-product-search', array($this, 'settings_form'),11 );
 
 
 		 }
@@ -714,24 +715,26 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		
         public function script_enqueue(){
 			
+			if (isset($_GET['page']) && $_GET['page'] == 'th-advance-product-search') {
+
+				wp_enqueue_style( 'wp-color-picker' );
 			
-			wp_enqueue_style( 'wp-color-picker' );
-		
-			wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
-            
-			wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
+				wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
+				
+				wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
 
-            wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-setting.js', array('jquery'),true);
+				wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-setting.js', array('jquery'),true);
 
-			wp_localize_script(
-				'thaps-setting-script', 'THAPSPluginObject', array(
-					'media_title'   => esc_html__( 'Choose an Image', 'th-advance-product-search' ),
-					'button_title'  => esc_html__( 'Use Image', 'th-advance-product-search' ),
-					'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
-					'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
-					'nonce'         => wp_create_nonce( 'thaps_plugin_nonce' ),
-				)
-			);
+				wp_localize_script(
+					'thaps-setting-script', 'THAPSPluginObject', array(
+						'media_title'   => esc_html__( 'Choose an Image', 'th-advance-product-search' ),
+						'button_title'  => esc_html__( 'Use Image', 'th-advance-product-search' ),
+						'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
+						'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
+						'nonce'         => wp_create_nonce( 'thaps_plugin_nonce' ),
+					)
+				);
+			}
 		}
 
 }

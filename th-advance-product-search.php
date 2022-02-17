@@ -46,6 +46,7 @@ if (!defined('TH_ADVANCE_PRODUCT_SEARCH_VERSION')) {
 } 
 
 if (!class_exists('TH_Advance_Product_Search')) {
+include_once(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/themehunk-menu/admin-menu.php');
 require_once("inc/thaps.php");
 require_once("notice/th-notice.php");
 } 
