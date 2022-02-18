@@ -51,6 +51,16 @@ This plugin provide you freedom to choose color and styling to match up with you
 ⭐ User Friendly Customize Pane
 ⭐ Priority 24×7 support available
 
+**MORE PLUGINS FROM US**
+
+Here are some additional plugins that were made with love.
+
+[Contact Form](https://wordpress.org/plugins/lead-form-builder/) – Contact Form & Lead Form Elementor Builder
+[Cart for Woocommerce](https://wordpress.org/plugins/th-all-in-one-woo-cart/) – All In One Woo Cart is a perfect choice to display Cart on your website and improve your potential customer’s buying experience.
+[Popup Builder](https://wordpress.org/plugins/wp-popup-builder/) – Popup Forms , Marketing PoPuP & Newsletter
+[Product Compare](https://wordpress.org/plugins/th-product-compare/) – Product Compare plugin helps you to create interactive product comparison tables.
+[ Variation Swatches](https://wordpress.org/plugins/th-variation-swatches/) – Variation Swatches is a Free easy to use WooCommerce Swatches Plugin
+
 
 == Installation ==
 

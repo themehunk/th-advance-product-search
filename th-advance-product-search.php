@@ -6,7 +6,7 @@
  * Version:                 1.1.2
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
- * Requires at least:       4.8
+ * Requires at least:       5.0
  * Tested up to:            5.9
  * WC requires at least:    3.2
  * WC tested up to:         5.1
