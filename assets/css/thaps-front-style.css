@@ -47,9 +47,6 @@ background: #111;
    color: #fff;
 }
 
-.submit-active #thaps-search-button svg path{
-      fill: #fff;
-}
 
 #thaps-search-button:hover{
 background:#888;
@@ -185,7 +182,8 @@ height: 100%;
     }
 }
 
-.submit-no-active .thaps-from-wrap svg, .bar_style svg,.icon_style .thaps-from-wrap svg{
+.submit-no-active .thaps-from-wrap .th-icon, .bar_style .th-icon,
+.icon_style .thaps-from-wrap .th-icon{
 position:absolute;
 left:0.5rem
 }
@@ -296,4 +294,7 @@ div.thaps-autocomplete-suggestions::-webkit-scrollbar-thumb
     background-color: #E5E6E8;
 
                      
+}
+.thaps-search-box .th-icon{
+font-size:1.62rem;
 }

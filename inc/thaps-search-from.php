@@ -27,14 +27,14 @@ if($layoutType == 'default_style'){ ?>
 
 <?php
 
-if(th_advance_product_search()->get_option( 'show_submit' )=='0'){
+if(th_advance_product_search()->get_option('show_submit' )=='0'){
 
-  th_advance_product_search_icon_style_svg('icon-svg-style', $icon_clr);
+  th_advance_product_search_icon_style_svg('icon-style', $icon_clr);
 
 } ?>
    <input id='thaps-search-autocomplete-<?php echo esc_attr($uniqueID); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
 
-  <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?> 
+   <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?> 
 
    <div class="thaps-preloader"></div>
 
@@ -52,7 +52,7 @@ if(th_advance_product_search()->get_option( 'show_submit' )=='0'){
 
    }else{ 
 
-       th_advance_product_search_icon_style_svg('icon-svg-style', $icon_clr);
+       th_advance_product_search_icon_style_svg('icon-style', $icon_clr);
 
   }?></button> <?php }
 
@@ -76,7 +76,7 @@ if(th_advance_product_search()->get_option( 'show_submit' )=='0'){
 
 <div class="thaps-from-wrap">
 
-  <?php th_advance_product_search_icon_style_svg('icon-svg-style', $icon_clr);?>
+  <?php th_advance_product_search_icon_style_svg('icon-style', $icon_clr);?>
 
    <input id='thaps-search-autocomplete-<?php echo esc_attr($uniqueID); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
 
@@ -109,7 +109,7 @@ if(th_advance_product_search()->get_option( 'show_submit' )=='0'){
  <form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
 <div class="thaps-from-wrap">
 
-  <?php th_advance_product_search_icon_style_svg('icon-svg-style', $icon_clr);?>
+  <?php th_advance_product_search_icon_style_svg('icon-style', $icon_clr);?>
 
    <input id='thaps-search-autocomplete-<?php echo esc_attr($uniqueID); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
 
@@ -147,7 +147,7 @@ if(wp_is_mobile()){
 
 <div class="thaps-from-wrap">
 
-  <?php th_advance_product_search_icon_style_svg('icon-svg-style', $icon_clr);?>
+  <?php th_advance_product_search_icon_style_svg('icon-style', $icon_clr);?>
 
    <input id='thaps-search-autocomplete-<?php echo esc_attr($uniqueID); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
 
@@ -173,7 +173,7 @@ if(wp_is_mobile()){
 
 <div class="thaps-from-wrap">
 
-  <?php th_advance_product_search_icon_style_svg('icon-svg-style', $icon_clr);?>
+  <?php th_advance_product_search_icon_style_svg('icon-style', $icon_clr);?>
 
    <input id='thaps-search-autocomplete-<?php echo esc_attr($uniqueID); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
 
