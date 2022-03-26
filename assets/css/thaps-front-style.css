@@ -47,9 +47,6 @@ background: #111;
    color: #fff;
 }
 
-.submit-active #thaps-search-button svg path{
-      fill: #fff;
-}
 
 #thaps-search-button:hover{
 background:#888;
@@ -185,9 +182,14 @@ height: 100%;
     }
 }
 
-.submit-no-active .thaps-from-wrap svg, .bar_style svg,.icon_style .thaps-from-wrap svg{
+.submit-no-active .thaps-from-wrap .th-icon, .bar_style .th-icon,
+.icon_style .thaps-from-wrap .th-icon{
 position:absolute;
 left:0.5rem
+}
+
+.submit-no-active .thaps-from-wrap .th-icon{
+      color: #111;  
 }
 .submit-no-active .thaps-search-autocomplete,.bar_style .thaps-search-autocomplete,.icon_style .thaps-search-autocomplete{
 padding: 0.3rem 0.3rem 0.3rem 2.8rem;
@@ -200,11 +202,13 @@ background:#eee;
 text-align:center;
 margin:0;
 }
+
 .thaps-suggestion-more .thaps-content-wrapp {
     line-height: normal;
     text-align: center;
     width: 100%;
 }
+
 .thaps-suggestion-more .thaps-title{
 font-size:.89rem;
 }
@@ -296,4 +300,7 @@ div.thaps-autocomplete-suggestions::-webkit-scrollbar-thumb
     background-color: #E5E6E8;
 
                      
+}
+.thaps-search-box .th-icon{
+font-size:1.62rem;
 }

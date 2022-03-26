@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product, post, page, search, category
 Requires at least: 4.8
-Tested up to: 5.9
-Stable tag: 1.1.2
+Tested up to: 5.9.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,9 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1.3 =
+* Th Icon added.
 
 = 1.1.2 =
 * Pro Notice Improved.

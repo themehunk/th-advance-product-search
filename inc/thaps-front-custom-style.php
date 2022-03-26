@@ -51,7 +51,7 @@ $thaps_frnt_custom_css.=".thaps-from-wrap,input[type='text'].thaps-search-autoco
 
  #thaps-search-button:hover{background:{$bar_button_hvr_clr}; color:{$bar_button_txt_hvr_clr};}
 
- .submit-active #thaps-search-button svg path{fill:{$icon_clr};}";
+ .submit-active #thaps-search-button .th-icon path{color:{$icon_clr};}";
 
 //suggestion box
 $sus_bg_clr = esc_html(th_advance_product_search()->get_option( 'sus_bg_clr' ));
