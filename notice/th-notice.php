@@ -6,11 +6,7 @@ if (!defined('ABSPATH')){
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-if ( is_plugin_active( 'th-advance-product-search-pro/th-advance-product-search-pro.php' ) ) {
-    exit;
-}
-
-if ( ! class_exists( 'TH_Advance_Product_Search_Notice' ) ){
+if (!is_plugin_active( 'th-advance-product-search-pro/th-advance-product-search-pro.php' ) && ! class_exists( 'TH_Advance_Product_Search_Notice' )){
 
 class TH_Advance_Product_Search_Notice{
 
@@ -89,4 +85,4 @@ class TH_Advance_Product_Search_Notice{
 
 $obj = New TH_Advance_Product_Search_Notice();
 
- }
+}
