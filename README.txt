@@ -14,6 +14,8 @@ This plugin provide you freedom to choose color and styling to match up with you
 
 == Description ==
 
+**WooCommerce Advance Product Search** – Fastest search plugin for WooCommerce. Supports AJAX search and search results page display.
+
 TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
 This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
 
@@ -23,6 +25,7 @@ This plugin provide you freedom to choose color and styling to match up with you
 
 ⭐ Quick and Fast Search
 ⭐ Fully Responsive & Mobile Friendly
+⭐ Search WooCommerce products
 ⭐ Search Analytics Support
 ⭐ Advanced Search for WooCommerce Product ( Categories, Description, Image, Price, SKU's )
 ⭐ Advanced Search for Post ( Categories, Description & Image )
