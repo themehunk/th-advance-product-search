@@ -111,12 +111,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
             	<div class="thaps-notes-row thaps-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-advance-product-search' ) ?></h4><p><?php esc_html_e( '', 'th-advance-product-search' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/'); ?>"><?php esc_html_e( 'Read Now', 'th-advance-product-search' ) ?></a></div>
 
-            	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Advance Product Search Pro', 'th-advance-product-search' ) ?></h4><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'th-advance-search-pro-banner.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>"><?php esc_html_e( 'Upgrade Now', 'th-advance-product-search' ) ?></a>
+            	<div class="thaps-notes-row thaps-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Advance Product Search Pro', 'th-advance-product-search' ) ?></h4><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'th-advance-search-pro-banner.png') ?>' alt="th-advance-search"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>"><?php esc_html_e( 'Upgrade Now', 'th-advance-product-search' ) ?></a>
 
             	</div>
 
             	<div class="thaps-notes-row thaps-wrap-img">
-	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/product/amaz-store/'); ?>"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'amaz-store.png') ?>' alt="amaz-store">
+	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-shop-mania/'); ?>"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'th-shop-mania-ad.png') ?>' alt="th-shop-mania">
 	               	</a>
             	</div>
                </div>
