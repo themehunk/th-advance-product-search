@@ -11,6 +11,10 @@ if (!function_exists('themehunk_admin_menu')) {
         }
     function themehunk_plugins(){
 
+        if ( ! current_user_can( 'manage_options' ) ) {
+        wp_die( esc_html__( 'You do not have sufficient permissions to access this page.','th-advance-product-search' ) );
+        }
+
         include_once THEMEHUNK_PDIR . "/th-option/th-option.php";
         $obj = new themehunk_plugin_option();
         $obj->tab_page();

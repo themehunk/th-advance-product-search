@@ -5,12 +5,16 @@ class Thaps_Widget extends WP_Widget {
     function __construct() {
         $widget_ops = array(
         	'classname' => 'thaps-widget',
-            'description' => 'Show your TH Advance Search Bar'
+            'description' => esc_html__('Show your TH Advance Search Bar','th-advance-product-search')
              );
-        parent::__construct('thaps-widget', __('TH Advance Search Widget','th-advance-product-search'), $widget_ops);
+
+        parent::__construct('thaps-widget', esc_html__('TH Advance Search Widget','th-advance-product-search'), $widget_ops);
  
-        add_action( 'widgets_init', function() {
+           add_action( 'widgets_init', function() {
+
             register_widget( 'Thaps_Widget' );
+
+
         });
  
     }
@@ -45,12 +49,12 @@ class Thaps_Widget extends WP_Widget {
         $selec_attr = array(
 
           'id'=>'thaps-style',
-          'label'=> __('Choose Product Type ','th-advance-product-search'),
+          'label'=> esc_html__('Choose Product Type ','th-advance-product-search'),
           'default' => 'default_style',
-          'option' => array('default_style'  =>__('Default','th-advance-product-search'),
-                            'bar_style'      =>__('Search bar only','th-advance-product-search'),
-                            'icon_style'     =>__('Search Icon only','th-advance-product-search'),
-                            'flexible-style' =>__('Icon on mobile, search bar on desktop','th-advance-product-search')
+          'option' => array('default_style'  =>esc_html__('Default','th-advance-product-search'),
+                            'bar_style'      =>esc_html__('Search bar only','th-advance-product-search'),
+                            'icon_style'     =>esc_html__('Search Icon only','th-advance-product-search'),
+                            'flexible-style' =>esc_html__('Icon on mobile, search bar on desktop','th-advance-product-search')
                         )
           );
 
@@ -59,7 +63,7 @@ class Thaps_Widget extends WP_Widget {
         $text = ! empty( $instance['thaps-style'] ) ? $instance['thaps-style'] : esc_html__( '', 'th-advance-product-search' );
         ?>
         <p>
-        <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Title:', 'text_domain' ); ?></label>
+        <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Title:', 'th-advance-product-search' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
         </p>
       
@@ -72,7 +76,7 @@ class Thaps_Widget extends WP_Widget {
          	
 	     <select id="<?php echo esc_attr($this->get_field_id($id)); ?>" name="<?php echo esc_attr($this->get_field_name($id)); ?>" >
 	     	<?php foreach( $selec_attr['option'] as $value => $title){ ?>
-	     		<option value ="<?php echo esc_attr($value); ?>" <?php if($optn==$value){ echo 'selected'; }?> ><?php echo esc_attr($title); ?> </option>
+	     		<option value ="<?php echo esc_attr($value); ?>" <?php if($optn==$value){ echo 'selected'; }?> ><?php echo esc_html($title); ?> </option>
 	     		<?php } ?>
 	     </select>
 	        </p>

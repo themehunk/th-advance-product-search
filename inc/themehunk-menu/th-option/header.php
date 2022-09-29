@@ -10,8 +10,8 @@
             </div>
             <div class="col-2">
                 <div class="th-option-heading">
-                <h3><?php echo $theme_header['welcome']; ?></h3>
-                    <p><?php echo $theme_header['welcome_desc']; ?></p>
+                <h3><?php echo esc_html($theme_header['welcome']); ?></h3>
+                    <p><?php echo esc_html($theme_header['welcome_desc']); ?></p>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
     <div class="th-heade th-right-header">
         <div class="th-noticetheme">
         <a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-shop-mania/');?>">
-        <img src="<?php echo THEMEHUNK_PURL; ?>th-option/assets/images/th-shop-mania.png">
+        <img src="<?php echo esc_url(THEMEHUNK_PURL); ?>th-option/assets/images/th-shop-mania.png">
         </a>
     </div>
         <div class="thunk-notice-text">

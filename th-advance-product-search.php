@@ -3,7 +3,7 @@
  * Plugin Name:             TH Advance Product Search
  * Plugin URI:              https://themehunk.com
  * Description:             TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour. <a href="https://themehunk.com/plugins/" target="_blank">Get more plugins for your website on <strong>ThemeHunk</strong></a>
- * Version:                 1.1.4
+ * Version:                 1.1.5
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       5.0
@@ -83,11 +83,9 @@ if ( ! function_exists( 'th_advance_product_search_plugin_meta_links' ) ){
 
   function th_advance_product_search_plugin_meta_links($links, $file){
 
-    if ($file !== plugin_basename(__FILE__)) {
+    if ($file !== plugin_basename(__FILE__)){
       return $links;
     }
-
-    //$demo_link = '<a target="_blank" href="#" title="' . __('Live Demo', 'th-variation-swatches') . '"><span class="dashicons  dashicons-laptop"></span>' . __('Live Demo', 'th-advance-product-search') . '</a>';
 
     $doc_link = '<a target="_blank" href="https://themehunk.com/docs/th-advance-product-search/" title="' . __('Documentation', 'th-advance-product-search') . '"><span class="dashicons  dashicons-search"></span>' . __('Documentation', 'th-advance-product-search') . '</a>';
 
@@ -108,10 +106,8 @@ add_filter('plugin_row_meta', 'th_advance_product_search_plugin_meta_links', 10,
 
 
 
-         // icon style
+// icon style
 
-        function th_advance_product_search_icon_style_svg($classes, $clr){ ?>
-
-           <span class="th-icon th-icon-vector-search <?php echo esc_attr($classes); ?>" style="color:<?php echo esc_attr($clr); ?>"></span>
-
-        <?php }
+function th_advance_product_search_icon_style_svg($classes, $clr){ ?>
+<span class="th-icon th-icon-vector-search <?php echo esc_attr($classes); ?>" style="color:<?php echo esc_attr($clr); ?>"></span>
+<?php }

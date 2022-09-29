@@ -114,7 +114,7 @@
         $.ajax({
           url: THAPSPluginObject.ajaxurl,
           type: "POST",
-          data: form_settting,
+          data: form_settting +'&_wpnonce=' + THAPSPluginObject.nonce +'',
           success: function (response) {
            
             $('#submit').removeClass('loader');

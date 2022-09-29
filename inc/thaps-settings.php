@@ -32,12 +32,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
         
 
         public function add_menu(){
+
 						$page_title = esc_html__( 'TH Advance Search', 'th-advance-product-search' );
-						// $menu_title = esc_html__( 'TH Search', 'th-advance-product-search' );
-						// add_menu_page( $page_title, $menu_title, 'edit_theme_options', 'th-advance-product-search', array(
-						// 	$this,
-						// 	'settings_form'
-						// ),  esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'icon.png'), 31 );
 
 						add_submenu_page( 'themehunk-plugins', $page_title, $page_title, 'manage_options', 'th-advance-product-search', array($this, 'settings_form'),11 );
 
@@ -61,7 +57,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 		public function settings_form() {
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+				wp_die( __( 'You do not have sufficient permissions to access this page.','th-advance-product-search' ) );
 			}
 		
 			?>
@@ -131,6 +127,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 	    public function thaps_form_setting(){  
 
+	    	  if ( ! current_user_can( 'administrator' ) ) {
+
+		            wp_die( - 1, 403 );
+		            
+		      } 
+
+              check_ajax_referer( 'thaps_plugin_nonce','_wpnonce');
+
 	                if( isset($_POST['th_advance_product_search']) ){
 	             	       
 	                      $sanitize_data_array = $this->thaps_form_sanitize($_POST['th_advance_product_search']);
@@ -154,7 +158,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 			<div class="nav-tab-wrapper wp-clearfix">
 				<div class="top-wrap"><div id="logo"><img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'th-logo.png') ?>' alt="th-logo"/></div>
-				  <h1><?php echo get_admin_page_title() ?></h1>
+				  <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 			     </div>
 				<?php foreach ( $this->fields as $tabs ): ?>
 					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thaps-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><?php echo esc_html($tabs['title']); ?></a>
@@ -594,10 +598,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		public function settings_init() {
 
 			if ( $this->is_reset_all() ) {
+
 				 $this->delete_settings();
-				 wp_redirect(esc_url($this->settings_url()));
+				 wp_redirect($this->settings_url());
+
 			}
-              
+
+		 
 		  register_setting( $this->settings_name, $this->settings_name, array( $this, 'sanitize_callback' ) );
 
 			foreach ( $this->fields as $tab_key => $tab ) {
@@ -638,14 +645,31 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					}
 				}
 			}
+
+
 		}
 
 		public function reset_url() {
-			return add_query_arg( array( 'page' => 'th-advance-product-search', 'reset' => '' ), admin_url( 'admin.php' ) );
+
+			return add_query_arg( 
+				array( 'page' => 'th-advance-product-search', 
+					   'reset' => 'reset' , 
+					   'delete_wpnonce' => wp_create_nonce('delete_nonce')
+					),
+				    admin_url( 'admin.php' ) );
+
 		}
 
 		public function settings_url(){
-			return add_query_arg( array( 'page' => 'th-advance-product-search' ), admin_url( 'admin.php' ) );
+
+			return add_query_arg( 
+
+				array( 
+				'page' => 'th-advance-product-search',
+				'_wpnonce' => wp_create_nonce('_nonce'),
+				 ),
+				 admin_url( 'admin.php' ) );
+
 		}
         private function set_default( $key, $type, $value ) {
 		$this->defaults[ $key ] = array( 'id' => $key, 'type' => $type, 'value' => $value );
@@ -666,11 +690,21 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         public function delete_settings() {
 
+        	if ( ! current_user_can( 'administrator' ) ) {
+
+            wp_die( - 1, 403 );
+
+            }
+
+            if (isset($_GET['delete_wpnonce']) || wp_verify_nonce($_REQUEST['delete_wpnonce'], 'delete_nonce' ) ) {
+
 			do_action( sprintf( 'delete_%s_settings', $this->settings_name ), $this );
 
 			// license_key should not updated
 
 			return delete_option( $this->settings_name );
+		}
+
 		}
 
 		public function get_option( $option ) {
