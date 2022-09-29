@@ -179,7 +179,7 @@ function plugin_install_button($plugin){
 
 <div class="th-column <?php echo esc_attr($plugin['free_pro']);?>">
 
-    <img src="<?php echo esc_url($plugin['$plugin['thumb']']);?>" /> 
+    <img src="<?php echo esc_url($plugin['thumb']);?>" /> 
 
 </div>
 
