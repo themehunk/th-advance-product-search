@@ -238,7 +238,7 @@ function plugin_install_button($plugin){
 </div>
 
 </div>
-<button data-activated="Activated" data-msg="Activating" data-init="<?php echo esc_attr( $plugin['plugin_init'] );?>" data-slug="<?php echo esc_attr( $plugin['slug'] );?>" class="button '<?php echo esc_attr( $plugin['button_class'] );?>"><?php echo esc_html( $plugin['button_txt'] );?>
+<button data-activated="Activated" data-msg="Activating" data-init="<?php echo esc_attr( $plugin['plugin_init'] );?>" data-slug="<?php echo esc_attr( $plugin['slug'] );?>" class="button <?php echo esc_attr( $plugin['button_class'] );?>"><?php echo esc_html( $plugin['button_txt'] );?>
 </button>
 
 <?php if($plugin['free_pro']=='Free' && $slug !='themehunk-megamenu-plus'){?>

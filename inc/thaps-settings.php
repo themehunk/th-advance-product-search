@@ -550,7 +550,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				$plugin_title  = $args['plugin_title'];
 				$plugin_link   = $args['plugin_link'];
 
-				$html = sprintf( '<div class="thaps-use-plugin"><img src="%s" /><a target="_blank" href="%s">%s</a></div>', $plugin_image, $plugin_link, $plugin_title);
+				
 				
 			}
 

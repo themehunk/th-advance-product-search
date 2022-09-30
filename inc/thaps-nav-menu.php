@@ -62,7 +62,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 			return $isNav;
 		}
 
-        /**
+            /**
 		 * Add custom nav meta box.
 		 *
 		 * Adapted from http://www.johnmorrisonline.com/how-to-add-a-fully-functional-custom-meta-box-to-wordpress-navigation-menus/.
@@ -150,7 +150,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 					
 					$layout = get_post_meta( $item->ID, '_menu_item_thaps_layout', true );
 					if ( in_array( $layout, array( 'bar_style', 'icon_style', 'flexible-style' ) ) ) {
-						$args .= 'layout="' . $layout . '" ';
+						$args .= 'layout="' . esc_attr($layout) . '" ';
 					}
 					
 					$itemOutput = do_shortcode( sprintf( '[th-aps %s]', $args ) );
