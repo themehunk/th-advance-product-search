@@ -25,8 +25,6 @@ class TH_Advance_Product_Search_Notice{
             add_action( 'admin_notices', array($this,'th_advance_product_search_notice_unset_cookie'));
         }
 
-
-        
     }
 
     function th_advance_product_search_admin_enqueue_style(){
@@ -35,11 +33,21 @@ class TH_Advance_Product_Search_Notice{
 
     } 
 
-    function th_advance_product_search_admin_notice() { 
-          $display = isset($_GET['ntc-srch-disable'])?'none':'block';
+    function th_advance_product_search_admin_notice() {
+
+          if(isset($_GET['ntc-srch-disable'])){
+
+          $display ='none';
+
+          }else{
+
+          $display ='block';
+
+          }
+
         ?>
 
-    <div class="th-advance-product-search-notice notice" style="display:<?php echo $display; ?>;">
+    <div class="th-advance-product-search-notice notice" style="display:<?php echo esc_attr($display); ?>;">
         <div class="th-advance-product-search-notice-wrap">
             <div class="th-advance-product-search-notice-image"><img src="<?php echo esc_url( TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'notice/img/search-pro.png' );?>" alt="<?php _e('TH Advance Product Search Pro','th-advance-product-search'); ?>"></div>
             <div class="th-advance-product-search-notice-content-wrap">
@@ -73,16 +81,19 @@ class TH_Advance_Product_Search_Notice{
     function th_advance_product_search_notice_unset_cookie(){
 
             $visit_time = time();
-            $cookie_time = $_COOKIE['thntc_srch_time'];
+
+            $cookie_time = isset($_COOKIE['thntc_srch_time']) ? sanitize_key($_COOKIE['thntc_srch_time']) : '0';
 
             if ($cookie_time < $visit_time) {
+
                 setcookie('thntc_srch_time', null, strtotime('-1 day'));
+
             }
-    }
 
-    
-}
+        }
 
-$obj = New TH_Advance_Product_Search_Notice();
+  }
 
-}
+  $obj = New TH_Advance_Product_Search_Notice();
+
+  }

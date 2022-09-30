@@ -541,9 +541,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			$is_html = isset( $args['html'] );
 
 			if ( $is_html ) {
+
 				$html = $args['html'];
+
 			  } else {
-				$plugin_image  = esc_url( $args['plugin_image'] );
+
+				$plugin_image  = $args['plugin_image'];
 				$plugin_title  = $args['plugin_title'];
 				$plugin_link   = $args['plugin_link'];
 
@@ -551,10 +554,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				
 			}
 
+			?>
 
-			echo $html;
-		}
+			<div class="thaps-use-plugin"><img src="<?php echo esc_url($plugin_image);?>" /><a target="_blank" href="<?php echo esc_url($plugin_link);?>"><?php echo esc_html($plugin_title);?></a>
+			</div>
 
+		<?php }
 
 	//*********************************/	
     // add ,delete ,get , reset, option
