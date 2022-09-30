@@ -10,23 +10,36 @@ function get_plugin(){
 
   return include_once THEMEHUNK_PDIR . "plugins-list.php";
 }
+
 function tab_constant(){
+
     $theme_data = wp_get_theme();
+
     $tab_array = array();
+
     $tab_array['header'] = array('theme_brand' => __('ThemeHunk','th-advance-product-search'),
+
     'theme_brand_url' => esc_url($theme_data->get( 'AuthorURI' )),
+
     'welcome'=>esc_html__('ThemeHunk Marketplace', 'th-advance-product-search' ),
+
     'welcome_desc' => esc_html__('Grow your business with ThemeHunk free/pro themes & plugins.', 'th-advance-product-search' ),
-    'v'=> 'Version '.$theme_data->get( 'Version' )
+
+    'v'=> 'Version '.esc_html($theme_data->get( 'Version' ))
+
     );
+
     return $tab_array;
+
 }
 
 
 function tab_page() {
+
     $text_array = $this->tab_constant();
     $theme_header =$text_array['header'];
     include('tab-html.php' ); 
+
 }
 
      /*
@@ -35,6 +48,15 @@ function tab_page() {
           * Setup Homepage
           */
         public function th_activeplugin(){
+
+        if ( ! current_user_can( 'administrator' ) ) {
+
+            wp_die( - 1, 403 );
+                            
+        } 
+
+        check_ajax_referer( 'thaps_admin_nonce','nonce');  
+
         if ( ! current_user_can( 'install_plugins' ) || ! isset( $_POST['init'] ) || ! $_POST['init'] ) {
         wp_send_json_error(
           array(
@@ -44,7 +66,7 @@ function tab_page() {
         );
       }
 
-      $plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : '';
+      $plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_url( $_POST['init'] ) : '';
 
       $activate = activate_plugin( $plugin_init);
 
@@ -179,7 +201,7 @@ function plugin_install_button($plugin){
 
 <div class="th-column <?php echo esc_attr($plugin['free_pro']);?>">
 
-    <img src="<?php echo esc_url($plugin['$plugin['thumb']']);?>" /> 
+    <img src="<?php echo esc_url($plugin['thumb']);?>" /> 
 
 </div>
 
@@ -216,7 +238,7 @@ function plugin_install_button($plugin){
 </div>
 
 </div>
-<button data-activated="Activated" data-msg="Activating" data-init="<?php echo esc_attr( $plugin['plugin_init'] );?>" data-slug="<?php echo esc_attr( $plugin['slug'] );?>" class="button '<?php echo esc_attr( $plugin['button_class'] );?>"><?php echo esc_html( $plugin['button_txt'] );?>
+<button data-activated="Activated" data-msg="Activating" data-init="<?php echo esc_attr( $plugin['plugin_init'] );?>" data-slug="<?php echo esc_attr( $plugin['slug'] );?>" class="button <?php echo esc_attr( $plugin['button_class'] );?>"><?php echo esc_html( $plugin['button_txt'] );?>
 </button>
 
 <?php if($plugin['free_pro']=='Free' && $slug !='themehunk-megamenu-plus'){?>
@@ -231,5 +253,4 @@ function plugin_install_button($plugin){
   
 }
 	
-} // class end
- ?>
+}

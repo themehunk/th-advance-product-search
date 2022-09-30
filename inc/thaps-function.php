@@ -373,9 +373,6 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
         $enable_page_desc =  esc_html(th_advance_product_search()->get_option( 'enable_page_desc' ));
 
-
-   
-
         /*********************/
         //fetch product result
         /*********************/
