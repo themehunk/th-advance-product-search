@@ -1,14 +1,14 @@
-====== TH Advance Product Search ========
+====== Advance WordPress Search Plugin ========
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
-Tags: woocommerce, product, post, page, search, category
+Tags: woocommerce, product search, post search, page search, category,ajax search, live search
 Requires at least: 4.8
 Tested up to: 6.1.1
 Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
+Responsive Search Plugin for WordPress and WooCommerce. Best Live Ajax Search Support Plugin. TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
 This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
 
 
