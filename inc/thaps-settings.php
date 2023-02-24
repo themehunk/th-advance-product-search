@@ -33,7 +33,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         public function add_menu(){
 
-						$page_title = esc_html__( 'TH Advance Search', 'th-advance-product-search' );
+						$page_title = esc_html__( 'Advance Search', 'th-advance-product-search' );
 
 						add_submenu_page( 'themehunk-plugins', $page_title, $page_title, 'manage_options', 'th-advance-product-search', array($this, 'settings_form'),11 );
 
@@ -161,10 +161,23 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				  <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 			     </div>
 				<?php foreach ( $this->fields as $tabs ): ?>
-					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thaps-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><?php echo esc_html($tabs['title']); ?></a>
+					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thaps-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><span class="dashicons <?php echo $this->icon_list($tabs['id']); ?>"></span><?php echo esc_html($tabs['title']); ?></a>
 				<?php endforeach; ?>
 			</div>
 			<?php
+		}
+		function icon_list($id ='dashicons-menu'){
+			$icon = array(
+				'integration'=>'dashicons-admin-appearance',
+				'search-bar' => 'dashicons-admin-generic',
+				'autosetting'=>'dashicons-hammer',
+				'style'=>'dashicons-color-picker',
+				'analytics'=>'dashicons-analytics',
+				'thaps_usefull_plugin'=>'dashicons-admin-plugins',
+		);
+
+			return $icon[$id];
+
 		}
 
 		private function get_last_active_tab() {

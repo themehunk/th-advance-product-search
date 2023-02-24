@@ -7,12 +7,10 @@
 #thaps .top-wrap{
     padding: 1.3rem 1rem;
     display: flex;
-    align-items: baseline;
-    flex-flow: column;
+    align-items: center;
 }
 #thaps #logo{
-
-    margin-bottom: 0.5rem;
+    margin-right: 12px;
 }
 #thaps .top-wrap h1{
 color: #121116;
@@ -29,44 +27,63 @@ display:flex;
 }
 #thaps .setting-wrap{
     padding: 1.5rem;
-    width: 100%;
-        background: #fff;
-        padding-top: 2.8rem;
+    width: 80%;
+    margin: 0 20px;
+    background: #fff;
+    padding-top: 2.8rem;
+    justify-content: space-between;
+    border-radius: 10px;
 }
 #thaps .nav-tab-wrapper {
     display: flex;
     flex-direction: column;
     width: 28%;
     border: none;
-    padding: 0;
+    padding: 10px;
+    background: #E1E6F4;
+    border-radius: 10px;
 }
 #thaps .nav-tab-wrapper .thaps-setting-nav-tab {
-margin:0;
-border:0;
-background:transparent;
-color: #121116;
-font-size:1rem;
-padding: 1rem 1.2rem;
-position: relative;
-border-left: 2px solid transparent;
-border-top: 1px solid #E0E4E9;
+    margin-bottom: 20px;
+    border: 0;
+    letter-spacing: 0.3px;
+    background: transparent;
+    color: #2e2e2e;
+    font-size: 1rem;
+    position: relative;
+    align-items: center;
+    padding: 9px 27px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+#thaps .nav-tab-wrapper .thaps-setting-nav-tab span {
+    margin-right: 12px;
+    margin-top: 5px;
+    color: #aab2cb;
+}
+#thaps .nav-tab-wrapper .thaps-setting-nav-tab.nav-tab-active span {
+    color: #007eff;
 }
 .thaps-notes-wrap{
-display: flex;
-flex-direction: column;
-padding:0rem 1rem;
-width: 28%;
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 1.5rem; */
+    width: 28%;
 }
 #thaps .thaps-setting-nav-tab.nav-tab-active, 
 #thaps .thaps-setting-nav-tab.nav-tab-active:focus, 
 #thaps .thaps-setting-nav-tab.nav-tab-active:focus:active, 
-#thaps .thaps-setting-nav-tab.nav-tab-active:hover {
-color: #F56640;
-    background: #fff;
-    border-left: 2px solid #F56640;
+#thaps .thaps-setting-nav-tab:hover {
+    color: #007eff;
     outline: 0;
-    box-shadow: none;
-    letter-spacing: 0.8px;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 6px 6px rgb(53 66 134 / 10%);
+    box-shadow: 0px 6px 6px rgb(53 66 134 / 10%);
+    align-items: center;
+    padding: 9px 27px;
+    border-radius: 8px;
 }
 #thaps .setting-wrap h2,#thaps .setting-wrap h3 {
     color: #1d2327;
@@ -115,6 +132,7 @@ line-height: 2.15384615;
     font-size: 0.74rem;
     font-weight: 500;
         position: relative;
+        border-radius: 4px;
 }
 #thaps p.submit {
 margin:0;
@@ -129,15 +147,22 @@ font-family: dashicons;
     line-height:normal;
 }
 .thaps-button-wrapper .reset {
+    background: #fd4e51;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
     display: flex;
     align-items: center;
 }
-.thaps-setting-form #submit.button-primary:hover,.thaps-button-wrapper .reset:hover{
-background:#F56640;
+.thaps-setting-form #submit.button-primary:hover{
+background:#006ee1;
 }
 
 .thaps-button-wrapper .reset{
     background:#da4c4e;
+}
+.thaps-button-wrapper .reset:hover{
+    background: #ff181c;
 }
 .thaps-button-wrapper{
 display:flex;
@@ -249,7 +274,7 @@ font-size:1rem;
 }
 .thaps-setting-form #submit.button-primary{
 width:150px;
-background: #11bb8c; 
+background: #1681ef; 
 }
 .thaps-setting-form #submit.button-primary.loader{
 font-size:0;
@@ -278,30 +303,30 @@ margin-bottom:1rem;
 line-height:24px;
 }
 
-.thaps-notes-row
-{
-padding: 24px 16px;
-    border-radius: 4px;
-    color: #111;
+.thaps-notes-row{
+    padding: 22px 15px;
     text-align: center;
     background: #fff;
     margin-bottom: 1rem;
+    border-radius: 10px;
 }
 .thaps-wrap-doc a,.thaps-wrap-pro a{
 padding: 0.4rem 1.5rem;
     letter-spacing: -0.08px;
     font-size: .6875rem;
     line-height: 1.81818;
-    background:#f56640;
+    background: #1681ef;
     color: #fff;
     margin-top: 0.5rem;
     display: inline-flex;
     border-radius: 4px;
-    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
     text-transform: uppercase;
-        font-weight: 700;
+    font-weight: 700;
+    text-decoration: auto;
 }
-
+.thaps-wrap-doc a:hover,.thaps-wrap-pro a:hover{
+    background: #006ee1;
+}
 .wrp-title{
 font-size:1rem;
 margin:0;
@@ -360,7 +385,7 @@ display: block;
     letter-spacing: -0.08px;
     font-size: .6875rem;
     line-height: 1.81818;
-    background: #f56640;
+    background: #1681ef;
     color: #fff;
     margin-top: 0.5rem;
     display: inline-flex;
@@ -368,9 +393,11 @@ display: block;
     box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
     text-transform: uppercase;
     font-weight: 700;
+    text-decoration: none;
 }
 .explore-google-analytics:hover{
-color:#fff;
+     background: #006ee1;
+    color:#fff;
 }
 .thaps-wrap-pro b{
 padding-top: 0.5rem;

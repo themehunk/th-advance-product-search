@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product search, post search, page search, category,ajax search, live search
 Requires at least: 4.8
-Tested up to: 6.1.1
-Stable tag: 1.1.6
+Tested up to: 6.1
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,9 @@ Yes, You can translate our plugin to desired language.
 
 == Changelog ==
 
+= 1.1.7 =
+* Admin Style Modification.
+
 = 1.1.6 =
 * Notice Delete.
 
@@ -160,8 +163,8 @@ Yes, You can translate our plugin to desired language.
 
 == Upgrade Notice ==
 
-= 1.0.0 =
-Initial release
+= 1.1.7 =
+* Admin Style Modification.
 
 
 Thanks for using our plugin, I am sure you will create a great Product Search for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/
