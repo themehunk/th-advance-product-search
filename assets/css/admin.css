@@ -421,3 +421,55 @@ margin:1rem 0;
 font-size:1rem;
 font-weight:500;
 }
+#premium-wrapper th:nth-of-type(1){
+    display: none;
+}
+.th-upgrade-pro{
+    background: #1681ef;
+    display: flex;
+    padding: 20px 26px;
+    border-radius: 4px;
+    color: white;
+    font-size: 15px;
+    align-items: center;
+    grid-gap: 16px;
+    width: 90%;
+    margin-bottom: 27px;
+}
+.th-upgrade-pro .button-upgrade{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background: #f7a100;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px;
+    font-size: inherit;
+    position: relative;
+    flex-grow: 2;
+    width: fit-content;
+    border-radius: 4px;
+    border: 0;
+}
+.th-search-images img{
+    margin-bottom: 21px;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+.th-search-images li{
+    position: relative;
+}
+.th-search-images li:after{
+    content: 'Pro';
+    background: red;
+    position: absolute;
+    top: -21px;
+    left: 0;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}

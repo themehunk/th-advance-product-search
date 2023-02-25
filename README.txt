@@ -105,6 +105,7 @@ Yes, You can translate our plugin to desired language.
 
 = 1.1.7 =
 * Admin Style Modification.
+* Pro features images added.
 
 = 1.1.6 =
 * Notice Delete.
@@ -165,6 +166,7 @@ Yes, You can translate our plugin to desired language.
 
 = 1.1.7 =
 * Admin Style Modification.
+* Pro features images added.
 
 
 Thanks for using our plugin, I am sure you will create a great Product Search for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/
