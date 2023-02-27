@@ -173,6 +173,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				'autosetting'=>'dashicons-hammer',
 				'style'=>'dashicons-color-picker',
 				'analytics'=>'dashicons-analytics',
+				'premium'=>'dashicons-unlock',
 				'thaps_usefull_plugin'=>'dashicons-admin-plugins',
 		);
 
@@ -363,6 +364,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					$this->analytics_html_field_callback( $field );
 					break;
 
+				case 'premium-html':
+					$this->premium_html_field_callback( $field );
+					break;
+
 				case 'usefullplugin':
 					$this->usefullplugin_field_callback( $field );
 					break;		 			
@@ -498,6 +503,34 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
              <p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/#google-analytics');?>" class="explore-google-analytics"><?php _e('Explore Doc','th-advance-product-search');?></a></p>
 				
 			</ul>
+
+        <?php endif; }
+
+         public function premium_html_field_callback($args){
+
+            if($args[ 'id' ]=='premium'):
+
+			?>
+             <div class="th-upgrade-pro">
+             	<h4><?php esc_html_e('Upgrade to Premium Version Of Advance WordPress Search','th-advance-product-search'); ?></h4>
+             	<a href="<?php echo esc_url('https://themehunk.com/plugins/'); ?>" class="button-upgrade"><i class="dashicons dashicons-lock"></i><?php esc_html_e('Upgrade Pro','th-advance-product-search'); ?></a>
+             </div>
+			
+
+			<ul class="th-search-images">
+				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-voice.png'; ?>"> </li>
+				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-loader.png'; ?>"> </li>
+				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-autocomplete.png'; ?>"> </li>
+				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-as.png'; ?>"> </li>
+				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-style.png'; ?>"> </li>
+
+				
+			</ul>
+
+			<div class="th-upgrade-pro">
+             	<h4><?php esc_html_e('Upgrade to Premium Version Of Advance WordPress Search','th-advance-product-search'); ?></h4>
+             	<a href="<?php echo esc_url('https://themehunk.com/plugins/'); ?>" class="button-upgrade"><i class="dashicons dashicons-lock"></i><?php esc_html_e('Upgrade Pro','th-advance-product-search'); ?></a>
+             </div>
 
         <?php endif; }
 

@@ -45,7 +45,7 @@ if (!defined('TH_ADVANCE_PRODUCT_SEARCH_VERSION')) {
     define('TH_ADVANCE_PRODUCT_SEARCH_VERSION', $plugin_data['version']);
 } 
 
-if (!class_exists('TH_Advance_Product_Search')) {
+if (!class_exists('TH_Advance_Product_Search') && ( ! class_exists( 'Tapsp_Main' ))) {
 include_once(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/themehunk-menu/admin-menu.php');
 require_once("inc/thaps.php");
 } 

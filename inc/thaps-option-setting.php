@@ -486,6 +486,24 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 			  )
 		    )
 		  );
+		 th_advance_product_search()->add_setting(
+			'premium', esc_html__( 'Premium', 'th-advance-product-search' ), apply_filters(
+			'thaps_premium_settings_section', array(
+				array(
+					'title'  => esc_html__( 'Upgrade to Pro ?', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_premium_setting_fields', array(
+							array(
+								'id'      => 'premium',
+								'type'    => 'premium-html',
+								'title'   => esc_html__( '', 'th-advance-product-search' )
+							)	
+						)
+					)
+				 )
+			  )
+		    )
+		  );
 		  th_advance_product_search()->add_setting(
 			'thaps_usefull_plugin', esc_html__( 'Themehunk Useful Plugins', 'th-advance-product-search' ), apply_filters(
 			'thaps_usefull_plugin_settings_section', array(
