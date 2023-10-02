@@ -4,7 +4,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 	class TH_Advancde_Product_Search_Set {
 
-        private $setting_name = 'th_advance_product_search';
+		private $setting_name = 'th_advance_product_search';
 		private $setting_reset_name = 'reset';
 		private $theme_feature_name = 'th-advance-product-search';
 		private $slug;
@@ -13,9 +13,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		private $fields = array();
 		private $reserved_key = '';
 		private $reserved_fields = array();
-		
-             public function __construct() {
-             $this->settings_name   = apply_filters( 'thaps_settings_name', $this->setting_name );
+		private $settings_name;
+	
+		public function __construct() {
+			$this->settings_name = apply_filters('thaps_settings_name', $this->setting_name);
              $this->fields          = apply_filters( 'thaps_settings', $this->fields );
              $this->reserved_key    = sprintf( '%s_reserved', $this->settings_name );
 		     $this->reserved_fields = apply_filters( 'thaps_reserved_fields', array() );
