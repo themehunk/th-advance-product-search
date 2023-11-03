@@ -29,8 +29,10 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
          * Constructor
          */
         public function __construct(){
+        add_action( 'before_woocommerce_init', array( $this, 'hpos_compatibility' ) );
         $this->includes();
         $this->hooks();
+        // Plugin is compatible with HPOS.
 
         }
 
@@ -61,7 +63,21 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
         public function is_wc_active() {
             return class_exists( 'WooCommerce' );
         }
+
+
+        	/**
+		 *  Declare the woo HPOS compatibility.
+		 */
+		public function hpos_compatibility() {
+
+            if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_FILE, true );
+            }
+		}
+	
         
+
+      
 
         public function is_required_php_version() {
             return version_compare( PHP_VERSION, '5.6.0', '>=' );
