@@ -26,7 +26,7 @@ const InsSettings = ({
     setAttributes
 }) => {
 
-    const adminUrlsearch = ThBlockData.adminUrlsearch;
+    const adminUrlsearchh = ThBlockDataSearch.adminUrlsearch;
 
     return (<Fragment>
         <InspectorControls>
@@ -58,7 +58,7 @@ const InsSettings = ({
                             'th-advance-product-search'
                         )}
                         <a
-                            href={adminUrlsearch}
+                            href={adminUrlsearchh}
                             target="_blank"
                             rel="noopener noreferrer"
                         >

@@ -222,7 +222,7 @@ const InsSettings = ({
   attributes,
   setAttributes
 }) => {
-  const adminUrlsearch = ThBlockData.adminUrlsearch;
+  const adminUrlsearchh = ThBlockDataSearch.adminUrlsearch;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('TH Advance Search Setting', 'vayu-blocks'),
     initialOpen: true,
@@ -247,7 +247,7 @@ const InsSettings = ({
       searchStyle: e
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For the ', 'th-advance-product-search'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Advanced Options and Styling', 'th-advance-product-search')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' navigate to ', 'th-advance-product-search'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: adminUrlsearch,
+    href: adminUrlsearchh,
     target: "_blank",
     rel: "noopener noreferrer"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'th-advance-product-search'))))));
