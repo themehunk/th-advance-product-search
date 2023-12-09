@@ -162,7 +162,7 @@ function register_blocks() {
         if ( isset( $block['localize_data'] ) && ! is_null( $block['localize_data'] ) ) {
             wp_localize_script(
                 $block['script_handle'],
-                'ThBlockData',
+                'ThBlockDataSearch',
                 $block['localize_data']
             );
         }
@@ -227,7 +227,7 @@ add_action( 'enqueue_block_editor_assets', 'th_advance_product_search_blocks_edi
 
 function th_advance_product_search_blocks_render_callback( $attr ) {
 
-    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block-th-advance-product-search">';
+    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block-th-advance-product-search" style="width:100%";>';
     
     $searchStyle = isset($attr['searchStyle']) ? $attr['searchStyle'] : '[th-aps]';
 
@@ -235,5 +235,3 @@ function th_advance_product_search_blocks_render_callback( $attr ) {
     
     return $block_content;
 }
-
-
