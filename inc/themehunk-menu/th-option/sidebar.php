@@ -5,14 +5,14 @@
             </h3>
             <p>
             <?php _e('If you like the free version of this plugin, you will LOVE the full version of plugin which includes numerous  Advanced features, Custom Style and more useful options to customize your plugins.','th-advance-product-search'); ?> </p>
-                <center><a class="button ztabtn" target="_blank" href="<?php echo esc_url('https://themehunk.com/plugins/')?>"><?php _e('Upgrade To Premium Plugin','th-advance-product-search'); ?> </a></center>
+                <center><a class="button ztabtn" target="_blank" href="<?php echo esc_url('https://themehunk.com/advance-product-search')?>"><?php _e('Upgrade To Premium Plugin','th-advance-product-search'); ?> </a></center>
             </div>
 
             <hr>
             <div class="section">
                 <h3><?php _e('Why Upgrade?','th-advance-product-search'); ?></h3>
                 <p><?php _e('Upgrading to Premium plugins you will unlock a dozen of unique features that will take your website to the next level.','th-advance-product-search'); ?> </p>
-                 <center><a class="button button-primary" target="_blank" href="<?php echo esc_url('https://themehunk.com/plugins/')?>"><?php _e('View Premium Plugins','th-advance-product-search'); ?> </a></center>
+                 <center><a class="button button-primary" target="_blank" href="<?php echo esc_url('https://themehunk.com/advance-product-search')?>"><?php _e('View Premium Plugins','th-advance-product-search'); ?> </a></center>
 
             </div>
 
@@ -35,6 +35,6 @@
             <div class="section">
                 <h3><?php _e('Support','th-advance-product-search'); ?> </h3>
                 <p><?php _e('Have a question, we are happy to help! Get in touch with our support team.','th-advance-product-search'); ?></p>
-                <a href="<?php echo esc_url('https://themehunk.com/contact-us/')?>" target="_blank" class="sidebar-link"><?php _e('Submit a Ticket','th-advance-product-search'); ?></a>
+                <a href="<?php echo esc_url('https://themehunk.com/contact-us')?>" target="_blank" class="sidebar-link"><?php _e('Submit a Ticket','th-advance-product-search'); ?></a>
             </div>
         </div>
