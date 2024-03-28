@@ -10,6 +10,7 @@
             $this.ImageAdd();
             $this.RemoveImage();
             $this.SaveSetting();
+            $this.ResetSetting();
             $this.ChangeSetting();
           
         },
@@ -124,6 +125,28 @@
         });
       });
     },
+    ResetSetting: function() {
+      $(document).on("click", ".reset", function (e) {
+          e.preventDefault();
+          $(this).addClass('loader');
+          var confirmReset = confirm(THAPSPluginObject.reset_text);
+          if (confirmReset) {
+              $.ajax({
+                url: THAPSPluginObject.ajaxurl,
+                type: "POST",
+                data: {
+                  action: 'thaps_reset_settings', // Action to be handled on the server-side
+                  nonce: THAPSPluginObject.nonce // Nonce for security
+                },
+                success: function (response) {
+                  $(this).removeClass('loader');
+                  location.reload();
+                },
+              }); 
+          }
+              
+      });
+  },
     ChangeSetting:function(){
              $(document).on('change', '#select_srch_type-field', function (e){
                    var optionSelected = $("option:selected", this);

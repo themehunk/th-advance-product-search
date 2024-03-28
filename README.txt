@@ -102,6 +102,9 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+= 1.2.2 =
+* Security Issue Fixed.
+
 = 1.2.1 =
 * Search Block Added.
 
