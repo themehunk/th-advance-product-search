@@ -473,3 +473,7 @@ font-weight:500;
     align-items: center;
     color: #fff;
 }
+
+.reset.loader{
+    background:#da4c4e87;
+    }

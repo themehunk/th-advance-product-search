@@ -29,6 +29,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
              add_action('wp_ajax_thaps_form_setting', array($this, 'thaps_form_setting'));
 			 add_action( 'wp_ajax_nopriv_thaps_form_setting', array($this, 'thaps_form_setting'));
 
+			 add_action('wp_ajax_thaps_reset_settings', array($this, 'thaps_reset_settings'));
+			 add_action( 'wp_ajax_nopriv_thaps_reset_settings', array($this, 'thaps_reset_settings'));
+
             }
         
 
@@ -97,7 +100,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					?>
 					<p class="submit thaps-button-wrapper">
 						
-						 <a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-advance-product-search' ) ?>')" class="reset" href="<?php echo esc_url($this->reset_url()); ?>"><?php esc_html_e( 'Reset all', 'th-advance-product-search' ); ?>
+						 <a class="reset" href="#"><?php esc_html_e( 'Reset all', 'th-advance-product-search' ); ?>
 						</a>
 						 <button  disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save Changes', 'th-advance-product-search' ) ?>"><span class="dashicons dashicons-image-rotate spin"></span><span><?php esc_html_e( 'Save Changes', 'th-advance-product-search' ) ?></span>
 						 </button>
@@ -649,14 +652,6 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 		public function settings_init() {
 
-			if ( $this->is_reset_all() ) {
-
-				 $this->delete_settings();
-				 wp_redirect($this->settings_url());
-
-			}
-
-		 
 		  register_setting( $this->settings_name, $this->settings_name, array( $this, 'sanitize_callback' ) );
 
 			foreach ( $this->fields as $tab_key => $tab ) {
@@ -701,16 +696,6 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 		}
 
-		public function reset_url() {
-
-			return add_query_arg( 
-				array( 'page' => 'th-advance-product-search', 
-					   'reset' => 'reset' , 
-					   'delete_wpnonce' => wp_create_nonce('delete_nonce')
-					),
-				    admin_url( 'admin.php' ) );
-
-		}
 
 		public function settings_url(){
 
@@ -736,26 +721,19 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		}
 
 
-        public function is_reset_all() {
-			return isset( $_GET['page'] ) && ( $_GET['page'] == 'th-advance-product-search' ) && isset( $_GET[ $this->setting_reset_name ] );
-		}  
+		public function thaps_reset_settings() {
 
-        public function delete_settings() {
+			if ( ! current_user_can( 'administrator' ) ) {
+  
+				wp_die( - 1, 403 );
+				
+			} 
 
-        	if ( ! current_user_can( 'administrator' ) ) {
-
-            wp_die( - 1, 403 );
-
-            }
-
-            if (isset($_GET['delete_wpnonce']) || wp_verify_nonce($_REQUEST['delete_wpnonce'], 'delete_nonce' ) ) {
-
+			check_ajax_referer('thaps_plugin_nonce','nonce');
+			
 			do_action( sprintf( 'delete_%s_settings', $this->settings_name ), $this );
 
-			// license_key should not updated
-
 			return delete_option( $this->settings_name );
-		}
 
 		}
 
@@ -818,6 +796,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 						'add_media'     => esc_html__( 'Add Media', 'th-advance-product-search' ),
 						'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
 						'nonce'         => wp_create_nonce( 'thaps_plugin_nonce' ),
+						'reset_text'    => esc_html__( 'Are you sure to reset current settings?', 'th-advance-product-search' ),
 					)
 				);
 			}
