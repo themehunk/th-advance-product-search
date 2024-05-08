@@ -83,6 +83,7 @@ width:65px;
 
 .thaps-autocomplete-suggestion .thaps-img img{
 border-radius:3px;
+max-width: 100%;
 }
 
 .thaps-autocomplete-suggestion .thaps-price{
