@@ -103,6 +103,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	//Get image
 	/**************/
 	public function thaps_getImages_src( $id, $size, $enble){
+		$src = '';
 
        if($enble == true){
 
@@ -119,7 +120,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
 		}else{
 
-			return $src = '';
+			return $src;
 		}
 
 
