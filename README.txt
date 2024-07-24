@@ -3,7 +3,7 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product search, post search, page search, category,ajax search, live search
 Requires at least: 5.0
-Tested up to: 6.5.3
+Tested up to: 6.6
 Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,35 @@ Here are some additional plugins that were made with love.
 [Popup Builder](https://wordpress.org/plugins/wp-popup-builder/) – Popup Forms , Marketing PoPuP & Newsletter
 [Product Compare](https://wordpress.org/plugins/th-product-compare/) – Product Compare plugin helps you to create interactive product comparison tables.
 [ Variation Swatches](https://wordpress.org/plugins/th-variation-swatches/) – Variation Swatches is a Free easy to use WooCommerce Swatches Plugin
+
+
+== Supported Themes ==
+These themes have been tested and are compatible with search plugin without significant issues. Also you can use this plugin to your Block, Elementor, WooCommerce Pages:
+
+* [TH Shop Mania](https://wordpress.org/themes/th-shop-mania/) - by ThemeHunk
+* [Top Store](https://wordpress.org/themes/top-store/) - by ThemeHunk
+* [Open Shop](https://wordpress.org/themes/open-shop/) - by ThemeHunk
+* [Zita](https://wordpress.org/themes/zita/) - by ThemeHunk
+* [Big Store](https://wordpress.org/themes/big-store/) - by ThemeHunk
+* [M Shop](https://wordpress.org/themes/m-shop/) - by ThemeHunk
+* [Royal Shop](https://wordpress.org/themes/royal-shop/) - by ThemeHunk
+* [Open Mart](https://wordpress.org/themes/open-mart/) - by ThemeHunk
+* [GoGo](https://wordpress.org/themes/gogo/) - by ThemeHunk
+* [Twenty Twenty-Two](https://wordpress.org/themes/twentytwentytwo/) - by WordPress.org
+* [Hello Elementor](https://wordpress.org/themes/hello-elementor/) - by Elementor
+* [OceanWP](https://wordpress.org/themes/oceanwp/) - by oceanwp
+* [Neve](https://wordpress.org/themes/neve/) - by Themeisle
+* [Go](https://wordpress.org/themes/go/) - by GoDaddy
+* [GeneratePress](https://wordpress.org/themes/generatepress/) - by Tom
+* [Hestia](https://wordpress.org/themes/hestia/) - by Themeisle
+* [Colibri WP](https://wordpress.org/themes/colibri-wp/) - by Extend Themes
+* [Kadence](https://wordpress.org/themes/kadence/) - by Ben Ritner – Kadence WP
+* [Astra](https://wordpress.org/themes/astra/) - by Brainstorm Force
+* [Kubio](https://wordpress.org/themes/kubio/) - by Extend Themes
+* [Zakra](https://wordpress.org/themes/zakra/) - by ThemeGrill
+* [Storefront](https://wordpress.org/themes/storefront/) - by Automattic
+* [OnePress](https://wordpress.org/themes/onepress/) - by FameThemes
+* [Blocksy](https://wordpress.org/themes/blocksy/) - by creativethemeshq
 
 
 == Installation ==
