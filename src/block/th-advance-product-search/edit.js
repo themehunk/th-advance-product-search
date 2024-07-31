@@ -36,8 +36,10 @@ import { RichText, useBlockProps } from '@wordpress/block-editor';
  */
 import './editor.scss';
 import InsSettings from './settings.js';
-
-
+import Thsearchdefault from './thsearchdefault.js';
+import Thsearchbar from './thsearchbar.js';
+import Thsearchicon from './thsearchicon.js';
+import Thsearchflexi from './thsearchflexi.js';
 export default function Edit({ attributes, 
 	setAttributes, 
 	clientId,
@@ -67,7 +69,6 @@ function generateUniqueId(smallID) {
   counter += 1;
   return `${smallID}${counter}`;
 }
-
       const { id } = attributes;
 			const { addUniqueID } = useDispatch( 'th-advance-product-search/data' );
 			const { isUniqueID, isUniqueBlock} = useSelect(
@@ -92,20 +93,106 @@ function generateUniqueId(smallID) {
 			}
 			}, [] );
 
-      const blockProps = useBlockProps({
-                           id:`th-advance-product-search-${attributes.uniqueID}`,
-                          className: 'th-advance-product-search-wrapper',
-                          });
-        return (
-			    <>
-            <InsSettings
-              attributes={attributes}
-              setAttributes={setAttributes}
-            />
-            <div { ...blockProps }>
-            {attributes.searchStyle}
-            </div>
-            
-            </>
+      const {
+        isViewportAvailable,
+        isPreviewDesktop,
+        isPreviewTablet,
+        isPreviewMobile
+      } = useSelect( select => {
+        const { __experimentalGetPreviewDeviceType } = select( 'core/edit-post' ) ? select( 'core/edit-post' ) : false;
+    
+        return {
+          isViewportAvailable: __experimentalGetPreviewDeviceType ? true : false,
+          isPreviewDesktop: __experimentalGetPreviewDeviceType ? 'Desktop' === __experimentalGetPreviewDeviceType() : false,
+          isPreviewTablet: __experimentalGetPreviewDeviceType ? 'Tablet' === __experimentalGetPreviewDeviceType() : false,
+          isPreviewMobile: __experimentalGetPreviewDeviceType ? 'Mobile' === __experimentalGetPreviewDeviceType() : false
+        };
+      }, []);
+    
+      const isLarger = useViewportMatch( 'large', '>=' );
+    
+      const isLarge = useViewportMatch( 'large', '<=' );
+    
+      const isSmall = useViewportMatch( 'small', '>=' );
+    
+      const isSmaller = useViewportMatch( 'small', '<=' );
+    
+      let isDesktop = isLarger && ! isLarge && isSmall && ! isSmaller;
+    
+      let isTablet = ! isLarger && ! isLarge && isSmall && ! isSmaller;
+    
+      let isMobile = ! isLarger && ! isLarge && ! isSmall && ! isSmaller;
+    
+        if ( isViewportAvailable && ! isMobile ) {
+        isDesktop = isPreviewDesktop;
+        isTablet = isPreviewTablet;
+        isMobile = isPreviewMobile;
+      }
+
+      const deviceAttributeMap = {
+        desktop: {
+          searchWidth: attributes.searchWidth + attributes.searchWidthUnit,
+          barborderRadius: attributes.barborderRadius + attributes.barborderRadiusUnit,
+        },
+        tablet: {
+          searchWidth: attributes.searchWidthTablet + attributes.searchWidthUnitTablet,
+          barborderRadius: attributes.barborderRadiusTablet + attributes.barborderRadiusUnit,
+        },
+        mobile: {
+          searchWidth: attributes.searchWidthMobile + attributes.searchWidthUnitMobile,
+          barborderRadius: attributes.barborderRadiusMobile + attributes.barborderRadiusUnit,
+        }
+
+      }
+
+      const deviceType  = isDesktop ? 'desktop' : isTablet ? 'tablet' : 'mobile';
+      const searchWidth = deviceAttributeMap[deviceType].searchWidth;
+      const barborderRadius = deviceAttributeMap[deviceType].barborderRadius;
+      let tapspStyle;
+      tapspStyle = {
+        '--tapsp-width':searchWidth,
+        '--tapsp-bar-radius':barborderRadius,
+        '--tapsp-bar-bg-clr':attributes.searchBarClr,
+        '--tapsp-bar-text-clr':attributes.searchTextClr,
+        '--tapsp-icon-clr':attributes.searchIconClr,
+        '--tapsp-button-bg-clr':attributes.searchBtnBgClr,
+        '--tapsp-button-txt-clr':attributes.searchBtnTextClr,
+        '--tapsp-button-hvr-bg-clr':attributes.searchBtnHvrBgClr,
+        '--tapsp-button-hvr-txt-clr':attributes.searchBtnHvrTextClr,
+        '--taspsp-search-border-width':attributes.searchborder.width,
+        '--taspsp-search-border-color':attributes.searchborder.color,
+        '--taspsp-search-border-style':attributes.searchborder.style,
+        'borderStyle': 'none',
+      }
+
+      const omitBy = (object, condition) => (
+        Object.fromEntries(
+          Object.entries(object).filter(([key, value]) => !condition(value))
         )
-}
+      );
+
+      const style = omitBy({
+        ...tapspStyle,
+      }, x => x?.includes?.( 'undefined' ));
+
+      const blockProps = useBlockProps({
+        id:`th-advance-product-search-${attributes.uniqueID}`,
+        className: 'th-advance-product-search-wrapper',
+        style
+        });
+        return (
+         <>
+           <InsSettings attributes={attributes} setAttributes={setAttributes} />
+           <div {...blockProps}>
+             {attributes.searchStyle === 'default' && 
+             <Thsearchdefault placeholder={attributes.placeholderText}
+                              submitLabel={attributes.submitText}
+                              disableSubmit={attributes.disableSubmit}/>}
+             {attributes.searchStyle === 'bar' && <Thsearchbar placeholder={attributes.placeholderText} />}
+             {attributes.searchStyle === 'icon' && <Thsearchicon placeholder={attributes.placeholderText} />}
+             {attributes.searchStyle === 'flexi' && <Thsearchflexi placeholder={attributes.placeholderText} />}
+             {!['default', 'bar', 'icon', 'flexi'].includes(attributes.searchStyle) && <Thsearchdefault />}
+           </div>
+         </>
+       );
+     }
