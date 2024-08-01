@@ -148,21 +148,28 @@ function generateUniqueId(smallID) {
       const deviceType  = isDesktop ? 'desktop' : isTablet ? 'tablet' : 'mobile';
       const searchWidth = deviceAttributeMap[deviceType].searchWidth;
       const barborderRadius = deviceAttributeMap[deviceType].barborderRadius;
+      
+      let iconClr = '';
+
+      if (attributes.searchStyle === 'default') {
+          iconClr = attributes.searchIconClr || '#fff';
+      } else {
+          iconClr = attributes.searchIconClr || '#111';
+      }
+      
       let tapspStyle;
       tapspStyle = {
         '--tapsp-width':searchWidth,
         '--tapsp-bar-radius':barborderRadius,
         '--tapsp-bar-bg-clr':attributes.searchBarClr,
         '--tapsp-bar-text-clr':attributes.searchTextClr,
-        '--tapsp-icon-clr':attributes.searchIconClr,
+        '--tapsp-icon-clr':iconClr,
         '--tapsp-button-bg-clr':attributes.searchBtnBgClr,
         '--tapsp-button-txt-clr':attributes.searchBtnTextClr,
         '--tapsp-button-hvr-bg-clr':attributes.searchBtnHvrBgClr,
         '--tapsp-button-hvr-txt-clr':attributes.searchBtnHvrTextClr,
-        '--taspsp-search-border-width':attributes.searchborder.width,
-        '--taspsp-search-border-color':attributes.searchborder.color,
-        '--taspsp-search-border-style':attributes.searchborder.style,
-        'borderStyle': 'none',
+        '--tapsp-search-border-clr':attributes.searchborder
+       
       }
 
       const omitBy = (object, condition) => (

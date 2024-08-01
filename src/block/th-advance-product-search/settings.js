@@ -246,29 +246,7 @@ const InsSettings = ({
                                   max={ maxbarborderRadiusUnit }
                                   allowReset={ true }
                                 />
-                              </ResponsiveControl>   
-                              { attributes.searchStyle === 'default' && (
-                                <>
-                                    <ToggleControl
-                                        label={ __('Disable Submit Button', 'th-advance-product-search') }
-                                        checked={ attributes.disableSubmit }
-                                        onChange={ disableSubmit => setAttributes({ disableSubmit }) }
-                                    />
-                                    
-                                    { !attributes.disableSubmit && (
-                                        <TextControl
-                                            label={ __('Submit Label', 'th-advance-product-search') }
-                                            value={ attributes.submitText }
-                                            onChange={ submitText => setAttributes({ submitText }) }
-                                        />
-                                    )}
-                                </>
-                            )}
-                            <TextControl
-                              label={ __('Placeholder Text', 'th-advance-product-search' ) }
-                              value={ attributes.placeholderText }
-                              onChange={ ( placeholderText) => setAttributes({placeholderText}) }
-                              />       
+                              </ResponsiveControl>       
                         <p>
                         {__(
                             'For the ',
@@ -306,6 +284,11 @@ const InsSettings = ({
                             onChange: (searchBarClr) => setAttributes({ searchBarClr: searchBarClr}),
                             label: __('Search bar', 'th-advance-product-search'),
                         },
+                        {
+                          value: attributes.searchborder,
+                          onChange: (searchborder) => setAttributes({ searchborder: searchborder}),
+                          label: __('Search Border', 'th-advance-product-search'),
+                        } ,
                         {
                           value: attributes.searchTextClr,
                           onChange: (searchTextClr) => setAttributes({ searchTextClr: searchTextClr }),
@@ -345,12 +328,7 @@ const InsSettings = ({
                         
                     ]}
                 />
-                <BorderBoxControl
-                        label={ __( 'Search Bar boder', 'th-advance-product-search' ) }
-                        value={attributes.searchborder}
-                        onChange={ searchborder => setAttributes({ searchborder }) }  
-                        
-                />
+                
                 </PanelBody>
                              )}
         </InspectorControls>

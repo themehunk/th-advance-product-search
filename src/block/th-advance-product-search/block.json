@@ -84,7 +84,7 @@
 		},
 		"searchIconClr":{
 			"type": "string",
-			"default":"#fff"
+			"default":""
 		},
 		"barborderRadius": {
 			"type": "number"
@@ -100,12 +100,8 @@
 			"default":"px"
 		},
 		"searchborder": {
-            "type": "object",
-            "default": {
-                "style": "solid",
-                "color": "#e7f5ff",
-                "width": "1px"
-            }
+           "type": "string",
+			"default":"#e7f5ff"
         }
 	}
 		
