@@ -4,5 +4,6 @@ module.exports = {
   entry:{
      'th-advance-product-search':'./src/block/th-advance-product-search',
      'th-advance-product-search-data':'./src/data',
-  }
+     'thaps-component-editor': './src/block/th-advance-product-search/components/component-editor.scss',
+     }
 };
