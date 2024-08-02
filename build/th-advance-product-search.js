@@ -3621,21 +3621,24 @@ function Edit({
   const deviceType = isDesktop ? 'desktop' : isTablet ? 'tablet' : 'mobile';
   const searchWidth = deviceAttributeMap[deviceType].searchWidth;
   const barborderRadius = deviceAttributeMap[deviceType].barborderRadius;
+  let iconClr = '';
+  if (attributes.searchStyle === 'default') {
+    iconClr = attributes.searchIconClr || '#fff';
+  } else {
+    iconClr = attributes.searchIconClr || '#111';
+  }
   let tapspStyle;
   tapspStyle = {
     '--tapsp-width': searchWidth,
     '--tapsp-bar-radius': barborderRadius,
     '--tapsp-bar-bg-clr': attributes.searchBarClr,
     '--tapsp-bar-text-clr': attributes.searchTextClr,
-    '--tapsp-icon-clr': attributes.searchIconClr,
+    '--tapsp-icon-clr': iconClr,
     '--tapsp-button-bg-clr': attributes.searchBtnBgClr,
     '--tapsp-button-txt-clr': attributes.searchBtnTextClr,
     '--tapsp-button-hvr-bg-clr': attributes.searchBtnHvrBgClr,
     '--tapsp-button-hvr-txt-clr': attributes.searchBtnHvrTextClr,
-    '--taspsp-search-border-width': attributes.searchborder.width,
-    '--taspsp-search-border-color': attributes.searchborder.color,
-    '--taspsp-search-border-style': attributes.searchborder.style,
-    'borderStyle': 'none'
+    '--tapsp-search-border-clr': attributes.searchborder
   };
   const omitBy = (object, condition) => Object.fromEntries(Object.entries(object).filter(([key, value]) => !condition(value)));
   const style = omitBy({
@@ -3979,25 +3982,7 @@ const InsSettings = ({
     min: 0,
     max: maxbarborderRadiusUnit,
     allowReset: true
-  })), attributes.searchStyle === 'default' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Disable Submit Button', 'th-advance-product-search'),
-    checked: attributes.disableSubmit,
-    onChange: disableSubmit => setAttributes({
-      disableSubmit
-    })
-  }), !attributes.disableSubmit && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Submit Label', 'th-advance-product-search'),
-    value: attributes.submitText,
-    onChange: submitText => setAttributes({
-      submitText
-    })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Placeholder Text', 'th-advance-product-search'),
-    value: attributes.placeholderText,
-    onChange: placeholderText => setAttributes({
-      placeholderText
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For the ', 'th-advance-product-search'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Advanced Options and Styling', 'th-advance-product-search')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' navigate to ', 'th-advance-product-search'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For the ', 'th-advance-product-search'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Advanced Options and Styling', 'th-advance-product-search')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' navigate to ', 'th-advance-product-search'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: adminUrlsearchh,
     target: "_blank",
     rel: "noopener noreferrer"
@@ -4014,6 +3999,12 @@ const InsSettings = ({
         searchBarClr: searchBarClr
       }),
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search bar', 'th-advance-product-search')
+    }, {
+      value: attributes.searchborder,
+      onChange: searchborder => setAttributes({
+        searchborder: searchborder
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search Border', 'th-advance-product-search')
     }, {
       value: attributes.searchTextClr,
       onChange: searchTextClr => setAttributes({
@@ -4055,12 +4046,6 @@ const InsSettings = ({
       }),
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Hover Text', 'th-advance-product-search')
     }]
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBorderBoxControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search Bar boder', 'th-advance-product-search'),
-    value: attributes.searchborder,
-    onChange: searchborder => setAttributes({
-      searchborder
-    })
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InsSettings);
@@ -23424,7 +23409,7 @@ module.exports = window["wp"]["primitives"];
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"th-advance-product-search/th-advance-product-search","version":"0.1.0","title":"Advance Product Search","category":"th-advance-product-search","description":"","supports":{"html":false},"textdomain":"th-advance-product-search","attributes":{"id":{"type":"string"},"uniqueID":{"type":"string"},"searchStyle":{"type":"string","default":"default"},"searchWidth":{"type":"number"},"searchWidthTablet":{"type":"number"},"searchWidthMobile":{"type":"number"},"searchWidthUnit":{"type":"string","default":"px"},"searchWidthUnitTablet":{"type":"string","default":"px"},"searchWidthUnitMobile":{"type":"string","default":"px"},"disableSubmit":{"type":"boolean","default":true},"submitText":{"type":"string","default":"Submit"},"custPostType":{"type":"string"},"placeholderText":{"type":"string","default":"search..."},"searchBarClr":{"type":"string"},"searchTextClr":{"type":"string"},"searchBrdrClr":{"type":"string"},"searchBtnHvrBgClr":{"type":"string","default":"#111"},"searchBtnHvrTextClr":{"type":"string","default":"#fff"},"searchBtnTextClr":{"type":"string","default":"#fff"},"searchBtnBgClr":{"type":"string","default":"#111"},"searchIconClr":{"type":"string","default":"#fff"},"barborderRadius":{"type":"number"},"barborderRadiusTablet":{"type":"number"},"barborderRadiusMobile":{"type":"number"},"barborderRadiusUnit":{"type":"string","default":"px"},"searchborder":{"type":"object","default":{"style":"solid","color":"#e7f5ff","width":"1px"}}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"th-advance-product-search/th-advance-product-search","version":"0.1.0","title":"Advance Product Search","category":"th-advance-product-search","description":"","supports":{"html":false},"textdomain":"th-advance-product-search","attributes":{"id":{"type":"string"},"uniqueID":{"type":"string"},"searchStyle":{"type":"string","default":"default"},"searchWidth":{"type":"number"},"searchWidthTablet":{"type":"number"},"searchWidthMobile":{"type":"number"},"searchWidthUnit":{"type":"string","default":"px"},"searchWidthUnitTablet":{"type":"string","default":"px"},"searchWidthUnitMobile":{"type":"string","default":"px"},"disableSubmit":{"type":"boolean","default":true},"submitText":{"type":"string","default":"Submit"},"custPostType":{"type":"string"},"placeholderText":{"type":"string","default":"search..."},"searchBarClr":{"type":"string"},"searchTextClr":{"type":"string"},"searchBrdrClr":{"type":"string"},"searchBtnHvrBgClr":{"type":"string","default":"#111"},"searchBtnHvrTextClr":{"type":"string","default":"#fff"},"searchBtnTextClr":{"type":"string","default":"#fff"},"searchBtnBgClr":{"type":"string","default":"#111"},"searchIconClr":{"type":"string","default":""},"barborderRadius":{"type":"number"},"barborderRadiusTablet":{"type":"number"},"barborderRadiusMobile":{"type":"number"},"barborderRadiusUnit":{"type":"string","default":"px"},"searchborder":{"type":"string","default":"#e7f5ff"}}}');
 
 /***/ })
 

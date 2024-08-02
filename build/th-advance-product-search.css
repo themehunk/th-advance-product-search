@@ -9,6 +9,7 @@
   --tapsp-button-txt-clr: #fff;
   --tapsp-button-hvr-bg-clr: #111;
   --tapsp-button-hvr-txt-clr: #fff;
+  --tapsp-search-border-clr:var(--tapsp-search-border-clr);
   --tapsp-bar-radius: 4px;
 }
 
@@ -18,9 +19,7 @@
 }
 .wp-block.th-advance-product-search-wrapper .thaps-from-wrap {
   background: var(--tapsp-bar-bg-clr);
-  border-width: var(--taspsp-search-border-width);
-  border-color: var(--taspsp-search-border-color);
-  border-style: var(--taspsp-search-border-style);
+  border-color: var(--tapsp-search-border-clr);
   border-radius: var(--tapsp-bar-radius);
 }
 .wp-block.th-advance-product-search-wrapper .thaps-search-autocomplete {
@@ -55,8 +54,6 @@
   color: var(--tapsp-icon-clr);
 }
 .wp-block.th-advance-product-search-wrapper .thaps-box-open .tapsp-icon-arrow {
-  border-left-color: var(--taspsp-search-border-color);
-  border-top-color: var(--taspsp-search-border-color);
   background: var(--tapsp-bar-bg-clr);
 }
 

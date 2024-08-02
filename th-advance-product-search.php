@@ -45,6 +45,17 @@ if (!defined('TH_ADVANCE_PRODUCT_SEARCH_VERSION')) {
     define('TH_ADVANCE_PRODUCT_SEARCH_VERSION', $plugin_data['version']);
 } 
 
+/**
+ *  Declare the woo HPOS compatibility.
+*/
+function thaps_hpos_compatibility() {
+
+            if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_FILE, true );
+            }
+}
+add_action('before_woocommerce_init', 'thaps_hpos_compatibility');
+
 if (!class_exists('TH_Advance_Product_Search') && ( ! class_exists( 'Tapsp_Main' ))) {
 include_once(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/themehunk-menu/admin-menu.php');
 require_once("inc/thaps.php");

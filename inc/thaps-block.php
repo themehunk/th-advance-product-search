@@ -131,12 +131,171 @@ function th_advance_product_search_blocks_editor_assets(){
 add_action( 'enqueue_block_assets', 'th_advance_product_search_blocks_editor_assets' );
 
 function th_advance_product_search_blocks_render_callback( $attr ) {
-
-    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block-th-advance-product-search" style="width:100%";>';
-    
-    $searchStyle = isset($attr['searchStyle']) ? $attr['searchStyle'] : '[th-aps]';
-
-    $block_content .= ''.do_shortcode($searchStyle).'</div>';
-    
+    $thapsBlockStyle = '';
+    if (isset($attr['searchBtnBgClr'])) {
+        $thapsBlockStyle .= "--tapsp-searchBtnBgClr:{$attr['searchBtnBgClr']};";
+    }
+    if (isset($attr['searchBtnTextClr'])) {
+        $thapsBlockStyle .= "--tapsp-searchBtnTextClr:{$attr['searchBtnTextClr']};";
+    }
+    if (isset($attr['searchBtnHvrTextClr'])) {
+        $thapsBlockStyle .= "--tapsp-searchBtnHvrTextClr:{$attr['searchBtnHvrTextClr']};";
+    }
+    if (isset($attr['searchBtnHvrBgClr'])) {
+        $thapsBlockStyle .= "--tapsp-searchBtnHvrBgClr:{$attr['searchBtnHvrBgClr']};";
+    }
+    if (isset($attr['searchTextClr'])) {
+        $thapsBlockStyle .= "--tapsp-searchTextClr:{$attr['searchTextClr']};";
+    }
+    if (isset($attr['searchBarClr'])) {
+        $thapsBlockStyle .= "--tapsp-searchBarClr:{$attr['searchBarClr']};";
+    }
+    if (isset($attr['searchIconClr'])) {
+        $thapsBlockStyle .= "--tapsp-searchIconClr:{$attr['searchIconClr']};";
+    }
+    if (isset($attr['searchborder'])) {
+        $thapsBlockStyle .= "--tapsp-searchborderClr:{$attr['searchborder']};";
+    }
+    // searchwidth
+    if (isset($attr['searchWidth'])) {
+        $searchWidthUnit = isset($attr['searchWidthUnit']) ? $attr['searchWidthUnit'] : 'px';
+        $thapsBlockStyle .= "--taiowcp-searchWidth: {$attr['searchWidth']}{$searchWidthUnit}; ";
+    }
+    if (isset($attr['searchWidthTablet'])) {
+        $searchWidthUnitTablet = isset($attr['searchWidthUnitTablet']) ? $attr['searchWidthUnitTablet'] : 'px';
+        $thapsBlockStyle .= "--taiowcp-searchWidthTablet: {$attr['searchWidthTablet']}{$searchWidthUnitTablet}; ";
+    }
+    if (isset($attr['searchWidthMobile'])) {
+        $searchWidthUnitMobile = isset($attr['searchWidthUnitMobile']) ? $attr['searchWidthUnitMobile'] : 'px';
+        $thapsBlockStyle .= "--taiowcp-searchWidthMobile: {$attr['searchWidthMobile']}{$searchWidthUnitMobile}; ";
+    }
+    // searchbar-radius
+    if (isset($attr['barborderRadius'])) {
+        $barborderRadiusUnit = isset($attr['barborderRadiusUnit']) ? $attr['barborderRadiusUnit'] : 'px';
+        $thapsBlockStyle .= "--taiowcp-barborderRadius: {$attr['barborderRadius']}{$barborderRadiusUnit}; ";
+    }
+    if (isset($attr['barborderRadiusTablet'])) {
+        $thapsBlockStyle .= "--taiowcp-barborderRadiusTablet: {$attr['barborderRadiusTablet']}{$barborderRadiusUnit}; ";
+    }
+    if (isset($attr['barborderRadiusMobile'])) {
+        $thapsBlockStyle .= "--taiowcp-barborderRadiusMobile: {$attr['barborderRadiusMobile']}{$barborderRadiusUnit}; ";
+    }
+    $thapsBlockStyle = preg_replace('/\s+/', ' ', trim($thapsBlockStyle));
+    $unique_id = isset($attr['uniqueID']) ? esc_attr($attr['uniqueID']) : '';
+    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block-th-advance-product-search" style="' . esc_attr($thapsBlockStyle) . '">';
+    $block_content .= th_advance_product_search_block($attr);
     return $block_content;
+}
+
+function th_advance_product_search_block($attr){
+    ob_start();
+    $unique_id = isset($attr['uniqueID']) ? esc_attr($attr['uniqueID']) : '';
+    $search_style      = isset($attr['searchStyle']) ? esc_attr($attr['searchStyle']) : 'default';
+    $select_srch_type = esc_html(th_advance_product_search()->get_option( 'select_srch_type' ));
+    if($select_srch_type == 'product_srch'){
+        $type = 'product';
+        }elseif($select_srch_type == 'post_srch'){
+        $type = 'post';
+        }elseif($select_srch_type == 'page_srch'){
+        $type = 'page';
+     }
+    if(th_advance_product_search()->get_option( 'show_submit' )=='0'){
+    $barClass='submit-no-active'; 
+    }else{
+    $barClass='submit-active';
+    }
+    if($search_style == 'default'){ ?>
+    <div id='thaps-search-box' class="thaps-search-box  default <?php echo esc_attr($barClass);?> ">
+    <form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
+    <div class="thaps-from-wrap">
+    <?php
+    if(th_advance_product_search()->get_option('show_submit' )=='0'){
+    th_advance_product_search_icon_style_svg('icon-style','');
+    } ?>
+     <input id='thaps-search-autocomplete-<?php echo esc_attr($unique_id); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
+    <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?>     
+    <div class="thaps-preloader"></div> 
+    <?php } ?>
+    <?php
+    if(th_advance_product_search()->get_option( 'show_submit' )=='1'){?>
+    <button id='thaps-search-button' value="<?php echo esc_attr_x( 'Submit','submit button', 'th-advance-product-search' ); ?>" type='submit'>  
+    <?php if(th_advance_product_search()->get_option( 'level_submit' )!==''){
+        echo esc_html__(th_advance_product_search()->get_option( 'level_submit' ));
+    }else{ 
+        th_advance_product_search_icon_style_svg('icon-style', '');
+    }?>
+    </button> <?php }
+    ?>
+    <input type="hidden" name="post_type" value="<?php echo esc_attr($type);?>" />
+    <span class="label label-default" id="selected_option"></span>
+    </div>    
+    </form>
+    </div>
+    <?php 
+
+}elseif($search_style == 'bar'){ ?>
+<div id='thaps-search-box' class="thaps-search-box bar_style">
+<form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
+<div class="thaps-from-wrap">
+   <?php th_advance_product_search_icon_style_svg('icon-style','');?>
+   <input id='thaps-search-autocomplete-<?php echo esc_attr($unique_id); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
+   <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?> 
+   <div class="thaps-preloader"></div>
+   <?php } ?>
+        <input type="hidden" name="post_type" value="<?php echo esc_attr($type);?>" />
+        <span class="label label-default" id="selected_option"></span>
+      </div>
+ </form>
+ </div>
+<?php }elseif($search_style == 'icon'){ ?>
+<div id='thaps-search-box' class="thaps-search-box icon_style">
+<?php th_advance_product_search_icon_style_svg('click-icon','');?>
+<div class="thaps-icon-arrow"></div>
+<form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
+<div class="thaps-from-wrap">
+  <?php th_advance_product_search_icon_style_svg('icon-style','');?>
+  <input id='thaps-search-autocomplete-<?php echo esc_attr($unique_id); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
+  <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?> 
+  <div class="thaps-preloader"></div>
+  <?php } ?>
+        <input type="hidden" name="post_type" value="<?php echo esc_attr($type);?>" />
+        <span class="label label-default" id="selected_option"></span>
+      </div>
+ </form> 
+</div>
+<?php }elseif($search_style == 'flexi'){ 
+if(wp_is_mobile()){    
+?>
+<div id='thaps-search-box' class="thaps-search-box icon_style flexible-style">
+<?php th_advance_product_search_icon_style_svg('click-icon','');?>
+<div class="thaps-icon-arrow" style=""></div>
+<form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
+<div class="thaps-from-wrap">
+  <?php th_advance_product_search_icon_style_svg('icon-style','');?>
+  <input id='thaps-search-autocomplete-<?php echo esc_attr($unique_id); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
+  <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?>
+  <div class="thaps-preloader"></div>
+  <?php } ?>
+  <input type="hidden" name="post_type" value="<?php echo esc_attr($type);?>" />
+  <span class="label label-default" id="selected_option"></span>
+ </div>
+ </form> 
+ </div>
+ <?php } else { ?>
+<div id='thaps-search-box' class="thaps-search-box bar_style flexible-style">
+<form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
+<div class="thaps-from-wrap">
+  <?php th_advance_product_search_icon_style_svg('icon-style','');?>
+  <input id='thaps-search-autocomplete-<?php echo esc_attr($unique_id); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
+  <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?>
+  <div class="thaps-preloader"></div>
+  <?php } ?>
+        <input type="hidden" name="post_type" value="<?php echo esc_attr($type);?>" />
+        <span class="label label-default" id="selected_option"></span>
+      </div>
+ </form>
+ </div>
+<?php }}    
+return ob_get_clean();  
+
 }
