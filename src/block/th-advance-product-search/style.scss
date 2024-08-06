@@ -77,8 +77,8 @@
     }
     .wp-block-th-advance-product-search{
         .thaps-search-box{
-            max-width:var(--taiowcp-searchWidth);
-            width:var(--taiowcp-searchWidth);
+            max-width:var(--taiowcp-searchWidthTablet);
+            width:var(--taiowcp-searchWidthTablet);
         }
         #thaps-search-button{
             border-radius:var(--taiowcp-barborderRadiusTablet);
@@ -97,8 +97,8 @@
     }
     .wp-block-th-advance-product-search{
         .thaps-search-box{
-            max-width:var(--taiowcp-searchWidth);
-            width:var(--taiowcp-searchWidth);
+            max-width:var(--taiowcp-searchWidthMobile);
+            width:var(--taiowcp-searchWidthMobile);
         }
         #thaps-search-button{
             border-radius:var(--taiowcp-barborderRadiusMobile);
