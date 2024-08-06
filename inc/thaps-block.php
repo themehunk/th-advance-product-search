@@ -92,7 +92,7 @@ function th_advance_product_search_blocks_categories( $categories ) {
 add_filter( 'block_categories_all', 'th_advance_product_search_blocks_categories', 11, 2);
 
 function th_advance_product_search_blocks_editor_assets(){
-
+    if ( is_admin() ) {
 	wp_enqueue_script(
 		'data-block',
 		TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'build/th-advance-product-search-data.js',
@@ -115,6 +115,7 @@ function th_advance_product_search_blocks_editor_assets(){
          array(),
          TH_ADVANCE_PRODUCT_SEARCH_VERSION,
     );
+   }
 
     wp_enqueue_style(
         'thaps-th-icon-css',
