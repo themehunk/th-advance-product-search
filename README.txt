@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product search, post search, page search, category,ajax search, live search
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,6 +131,9 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.2.6 =
+*  Fix:js conflict issue fixed.
 
 = 1.2.5 =
 *  Update:Search Block Improve.
