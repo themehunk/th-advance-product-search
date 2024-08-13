@@ -132,6 +132,7 @@ function th_advance_product_search_blocks_editor_assets(){
 add_action( 'enqueue_block_assets', 'th_advance_product_search_blocks_editor_assets' );
 
 function th_advance_product_search_blocks_render_callback( $attr ) {
+
     $thapsBlockStyle = '';
     if (isset($attr['searchBtnBgClr'])) {
         $thapsBlockStyle .= "--tapsp-searchBtnBgClr:{$attr['searchBtnBgClr']};";
@@ -154,6 +155,7 @@ function th_advance_product_search_blocks_render_callback( $attr ) {
     if (isset($attr['searchIconClr'])) {
         $thapsBlockStyle .= "--tapsp-searchIconClr:{$attr['searchIconClr']};";
     }
+
     if (isset($attr['searchborder'])) {
         $thapsBlockStyle .= "--tapsp-searchborderClr:{$attr['searchborder']};";
     }
@@ -185,6 +187,7 @@ function th_advance_product_search_blocks_render_callback( $attr ) {
     $unique_id = isset($attr['uniqueID']) ? esc_attr($attr['uniqueID']) : '';
     $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block-th-advance-product-search" style="' . esc_attr($thapsBlockStyle) . '">';
     $block_content .= th_advance_product_search_block($attr);
+    $block_content .= '</div>';
     return $block_content;
 }
 
