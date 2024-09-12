@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product search, post search, page search, category,ajax search, live search
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -132,6 +132,10 @@ Yes, You can translate our plugin to desired language.
 
 == Changelog ==
 
+= 1.2.7 =
+*  Fix: Admin style issue improved.
+*  Update: Upgrade to pro link changed.
+
 = 1.2.6 =
 *  Fix:js conflict issue fixed.
 
@@ -220,8 +224,9 @@ Yes, You can translate our plugin to desired language.
 
 == Upgrade Notice ==
 
-= 1.2.0 =
-* Issue Fixed: .thaps-search-box min-width removed.
+= 1.2.7 =
+*  Fix: Admin style issue improved.
+*  Update: Upgrade to pro link changed.
 
 
 Thanks for using our plugin, I am sure you will create a great Product Search for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/
