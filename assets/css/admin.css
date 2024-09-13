@@ -323,8 +323,12 @@ padding: 0.4rem 1.5rem;
     font-weight: 700;
     text-decoration: auto;
 }
-.thaps-wrap-doc a:hover,.thaps-wrap-pro a:hover{
+.thaps-wrap-doc a:hover{
     background: #575555;
+}
+.thaps-wrap-pro a,
+.thaps-wrap-pro a:hover{
+    background: #3070ff;
 }
 .wrp-title{
 font-size:1rem;
