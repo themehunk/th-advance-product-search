@@ -517,7 +517,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			?>
              <div class="th-upgrade-pro">
              	<h4><?php esc_html_e('Upgrade to Premium Version Of Advance WordPress Search','th-advance-product-search'); ?></h4>
-             	<a href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>" class="button-upgrade"><i class="dashicons dashicons-lock"></i><?php esc_html_e('Upgrade Pro','th-advance-product-search'); ?></a>
+             	<a href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>" class="button-upgrade" target="_blank"><i class="dashicons dashicons-lock"></i><?php esc_html_e('Upgrade Pro','th-advance-product-search'); ?></a>
              </div>
 			
 
