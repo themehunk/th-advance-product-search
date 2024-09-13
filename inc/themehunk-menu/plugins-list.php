@@ -83,13 +83,4 @@
             'docs' => esc_url('https://themehunk.com/docs/wp-popup-builder-pro/'),
         )
     ),
-    'themehunk-megamenu-plus' => array(
-        'name' => esc_html__('ThemeHunk Megamenu – Menu builder', 'th-advance-product-search'),
-        'img' => 'icon-128x128.png',
-        'admin_link' =>   'themehunkmegamenu',
-        'details' => esc_url('https://themehunk.com/product/themehunk-megamenu/'),
-        'active_filename' => 'themehunk-megamenu-plus/themehunk-megamenu.php',
-    )
-
-
 );
