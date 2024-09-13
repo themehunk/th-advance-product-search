@@ -424,7 +424,8 @@ font-weight:500;
     display: none;
 }
 .th-upgrade-pro{
-    background: #5a7999;
+    background: #E1E6F4;
+    color: #111;
     display: flex;
     padding: 20px 26px;
     border-radius: 4px;
@@ -460,7 +461,7 @@ font-weight:500;
 }
 .th-search-images li:after{
     content: 'Pro';
-    background: red;
+    background: #b73838;
     position: absolute;
     top: -21px;
     left: 0;
