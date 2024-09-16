@@ -1,4 +1,3 @@
-
 function openTab(evt, tabName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -130,24 +129,25 @@ function openTab(evt, tabName) {
                 type : 'POST',
 
                 data : {
-                    action : 'th_activeplugin',
+                    action : 'themehunk_activeplugin',
                     init   :  $init,
                     slug   :  $slug,
                     nonce  : THAPSAdmin.nonce,
                 }
             }).done(function ( response ){
-            	if( response.success) {
+                console.log(response);
+                if( response.success) {
                  $message.removeClass( 'button-primary updating-message' )
                 .addClass( 'disabled' )
                 .html( 'Activated');
                 $setting_class.show();
                     THoptionAdmin._pluginexists($slug); //import butoon check
 
-					} else {
+                    } else {
 
-						$message.removeClass( 'updating-message' );
+                        $message.removeClass( 'updating-message' );
 
-					}
+                    }
 
             });
         },

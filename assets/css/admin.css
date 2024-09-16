@@ -273,7 +273,7 @@ font-size:1rem;
 }
 .thaps-setting-form #submit.button-primary{
 width:150px;
-background: #1681ef; 
+background: #3070ff;
 }
 .thaps-setting-form #submit.button-primary.loader{
 font-size:0;
@@ -314,7 +314,7 @@ padding: 0.4rem 1.5rem;
     letter-spacing: -0.08px;
     font-size: .6875rem;
     line-height: 1.81818;
-    background: #1681ef;
+    background: #858789;
     color: #fff;
     margin-top: 0.5rem;
     display: inline-flex;
@@ -323,8 +323,12 @@ padding: 0.4rem 1.5rem;
     font-weight: 700;
     text-decoration: auto;
 }
-.thaps-wrap-doc a:hover,.thaps-wrap-pro a:hover{
-    background: #006ee1;
+.thaps-wrap-doc a:hover{
+    background: #575555;
+}
+.thaps-wrap-pro a,
+.thaps-wrap-pro a:hover{
+    background: #3070ff;
 }
 .wrp-title{
 font-size:1rem;
@@ -384,7 +388,7 @@ display: block;
     letter-spacing: -0.08px;
     font-size: .6875rem;
     line-height: 1.81818;
-    background: #1681ef;
+    background: #3070ff;
     color: #fff;
     margin-top: 0.5rem;
     display: inline-flex;
@@ -424,7 +428,8 @@ font-weight:500;
     display: none;
 }
 .th-upgrade-pro{
-    background: #1681ef;
+    background: #E1E6F4;
+    color: #111;
     display: flex;
     padding: 20px 26px;
     border-radius: 4px;
@@ -435,11 +440,14 @@ font-weight:500;
     width: 90%;
     margin-bottom: 27px;
 }
+.th-upgrade-pro h4{
+    color: #111;
+}
 .th-upgrade-pro .button-upgrade{
     display: flex;
     align-content: center;
     justify-content: center;
-    background: #f7a100;
+    background: #3070ff;
     color: white;
     text-decoration: none;
     text-align: center;
@@ -460,17 +468,18 @@ font-weight:500;
 }
 .th-search-images li:after{
     content: 'Pro';
-    background: red;
+    background: #b73838;
     position: absolute;
     top: -21px;
     left: 0;
     border-radius: 100%;
-    width: 40px;
-    height: 40px;
+    width: 29px;
+    height: 29px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
+    font-size: 12px;
 }
 
 .reset.loader{
