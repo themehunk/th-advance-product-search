@@ -1,7 +1,7 @@
 <?php 
 
 if ( ! defined( 'ABSPATH' ) ) exit;
-
+require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 /****************/
 //Block registered
 /****************/
@@ -80,35 +80,20 @@ add_action( 'init', 'register_blocks' );
 
 function th_advance_product_search_blocks_categories( $categories ) {
     return array_merge(
-        $categories,
         [
             [
-                'slug'  => 'th-advance-product-search',
-                'title' => __( 'TH advance product search', 'th-advance-product-search' ),
+                'slug'  => 'vayu-blocks',
+                'title' => __( 'ThemeHunk', 'th-advance-product-search-pro' ),
             ],
-        ]
+        ],
+        $categories
     );
 }
+if ( !is_plugin_active( 'vayu-blocks/vayu-blocks.php' ) ) {
 add_filter( 'block_categories_all', 'th_advance_product_search_blocks_categories', 11, 2);
-
+}
 function th_advance_product_search_blocks_editor_assets(){
     if ( is_admin() ) {
-	wp_enqueue_script(
-		'data-block',
-		TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'build/th-advance-product-search-data.js',
-		array(),
-		TH_ADVANCE_PRODUCT_SEARCH_VERSION,
-		true
-	);
-    wp_localize_script(
-        'data-block',
-        'thnkblock',
-         array(
-            'homeUrl' => plugins_url( '/', __FILE__ ),
-            'showOnboarding' => '',
-        )
-    );
-
     wp_enqueue_style(
         'thaps-component-editor-css',
         TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'build/thaps-component-editor.css',
@@ -162,30 +147,30 @@ function th_advance_product_search_blocks_render_callback( $attr ) {
     // searchwidth
     if (isset($attr['searchWidth'])) {
         $searchWidthUnit = isset($attr['searchWidthUnit']) ? $attr['searchWidthUnit'] : 'px';
-        $thapsBlockStyle .= "--taiowcp-searchWidth: {$attr['searchWidth']}{$searchWidthUnit}; ";
+        $thapsBlockStyle .= "--tapsp-searchWidth: {$attr['searchWidth']}{$searchWidthUnit}; ";
     }
     if (isset($attr['searchWidthTablet'])) {
         $searchWidthUnitTablet = isset($attr['searchWidthUnitTablet']) ? $attr['searchWidthUnitTablet'] : 'px';
-        $thapsBlockStyle .= "--taiowcp-searchWidthTablet: {$attr['searchWidthTablet']}{$searchWidthUnitTablet}; ";
+        $thapsBlockStyle .= "--tapsp-searchWidthTablet: {$attr['searchWidthTablet']}{$searchWidthUnitTablet}; ";
     }
     if (isset($attr['searchWidthMobile'])) {
         $searchWidthUnitMobile = isset($attr['searchWidthUnitMobile']) ? $attr['searchWidthUnitMobile'] : 'px';
-        $thapsBlockStyle .= "--taiowcp-searchWidthMobile: {$attr['searchWidthMobile']}{$searchWidthUnitMobile}; ";
+        $thapsBlockStyle .= "--tapsp-searchWidthMobile: {$attr['searchWidthMobile']}{$searchWidthUnitMobile}; ";
     }
     // searchbar-radius
     if (isset($attr['barborderRadius'])) {
         $barborderRadiusUnit = isset($attr['barborderRadiusUnit']) ? $attr['barborderRadiusUnit'] : 'px';
-        $thapsBlockStyle .= "--taiowcp-barborderRadius: {$attr['barborderRadius']}{$barborderRadiusUnit}; ";
+        $thapsBlockStyle .= "--tapsp-barborderRadius: {$attr['barborderRadius']}{$barborderRadiusUnit}; ";
     }
     if (isset($attr['barborderRadiusTablet'])) {
-        $thapsBlockStyle .= "--taiowcp-barborderRadiusTablet: {$attr['barborderRadiusTablet']}{$barborderRadiusUnit}; ";
+        $thapsBlockStyle .= "--tapsp-barborderRadiusTablet: {$attr['barborderRadiusTablet']}{$barborderRadiusUnit}; ";
     }
     if (isset($attr['barborderRadiusMobile'])) {
-        $thapsBlockStyle .= "--taiowcp-barborderRadiusMobile: {$attr['barborderRadiusMobile']}{$barborderRadiusUnit}; ";
+        $thapsBlockStyle .= "--tapsp-barborderRadiusMobile: {$attr['barborderRadiusMobile']}{$barborderRadiusUnit}; ";
     }
     $thapsBlockStyle = preg_replace('/\s+/', ' ', trim($thapsBlockStyle));
     $unique_id = isset($attr['uniqueID']) ? esc_attr($attr['uniqueID']) : '';
-    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block-th-advance-product-search" style="' . esc_attr($thapsBlockStyle) . '">';
+    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block wp-block-th-advance-product-search" style="' . esc_attr($thapsBlockStyle) . '">';
     $block_content .= th_advance_product_search_block($attr);
     $block_content .= '</div>';
     return $block_content;

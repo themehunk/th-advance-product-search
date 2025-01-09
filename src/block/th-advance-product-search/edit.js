@@ -41,93 +41,50 @@ import Thsearchbar from './thsearchbar.js';
 import Thsearchicon from './thsearchicon.js';
 import Thsearchflexi from './thsearchflexi.js';
 export default function Edit({ attributes, 
-	setAttributes, 
-	clientId,
-	uniqueID }) {
+	setAttributes }) {
 
-let counter = 0;
-function getUniqueId( uniqueID, clientId, isUniqueID, isUniqueBlock ) {
-    
-    let smallID = '_' + clientId.substr( 2, 9 );
-    if ( ! uniqueID ) {
-        //new block
-        if ( ! isUniqueID( smallID ) ) {
-            smallID = generateUniqueId(smallID);
-        }
-        return smallID;
-    } else if ( ! isUniqueID( uniqueID ) ) {
-        // This checks if we are just switching views, client ID the same means we don't need to update.
-        if ( ! isUniqueBlock( uniqueID, clientId ) ) {
-            return smallID
-        }
-    }
-    //normal block loading 
-    return uniqueID;
+// Utility function to generate a unique ID
+const generateUniqueId = () => {
+  const randomPart = Math.random().toString(36).substring(2, 10); // Generate random alphanumeric string
+  return `-${randomPart}`;
+};
+
+// Ensure the uniqueID is set if it's not
+if (!attributes.uniqueID) {
+  setAttributes({ uniqueID: generateUniqueId() });
 }
+  //view port
+  const {
+    isViewportAvailable,
+    isPreviewDesktop,
+    isPreviewTablet,
+    isPreviewMobile,
+} = useSelect((select) => {
+  
+    const { getDeviceType } = select('core/editor') || {};
 
-function generateUniqueId(smallID) {
-  counter += 1;
-  return `${smallID}${counter}`;
+    return {
+        isViewportAvailable: !!getDeviceType,
+        isPreviewDesktop: getDeviceType ? getDeviceType() === 'Desktop' : false,
+        isPreviewTablet: getDeviceType ? getDeviceType() === 'Tablet' : false,
+        isPreviewMobile: getDeviceType ? getDeviceType() === 'Mobile' : false,
+    };
+}, []);
+
+const isLarger = useViewportMatch('large', '>=');
+const isLarge = useViewportMatch('large', '<=');
+const isSmall = useViewportMatch('small', '>=');
+const isSmaller = useViewportMatch('small', '<=');
+
+let isDesktop = isLarger && !isLarge && isSmall && !isSmaller;
+let isTablet = !isLarger && !isLarge && isSmall && !isSmaller;
+let isMobile = !isLarger && !isLarge && !isSmall && !isSmaller;
+
+if (isViewportAvailable && !isMobile) {
+    isDesktop = isPreviewDesktop;
+    isTablet = isPreviewTablet;
+    isMobile = isPreviewMobile;
 }
-      const { id } = attributes;
-			const { addUniqueID } = useDispatch( 'th-advance-product-search/data' );
-			const { isUniqueID, isUniqueBlock} = useSelect(
-				( select ) => {
-					return {
-						isUniqueID: ( value ) => select( 'th-advance-product-search/data' ).isUniqueID( value ),
-						isUniqueBlock: ( value, clientId ) => select( 'th-advance-product-search/data' ).isUniqueBlock( value, clientId ),
-						
-					};
-				},
-				[ clientId ]
-			);
-
-			useEffect( () => {
-			const uniqueId = getUniqueId( uniqueID, clientId, isUniqueID, isUniqueBlock );
-			if ( uniqueId !== uniqueID ) {
-				attributes.uniqueID = uniqueId;
-				setAttributes( { uniqueID: uniqueId } );
-				addUniqueID( uniqueId, clientId );
-			} else {
-				addUniqueID( uniqueId, clientId );
-			}
-			}, [] );
-
-      const {
-        isViewportAvailable,
-        isPreviewDesktop,
-        isPreviewTablet,
-        isPreviewMobile
-      } = useSelect( select => {
-        const { __experimentalGetPreviewDeviceType } = select( 'core/edit-post' ) ? select( 'core/edit-post' ) : false;
-    
-        return {
-          isViewportAvailable: __experimentalGetPreviewDeviceType ? true : false,
-          isPreviewDesktop: __experimentalGetPreviewDeviceType ? 'Desktop' === __experimentalGetPreviewDeviceType() : false,
-          isPreviewTablet: __experimentalGetPreviewDeviceType ? 'Tablet' === __experimentalGetPreviewDeviceType() : false,
-          isPreviewMobile: __experimentalGetPreviewDeviceType ? 'Mobile' === __experimentalGetPreviewDeviceType() : false
-        };
-      }, []);
-    
-      const isLarger = useViewportMatch( 'large', '>=' );
-    
-      const isLarge = useViewportMatch( 'large', '<=' );
-    
-      const isSmall = useViewportMatch( 'small', '>=' );
-    
-      const isSmaller = useViewportMatch( 'small', '<=' );
-    
-      let isDesktop = isLarger && ! isLarge && isSmall && ! isSmaller;
-    
-      let isTablet = ! isLarger && ! isLarge && isSmall && ! isSmaller;
-    
-      let isMobile = ! isLarger && ! isLarge && ! isSmall && ! isSmaller;
-    
-        if ( isViewportAvailable && ! isMobile ) {
-        isDesktop = isPreviewDesktop;
-        isTablet = isPreviewTablet;
-        isMobile = isPreviewMobile;
-      }
 
       const deviceAttributeMap = {
         desktop: {

@@ -1,5 +1,6 @@
-.wp-block .thaps-search-box{
-    width:550px;
+.wp-block-th-advance-product-search .thaps-search-box{
+    width:100%;
+    max-width:100%;
     margin: 0;
 }
 .thaps-search-box .th-icon {
@@ -14,25 +15,25 @@
     --tapsp-searchBrdrClr: #e7f5ff;
     --tapsp-searchTextClr: var(--tapsp-searchTextClr);
     --tapsp-searchBarClr: var( --tapsp-searchBarClr);
-    --taiowcp-searchWidth:550px;
-    --taiowcp-searchWidthTablet:550px;
-    --taiowcp-searchWidthMobile:550px;
-    --taiowcp-barborderRadius:4px;
-    --taiowcp-barborderRadiusTablet:4px;
-    --taiowcp-barborderRadiusMobile:4px;
+    --tapsp-searchWidth:100%;
+    --tapsp-searchWidthTablet:100%;
+    --tapsp-searchWidthMobile:100%;
+    --tapsp-barborderRadius:4px;
+    --tapsp-barborderRadiusTablet:4px;
+    --tapsp-barborderRadiusMobile:4px;
     --tapsp-searchborderClr:#e7f5ff;
 
 }
 .wp-block-th-advance-product-search{
-    .thaps-search-box{
-        max-width:var(--taiowcp-searchWidth);
-        width:var(--taiowcp-searchWidth);
+    .thaps-search-form{
+        max-width:var(--tapsp-searchWidth);
+        width:var(--tapsp-searchWidth);
     }
     #thaps-search-button{
         background:var(--tapsp-searchBtnBgClr);
         color:var(--tapsp-searchBtnTextClr); 
         padding: 0.3rem 0.5rem; 
-        border-radius:var(--taiowcp-barborderRadius);
+        border-radius:var(--tapsp-barborderRadius);
         cursor: pointer;
     }
     #thaps-search-button:hover{
@@ -42,6 +43,7 @@
     .thaps-from-wrap {
         background: var(--tapsp-searchBarClr);
         border-color:var(--tapsp-searchborderClr);
+        border-radius:var(--tapsp-barborderRadius);
         
     }
     .thaps-search-autocomplete{
@@ -70,43 +72,46 @@
 
 //Tablet
 
+/* Tablet Styles */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .wp-block-th-advance-product-search{
-        --taiowcp-searchWidthTablet:550px;
-        --taiowcp-barborderRadiusTablet:4px;
+    .wp-block-th-advance-product-search {
+        --tapsp-searchWidthTablet: 100%;
+        --tapsp-barborderRadiusTablet: 4px;
     }
-    .wp-block-th-advance-product-search{
-        .thaps-search-box{
-            max-width:var(--taiowcp-searchWidthTablet);
-            width:var(--taiowcp-searchWidthTablet);
-        }
-        #thaps-search-button{
-            border-radius:var(--taiowcp-barborderRadiusTablet);
-        }
-        .thaps-from-wrap {
-            border-radius:var(--taiowcp-barborderRadiusTablet);
-        }
 
-  }
+    .wp-block-th-advance-product-search .thaps-search-form {
+        max-width: var(--tapsp-searchWidthTablet);
+        width: var(--tapsp-searchWidthTablet);
+    }
+
+    .wp-block-th-advance-product-search #thaps-search-button {
+        border-radius: var(--tapsp-barborderRadiusTablet);
+    }
+
+    .wp-block-th-advance-product-search .thaps-from-wrap {
+        border-radius: var(--tapsp-barborderRadiusTablet);
+    }
 }
 
-@media screen and (max-width: 767px){
-    .wp-block-th-advance-product-search{
-        --taiowcp-searchWidthMobile:550px;
-        --taiowcp-barborderRadiusMobile:4px;
-    }
-    .wp-block-th-advance-product-search{
-        .thaps-search-box{
-            max-width:var(--taiowcp-searchWidthMobile);
-            width:var(--taiowcp-searchWidthMobile);
-        }
-        #thaps-search-button{
-            border-radius:var(--taiowcp-barborderRadiusMobile);
-        }
-        .thaps-from-wrap {
-            border-radius:var(--taiowcp-barborderRadiusMobile);
-        }
-    
+/* Mobile Styles */
+@media screen and (max-width: 767px) {
+    .wp-block-th-advance-product-search {
+        --tapsp-searchWidthMobile: 100%;
+        --tapsp-barborderRadiusMobile: 4px;
     }
 
+    .wp-block-th-advance-product-search .thaps-search-form {
+        max-width: var(--tapsp-searchWidthMobile);
+        width: var(--tapsp-searchWidthMobile);
+    }
+
+    .wp-block-th-advance-product-search #thaps-search-button {
+        border-radius: var(--tapsp-barborderRadiusMobile);
+    }
+
+    .wp-block-th-advance-product-search .thaps-from-wrap {
+        border-radius: var(--tapsp-barborderRadiusMobile);
+    }
 }
+
+
