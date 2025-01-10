@@ -25,8 +25,9 @@ const { name } = metadata;
 
 registerBlockType( name, {
 	...metadata,
-	title: __( 'TH Advance Product Search', 'th-advance-product-search' ),
+	title: __( 'Advance Product Search', 'th-advance-product-search' ),
 	description: __( 'Fastest search plugin for WooCommerce. Supports AJAX search and search results page display', 'th-advance-product-search' ),
+	example: {},
 	edit,
 	save: () => null,
 });
