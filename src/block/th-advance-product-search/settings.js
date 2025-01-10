@@ -7,9 +7,6 @@ import {
     PanelBody,
     RangeControl,
     SelectControl,
-    Placeholder,
-    Spinner,
-    ToggleControl,TextControl,
     __experimentalBorderBoxControl as BorderBoxControl
 } from '@wordpress/components';
 
@@ -17,8 +14,7 @@ import { useSelect } from '@wordpress/data';
 
 import {
     Fragment,
-    useState,
-    Suspense
+    useState
 } from '@wordpress/element';
 
 /**
@@ -37,24 +33,22 @@ const InsSettings = ({
 
     const adminUrlsearchh = ThBlockDataSearch.adminUrlsearch;
     const [ tab, setTab ] = useState( 'setting' );
-    const getView = useSelect( select => {
-
-        const { getView } = select( 'th-advance-product-search/data' );
-    
-        const { __experimentalGetPreviewDeviceType } = select( 'core/edit-post' ) ? select( 'core/edit-post' ) : false;
-    
-        return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : getView();
-    
-        }, []);
+    const getView = useSelect((select) => {
+      // Device type selectors for different editors
+      const siteEditorDeviceType = select('core/edit-site')?.getPreviewDeviceType?.(); // For Site Editor
+      const blockEditorDeviceType = select('core/editor')?.getDeviceType?.(); // For Block/Post Editor
+      // Fallback to your custom getView if neither device type is available
+      return siteEditorDeviceType || blockEditorDeviceType;
+    }, []);
 
         const getsearchWidthUnitValue = () => {
             switch (getView) {
               case 'Desktop':
                 return attributes.searchWidthUnit;
               case 'Tablet':
-                return attributes.searchWidthUnitTablet;
+                return attributes.searchWidthUnitTablet ?? attributes.searchWidthUnitTablet;
               case 'Mobile':
-                return attributes.searchWidthUnitMobile;
+                return attributes.searchWidthUnitMobile ?? attributes.searchWidthUnitTablet ?? attributes.searchWidthUnitTablet;
               default:
                 break;
             }
@@ -81,9 +75,9 @@ const InsSettings = ({
               case 'Desktop':
                 return attributes.searchWidth;
               case 'Tablet':
-                return attributes.searchWidthTablet;
+                return attributes.searchWidthTablet ?? attributes.searchWidth;
               case 'Mobile':
-                return attributes.searchWidthMobile !== undefined ? attributes.searchWidthMobile : 100; // Default value for mobile view
+                return attributes.searchWidthMobile ?? attributes.searchWidthTablet ?? attributes.searchWidth; // Default value for mobile view
               default:
                 return undefined;
             }
@@ -91,14 +85,25 @@ const InsSettings = ({
           
           const changesearchWidth = (value) => {
             switch (getView) {
-              case 'Desktop':
-                setAttributes({ searchWidth: value });
+              case "Desktop":
+                setAttributes({
+                  searchWidth: value,
+                  // Cascade to Tablet and Mobile if their values are not explicitly set
+                  searchWidthTablet: attributes.searchWidthTablet !== null ? attributes.searchWidthTablet : value,
+                  searchWidthMobile: attributes.searchWidthMobile !== null ? attributes.searchWidthMobile : value,
+                });
                 break;
-              case 'Tablet':
-                setAttributes({ searchWidthTablet: value });
+              case "Tablet":
+                setAttributes({
+                  searchWidthTablet: value,
+                  // Cascade to Mobile if its value is not explicitly set
+                  searchWidthMobile: attributes.searchWidthMobile !== null ? attributes.searchWidthMobile : value,
+                });
                 break;
-              case 'Mobile':
-                setAttributes({ searchWidthMobile: value });
+              case "Mobile":
+                setAttributes({
+                  searchWidthMobile: value,
+                });
                 break;
               default:
                 break;
@@ -149,23 +154,39 @@ const InsSettings = ({
             case 'Desktop':
               return attributes.barborderRadius;
             case 'Tablet':
-              return attributes.barborderRadiusTablet;
+              return attributes.barborderRadiusTablet ?? attributes.barborderRadius;
             case 'Mobile':
-              return attributes.barborderRadiusMobile;
+              return attributes.barborderRadiusMobile ?? attributes.barborderRadiusTablet ?? attributes.barborderRadius;
             default:
               return undefined;
             }
           };
-          const changebarborderRadius = value => {
-            if ( 'Desktop' === getView ) {
-              setAttributes({ barborderRadius: value, barborderRadiusTablet: value, barborderRadiusMobile: value });
-            } else if ( 'Tablet' === getView ) {
-              setAttributes({ barborderRadiusTablet: value, barborderRadiusMobile: value });
-            } else if ( 'Mobile' === getView ) {
-              setAttributes({ barborderRadiusMobile: value });
+          const changebarborderRadius = (value) => {
+            switch (getView) {
+                case "Desktop":
+                    setAttributes({
+                        barborderRadius: value,
+                        // Cascade to Tablet and Mobile if their values are not explicitly set
+                        barborderRadiusTablet: attributes.barborderRadiusTablet !== null ? attributes.barborderRadiusTablet : value,
+                        barborderRadiusMobile: attributes.barborderRadiusMobile !== null ? attributes.barborderRadiusMobile : value,
+                    });
+                    break;
+                case "Tablet":
+                    setAttributes({
+                        barborderRadiusTablet: value,
+                        // Cascade to Mobile if its value is not explicitly set
+                        barborderRadiusMobile: attributes.barborderRadiusMobile !== null ? attributes.barborderRadiusMobile : value,
+                    });
+                    break;
+                case "Mobile":
+                    setAttributes({
+                        barborderRadiusMobile: value,
+                    });
+                    break;
+                default:
+                    break;
             }
-          };    
-
+        };
     return (<Fragment>
         <InspectorControls>
         <InsSettingHeader value={ tab }

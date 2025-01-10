@@ -3,8 +3,18 @@
   "apiVersion": 2,
   "name": "th-advance-product-search/th-advance-product-search",
   "version": "0.1.0",
+  "icon": "search",
   "title": "Advance Product Search",
-  "category": "th-advance-product-search",
+  "category": "vayu-blocks",
+  "keywords": [
+    "search",
+    "woocommerce",
+    "post",
+    "page",
+    "category",
+    "advance-search",
+    "themehunk"
+  ],
   "description": "",
   "supports": {
     "html": false

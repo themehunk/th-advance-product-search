@@ -249,7 +249,7 @@ display:flex;
     position: absolute;
     left: 0;
     top: calc(100% + 8px);
-    min-width: 500px;
+    min-width:auto;
     z-index: 1;
 }
 .icon_style.thaps-box-open .thaps-search-form{
