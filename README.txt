@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product search, post search, page search, category,ajax search, live search
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 1.2.8
+Tested up to: 6.7.2
+Stable tag: 1.2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,6 +131,10 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.2.9 =
+*  Update: Icon Search Bar Style Improved.
+
 = 1.2.8 =
 *  Update: Search Block Improved.
 
