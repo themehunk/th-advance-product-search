@@ -133,6 +133,7 @@ Yes, You can translate our plugin to desired language.
 == Changelog ==
 
 = 1.2.9 =
+*  Fix: Front Style Repeat Issue.
 *  Update: Icon Search Bar Style Improved.
 
 = 1.2.8 =

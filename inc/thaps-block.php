@@ -89,9 +89,11 @@ function th_advance_product_search_blocks_categories( $categories ) {
         $categories
     );
 }
+
 if ( !is_plugin_active( 'vayu-blocks/vayu-blocks.php' ) ) {
 add_filter( 'block_categories_all', 'th_advance_product_search_blocks_categories', 11, 2);
 }
+
 function th_advance_product_search_blocks_editor_assets(){
     if ( is_admin() ) {
     wp_enqueue_style(
@@ -100,18 +102,18 @@ function th_advance_product_search_blocks_editor_assets(){
          array(),
          TH_ADVANCE_PRODUCT_SEARCH_VERSION,
     );
-   }
-
-    wp_enqueue_style(
-        'thaps-th-icon-css',
-        TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'th-icon/style.css',
-        TH_ADVANCE_PRODUCT_SEARCH_VERSION,
-    );
     wp_enqueue_style(
         'thaps-block-style-css',
         TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'assets/css/thaps-front-style.css',
         TH_ADVANCE_PRODUCT_SEARCH_VERSION,
     );
+   }
+    wp_enqueue_style(
+        'thaps-th-icon-css',
+        TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'th-icon/style.css',
+        TH_ADVANCE_PRODUCT_SEARCH_VERSION,
+    );
+    
       
 }
 add_action( 'enqueue_block_assets', 'th_advance_product_search_blocks_editor_assets' );
