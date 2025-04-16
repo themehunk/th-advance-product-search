@@ -95,4 +95,7 @@ class Thaps_Widget extends WP_Widget {
     }
  
 }
-$my_widget = new Thaps_Widget();
+function thaps_widgetinit(){
+    $my_widget = new Thaps_Widget();
+}
+add_action('init','thaps_widgetinit');
