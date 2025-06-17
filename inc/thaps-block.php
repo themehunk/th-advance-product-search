@@ -260,7 +260,9 @@ function th_advance_product_search_block($attr){
 if(wp_is_mobile()){    
 ?>
 <div id='thaps-search-box' class="thaps-search-box icon_style flexible-style">
+    <button id='thaps-search-button' value="<?php echo esc_attr_x( 'Submit','submit button', 'th-advance-product-search' ); ?>" type='submit'>  
 <?php th_advance_product_search_icon_style_svg('click-icon','');?>
+</button>
 <div class="thaps-icon-arrow" style=""></div>
 <form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
 <div class="thaps-from-wrap">
@@ -278,7 +280,9 @@ if(wp_is_mobile()){
 <div id='thaps-search-box' class="thaps-search-box bar_style flexible-style">
 <form class="thaps-search-form" action='<?php echo esc_url( home_url( '/'  ) ); ?>' id='thaps-search-form'  method='get'>
 <div class="thaps-from-wrap">
-  <?php th_advance_product_search_icon_style_svg('icon-style','');?>
+  <button id='thaps-search-button' value="<?php echo esc_attr_x( 'Submit','submit button', 'th-advance-product-search' ); ?>" type='submit'>  
+<?php th_advance_product_search_icon_style_svg('click-icon','');?>
+</button>
   <input id='thaps-search-autocomplete-<?php echo esc_attr($unique_id); ?>' name='s' placeholder='<?php echo esc_attr(th_advance_product_search()->get_option( 'placeholder_text' ));?>' class="thaps-search-autocomplete thaps-form-control" value='<?php echo esc_attr(get_search_query()); ?>' type='text' title='<?php echo esc_attr_x( 'Search', 'label', 'th-advance-product-search' ); ?>' />
   <?php if(th_advance_product_search()->get_option( 'show_loader' )=='0'){ ?>
   <div class="thaps-preloader"></div>

@@ -11,7 +11,9 @@ const Thsearchflexi = ({placeholder}) => {
         method="get"
       >
         <div className="thaps-from-wrap">
+           <button id="thaps-search-button" value="Submit" type="submit">
           <span className="th-icon th-icon-vector-search icon-style"></span>
+          </button>
           <input 
             id="thaps-search-autocomplete-1" 
             name="s" 
