@@ -191,11 +191,33 @@ left:0.5rem
 .submit-no-active .thaps-from-wrap .th-icon{
       color: #111;  
 }
-.submit-no-active .thaps-search-autocomplete,.bar_style .thaps-search-autocomplete,.icon_style .thaps-search-autocomplete{
+.submit-no-active .thaps-search-autocomplete,
+.bar_style .thaps-search-autocomplete,.icon_style .thaps-search-autocomplete{
 padding: 0.3rem 0.3rem 0.3rem 2.8rem;
 }
-.submit-no-active .thaps-from-wrap, .bar_style .thaps-from-wrap,.icon_style .thaps-from-wrap{
+.submit-no-active .thaps-from-wrap, .bar_style .thaps-from-wrap,
+.icon_style .thaps-from-wrap{
     align-items: center;
+}
+
+.thaps-search-box.bar_style #thaps-search-button{
+width:35px;
+height:35px;
+line-height:35px;
+background:none;
+cursor:pointer;
+}
+
+.thaps-search-box.bar_style #thaps-search-button .th-icon{
+color:#111;
+}
+
+.thaps-search-box.bar_style .thaps-search-autocomplete{
+padding:0.3rem;
+}
+
+#thaps-search-button:focus{
+outline:none;
 }
 .thaps-suggestion-more{
 background:#eee;
