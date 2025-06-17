@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, product search, post search, page search, category,ajax search, live search
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 1.3.0
+Tested up to: 6.8.1
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,6 +131,9 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.3.1 =
+* Fix:In Search bar style Submit event.
 
 = 1.3.0 =
 * Update: _load_textdomain_just_in_time was called incorrectly issue resolved.

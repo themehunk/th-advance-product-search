@@ -3,11 +3,11 @@
  * Plugin Name:             Advance Product Search
  * Plugin URI:              https://themehunk.com
  * Description:             Responsive Search Plugin for WordPress and WooCommerce. Best Live Ajax Search Support Plugin. Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour. <a href="https://themehunk.com/plugins/" target="_blank">Get more plugins for your website on <strong>ThemeHunk</strong></a>
- * Version:                 1.3.0
+ * Version:                 1.3.1
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       5.0
- * Tested up to:            6.8
+ * Tested up to:            6.8.1
  * WC requires at least:    3.2
  * WC tested up to:         7.4
  * Domain Path:             /languages
