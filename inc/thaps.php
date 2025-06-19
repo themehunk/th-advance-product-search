@@ -106,7 +106,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
         public function th_advance_product_search_scripts(){
 
-          wp_enqueue_style( 'th-icon', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'th-icon/style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );  
+          wp_enqueue_style( 'th-icon-css', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'th-icon/style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );  
           wp_enqueue_style( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/css/thaps-front-style.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
           wp_add_inline_style('th-advance-product-search-front', th_advance_product_search_style());
           wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-search.js', array(

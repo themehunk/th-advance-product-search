@@ -109,7 +109,7 @@ function th_advance_product_search_blocks_editor_assets(){
     );
    }
     wp_enqueue_style(
-        'thaps-th-icon-css',
+        'th-icon-css',
         TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'th-icon/style.css',
         TH_ADVANCE_PRODUCT_SEARCH_VERSION,
     );
