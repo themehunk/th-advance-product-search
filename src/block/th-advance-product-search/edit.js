@@ -13,7 +13,7 @@ import { useSelect, useDispatch  } from '@wordpress/data';
 
 import hexToRgba from 'hex-rgba';
 import {
-	useEffect
+	useEffect,useState
 } from '@wordpress/element';
 
 /**
@@ -53,38 +53,52 @@ const generateUniqueId = () => {
 if (!attributes.uniqueID) {
   setAttributes({ uniqueID: generateUniqueId() });
 }
-  //view port
-  const {
-    isViewportAvailable,
-    isPreviewDesktop,
-    isPreviewTablet,
-    isPreviewMobile,
-} = useSelect((select) => {
-  
-    const { getDeviceType } = select('core/editor') || {};
-
-    return {
-        isViewportAvailable: !!getDeviceType,
-        isPreviewDesktop: getDeviceType ? getDeviceType() === 'Desktop' : false,
-        isPreviewTablet: getDeviceType ? getDeviceType() === 'Tablet' : false,
-        isPreviewMobile: getDeviceType ? getDeviceType() === 'Mobile' : false,
-    };
+const getDevice = useSelect((select) => {
+    // Device type selectors for different editors
+    const siteEditorDeviceType = select('core/edit-site')?.getPreviewDeviceType?.();
+    const blockEditorDeviceType = select('core/editor')?.getDeviceType?.();
+    // Fallback to 'Desktop' if neither device type is available
+    return siteEditorDeviceType || blockEditorDeviceType || 'Desktop';
 }, []);
 
-const isLarger = useViewportMatch('large', '>=');
-const isLarge = useViewportMatch('large', '<=');
-const isSmall = useViewportMatch('small', '>=');
-const isSmaller = useViewportMatch('small', '<=');
+       // Detect if we're in the Customizer
+        const isCustomizer = typeof wp !== 'undefined' && wp?.customize;
 
-let isDesktop = isLarger && !isLarge && isSmall && !isSmaller;
-let isTablet = !isLarger && !isLarge && isSmall && !isSmaller;
-let isMobile = !isLarger && !isLarge && !isSmall && !isSmaller;
+        // Local state to track Customizer device
+        // Local state to track Customizer device in uppercase
+        const [customizerDevice, setCustomizerDevice] = useState(
+            isCustomizer && wp.customize?.previewedDevice
+                ? (wp.customize.previewedDevice.get() || 'desktop').charAt(0).toUpperCase() +
+                  (wp.customize.previewedDevice.get() || 'desktop').slice(1)
+                : 'Desktop'
+        );
 
-if (isViewportAvailable && !isMobile) {
-    isDesktop = isPreviewDesktop;
-    isTablet = isPreviewTablet;
-    isMobile = isPreviewMobile;
-}
+        // Sync Customizer device changes
+          useEffect(() => {
+          if (isCustomizer && wp.customize?.previewedDevice) {
+              const handleDeviceChange = (newDevice) => {
+                  const capitalizedDevice = newDevice.charAt(0).toUpperCase() + newDevice.slice(1);
+                  //console.log('Customizer device changed:', capitalizedDevice);
+                  setCustomizerDevice(capitalizedDevice);
+              };
+              wp.customize.previewedDevice.bind(handleDeviceChange);
+              return () => {
+                  wp.customize.previewedDevice.unbind(handleDeviceChange);
+              };
+          }
+      }, [isCustomizer]);
+
+      let getView = '';
+
+    if (isCustomizer && wp.customize?.previewedDevice) {
+        getView = customizerDevice || 'Desktop';
+    } else {
+        getView = getDevice || 'Desktop';
+    }
+
+const isDesktop = getView === 'Desktop';
+const isTablet = getView === 'Tablet';
+const isMobile = getView === 'Mobile';
 
       const deviceAttributeMap = {
         desktop: {

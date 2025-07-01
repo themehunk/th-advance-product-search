@@ -29,7 +29,7 @@ function register_blocks() {
         wp_register_script(
             $block['script_handle'],
             TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'build/' . $block['script_handle'] . '.js',
-            array( 'wp-blocks', 'wp-element', 'wp-editor' ),
+            array( 'wp-blocks', 'wp-element', 'wp-editor','customize-controls' ),
             filemtime( TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/build/' . $block['script_handle'] . '.js' )
         );
 
