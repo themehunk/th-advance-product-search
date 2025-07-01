@@ -14,7 +14,8 @@ import { useSelect } from '@wordpress/data';
 
 import {
     Fragment,
-    useState
+    useState,
+     useEffect
 } from '@wordpress/element';
 
 /**
@@ -31,15 +32,51 @@ const InsSettings = ({
     setAttributes
 }) => {
 
-    const adminUrlsearchh = ThBlockDataSearch.adminUrlsearch;
-    const [ tab, setTab ] = useState( 'setting' );
-    const getView = useSelect((select) => {
-      // Device type selectors for different editors
-      const siteEditorDeviceType = select('core/edit-site')?.getPreviewDeviceType?.(); // For Site Editor
-      const blockEditorDeviceType = select('core/editor')?.getDeviceType?.(); // For Block/Post Editor
-      // Fallback to your custom getView if neither device type is available
-      return siteEditorDeviceType || blockEditorDeviceType;
-    }, []);
+        const adminUrlsearchh = ThBlockDataSearch.adminUrlsearch;
+        const [ tab, setTab ] = useState( 'setting' );
+
+        const getDevice = useSelect((select) => {
+          // Device type selectors for different editors
+          const siteEditorDeviceType = select('core/edit-site')?.getPreviewDeviceType?.(); // For Site Editor
+          const blockEditorDeviceType = select('core/editor')?.getDeviceType?.(); // For Block/Post Editor
+          // Fallback to your custom getView if neither device type is available
+          return siteEditorDeviceType || blockEditorDeviceType;
+        }, []);
+
+        // Detect if we're in the Customizer
+        const isCustomizer = typeof wp !== 'undefined' && wp?.customize;
+
+        // Local state to track Customizer device
+        // Local state to track Customizer device in uppercase
+        const [customizerDevice, setCustomizerDevice] = useState(
+            isCustomizer && wp.customize?.previewedDevice
+                ? (wp.customize.previewedDevice.get() || 'desktop').charAt(0).toUpperCase() +
+                  (wp.customize.previewedDevice.get() || 'desktop').slice(1)
+                : 'Desktop'
+        );
+
+        // Sync Customizer device changes
+          useEffect(() => {
+          if (isCustomizer && wp.customize?.previewedDevice) {
+              const handleDeviceChange = (newDevice) => {
+                  const capitalizedDevice = newDevice.charAt(0).toUpperCase() + newDevice.slice(1);
+                  //console.log('Customizer device changed:', capitalizedDevice);
+                  setCustomizerDevice(capitalizedDevice);
+              };
+              wp.customize.previewedDevice.bind(handleDeviceChange);
+              return () => {
+                  wp.customize.previewedDevice.unbind(handleDeviceChange);
+              };
+          }
+      }, [isCustomizer]);
+
+      let getView = '';
+
+    if (isCustomizer && wp.customize?.previewedDevice) {
+        getView = customizerDevice || 'Desktop';
+    } else {
+        getView = getDevice || 'Desktop';
+    }
 
         const getsearchWidthUnitValue = () => {
             switch (getView) {
