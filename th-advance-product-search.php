@@ -82,7 +82,7 @@ require_once("inc/thaps-block.php");
         add_filter('plugin_action_links_'.TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_BASENAME, 'th_advance_product_search_plugin_action_links', 10, 1);
 
 
-    /**
+   /**
    * Add links to plugin's description in plugins table
    *
    * @param array  $links  Initial list of links.
