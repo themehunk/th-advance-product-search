@@ -70,15 +70,9 @@
     }
 }
 
-//Tablet
-
-/* Tablet Styles */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .wp-block-th-advance-product-search {
-        --tapsp-searchWidthTablet: 100%;
-        --tapsp-barborderRadiusTablet: 4px;
-    }
-
+/* Tablet Styles (768px to 1024px) */
+@media screen and (min-width: 720px) and (max-width: 1024px) {
+    
     .wp-block-th-advance-product-search .thaps-search-form {
         max-width: var(--tapsp-searchWidthTablet);
         width: var(--tapsp-searchWidthTablet);
@@ -93,12 +87,8 @@
     }
 }
 
-/* Mobile Styles */
-@media screen and (max-width: 767px) {
-    .wp-block-th-advance-product-search {
-        --tapsp-searchWidthMobile: 100%;
-        --tapsp-barborderRadiusMobile: 4px;
-    }
+/* Mobile Styles (767px and below) */
+@media screen and (max-width: 719px) {
 
     .wp-block-th-advance-product-search .thaps-search-form {
         max-width: var(--tapsp-searchWidthMobile);
@@ -113,5 +103,3 @@
         border-radius: var(--tapsp-barborderRadiusMobile);
     }
 }
-
-
