@@ -535,3 +535,183 @@
     display: none;
   }
   
+
+  
+ /******************************   Plugin option panel New CSS ***************/
+.wp-core-ui .upgrade-to-pro{
+  margin-top: initial;
+}
+  .rp-two-column {
+    grid-column-gap: 2%;
+    grid-row-gap: 21px;
+    justify-content: space-between;
+  }
+  .th-row {
+    gap: 21px;
+  }
+  .th-column.two {
+    max-width: 100%;
+  }
+  .upgrade-to-pro {
+    float: initial;
+  }
+  .wp-core-ui .upgrade-to-pro{
+    text-align: center;
+  }
+  .section a{
+  text-decoration: none;
+}
+
+.th-option-area {
+    margin: 25px 20px 21px 10px;
+}
+.toplevel_page_themehunk-plugins .theme_link {
+    width: 49%;
+  }
+  .wp-core-ui .title-plugin + button,
+  .wp-core-ui .upgrade-to-pro{
+    width: 94px;
+    min-height: initial;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.th-column.Free,
+  .th-column.Pro {
+    flex: 21%;
+  }
+
+.wp-core-ui .title-plugin + button{
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+.th-column.Free, .th-column.Pro{
+  display: flex;
+  align-items: center;
+}
+
+/******************************   Plugin option panel responsive CSS Starts ***************/
+   @media (max-width: 1024px) {
+
+.th-heade.th-left-header,
+.th-heade.th-right-header{
+  width: 100%;
+}
+.th-heade.th-right-header{
+  justify-content: space-between;
+}
+.th-noticetheme{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.th-noticetheme a{
+  width: 100%;
+}
+.th-noticetheme img{
+  max-width: 100%;
+}
+.th-option-heading h3{
+  font-size: 18px;
+  line-height: 25px;
+  margin: 0;
+}
+.th-option-heading p{
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.th-option-heading{
+  margin-right: 0;
+}
+.th-noticetheme{
+  width: 45%;
+}
+.thunk-notice-text{
+  width: 51%;
+  margin-left: 0;
+}
+.thunk-notice-text h3{
+  margin: 9px 0;
+}
+.rp-two-column{
+  grid-column-gap: 0;
+  grid-row-gap: 18px;
+  justify-content: space-between;
+}
+.th-row{
+  gap: 0;
+}
+.toplevel_page_themehunk-plugins .theme_link{
+  width: 48.5%;
+   grid-column-gap: 5%;
+  justify-content: space-between;
+}
+.wp-core-ui .title-plugin + button, .wp-core-ui .upgrade-to-pro{
+  height: 29px;
+}
+
+.sidebar-section center{
+  text-align: left;
+}
+.sidebar-section{
+  padding: 20px;
+}
+
+.sidebar-wrap{
+  padding: 0 12px;
+}
+.sidebar{
+  padding-right: 0;
+  padding-left: 0;
+}
+.about-wrap-th{
+  margin: 0;
+}
+.th-option-area{
+  margin-right: 12px;
+  margin-bottom: 12px;
+  padding: 20px;
+}
+.main{
+ flex-wrap: wrap;
+}
+.tab-left,
+.sidebar-wrap{
+ width: 100%;
+}
+
+}
+
+@media (max-width: 767px) {
+   .th-option-heading p{
+    display: none;
+   }
+   .th-noticetheme{
+    display: none;
+   }
+   .thunk-notice-text{
+    width: 100%;
+   }
+   .th-row{
+  flex-direction: column;
+  }
+  .th-column.Free img, .th-column.Pro img{
+    width: 54px;
+  }
+  a.plugin-detail{
+    margin-bottom: 0!important;
+  }
+  .title-plugin h4{
+    margin: 9px 0;
+  }
+  .wp-core-ui .title-plugin + button{
+    margin-bottom: 12px;
+  }
+  .plugin-link{
+    padding-bottom: 9px;
+  }
+ }
+
+ /******************************   Plugin option panel responsive CSS ***************/
