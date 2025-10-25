@@ -577,19 +577,22 @@
     align-items: center;
     justify-content: center;
   }
-
 .th-column.Free,
   .th-column.Pro {
     flex: 21%;
   }
-
 .wp-core-ui .title-plugin + button{
   margin-right: 12px;
-  margin-bottom: 12px;
 }
 .th-column.Free, .th-column.Pro{
   display: flex;
   align-items: center;
+}
+.plugin-link{
+  padding-bottom: 0;
+}
+.wp-core-ui .title-plugin + button, .wp-core-ui .upgrade-to-pro{
+  margin-top: 15px;
 }
 
 /******************************   Plugin option panel responsive CSS Starts ***************/
@@ -706,8 +709,8 @@
   .title-plugin h4{
     margin: 9px 0;
   }
-  .wp-core-ui .title-plugin + button{
-    margin-bottom: 12px;
+  .wp-core-ui .title-plugin + button, .wp-core-ui .upgrade-to-pro{
+    margin-top: 9px;
   }
   .plugin-link{
     padding-bottom: 9px;
