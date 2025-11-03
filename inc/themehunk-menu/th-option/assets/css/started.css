@@ -579,7 +579,7 @@
   }
 .th-column.Free,
   .th-column.Pro {
-    flex: 21%;
+    flex: 9%;
   }
 .wp-core-ui .title-plugin + button{
   margin-right: 12px;
