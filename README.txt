@@ -1,28 +1,34 @@
-====== Advance WordPress Search Plugin ========
+====== Advance Product Search & Ajax Search for WooCommerce ========
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
-Tags: woocommerce, product search, post search, page search, category,ajax search, live search
+Tags: Advnace woocommerce, product search, post search, page search, category search,ajax search, live search
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 1.3.4
+Tested up to: 6.9
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Responsive Search Plugin for WordPress and WooCommerce. Best Live Ajax Search Support Plugin. TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
-This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
+Upgrade WooCommerce search with fast Ajax product search, live results, and category-based search. Help customers find products instantly.
 
 
 == Description ==
 
-**WooCommerce Advance Product Search** – Fastest search plugin for WooCommerce. Supports AJAX search and search results page display.
+**WooCommerce Advance Product Search** – Fastest Ajax based live search plugin for WooCommerce. Supports live search and search results page display.
 
-TH Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ) . Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
-This plugin provide you freedom to choose color and styling to match up with your website. It also supports Google search analytics to monitor your website visitor and searching behaviour.
+TH Advance Product Search is a powerful WooCommerce search plugin designed to improve the default product search experience. It adds Ajax product search, live search results, and category-based search, allowing customers to find products quickly without page reloads.
 
-[Docs](https://themehunk.com/docs/th-advance-product-search/) | [More Details](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/).
+This Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ). Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
+
+This plugin enhances product discovery, reduces search friction, and helps customers reach the checkout faster.
+
+[Live Demo](https://wpthemes.themehunk.com/advanced-product-search/) | [Docs](https://themehunk.com/docs/th-advance-product-search/) | [More Details](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/).
 
 **Key Features:-**
 
+⭐ Ajax Product Search for WooCommerce
+⭐ Advanced WooCommerce Product Search
+⭐ Live Search Results Dropdown
+⭐ Fast and Lightweight Search
 ⭐ Quick and Fast Search
 ⭐ Fully Responsive & Mobile Friendly
 ⭐ Search WooCommerce products
@@ -43,6 +49,7 @@ This plugin provide you freedom to choose color and styling to match up with you
 **Pro Features:-**
 
 ⭐ Search Products, Page and Post using AJAX Search.
+⭐ Custom attributes and Hooks
 ⭐ Plugin specially developed for WooCommerce product search, Search content from all your website pages, Search post content (like title, description, category).
 ⭐ Product Search Scope like Search in Category, Tag, SKU, Attributes, Description and Short Description.
 ⭐ Pro version has Search Bar Display Options like Shortcode, Search Widget, Menu and PHP code.
@@ -53,6 +60,25 @@ This plugin provide you freedom to choose color and styling to match up with you
 ⭐ Fully compatible with WordPress Themes
 ⭐ User Friendly Customize Pane
 ⭐ Priority 24×7 support available
+
+**💡 Why Improve WooCommerce Search?**
+
+The default WooCommerce search is limited. A smarter WooCommerce product search helps customers:
+
+* Find products instantly
+* Reduce frustration and bounce rate
+* Complete purchases faster
+
+**🔍 Ideal Use Cases**
+
+* WooCommerce stores with large product catalogs
+* Stores needing faster and more accurate search
+* Shops using category-based navigation
+* Any store that wants better WooCommerce search functionality
+
+**⚙️ Built for Better Product Discovery**
+
+TH Advance Product Search improves how customers interact with your store by making search faster, smarter, and more intuitive. A better search experience leads to better engagement and higher conversions.
 
 **MORE PLUGINS FROM US**
 
@@ -132,14 +158,8 @@ Yes, You can translate our plugin to desired language.
 
 == Changelog ==
 
-= 1.3.4 =
-* Update: Themehunk plugins page style improved.
-
-= 1.3.3 =
-* Fix: Search Block responsive setting not working in customizer view.
-
 = 1.3.2 =
-* Update: th-icon-css common enqueue id added.
+* Update:Readme file update.
 
 = 1.3.1 =
 * Fix:In Search bar style Submit event.
@@ -250,6 +270,6 @@ Yes, You can translate our plugin to desired language.
 * Update: _load_textdomain_just_in_time was called incorrectly issue resolved.
 
 
-Thanks for using our plugin, I am sure you will create a great Product Search for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/
+Thanks for using our plugin, I am sure you will create a great Product Search for your site. If you have any query then you can contact at our forum : https://themehunk.com/contact-us
 
-Thank You
+Thank You!
