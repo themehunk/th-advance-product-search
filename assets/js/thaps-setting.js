@@ -16,7 +16,7 @@
         },
         SettingTab: function (){
           $(document).ready(function(){ 
-                 $('#tapsp').on('click', '.nav-tab', function (event){
+                 $('#thaps').on('click', '.nav-tab', function (event){
                   event.preventDefault()
                   var target = $(this).data('target')
                   $(this).addClass('nav-tab-active').siblings().removeClass('nav-tab-active')
@@ -102,16 +102,16 @@
         },
         
         SaveSetting:function(){
-        $(document).on('keyup change paste', '.tapsp-setting-form input, .tapsp-setting-form select', function () {
+        $(document).on('keyup change paste', '.thaps-setting-form input, .thaps-setting-form select', function () {
         
               $('#submit').removeAttr("disabled");
               
         });  
-        $(document).on("click", ".tapsp-button-wrapper #submit", function (e) {
+        $(document).on("click", ".thaps-button-wrapper #submit", function (e) {
         e.preventDefault();
         $(this).addClass('loader');
         
-        var form_settting = $(".tapsp-setting-form").serialize();
+        var form_settting = $(".thaps-setting-form").serialize();
         $.ajax({
           url: THAPSPluginObject.ajaxurl,
           type: "POST",

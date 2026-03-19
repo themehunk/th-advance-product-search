@@ -488,7 +488,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		  );
 
 		 th_advance_product_search()->add_setting(
-			'tapsp_search-configure', esc_html__( 'Search Configure', 'th-advance-product-search-pro' ), apply_filters(
+			'search-configure', esc_html__( 'Search Configure', 'th-advance-product-search-pro' ), apply_filters(
 			'tapsp_search_configure_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Search Scope in Product', 'th-advance-product-search-pro' ),
@@ -640,7 +640,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		  );
 
  th_advance_product_search()->add_setting(
-			'tapsp_index_builder',
+			'thaps_index_builder',
 			esc_html__( 'Boost Search', 'th-advance-product-search-pro' ),
 			apply_filters(
 				'tapsp_index_builder_settings_section',
@@ -664,26 +664,26 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 			)
 		);
 		th_advance_product_search()->add_setting(
-	'tapsp_fuzzy_settings',
+	'thaps_fuzzy_settings',
 	esc_html__( 'Fuzzy Strings & Synonyms', 'th-advance-product-search-pro' ),
 	apply_filters(
-		'tapsp_fuzzy_settings_section',
+		'thaps_fuzzy_settings_section',
 		array(
 			array(
 				'title'  => esc_html__( 'Fuzzy Search & Synonyms', 'th-advance-product-search-pro' ),
 				'subtitle'  => esc_html__( 'Enhance search accuracy by handling misspellings and mapping related terms for a more intuitive user experience.', 'th-advance-product-search-pro' ),
 				'fields' => apply_filters(
-					'tapsp_fuzzy_setting_fields',
+					'thaps_fuzzy_setting_fields',
 					array(
 						array(
-							'id'      => 'tapsp_enable_fuzzy',
+							'id'      => 'thaps_enable_fuzzy',
 							'type'    => 'checkbox',
 							'title'   => esc_html__( 'Enable Fuzzy Strings Matching', 'th-advance-product-search-pro' ),
 							'desc'    => esc_html__( 'Help users find results even with typos (e.g., "skrit" → "skirt").', 'th-advance-product-search-pro' ),
 							'default' => false,
 						),
 						array(
-							'id'       => 'tapsp_fuzzy_level',
+							'id'       => 'thaps_fuzzy_level',
 							'type'     => 'number',
 							'title'    => esc_html__( 'Matching Sensitivity', 'th-advance-product-search-pro' ),
 							'desc'     => esc_html__( 'Recommended: 50%. Higher values (80%+) may return more results but increase false positives.', 'th-advance-product-search-pro' ),
@@ -693,7 +693,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							'suffix'   => '%',
 						),
 						array(
-							'id'       => 'tapsp_synonym_list',
+							'id'       => 'thaps_synonym_list',
 							'type'     => 'textarea',
 							'title'    => esc_html__( 'Define Synonyms', 'th-advance-product-search-pro' ),
 							'desc'     => esc_html__( 'Use commas (,) to separate synonyms within a group and pipe (|) to separate groups. Example: trousers, pants | denim, jeans | belt, waistband', 'th-advance-product-search-pro' ),

@@ -66,7 +66,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			}
 		
 			?>
-			<div id="tapsp" class="settings-wrap">
+			<div id="thaps" class="settings-wrap">
 				<?php $this->options_tabs(); ?>
 
 				
@@ -76,7 +76,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
                    	 <div class="top-header">
                 <h2 class="tabheading"><?php esc_html_e("Integration", 'th-product-compare-pro'); ?></h2>
                
-					  <p class="submit tapsp-button-wrapper">
+					  <p class="submit thaps-button-wrapper">
 						
 						
 						 <button  disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save All Changes', 'th-advance-product-search-pro' ); ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span><?php esc_html_e( 'Save All Changes', 'th-advance-product-search-pro' ); ?></span>
@@ -88,8 +88,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					</div>
 
                    <div class="setting-content">            
-					<form method="post" action="" enctype="multipart/form-data" class="tapsp-setting-form  <?php echo esc_attr($this->form_add_class());?>">
-                 <input type="hidden" name="action" value="tapsp_form_setting">
+					<form method="post" action="" enctype="multipart/form-data" class="thaps-setting-form  <?php echo esc_attr($this->form_add_class());?>">
+                 <input type="hidden" name="action" value="thaps_form_setting">
 
 					 <div id="settings-tabs">
 						<?php foreach ( $this->fields as $tab ):
@@ -102,11 +102,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 							?>
 
 							<div id="<?php echo esc_attr($tab['id']); ?>"
-								 class="settings-tab tapsp-setting-tab"
+								 class="settings-tab thaps-setting-tab"
 								 style="<?php echo ! esc_attr($is_active) ? 'display: none' : '' ?>">
 								 
 								<?php foreach ( $tab['sections'] as $section ): ?>
-									<div class="tapsp-section-wrapper <?php echo esc_attr($tab['id']); ?>" data-section="<?php echo esc_attr($section['id']); ?>">
+									<div class="thaps-section-wrapper <?php echo esc_attr($tab['id']); ?>" data-section="<?php echo esc_attr($section['id']); ?>">
 					        <?php	$this->do_settings_sections( $tab['id'] . $section['id'] ); ?>
 					   				 </div>
 
@@ -175,7 +175,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 					<div id="logo">
 						<a href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>" target="_blank">
-						<img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'images/resp-logo.png') ?>' alt="tapsp-logo" class="resp-logo"/>
+						<img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'images/resp-logo.png') ?>' alt="thaps-logo" class="resp-logo"/>
 						<img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'images/th-logo.png') ?>' alt="th-logo" class="th-logo"/>
 					</a>
 					</div>
@@ -186,13 +186,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 				<?php foreach ( $this->fields as $tabs ): ?>
 
-				  <a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="tapsp-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>" title="<?php echo esc_html($tabs['title']); ?>"><span><?php echo $this->icon_list($tabs['id']); ?></span><?php echo esc_html($tabs['title']); ?>	
+				  <a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thaps-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>" title="<?php echo esc_html($tabs['title']); ?>"><span><?php echo $this->icon_list($tabs['id']); ?></span><?php echo esc_html($tabs['title']); ?>	
 					</a>
 
 				<?php endforeach; ?>
 
-				<div class="tapsp-collapse-sidebar">
-				    <button id="tapsp-toggle-sidebar">
+				<div class="thaps-collapse-sidebar">
+				    <button id="thaps-toggle-sidebar">
 				        <span class="dashicons dashicons-arrow-left-alt2"></span>
 				        <span class="collapse-text">Collapse Sidebar</span>
 				    </button>
@@ -208,13 +208,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
         'integration'      => 'integration.svg',
         'search-bar'       => 'setting.svg',
         'autosetting'      => 'completesetting.svg',
-        'tapsp_search-configure' => 'searchconfig.svg',
+        'search-configure' => 'searchconfig.svg',
         'style'            => 'interface.svg',
         'analytics'        => 'analytics.svg',
-        'tapsp_index_builder'    => 'loading.svg',
-        'tapsp_fuzzy_settings'   => 'fuzzy.svg',
-        'tapsp_reset'            => 'reset.svg',
-        'tapsp_help'            => 'help.svg',
+        'index_builder'    => 'loading.svg',
+        'fuzzy_settings'   => 'fuzzy.svg',
+        'reset'            => 'reset.svg',
+        'help'            => 'help.svg',
     );
 
     if (!isset($icons[$id])) {
@@ -305,7 +305,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 				}
 
 				if ( $subtitle ) {
-				    echo '<p class="tapsp-section-subtitle">' . esc_html( $subtitle ) . '</p>';
+				    echo '<p class="thaps-section-subtitle">' . esc_html( $subtitle ) . '</p>';
 				}
 				echo '</div>';
 
@@ -345,10 +345,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 				$dependency = ! empty( $field['args']['require'] ) ? $this->build_dependency( $field['args']['require'] ) : '';
 
-				printf( '<div id="%s" class="tapsp-settings-row" %s %s>', $wrapper_id, $custom_attributes, $dependency );
+				printf( '<div id="%s" class="thaps-settings-row" %s %s>', $wrapper_id, $custom_attributes, $dependency );
 
 				
-					echo '<div scope="row" class="tapsp-settings-label">';
+					echo '<div scope="row" class="thaps-settings-label">';
 
 					if ( ! empty( $field['args']['label_for'] ) ) {
 
@@ -360,7 +360,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					}
 
 					echo '</div>';
-					echo '<div class="tapsp-settings-field-content">';
+					echo '<div class="thaps-settings-field-content">';
 					call_user_func( $field['callback'], $field['args'] );
 					echo '</div>';
 				
@@ -464,7 +464,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';?>
 
             <fieldset>
-            	<label>
+            	<label class="th-toggle">
             		<input <?php echo esc_attr($attrs); ?> type="checkbox" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="1" <?php echo esc_attr(checked( $value, true, false ));?>> <?php if ( ! empty( $args['desc'] ) ) {  echo esc_html($args['desc']); } ?>
             	</label>     
             </fieldset>
@@ -538,7 +538,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
          	$args[ 'id' ]=='how-to-integrate'):
 
-            $tapsp_karr = array( 
+            $thaps_karr = array( 
             'br' => array(),
             'strong' => array(),
             'code' => array(),
@@ -567,7 +567,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
       </div>
 
       <div class="th-shortcode">
-        <span><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span> <code>[tapsp]</code>
+        <span><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span> <code>[thaps]</code>
       </div>
       <div class="th-code-box">
 
@@ -575,7 +575,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
 
-        <pre><code>[tapsp]</code></pre>
+        <pre><code>[thaps]</code></pre>
 
       </div>
 
@@ -600,7 +600,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
       </div>
 
       <div class="th-shortcode">
-        <span><?php esc_html_e('Shortcode:','th-advance-product-search-pro'); ?></span> <code>[tapsp layout="bar_style"]</code>
+        <span><?php esc_html_e('Shortcode:','th-advance-product-search-pro'); ?></span> <code>[thaps layout="bar_style"]</code>
       </div>
 
           <div class="th-code-box">
@@ -609,7 +609,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
 
-        <pre><code>[tapsp layout="bar_style"]</code></pre>
+        <pre><code>[thaps layout="bar_style"]</code></pre>
 
       </div>
 
@@ -634,7 +634,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
 
-        <pre><code>&lt;?php echo do_shortcode('[tapsp]'); ?&gt;</code></pre>
+        <pre><code>&lt;?php echo do_shortcode('[thaps]'); ?&gt;</code></pre>
 
       </div>
 
