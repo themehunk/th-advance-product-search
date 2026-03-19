@@ -16,7 +16,7 @@
         },
         SettingTab: function (){
           $(document).ready(function(){ 
-                 $('#thaps').on('click', '.nav-tab', function (event){
+                 $('#tapsp').on('click', '.nav-tab', function (event){
                   event.preventDefault()
                   var target = $(this).data('target')
                   $(this).addClass('nav-tab-active').siblings().removeClass('nav-tab-active')
