@@ -175,8 +175,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 					<div id="logo">
 						<a href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>" target="_blank">
-						<img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'/tapsp-logo.png') ?>' alt="tapsp-logo" class="resp-logo"/>
-						<img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'/th-logo.png') ?>' alt="th-logo" class="th-logo"/>
+						<img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'images/resp-logo.png') ?>' alt="tapsp-logo" class="resp-logo"/>
+						<img src='<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI.'images/th-logo.png') ?>' alt="th-logo" class="th-logo"/>
 					</a>
 					</div>
 
@@ -205,12 +205,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			function icon_list($id = '') {
 
     $icons = array(
-        'tapsp_integration'      => 'integration.svg',
-        'tapsp_search-bar'       => 'setting.svg',
-        'tapsp_autosetting'      => 'completesetting.svg',
+        'integration'      => 'integration.svg',
+        'search-bar'       => 'setting.svg',
+        'autosetting'      => 'completesetting.svg',
         'tapsp_search-configure' => 'searchconfig.svg',
-        'tapsp_style'            => 'interface.svg',
-        'tapsp_analytics'        => 'analytics.svg',
+        'style'            => 'interface.svg',
+        'analytics'        => 'analytics.svg',
         'tapsp_index_builder'    => 'loading.svg',
         'tapsp_fuzzy_settings'   => 'fuzzy.svg',
         'tapsp_reset'            => 'reset.svg',
@@ -447,14 +447,6 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 			    case 'analytics-html':
 					$this->analytics_html_field_callback( $field );
-					break;
-
-				case 'premium-html':
-					$this->premium_html_field_callback( $field );
-					break;
-
-				case 'usefullplugin':
-					$this->usefullplugin_field_callback( $field );
 					break;		 			
 
 				default:
@@ -687,35 +679,6 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         <?php endif; }
 
-         public function premium_html_field_callback($args){
-
-            if($args[ 'id' ]=='premium'):
-
-			?>
-             <div class="th-upgrade-pro">
-             	<h4><?php esc_html_e('Upgrade to Premium Version Of Advance WordPress Search','th-advance-product-search'); ?></h4>
-             	<a href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>" class="button-upgrade" target="_blank"><i class="dashicons dashicons-lock"></i><?php esc_html_e('Upgrade Pro','th-advance-product-search'); ?></a>
-             </div>
-			
-
-			<ul class="th-search-images">
-				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-voice.png'; ?>"> </li>
-				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-loader.png'; ?>"> </li>
-				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-autocomplete.png'; ?>"> </li>
-				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-as.png'; ?>"> </li>
-				<li> <img src="<?php echo TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'images/search-style.png'; ?>"> </li>
-
-				
-			</ul>
-
-			<div class="th-upgrade-pro">
-             	<h4><?php esc_html_e('Upgrade to Premium Version Of Advance WordPress Search','th-advance-product-search'); ?></h4>
-             	<a href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>" class="button-upgrade"><i class="dashicons dashicons-lock"></i><?php esc_html_e('Upgrade Pro','th-advance-product-search'); ?></a>
-             </div>
-
-        <?php endif; }
-
-
 
 		public function color_field_callback( $args ){
 
@@ -763,30 +726,6 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 	         } 
 		}
 
-		public function usefullplugin_field_callback( $args ) {
-
-			$is_html = isset( $args['html'] );
-
-			if ( $is_html ) {
-
-				$html = $args['html'];
-
-			  } else {
-
-				$plugin_image  = $args['plugin_image'];
-				$plugin_title  = $args['plugin_title'];
-				$plugin_link   = $args['plugin_link'];
-
-				
-				
-			}
-
-			?>
-
-			<div class="thaps-use-plugin"><img src="<?php echo esc_url($plugin_image);?>" /><a target="_blank" href="<?php echo esc_url($plugin_link);?>"><?php echo esc_html($plugin_title);?></a>
-			</div>
-
-		<?php }
 
 	//*********************************/	
     // add ,delete ,get , reset, option

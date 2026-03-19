@@ -102,16 +102,16 @@
         },
         
         SaveSetting:function(){
-        $(document).on('keyup change paste', '.thaps-setting-form input, .thaps-setting-form select', function () {
+        $(document).on('keyup change paste', '.tapsp-setting-form input, .tapsp-setting-form select', function () {
         
               $('#submit').removeAttr("disabled");
               
         });  
-        $(document).on("click", ".thaps-setting-form #submit", function (e) {
+        $(document).on("click", ".tapsp-button-wrapper #submit", function (e) {
         e.preventDefault();
         $(this).addClass('loader');
         
-        var form_settting = $(".thaps-setting-form").serialize();
+        var form_settting = $(".tapsp-setting-form").serialize();
         $.ajax({
           url: THAPSPluginObject.ajaxurl,
           type: "POST",
