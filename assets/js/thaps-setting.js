@@ -16,7 +16,7 @@
         },
         SettingTab: function (){
           $(document).ready(function(){ 
-                 $('#tapsp').on('click', '.nav-tab', function (event){
+                 $('#thaps').on('click', '.nav-tab', function (event){
                   event.preventDefault()
                   var target = $(this).data('target')
                   $(this).addClass('nav-tab-active').siblings().removeClass('nav-tab-active')
@@ -107,7 +107,7 @@
               $('#submit').removeAttr("disabled");
               
         });  
-        $(document).on("click", ".thaps-setting-form #submit", function (e) {
+        $(document).on("click", ".thaps-button-wrapper #submit", function (e) {
         e.preventDefault();
         $(this).addClass('loader');
         
