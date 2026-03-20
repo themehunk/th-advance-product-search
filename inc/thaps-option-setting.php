@@ -488,7 +488,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		  );
 
 		 th_advance_product_search()->add_setting(
-			'search-configure', esc_html__( 'Search Configure', 'th-advance-product-search-pro' ), apply_filters(
+			'search-configure', esc_html__( 'Search Configure (Premium)', 'th-advance-product-search-pro' ), apply_filters(
 			'tapsp_search_configure_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Search Scope in Product', 'th-advance-product-search-pro' ),
@@ -641,7 +641,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 
  th_advance_product_search()->add_setting(
 			'thaps_index_builder',
-			esc_html__( 'Boost Search', 'th-advance-product-search-pro' ),
+			esc_html__( 'Boost Search (Premium)', 'th-advance-product-search-pro' ),
 			apply_filters(
 				'tapsp_index_builder_settings_section',
 				array(
@@ -652,11 +652,23 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							'tapsp_index_builder_setting_fields',
 							array(
 								array(
-									'id'    => 'tapsp_build_search_index',
+									'id'    => 'thaps_build_search_index',
 									'type'  => 'index-builder-html',
 									'title' => esc_html__( 'Product Index', 'th-advance-product-search' ),
 									'desc'    => esc_html__( 'Click below to build or rebuild the product search index table. This process ensures all your latest products are searchable.', 'th-advance-product-search' ),
 								),
+
+								array(
+							        'id'      => 'thaps_index_batch_limit',
+							        'type'    => 'number',
+							        'title'   => __('Index Batch Limit', 'th-advance-product-search-pro'),
+							        'default' => 300,
+							        'attrs'   => array(
+							            'min'  => 50,
+							            'step' => 50,
+							        ),
+							        'desc'    => __('Default is 300. Increase for faster indexing, but be aware it may increase server load during the process.', 'th-advance-product-search-pro'),
+							    ),
 							)
 						),
 					),
@@ -665,7 +677,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		);
 		th_advance_product_search()->add_setting(
 	'thaps_fuzzy_settings',
-	esc_html__( 'Fuzzy Strings & Synonyms', 'th-advance-product-search-pro' ),
+	esc_html__( 'Fuzzy Strings & Synonyms (Premium)', 'th-advance-product-search-pro' ),
 	apply_filters(
 		'thaps_fuzzy_settings_section',
 		array(
@@ -707,6 +719,36 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		)
 	)
      );
+
+		th_advance_product_search()->add_setting(
+			'reset', esc_html__( 'Reset All Setting', 'th-advance-product-search' ), apply_filters(
+			'thaps_reset_settings_section', array(
+				array(
+					'title'  => esc_html__( 'Reset All Your Custom Settings.', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_reset_setting_fields', array(
+							
+						)
+					)
+				 )
+			  )
+		    )
+		  );
+
+	  	th_advance_product_search()->add_setting(
+			'help', esc_html__( 'Help', 'th-advance-product-search' ), apply_filters(
+			'thaps_help_settings_section', array(
+				array(
+					'title'  => esc_html__( 'Help', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'thaps_help_setting_fields', array(
+							
+						)
+					)
+				 )
+			  )
+		    )
+		  );
 
 		}
 
