@@ -62,7 +62,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		public function settings_form() {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.','th-advance-product-search-pro' ) );
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.','th-advance-product-search' ) );
 			}
 		
 			?>
@@ -71,17 +71,22 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 				
 				
-                   <div class="setting-wrap">
+                   <div class="setting-wrap integration">
 
                    	 <div class="top-header">
-                <h2 class="tabheading"><?php esc_html_e("Integration", 'th-product-compare-pro'); ?></h2>
+                <h2 class="tabheading"><?php esc_html_e("Integration", 'th-advance-product-search'); ?></h2>
                
+               	 <a href="<?php echo esc_url( 'https://themehunk.com/advance-product-search/' ); ?>"
+			   title="<?php esc_attr_e( 'Get Premium Version', 'th-advance-product-search' ); ?>"
+			   target="_blank">
+				<?php esc_html_e( 'Get Premium Version', 'th-advance-product-search' ); ?>
+			</a>
 					  <p class="submit thaps-button-wrapper">
 						
 						
-						 <button  disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save All Changes', 'th-advance-product-search-pro' ); ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span><?php esc_html_e( 'Save All Changes', 'th-advance-product-search-pro' ); ?></span>
+						 <button  disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save All Changes', 'th-advance-product-search' ); ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span><?php esc_html_e( 'Save All Changes', 'th-advance-product-search-pro' ); ?></span>
 						 </button>
-						  <a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-advance-product-search-pro' ); ?>');" class="reset" href="#"><?php esc_html_e( 'Reset all', 'th-advance-product-search-pro' ); ?>
+						  <a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-advance-product-search' ); ?>');" class="reset" href="#"><?php esc_html_e( 'Reset all', 'th-advance-product-search-pro' ); ?>
 						</a>
 					</p>
 
@@ -126,6 +131,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			</div> 
 
 			
+			<?php require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/tapsp-live-preview.php'; ?> 
+			<?php require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/tapsp-reset.php'; ?> 
+			<?php require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/tapsp-help.php'; ?>
+			<?php require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . '/inc/thaps-premium.php'; ?>
+
+
 
             </div>
            
@@ -211,8 +222,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
         'search-configure' => 'searchconfig.svg',
         'style'            => 'interface.svg',
         'analytics'        => 'analytics.svg',
-        'index_builder'    => 'loading.svg',
-        'fuzzy_settings'   => 'fuzzy.svg',
+        'thaps_index_builder'    => 'loading.svg',
+        'thaps_fuzzy_settings'   => 'fuzzy.svg',
         'reset'            => 'reset.svg',
         'help'            => 'help.svg',
     );
@@ -653,29 +664,30 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
             if($args[ 'id' ]=='how-to-integrate-analytics'):
 
 			?>
-             <h4><?php _e( 'Enable Site Search module Paste the following code into "functions.php" in your child theme.', 'th-advance-product-search' ); ?>: </h4>
-			<ul>
-				
-				
-				<li><?php printf( __( '%s', 'th-advance-product-search' ), '<code> apply_filters("thaps_enable_ga_site_search_module", "__return_true" ); </code>' ); ?></li>
+             
+              <div class="th-search-analytics-wrapper">
+            	 <h4><?php esc_html_e( 'Enable Site Search module Paste the following code into "functions.php" in your child theme.', 'th-advance-product-search' ); ?>: </h4>
 
-				
-			</ul>
+            	  <div class="th-code-box">
+			        <span class="th-code-label"><?php esc_html_e('Php','th-advance-product-search'); ?></span>
+			        <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search'); ?></button>
+			        <pre><code>apply_filters("thaps_enable_ga_site_search_module", "__return_true" );</code></pre>
+      			  </div>
 
-			<h4><?php _e( 'To disable integrarion with Google Analytics paste following code "functions.php" your child theme.', 'th-advance-product-search' ); ?>: </h4>
-           <ul>
-				
-				
-				<li><?php printf( __( '%s', 'th-advance-product-search' ), '<code> thaps_google_analytics_events", "__return_false" ); </code>' ); ?></li>
-               </ul>
-           </br>
-               <ul>
+      			   <h4><?php esc_html_e( 'To disable integrarion with Google Analytics paste following code "functions.php" your child theme.:', 'th-advance-product-search' ); ?>: </h4>
 
-				<li><img src="<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'google-analtyitcs-result.png'); ?>"></li>
-			</ul>
-             <p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/#google-analytics');?>" class="explore-google-analytics"><?php _e('Explore Doc','th-advance-product-search');?></a></p>
-				
-			</ul>
+            	  <div class="th-code-box">
+			        <span class="th-code-label"><?php esc_html_e('Php','th-advance-product-search'); ?></span>
+			        <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search'); ?></button>
+			        <pre><code>apply_filters("thaps_google_analytics_events", "__return_false" );</code></pre>
+      			  </div>
+
+      			  <div class="image-wrapper">
+      			  	<img src="<?php echo esc_url(TH_ADVANCE_PRODUCT_SEARCH_IMAGES_URI.'google-analtyitcs-result.png'); ?>" />
+      			  </div>
+      			   <p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-advance-product-search/#google-analytics');?>" class="explore-google-analytics"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link h-4 w-4" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg><?php esc_html_e('Explore Doc','th-advance-product-search');?></a></p>
+
+            </div>
 
         <?php endif; }
 

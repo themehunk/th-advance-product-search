@@ -83,7 +83,7 @@ function th_advance_product_search_blocks_categories( $categories ) {
         [
             [
                 'slug'  => 'vayu-blocks',
-                'title' => __( 'ThemeHunk', 'th-advance-product-search-pro' ),
+                'title' => __( 'ThemeHunk', 'th-advance-product-search' ),
             ],
         ],
         $categories

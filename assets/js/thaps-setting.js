@@ -21,8 +21,43 @@
                   var target = $(this).data('target')
                   $(this).addClass('nav-tab-active').siblings().removeClass('nav-tab-active')
                   $('#' + target).show().siblings().hide()
-                  $('#_last_active_tab').val(target)
-                });
+                  $('#_last_active_tab').val(target);
+
+                  if ($("a[data-target='style']").hasClass('nav-tab-active')){
+                         $('.setting-preview-wrap.style-wrapper').show();
+                    }else{
+                         $('.setting-preview-wrap.style-wrapper').hide();
+                    }
+
+                if ($("a[data-target='reset']").hasClass('nav-tab-active')){
+                         $('.preview-reset-wrapper').show();
+                    }else{
+                         $('.preview-reset-wrapper').hide();
+                    }
+
+                if ($("a[data-target='help']").hasClass('nav-tab-active')){
+                         $('.setting-preview-wrap.help-wrapper').show();
+                    }else{
+                         $('.setting-preview-wrap.help-wrapper').hide();
+                    }
+
+                    
+              // ===== header title change =====
+                  var tabText = $(this).clone().children().remove().end().text().trim();
+                  $('.tabheading').text(tabText);
+
+                  /* Dynamic class add */
+                var wrap = $('.setting-wrap');
+
+                // Remove all classes except the base class
+                wrap.attr('class', 'setting-wrap');
+
+                // Add the current target class
+                wrap.addClass(target);
+
+                  
+
+                        });
           });
         },
         ColorPiker: function (){
@@ -201,7 +236,25 @@
 
              
      },
+
    
 }
 THVSsettingLib.init();
 })(jQuery);
+
+
+jQuery(document).ready(function ($) {
+
+    $('#thaps-toggle-sidebar').on('click', function () {
+
+        $('#thaps .nav-tab-wrapper').toggleClass('thaps-sidebar-collapsed');
+
+        // change arrow direction
+        $(this).find('.dashicons')
+        .toggleClass('dashicons-arrow-left-alt2 dashicons-arrow-right-alt2');
+
+    });
+
+    // move premium div just below top-header
+     $('.th-premium-box').insertAfter('.setting-wrap .top-header');
+});
