@@ -170,6 +170,7 @@ p.thaps-button-wrapper {
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) 0px var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important;
+    font-weight: 600;
 }
 .thaps-button-wrapper #submit span {
     font-size: 12px;
@@ -1116,10 +1117,10 @@ h2.thaps_index_builderthaps_index_builder-section-0{
 }
 .thaps_index_builder .headingwrapper h2,
 #thaps_fuzzy_settings .headingwrapper h2{
-    background: initial;
+     background: initial;
     color: #FFF;
     border: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 900;
     line-height: 1.2;
     text-transform: capitalize;
@@ -1150,12 +1151,12 @@ h2.thaps_index_builderthaps_index_builder-section-0{
     background-image: url(../../images/bosstheader.svg);
 }
 .thaps-section-subtitle{
- font-size: 18px;
- line-height: 27px;
- color: #eee3ff;
- font-weight: 500;
- margin-top: 18px;
- max-width: 699px;
+    font-size: 16px;
+    line-height: 27px;
+    color: #eee3ff;
+    font-weight: 500;
+    margin-top: 18px;
+    max-width: 699px;
 }
 
 /* description text */
@@ -1516,7 +1517,7 @@ h2.thaps_index_builderthaps_index_builder-section-0{
 }
 
 
-* Premium Green Upgrade Button */
+/* * Premium Green Upgrade Button */ */
 a[title="Get Premium Version"] {
     position: relative;
     display: inline-block;
@@ -1528,13 +1529,13 @@ a[title="Get Premium Version"] {
     border-radius: 1.25rem;
     background: linear-gradient(135deg, #00c853, #009127, #00bfa5);
     background-size: 200% 200%;
-    box-shadow: 0 8px 25px rgba(0, 200, 83, 0.35);
+    /* box-shadow: 0 8px 25px rgba(0, 200, 83, 0.35); */
     transition: all 0.3s ease-in-out;
     overflow: hidden;
     animation: gradientMove 4s ease infinite;
     margin-left: auto;
     margin-right: 9px;
-    letter-spacing: .16rem;
+    letter-spacing: .1rem;
 }
 
 /* Gradient Animation */
@@ -1568,12 +1569,12 @@ a[title="Get Premium Version"]:hover::before {
 }
 /* Premium Tab CSS Starts     */
 .th-premium-box{
-    position:relative;
-    background:#f1ece6;
-    border-radius:18px;
-    padding:38px 42px;
-    max-width:920px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    position: relative;
+    background: #f1ece6;
+    border-radius: 18px;
+    padding: 16px 22px;
+    max-width: 920px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     margin-bottom: 21px;
     margin-left: auto;
     margin-right: auto;
@@ -1594,13 +1595,14 @@ a[title="Get Premium Version"]:hover::before {
 }
 
 .th-premium-title{
-    margin:0 0 16px;
-    font-size:28px;
-    font-weight:600;
-    color:#1c1c1c;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1c1c1c;
+    padding: 0;
+    margin: 0;
 }
 
-.th-premium-badge{
+.th-premium-badge a{
     display:inline-block;
     background:#0fa87a;
     color:#fff;
@@ -1610,14 +1612,18 @@ a[title="Get Premium Version"]:hover::before {
     font-weight:600;
     letter-spacing:.5px;
     margin-bottom:18px;
+        text-decoration: none;
+}
+.th-premium-badge a:hover{
+    text-decoration: underline;
 }
 
 .th-premium-desc{
-    margin:0 0 26px;
-    color:#5a5a5a;
-    font-size:15px;
-    line-height:1.7;
-    max-width:760px;
+    margin: 0;
+    color: #5a5a5a;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 760px;
 }
 
 .th-premium-actions{
