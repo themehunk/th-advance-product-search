@@ -1,3 +1,12 @@
+:root {
+  --highlight-color: #155dfc;
+  --light-text-color1: #6a7282;
+  --light-text-color2: #99a1af;
+  --tw-shadow: 0 20px 50px #00000026;
+}
+*{
+    box-sizing: border-box;
+}
 .thaps-search-box{
 max-width:550px;
 }
@@ -20,30 +29,42 @@ max-width:550px;
     padding: 0;
     width: 100%;
 }
-
+.thaps-search-form,
+.thaps-autocomplete-suggestions {
+    position: relative;
+    animation: bounceDrop .05s linear;
+/*    animation: bounceDrop .1s cubic-bezier(.34,1.56,.64,1);*/*/
+}
 .thaps-from-wrap{
-display:flex;
-background:#fff;
-border-radius:4px;
-position: relative;
-border: 1px solid;
-border-color:#e7f5ff;
-
+    display: flex;
+    background: #fff;
+    border-radius: 2rem;
+    position: relative;
+    border: 1px solid;
+    border-color: #e7f5ff;
+    z-index: 9999;
+}
+.thaps-from-wrap:focus-within{
+    box-shadow: 0px 0px 2px 1px var(--highlight-color);
+    border: 1px solid var(--highlight-color);
 }
 .thaps-search-autocomplete:focus{
         outline: 0;
 }
 #thaps-search-button {
-background: #111;
+background: var(--highlight-color);
     width: 70px;
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius:4px;
+    border-radius: 17px;
     padding: 0;
     border: 0;
-   margin:0.3rem;
-   color: #fff;
+    margin: 0.3rem;
+    color: #fff;
+    word-break: initial;
+    border-radius: 16px;
 }
 
 
@@ -51,54 +72,85 @@ background: #111;
 background:#888;
 }
 .thaps-search-form .thaps-search-autocomplete {
-min-height:35px;
-line-height:35px;
-border:none!important;
-font-size: 14px;
-width: 100%;
-padding: 0.3rem 0.8rem;
-margin: 0;
-border-radius: 4px;
+    min-height: 35px;
+    line-height: 35px;
+    border: none !important;
+    font-size: 14px;
+    width: 100%;
+    padding: 0.3rem 0.8rem;
+    margin: 0;
+    border-radius: 2rem !important;
+    background: transparent;
+    outline: 0!important;
 }
 
-.thaps-autocomplete-suggestions {border: 1px solid #eee; background: #FFF; overflow: auto; }
-.thaps-autocomplete-suggestion { padding: 0.5rem; overflow: hidden;margin:0;}
-.thaps-autocomplete-selected { background: #f0f0f166; }
+.thaps-autocomplete-suggestions {
+    border: 1px solid #eee;
+    background: #FFF;
+    overflow: auto;
+    border-radius: 1rem;
+    margin-top: 9px;
+    /* box-shadow: 0 0 #000, 0 0 #000, 0 0 #000, 0 0 #000, var(--tw-shadow); */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border-color: color-mix(in oklab, #FFF 20%, transparent);
+    background-color: #FFF !important;
+}
+
+.thaps-autocomplete-selected { background: #eff6fff7; }
 .thaps-autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
 .thaps-autocomplete-group { padding: 0.5rem; }
 .thaps-autocomplete-group strong { display: block; border-bottom: 1px solid #000; 
 }
-.thaps-autocomplete-suggestion { 
-    cursor: pointer;
-}
-
 .thaps-autocomplete-suggestion{
 display:flex;
+overflow: hidden;
+margin:0;
+cursor: pointer;
+margin: 0 18px 2px 18px !important;
+ align-items: center;
+ padding: 5px 12px;
+gap: 16px;
+border-radius: 1rem;
+outline: 0!important;
 }
 
 .thaps-autocomplete-suggestion .thaps-img{
-width:65px;
- margin-right: 1rem;
+    width: 80px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-right: 0;
+    box-shadow: 0px 0px 2px 0 #b9b9b9;
 }
 
 .thaps-autocomplete-suggestion .thaps-img img{
-border-radius:3px;
-max-width: 100%;
+width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 9px;
+    transition: alL .2s linear;
 }
-
+.thaps-autocomplete-suggestion:hover .thaps-img img{
+    transform: scale(1.12);
+    transition: alL .2s linear;
+}
 .thaps-autocomplete-suggestion .thaps-price{
-font-size:0.89rem;
-font-weight:500;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    display: block;
+    color: #101828 !important;
 }
 
-.thaps-suggestion-heading .thaps-title{
-color:#555;
-font-size: .875rem;
+.thaps-autocomplete-suggestion.thaps-suggestion-heading .thaps-title{
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-font-weight:normal;
+    color: var(--light-text-color2);
 }
 .thaps-suggestion-heading{
-border-bottom:1px solid #e7f5ff;
 margin-bottom: 0.5rem;
 pointer-events: none;
 }
@@ -220,11 +272,36 @@ padding:0.3rem;
 outline:none;
 }
 .thaps-suggestion-more{
-background:#eee;
-text-align:center;
-margin:0;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #f6f3f4 !important;
+    padding: 9px 16px;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    margin: 0 !important;
+    border-radius: 0;
+    background: #FFF !important;
 }
-
+ 
+.thaps-autocomplete-suggestion.thaps-suggestion-more .thaps-title{
+    color: var(--highlight-color);
+}
+.thaps-suggestion-more:hover .thaps-content-wrapp{
+    background: var(--highlight-color);
+}
+.thaps-autocomplete-suggestion.thaps-suggestion-more:hover .thaps-title{
+    color: #FFF!important;
+}
+.thaps-suggestion-more .thaps-content-wrapp{
+    justify-content: center;
+    padding: 9px 0;
+    color: var(--highlight-color);
+    border-radius: .75rem;
+}
+.thaps-suggestion-more .thaps-content-wrapp *{
+    color: inherit;
+}
 .thaps-suggestion-more .thaps-content-wrapp {
     line-height: normal;
     text-align: center;
@@ -232,11 +309,28 @@ margin:0;
 }
 
 .thaps-suggestion-more .thaps-title{
-font-size:.89rem;
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 600;
+    letter-spacing: -.5px;
+}
+.thaps-suggestion-more .thaps-title:after {
+    content: "\003E";
+    position: relative;
+    margin-left: 16px;
+}
+.thaps-suggestion-more:hover .thaps-title:after {
+    margin-left: 18px;
 }
 .thaps-autocomplete-suggestion .thaps-title{
-display:inline-block;
-margin-right: 0.6rem;
+    font-weight: 600;
+    font-size: .875rem;
+    letter-spacing: .029px;
+    line-height: 1.425;
+    display: inline;
+    margin-right: 4px;
+    text-transform: capitalize;
+    color: #101828;
 }
 .thaps-autocomplete-suggestion .thaps-price{
 display:block;
@@ -247,8 +341,15 @@ font-size: 0.8rem;
     color: #555;
 }
 .thaps-desc{
-font-size:0.8rem;
-display:flex;
+    font-size: 11px;
+    line-height: 1.25;
+    display: block;
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    max-width: 100%;
+    color: var(--light-text-color1);
 }
 
 .thaps-content-wrapp {
@@ -305,24 +406,47 @@ display:flex;
 );
 }
 
-div.thaps-autocomplete-suggestions::-webkit-scrollbar-track
-{
+
+/* Chrome, Edge, Safari scrollbar CSS STARTS*/
+.thaps-autocomplete-suggestions::-webkit-scrollbar {
+    width: 6px;
+}
+
+.thaps-autocomplete-suggestions::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 6px; /* top-bottom gap for smooth curve */
+}
+
+.thaps-autocomplete-suggestions::-webkit-scrollbar-thumb {
+    background-color: #e9e4e6;
     
-    background-color: #f1f1f1;
+    /* One-sided smooth blending */
+    border-radius: 0 1rem 1rem 0;
+
+    /* spacing from edges */
+    border: 1px solid transparent;
+    background-clip: content-box;
+
+    transition: background 0.2s ease;
 }
 
-div.thaps-autocomplete-suggestions::-webkit-scrollbar
-{
-    width: 10px;
-    background-color: #E5E6E8;
-}
-
-div.thaps-autocomplete-suggestions::-webkit-scrollbar-thumb
-{
-    background-color: #E5E6E8;
-
-                     
+.thaps-autocomplete-suggestions::-webkit-scrollbar-thumb:hover {
+    background-color: #e3e2e3;
 }
 .thaps-search-box .th-icon{
 font-size:1.62rem;
+}
+
+/* Bounce animation */
+@keyframes bounceDrop {
+    0% {
+        transform: translateY(15px);
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(2px); /* thoda neeche */
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
