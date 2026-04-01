@@ -64,6 +64,10 @@ $sus_text_clr = esc_html(th_advance_product_search()->get_option( 'sus_text_clr'
 
 $thaps_frnt_custom_css.=" .thaps-suggestion-heading .thaps-title, .thaps-suggestion-heading .thaps-title strong{color:{$sus_grphd_clr};} .thaps-title,.thaps-suggestion-taxonomy-product-cat .thaps-title, .thaps-suggestion-more .thaps-title strong{color:{$sus_title_clr};} .thaps-sku, .thaps-desc, .thaps-price,.thaps-price del{color:{$sus_text_clr};} .thaps-suggestion-heading{border-color:{$sus_brdr_clr};} .thaps-autocomplete-selected,.thaps-suggestion-more:hover{background:{$sus_slect_clr};} .thaps-autocomplete-suggestions,.thaps-suggestion-more{background:{$sus_bg_clr};} .thaps-title strong{color:{$sus_hglt_clr};} ";
 
+$set_form_width = esc_html(th_advance_product_search()->get_option( 'set_form_width' ));
+$thaps_frnt_custom_css.=".thaps-autocomplete-suggestions{width:{$set_form_width}px!important}";
+
+
 return $thaps_frnt_custom_css;
 
 }

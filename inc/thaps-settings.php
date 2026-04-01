@@ -578,7 +578,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
       </div>
 
       <div class="th-shortcode">
-        <span><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span> <code>[thaps]</code>
+        <span><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span> <code>[th-aps]</code>
       </div>
       <div class="th-code-box">
 
