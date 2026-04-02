@@ -399,24 +399,28 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button BG Color ', 'th-advance-product-search' ),
 										'alpha'   => true,
+										'default'      => '#155dfc',
 									),
 									array(
 										'id'      => 'bar_button_txt_clr',
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button Text Color', 'th-advance-product-search' ),
 										'alpha'   => true,
+										'default'      => '#FFF',
 									),
 									array(
 										'id'      => 'bar_button_hvr_clr',
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button BG Hover Color', 'th-advance-product-search' ),
 										'alpha'   => true,
+										'default'      => '#155dfc',
 									),
 									array(
 										'id'      => 'bar_button_txt_hvr_clr',
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button Text Hover Color', 'th-advance-product-search' ),
-										'alpha'   => true
+										'alpha'   => true,
+										'default'      => '#FFF',
 									)
 								)
 							)

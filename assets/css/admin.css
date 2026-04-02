@@ -1688,19 +1688,33 @@ a[title="Get Premium Version"]:hover::before {
 /* Container */
 /* Search Bar */
 .tapsp-preview-style .tapsp-first {
+    display: flex;
+    background: #fff;
+    border-radius: 2rem;
+    position: relative;
+    border: 1px solid;
+    border-color: #e7f5ff;
+    z-index: 9999;
     position: relative;
 }
 
 .tapsp-preview-style .tapsp-form-control {
-    width: 100%;
-    padding: 12px 50px 12px 18px;
-    border-radius: 30px;
-    border: 1px solid #ddd;
-    outline: none;
+   min-height: 35px;
+    line-height: 35px;
+    border: none !important;
     font-size: 14px;
-    background: #fff;
+    width: 100%;
+    padding: 0.3rem 0.8rem;
+    margin: 0;
+    border-radius: 2rem !important;
+    background: transparent;
+    outline: 0 !important;
 }
 
+.tapsp-from-wrap:focus-within {
+    box-shadow: 0px 0px 2px 1px var(--highlight-color);
+    border: 1px solid var(--highlight-color);
+}
 .tapsp-preview-style #tapsp-search-button {
     position: absolute;
     right: 5px;
@@ -1710,7 +1724,7 @@ a[title="Get Premium Version"]:hover::before {
     width: 108px;
     border: none;
     border-radius: 54PX;
-    background: #000;
+    background: var(--highlight-color);
     color: #FFF;
     cursor: pointer;
     display: flex;
@@ -1900,6 +1914,7 @@ a[title="Get Premium Version"]:hover::before {
     border-radius: .75rem;
     text-decoration: none;
     display: flex;
+    box-shadow: initial;
 }
 .tapsp-preview-style .tapsp-suggestion-more a:hover{
     background: var(--highlight-color);

@@ -482,3 +482,6 @@ font-size:1.62rem;
         transform: translateY(0);
     }
 }
+.thaps-suggestion-more:hover .thaps-content-wrapp *{
+    color: inherit;
+}
