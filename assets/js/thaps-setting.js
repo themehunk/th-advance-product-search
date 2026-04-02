@@ -12,8 +12,62 @@
             $this.SaveSetting();
             $this.ResetSetting();
             $this.ChangeSetting();
+            $this.CopyToClipboard();
           
         },
+
+         CopyToClipboard: function () {
+
+  $(document).on('click', '.copy-btn', function (e) {
+    e.preventDefault();
+
+    var $btn = $(this);
+    var $box = $btn.closest('.shortcode-box, .th-code-box');
+    var textToCopy = $box.find('code').text().trim();
+
+    if (!textToCopy) {
+      return;
+    }
+
+    // Modern clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+
+      navigator.clipboard.writeText(textToCopy).then(function () {
+        copiedFeedback($btn);
+      });
+
+    } else {
+
+      // fallback for old browsers / WP admin
+      var $temp = $('<textarea>');
+      $('body').append($temp);
+      $temp.val(textToCopy).select();
+      document.execCommand('copy');
+      $temp.remove();
+
+      copiedFeedback($btn);
+
+    }
+
+    function copiedFeedback(btn) {
+
+      var originalText = btn.text();
+
+      btn.text('Copied');
+      btn.addClass('copied');
+
+      setTimeout(function () {
+
+        btn.text(originalText);
+        btn.removeClass('copied');
+
+      }, 1500);
+
+    }
+
+  });
+
+},
         SettingTab: function (){
           $(document).ready(function(){ 
                  $('#thaps').on('click', '.nav-tab', function (event){

@@ -586,7 +586,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
 
-        <pre><code>[thaps]</code></pre>
+        <pre><code>[th-aps]</code></pre>
 
       </div>
 
@@ -611,7 +611,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
       </div>
 
       <div class="th-shortcode">
-        <span><?php esc_html_e('Shortcode:','th-advance-product-search-pro'); ?></span> <code>[thaps layout="bar_style"]</code>
+        <span><?php esc_html_e('Shortcode:','th-advance-product-search-pro'); ?></span> <code>[th-aps layout="bar_style"]</code>
       </div>
 
           <div class="th-code-box">
@@ -620,7 +620,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
 
-        <pre><code>[thaps layout="bar_style"]</code></pre>
+        <pre><code>[th-aps layout="bar_style"]</code></pre>
 
       </div>
 
@@ -645,7 +645,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
         <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
 
-        <pre><code>&lt;?php echo do_shortcode('[thaps]'); ?&gt;</code></pre>
+        <pre><code>&lt;?php echo do_shortcode('[th-aps]'); ?&gt;</code></pre>
 
       </div>
 

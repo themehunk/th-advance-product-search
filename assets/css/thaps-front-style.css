@@ -7,6 +7,36 @@
 *{
     box-sizing: border-box;
 }
+/* Voice Search Button */
+.tapsp-voice-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin: 0.3rem 0.2rem;
+    padding: 0;
+    color: var(--light-text-color1);
+    transition: color 0.2s ease, background 0.2s ease;
+    flex-shrink: 0;
+}
+.tapsp-voice-btn:hover {
+    color: var(--highlight-color);
+    background: #f0f4ff;
+}
+.tapsp-voice-btn.tapsp-voice-listening {
+    color: #e53e3e;
+    animation: tapsp-voice-pulse 1s ease-in-out infinite;
+}
+@keyframes tapsp-voice-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.6; transform: scale(1.15); }
+}
 .thaps-search-box{
 max-width:550px;
 }
@@ -138,7 +168,6 @@ width: 100%;
 .thaps-autocomplete-suggestion .thaps-price{
     font-size: 16px;
     font-weight: 700;
-    white-space: nowrap;
     display: block;
     color: #101828 !important;
 }
@@ -202,6 +231,7 @@ height: 100%;
     width: 45px;
     z-index: 1;
     background:none;
+    display: none;
 
 }
 .thaps-loading {
@@ -319,7 +349,7 @@ outline:none;
     position: relative;
     margin-left: 16px;
 }
-.thaps-suggestion-more:hover .thaps-title:after {
+.thaps-suggestion-more .thaps-content-wrapp:hover .thaps-title:after {
     margin-left: 18px;
 }
 .thaps-autocomplete-suggestion .thaps-title{
@@ -351,7 +381,9 @@ font-size: 0.8rem;
     max-width: 100%;
     color: var(--light-text-color1);
 }
-
+.thaps-content-right{
+    text-align: right;
+}
 .thaps-content-wrapp {
     line-height: normal;
     display: flex;

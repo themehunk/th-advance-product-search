@@ -40,6 +40,12 @@ if(th_advance_product_search()->get_option('show_submit' )=='0'){
 
   <?php } ?>
 
+   <?php if( th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ) ): ?>
+  <button type="button" class="tapsp-voice-btn" aria-label="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>" title="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <?php endif; ?>
+
   <?php
 
   if(th_advance_product_search()->get_option( 'show_submit' )=='1'){?>
@@ -86,6 +92,12 @@ if(th_advance_product_search()->get_option('show_submit' )=='0'){
 
   <?php } ?>
 
+  <?php if( th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ) ): ?>
+  <button type="button" class="tapsp-voice-btn" aria-label="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>" title="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <?php endif; ?>
+
         <input type="hidden" name="post_type" value="product" />
 
         <span class="label label-default" id="selected_option"></span>
@@ -118,6 +130,12 @@ if(th_advance_product_search()->get_option('show_submit' )=='0'){
    <div class="thaps-preloader"></div>
 
   <?php } ?>
+
+  <?php if( th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ) ): ?>
+  <button type="button" class="tapsp-voice-btn" aria-label="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>" title="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <?php endif; ?>
 
         <input type="hidden" name="post_type" value="product" />
 
@@ -159,6 +177,12 @@ if(wp_is_mobile()){
 
   <?php } ?>
 
+  <?php if( th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ) ): ?>
+  <button type="button" class="tapsp-voice-btn" aria-label="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>" title="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <?php endif; ?>
+
         <input type="hidden" name="post_type" value="product" />
 
         <span class="label label-default" id="selected_option"></span>
@@ -186,6 +210,12 @@ if(wp_is_mobile()){
    <div class="thaps-preloader"></div>
 
   <?php } ?>
+
+  <?php if( th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ) ): ?>
+  <button type="button" class="tapsp-voice-btn" aria-label="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>" title="<?php echo esc_attr_x( 'Voice Search', 'voice button', 'th-advance-product-search-pro' ); ?>">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <?php endif; ?>
 
         <input type="hidden" name="post_type" value="product" />
 

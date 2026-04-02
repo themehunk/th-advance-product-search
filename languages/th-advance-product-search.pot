@@ -412,7 +412,7 @@ msgid "Search..."
 msgstr ""
 
 #: inc/thaps-option-setting.php:210
-msgid "See More Product.."
+msgid "See All Results "
 msgstr ""
 
 #: inc/thaps-option-setting.php:181

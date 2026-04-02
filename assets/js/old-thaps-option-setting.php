@@ -207,7 +207,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'text',
 								'title'   => esc_html__( 'More Result Label', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'This text will display at the search result dropdown.', 'th-advance-product-search' ),
-								'default' => esc_html__( 'See More Product..', 'th-advance-product-search' )
+								'default' => esc_html__( 'See All Results ', 'th-advance-product-search' )
 								
 							),
 						  array(
