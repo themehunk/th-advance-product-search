@@ -1977,7 +1977,9 @@ h2.thaps_index_builderthaps_index_builder-section-0{
     }
     .th-doc-left,
     .th-doc-right,
-    .wp-admin .form-table select, .wp-core-ui select{
+    .wp-admin .form-table select, .wp-core-ui select,
+    .style .setting-content,
+    .style .setting-preview-wrap{
         width: 100%;
     }
     .th-doc-row{
@@ -1990,5 +1992,19 @@ h2.thaps_index_builderthaps_index_builder-section-0{
     .thaps-setting-tab .thaps-settings-label,
     .form-table label{
         font-size: .54rem;
+    }
+    .th-search-analytics-wrapper * {
+        max-width: 100%;
+    }
+    pre{
+        white-space: normal;
+    }
+    .thaps-setting-form .copy-btn,
+    .thaps-setting-form .th-code-label{
+        position: relative;
+        top: initial;
+        left: initial;
+        right: initial;
+        transform: initial;
     }
 }
