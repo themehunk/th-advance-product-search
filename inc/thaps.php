@@ -125,6 +125,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
                         'thaps_ga_event'                    => apply_filters( 'thaps_google_analytics_events', true ),
                         'thaps_ga_site_search_module'       => apply_filters( 'thaps_enable_ga_site_search_module', false ),
                         'tapsp_enable_voice_search' => (bool) th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ),
+                        'tapsp_show_body_overlay'  => (bool) th_advance_product_search()->get_option( 'tapsp_show_body_overlay' ),
 
                     )
                 )

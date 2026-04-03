@@ -77,9 +77,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
                 <h2 class="tabheading"><?php esc_html_e("Integration", 'th-advance-product-search'); ?></h2>
                
                	 <a href="<?php echo esc_url( 'https://themehunk.com/advance-product-search/' ); ?>"
-			   title="<?php esc_attr_e( 'Get Premium Version', 'th-advance-product-search' ); ?>"
-			   target="_blank">
-				<?php esc_html_e( 'Get Premium Version', 'th-advance-product-search' ); ?>
+			   title="<?php esc_attr_e( 'Upgrade', 'th-advance-product-search' ); ?>"
+			   target="_blank" class="upgrade-button">
+				<?php esc_html_e( 'Upgrade', 'th-advance-product-search' ); ?>
 			</a>
 					  <p class="submit thaps-button-wrapper">
 						
@@ -582,12 +582,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
       </div>
       <div class="th-code-box">
 
+      	<pre><code>[th-aps]</code></pre>
+      	<div class="right">
         <span class="th-code-label"><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span>
 
         <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
+    	</div>
 
-        <pre><code>[th-aps]</code></pre>
-
+        
       </div>
 
     </div>
@@ -913,7 +915,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 			
 				wp_enqueue_style( 'th-advance-product-search-admin', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/css/admin.css', array(), TH_ADVANCE_PRODUCT_SEARCH_VERSION );
 				
-				wp_enqueue_script( 'wp-color-picker-alpha', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
+				wp_enqueue_script(
+    'wp-color-picker-alpha',
+    TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . 'assets/js/wp-color-picker-alpha.js',
+    array('wp-color-picker'),
+    '1.0',   // ✅ version
+    true     // ✅ footer
+);
 
 				wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-setting.js', array('jquery'),true);
 

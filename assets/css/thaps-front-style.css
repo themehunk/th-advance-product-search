@@ -485,3 +485,13 @@ font-size:1.62rem;
 .thaps-suggestion-more:hover .thaps-content-wrapp *{
     color: inherit;
 }
+
+
+/* tapsp-overlay Overlay CSS STARTS  */
+.tapsp-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    z-index:1;
+}
