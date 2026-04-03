@@ -45,6 +45,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/thaps-nav-menu.php';
                 require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/widget.php';
+                require_once TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_PATH . 'inc/deactivate-feedback.php';
             
         }
 
@@ -123,10 +124,16 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
 
                         'thaps_ga_event'                    => apply_filters( 'thaps_google_analytics_events', true ),
                         'thaps_ga_site_search_module'       => apply_filters( 'thaps_enable_ga_site_search_module', false ),
+                        'tapsp_enable_voice_search' => (bool) th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ),
 
                     )
                 )
             );
+
+
+          if ( (bool) th_advance_product_search()->get_option( 'tapsp_enable_voice_search' ) ) {
+              wp_enqueue_script( 'tapsp-voice-search-js', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI . '/assets/js/thaps-voice-search.js', array( 'th-advance-product-search-front' ), TH_ADVANCE_PRODUCT_SEARCH_VERSION, true );
+          }
 
         }
 

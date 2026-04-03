@@ -1,6 +1,7 @@
 :root {
-  --highlight-color: #4F46E5;
-  --text-color-light: #99a1af;
+   --highlight-color: #155dfc;
+  --light-text-color1: #6a7282;
+  --light-text-color2: #99a1af;
   --text-color-dark: #111;
   --border-color: #ebe6e7;
   --underline-border-color: rgba(255, 255, 255, 0.3);
@@ -1687,19 +1688,33 @@ a[title="Get Premium Version"]:hover::before {
 /* Container */
 /* Search Bar */
 .tapsp-preview-style .tapsp-first {
+    display: flex;
+    background: #fff;
+    border-radius: 2rem;
+    position: relative;
+    border: 1px solid;
+    border-color: #e7f5ff;
+    z-index: 9999;
     position: relative;
 }
 
 .tapsp-preview-style .tapsp-form-control {
-    width: 100%;
-    padding: 12px 50px 12px 18px;
-    border-radius: 30px;
-    border: 1px solid #ddd;
-    outline: none;
+   min-height: 35px;
+    line-height: 35px;
+    border: none !important;
     font-size: 14px;
-    background: #fff;
+    width: 100%;
+    padding: 0.3rem 0.8rem;
+    margin: 0;
+    border-radius: 2rem !important;
+    background: transparent;
+    outline: 0 !important;
 }
 
+.tapsp-from-wrap:focus-within {
+    box-shadow: 0px 0px 2px 1px var(--highlight-color);
+    border: 1px solid var(--highlight-color);
+}
 .tapsp-preview-style #tapsp-search-button {
     position: absolute;
     right: 5px;
@@ -1709,7 +1724,7 @@ a[title="Get Premium Version"]:hover::before {
     width: 108px;
     border: none;
     border-radius: 54PX;
-    background: #000;
+    background: var(--highlight-color);
     color: #FFF;
     cursor: pointer;
     display: flex;
@@ -1731,11 +1746,11 @@ a[title="Get Premium Version"]:hover::before {
 
 /* Section Headings */
 .tapsp-preview-style .tapsp-suggestion-heading .tapsp-title {
-    font-size: 12px;
-    font-weight: 600;
-    color: #8a8a8a;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #99a1af !important;
 }
 
 /* Trending Chips */
@@ -1746,17 +1761,25 @@ a[title="Get Premium Version"]:hover::before {
 }
 
 .tapsp-preview-style .tapsp-trending-wrapper .tapsp-suggestion-wrap a {
-    background: #fff;
+    background: #f6f6f6;
     padding: 8px 14px;
     border-radius: 20px;
-    border: 1px solid #e5e5e5;
     font-size: 13px;
     text-decoration: none;
     color: #000;
     display: inline-block;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 29px;
+    padding: 0.5rem 0.9rem;
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, #0000001a), 0 1px 2px -1px var(--tw-shadow-color, #0000001a);
+    box-shadow: 0 0 #000, 0 0 #000, 0 0 #000, 0 0 #000, var(--tw-shadow);
 }
-
+.tapsp-preview-style .tapsp-trending-wrapper .tapsp-suggestion-wrap a:hover{
+    background: #eff6ff;
+}
 /* Category */
 .tapsp-preview-style .tapsp-suggestion-taxonomy-product-cat {
     padding: 6px 0;
@@ -1769,8 +1792,10 @@ a[title="Get Premium Version"]:hover::before {
 
 /* Product List */
 .tapsp-preview-style .tapsp-suggestion-product {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    border-radius: 1rem;
+}
+.tapsp-preview-style .tapsp-suggestion-product:hover{
+    background: #eff6fff7;
 }
 
 .tapsp-preview-style .tapsp-suggestion-product:last-child {
@@ -1780,26 +1805,32 @@ a[title="Get Premium Version"]:hover::before {
 .tapsp-preview-style .tapsp-suggestion-product a {
     display: flex;
     align-items: center;
-    gap: 12px;
-    text-decoration: none;
+    padding: 9px 12px;
+    gap: 16px;
 }
 
 /* Product Image */
 .tapsp-preview-style .tapsp-img {
-    width: 50px;
-    height: 50px;
-    background: #eaeaea;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 80px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-right: 0;
+    box-shadow: 0px 0px 2px 0 #b9b9b9;
 }
 
 .tapsp-preview-style .tapsp-img img {
-    max-width: 28px;
-    opacity: 0.6;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 9px;
+    transition: alL .2s linear;
 }
-
+.tapsp-preview-style .tapsp-suggestion-product:hover .tapsp-img img{
+    transform: scale(1.12);
+    transition: alL .2s linear;
+}
 /* Content Layout */
 .tapsp-preview-style .tapsp-content-wrapp {
     display: flex;
@@ -1814,9 +1845,11 @@ a[title="Get Premium Version"]:hover::before {
 }
 
 .tapsp-preview-style .tapsp-title {
-    font-size: 14px;
-    color: #000;
-    font-weight: 700;
+    font-weight: 600;
+    font-size: .875rem;
+    letter-spacing: .029px;
+    line-height: 1.425;
+    color: #111;
 }
 
 .tapsp-preview-style .tapsp-title strong {
@@ -1830,10 +1863,23 @@ a[title="Get Premium Version"]:hover::before {
 }
 
 .tapsp-preview-style .tapsp-desc {
-    font-size: 12px;
-    color: #666;
+    font-size: 11px;
+    line-height: 1.25;
+    display: block;
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    color: var(--light-text-color1);
 }
-
+.tapsp-preview-style .tapsp-price{
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    display: block;
+    color: #101828 !important;
+}
 /* Right Content (Price) */
 .tapsp-preview-style .tapsp-content-right {
     display: flex;
@@ -1855,18 +1901,39 @@ a[title="Get Premium Version"]:hover::before {
 
 /* See More Button */
 .tapsp-preview-style .tapsp-suggestion-more {
-    text-align: center;
-    margin-top: 10px;
+  border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #f6f3f4 !important;
+    padding: 9px 0;
 }
 
 .tapsp-preview-style .tapsp-suggestion-more a {
-    display: block;
-    padding: 12px;
-    background: #e9e9e9;
-    border-radius: 10px;
-    font-size: 13px;
-    color: #000;
+   justify-content: center;
+    padding: 9px 0;
+    color: var(--highlight-color);
+    border-radius: .75rem;
     text-decoration: none;
+    display: flex;
+    box-shadow: initial;
+}
+.tapsp-preview-style .tapsp-suggestion-more a:hover{
+    background: var(--highlight-color);
+    color: #FFF!important;
+}
+.tapsp-preview-style .tapsp-suggestion-more a *{
+    color: inherit;
+    font-size: .72rem !important;
+    line-height: 1.7;
+    font-weight: 600;
+    letter-spacing: -.5px;
+}
+.tapsp-preview-style .tapsp-suggestion-more a .tapsp-title:after{
+    content: "\003E";
+    position: relative;
+    margin-left: 16px;
+}
+.tapsp-preview-style .tapsp-suggestion-more a:hover .tapsp-title:after{
+    margin-left: 21px;
 }
 .tapsp-searchwrapper{
     padding: 21px;
@@ -1876,6 +1943,7 @@ a[title="Get Premium Version"]:hover::before {
     border-color: #e7f5ff;
     z-index: 9999;
     border-radius: 32px;
+    padding-bottom: 0;
 }
 .tapsp-preview-style a{
     text-decoration: none;
@@ -1890,3 +1958,7 @@ a[title="Get Premium Version"]:hover::before {
 .thaps-settings-field-content .wp-color-result-text{
     font-size: 0;
 }*/
+
+.tapsp-preview-style .tapsp-suggestion-more .tapsp-content-wrapp{
+    justify-content: center;
+}
