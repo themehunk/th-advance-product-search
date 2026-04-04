@@ -1,10 +1,10 @@
 ====== Advance Product Search & Ajax Search for WooCommerce ========
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
-Tags: Advnace woocommerce, product search, post search, page search, category search,ajax search, live search
+Tags: Advnace woocommerce, product search, search, category search,ajax search, live search
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -157,6 +157,14 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.4.0 =
+New: Redesigned dashboard with a modern and user-friendly interface.
+New: Voice search functionality added to front-end search.
+New: Improved front-end UI with a more intuitive, user-friendly design.
+New: Dashboard optimized for mobile responsiveness and better usability.
+Update: Enhanced product search performance, including SKU and description-based search.
+Fix: Resolved search issues and improved mobile responsiveness.
 
 = 1.3.2 =
 * Update:Readme file update.
