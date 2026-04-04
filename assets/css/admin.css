@@ -1745,7 +1745,9 @@ h2.thaps_index_builderthaps_index_builder-section-0{
     display: flex;
     flex-direction: column;
     gap: 18px;
-    padding: 9px;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #F1F1F1;
 }
 
 /* Section Headings */
@@ -1909,6 +1911,7 @@ h2.thaps_index_builderthaps_index_builder-section-0{
     border-top-style: solid;
     border-color: #f6f3f4 !important;
     padding: 9px 0;
+    margin-bottom: -15px;
 }
 
 .tapsp-preview-style .tapsp-suggestion-more a {
@@ -1919,10 +1922,12 @@ h2.thaps_index_builderthaps_index_builder-section-0{
     text-decoration: none;
     display: flex;
     box-shadow: initial;
+    transition: all .2s ease;
 }
-.tapsp-preview-style .tapsp-suggestion-more a:hover{
+.tapsp-preview-style .tapsp-suggestion-more:hover a{
     background: var(--highlight-color);
     color: #FFF!important;
+    transition: all .2s ease;
 }
 .tapsp-preview-style .tapsp-suggestion-more a *{
     color: inherit;
@@ -1937,16 +1942,9 @@ h2.thaps_index_builderthaps_index_builder-section-0{
     margin-left: 16px;
 }
 .tapsp-preview-style .tapsp-suggestion-more a:hover .tapsp-title:after{
-    margin-left: 21px;
+    margin-left: 18px;
 }
 .tapsp-searchwrapper{
-    padding: 21px;
-    background: #FFF;
-    position: relative;
-    border: 1px solid;
-    border-color: #e7f5ff;
-    z-index: 9999;
-    border-radius: 32px;
     padding-bottom: 0;
 }
 .tapsp-preview-style a{
@@ -2006,5 +2004,80 @@ h2.thaps_index_builderthaps_index_builder-section-0{
         left: initial;
         right: initial;
         transform: initial;
+    }
+    .wp-picker-container .wp-color-result.button{
+        padding: 0 0 0 30px;
+    }
+    .style .setting-preview-wrap{
+        padding: 9px;
+    }
+    .tapsp-preview-style .tapsp-img{
+        width: 49px;
+    }
+    .thaps-button-wrapper #submit span.text{
+        display: none;
+    }
+    .top-header{
+        padding: 9px 18px;
+    }
+    .top-header .tabheading{
+        font-size: .9rem;
+        margin-right: 5px;
+        display: none;
+    }
+    .th-premium-badge a{
+        margin-top: 18px;
+    }
+    .upgrade-button{
+        width: 108px;
+        font-size: 9px;
+    }
+    .reset-tab{
+        width: initial;
+        padding: 9px;
+        margin: 9px;
+    }
+    .help-wrapper .page-wrapper{
+        padding: 9px;
+    }
+    .th-help-wrap .blocks{
+        grid-gap: 2%;
+    }
+    .th-help-wrap .blocks > div{
+        width: 100%;
+        margin-bottom: 2%;
+    }
+    .thaps_index_builder .form-table{
+        grid-template-columns: initial;
+    }
+    .thaps-section-wrapper.thaps_index_builder, .thaps-section-wrapper.thaps_fuzzy_settings{
+        padding: 0;
+    }
+    .thaps-section-wrapper.thaps_index_builder .thaps-settings-label,
+    .thaps-section-wrapper.thaps_fuzzy_settings .thaps-settings-label{
+        width: initial!important;
+    }
+    .thaps-section-wrapper.thaps_index_builder, .thaps-section-wrapper.thaps_fuzzy_settings{
+        width: 100%;
+        padding: 9px;
+    }
+    #thaps_fuzzy_settings .thaps_fuzzy_settings .thaps-settings-row{
+        width: initial;
+    }
+    .thaps-section-wrapper h2{
+        font-size: 0.775rem;
+        letter-spacing: 0.02em;
+    }
+    #thaps.settings-wrap{
+        overflow: hidden;
+    }
+    .tapsp-preview-style .tapsp-price{
+        font-size: 9px;
+    }
+    .tapsp-preview-style .tapsp-autocomplete-suggestions{
+        padding: 9px 0px;
+    }
+    .tapsp-preview-style .tapsp-title{
+        font-size: .599rem;
     }
 }

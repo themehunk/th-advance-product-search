@@ -72,7 +72,7 @@ max-width:550px;
     position: relative;
     border: 1px solid;
     border-color: #e7f5ff;
-    z-index: 9999;
+    z-index: 9999999!important
 }
 .thaps-from-wrap:focus-within{
     box-shadow: 0px 0px 2px 1px var(--highlight-color);
@@ -124,6 +124,7 @@ background:#888;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     border-color: color-mix(in oklab, #FFF 20%, transparent);
     background-color: #FFF !important;
+    z-index: 9999999!important;
 }
 
 .thaps-autocomplete-selected { background: #eff6fff7; }
@@ -493,5 +494,13 @@ font-size:1.62rem;
     inset: 0;
     background: rgba(0,0,0,0.55);
     display: none;
-    z-index:1;
+    z-index:1000008;
+}
+@media screen and (max-width: 767px){
+div.thaps-autocomplete-suggestions{
+    width: 95%!important;
+}
+.thaps-content-right{
+    text-align: left;
+}
 }

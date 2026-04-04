@@ -402,13 +402,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'title'   => esc_html__( 'Text Color', 'th-advance-product-search' ),
 										'alpha'   => true,
 									),
-									array(
-										'id'      => 'icon_clr',
-										'type'    => 'color',
-										'title'   => esc_html__( 'Icon Color', 'th-advance-product-search' ),
+									// array(
+									// 	'id'      => 'icon_clr',
+									// 	'type'    => 'color',
+									// 	'title'   => esc_html__( 'Icon Color', 'th-advance-product-search' ),
 										
-										'alpha'   => true,
-									),
+									// 	'alpha'   => true,
+									// ),
 									array(
 										'id'      => 'bar_button_bg_clr',
 										'type'    => 'color',
@@ -419,7 +419,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 									array(
 										'id'      => 'bar_button_txt_clr',
 										'type'    => 'color',
-										'title'   => esc_html__( 'Submit Button Text Color', 'th-advance-product-search' ),
+										'title'   => esc_html__( 'Submit Button Text / Icon Color', 'th-advance-product-search' ),
 										'alpha'   => true,
 										'default'      => '#FFF',
 									),

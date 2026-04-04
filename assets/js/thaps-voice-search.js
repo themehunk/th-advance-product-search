@@ -17,8 +17,8 @@
 
         $('.tapsp-voice-btn').each(function () {
             var $btn = $(this);
-            var $wrap = $btn.closest('.tapsp-from-wrap');
-            var $input = $wrap.find('.tapsp-search-autocomplete');
+            var $wrap = $btn.closest('.thaps-from-wrap');
+            var $input = $wrap.find('.thaps-search-autocomplete');
 
             var recognition = new SpeechRecognition();
             recognition.continuous = false;

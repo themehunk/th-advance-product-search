@@ -31,38 +31,14 @@
                 </button>
                     </div>
                 
-                    <div class="tapsp-autocomplete-suggestions" data-th-bg="sus_bg_clr-field">
-
-                    <div class="tapsp-suggestion-wrap  tapsp-suggestion-heading">
-                        <a href="#" class="tapsp-autocomplete-suggestion" data-index="0"><div class="tapsp-content-wrapp"><div class="tapsp-content-left"><div class="tapsp-title" data-th-color="sus_grphd_clr-field">Trending Now</div></div></div></a>
-                    </div>
-
-                    <div class="tapsp-trending-wrapper">
-                        <div class="tapsp-suggestion-wrap ">
-                            <a href="http://localhost:8888/wp1/?s=Vintage+dress&amp;post_type=product" class="tapsp-autocomplete-suggestion" data-index="1">
-                                <div class="tapsp-content-wrapp">
-                                    <div class="tapsp-content-left">
-                                        <div class="tapsp-title">Trend1</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tapsp-suggestion-wrap ">
-                            <a href="http://localhost:8888/wp1/?s=Black+dress&amp;post_type=product" class="tapsp-autocomplete-suggestion" data-index="2">
-                                <div class="tapsp-content-wrapp">
-                                    <div class="tapsp-content-left">
-                                    <div class="tapsp-title">Trend2</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                   </div>
+                    <div class="tapsp-autocomplete-suggestions" data-th-bg="sus_bg_clr-field" data-th-border="sus_brdr_clr-field">
+                    
                          <div class="tapsp-suggestion-wrap  tapsp-suggestion-heading">
                          <a href="#" class="tapsp-autocomplete-suggestion " data-index="0">
                             <div class="tapsp-content-wrapp"><div class="tapsp-content-left">
-                            <div class="tapsp-title"><?php esc_html_e( 'Category', 'th-advance-product-search-pro' ); ?></div></div></div></a>  
+                            <div class="tapsp-title" data-th-color="sus_grphd_clr-field"><?php esc_html_e( 'Category', 'th-advance-product-search-pro' ); ?></div></div></div></a>  
                          </div>
-                         <div class="tapsp-suggestion-wrap  tapsp-suggestion-taxonomy-product-cat"><a href="#" class="tapsp-autocomplete-suggestion" data-index="1"><div class="tapsp-content-wrapp"><div class="tapsp-content-left"><div class="tapsp-title"><strong data-th-color="sus_hglt_clr-field"><?php esc_html_e( 'sample', 'th-advance-product-search-pro' ); ?></strong> <?php esc_html_e( 'category', 'th-advance-product-search-pro' ); ?></div></div></div></a>
+                         <div class="tapsp-suggestion-wrap  tapsp-suggestion-taxonomy-product-cat"><a href="#" class="tapsp-autocomplete-suggestion" data-index="1"><div class="tapsp-content-wrapp"><div class="tapsp-content-left"><div class="tapsp-title" ><strong data-th-color="sus_hglt_clr-field"><?php esc_html_e( 'sample', 'th-advance-product-search-pro' ); ?></strong> <?php esc_html_e( 'category', 'th-advance-product-search-pro' ); ?></div></div></div></a>
                         </div>
                         
                         <div class="tapsp-suggestion-wrap  tapsp-suggestion-heading"><a href="#" class="tapsp-autocomplete-suggestion " data-index="2"><div class="tapsp-content-wrapp"><div class="tapsp-content-left"><div class="tapsp-title"><?php esc_html_e( 'Product', 'th-advance-product-search-pro' ); ?></div></div></div></a>
@@ -98,26 +74,7 @@
                         <a href="#" class="tapsp-autocomplete-suggestion" data-index="0"><div class="tapsp-content-wrapp"><div class="tapsp-content-left"><div class="tapsp-title">Trending Now</div></div></div></a>
                     </div>
 
-                    <div class="tapsp-trending-wrapper">
-                        <div class="tapsp-suggestion-wrap ">
-                            <a href="http://localhost:8888/wp1/?s=Vintage+dress&amp;post_type=product" class="tapsp-autocomplete-suggestion" data-index="1">
-                                <div class="tapsp-content-wrapp">
-                                    <div class="tapsp-content-left">
-                                        <div class="tapsp-title">Trend1</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="tapsp-suggestion-wrap ">
-                            <a href="http://localhost:8888/wp1/?s=Black+dress&amp;post_type=product" class="tapsp-autocomplete-suggestion" data-index="2">
-                                <div class="tapsp-content-wrapp">
-                                    <div class="tapsp-content-left">
-                                    <div class="tapsp-title">Trend2</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                   </div>
+                    
                         
                         <div class="tapsp-suggestion-wrap  tapsp-suggestion-heading"><a href="#" class="tapsp-autocomplete-suggestion " data-index="2"><div class="tapsp-content-wrapp"><div class="tapsp-content-left"><div class="tapsp-title"><?php esc_html_e( 'Product', 'th-advance-product-search-pro' ); ?></div></div></div></a>
                         </div>
