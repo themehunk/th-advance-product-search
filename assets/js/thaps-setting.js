@@ -112,12 +112,97 @@
                   
 
                         });
+
+                 $("#search-configure input,#tapsp_specific_key_search-field,#thaps_enable_fuzzy-field").prop("disabled", true);
           });
         },
         ColorPiker: function (){
-          $(document).ready(function(){ 
-                $('.thaps-color-picker').wpColorPicker();
+        jQuery(document).ready(function ($) {
+
+            function applyHoverColor(inputId, value) {
+
+          var styleId = 'hover-style-' + inputId;
+          $('#' + styleId).remove();
+
+          var css = '';
+
+          // background hover
+          $('[data-th-bg-hover="' + inputId + '"]').each(function () {
+            var selector = getSelector(this);
+
+            css += selector + ':hover { background-color: ' + value + ' !important; }';
           });
+
+          // text hover
+          $('[data-th-color-hover="' + inputId + '"]').each(function () {
+            var selector = getSelector(this);
+
+            css += selector + ':hover { color: ' + value + ' !important; }';
+          });
+
+          $('head').append('<style id="' + styleId + '">' + css + '</style>');
+}
+
+           function getSelector(el) {
+
+  // priority 1: ID
+  if (el.id) {
+    return '#' + el.id;
+  }
+
+  // priority 2: unique class
+  if (el.className) {
+    var classes = el.className.trim().split(/\s+/).join('.');
+    return el.tagName.toLowerCase() + '.' + classes;
+  }
+
+  // fallback (rare case)
+  return el.tagName.toLowerCase();
+}
+
+  function applyPreview(inputId, value) {
+    $('[data-th-bg="' + inputId + '"]').css('background-color', value);
+    $('[data-th-color="' + inputId + '"]').css('color', value);
+    $('[data-th-border="' + inputId + '"]').css('border-color', value);
+  }
+
+  // ✅ INIT ON LOAD
+  $('.thaps-color-picker').each(function () {
+    var val = $(this).val();
+    if (val) applyPreview(this.id, val);
+     // hover
+    applyHoverColor(this.id, val);
+  });
+
+  // ✅ COLOR PICKER CHANGE
+  $('.thaps-color-picker').wpColorPicker({
+    change: function (event, ui) {
+       var id = event.target.id;
+    var value = ui.color.toString();
+
+    // normal
+    applyPreview(id, value);
+
+    // hover
+    applyHoverColor(id, value);
+    }
+  });
+
+  // 🔥 IMPORTANT: ALPHA SLIDER LIVE TRACK
+  $(document).on('mousemove', '.iris-slider, .iris-square', function () {
+
+    $('.thaps-color-picker').each(function () {
+      var inputId = this.id;
+      var value = $(this).val(); // updated rgba
+
+      if (value) {
+        applyPreview(inputId, value);
+      }
+    });
+
+  });
+
+});
         },
 
         ImageAdd:function (){
@@ -308,6 +393,21 @@ jQuery(document).ready(function ($) {
         .toggleClass('dashicons-arrow-left-alt2 dashicons-arrow-right-alt2');
 
     });
+
+       function handleSidebarOnResize() {
+            if ($(window).width() <= 768) {
+                $('#thaps .nav-tab-wrapper').addClass('thaps-sidebar-collapsed');
+            } else {
+                $('#thaps .nav-tab-wrapper').removeClass('thaps-sidebar-collapsed');
+            }
+        }
+
+        // Run on load
+        handleSidebarOnResize();
+
+        // Run on resize
+        $(window).on('resize', handleSidebarOnResize);
+
 
     // move premium div just below top-header
      $('.th-premium-box').insertAfter('.setting-wrap .top-header');

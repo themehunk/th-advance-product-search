@@ -162,7 +162,22 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 						
 						)
 					)
-				 )
+				 ),
+
+				array(
+					'title'  => esc_html__( 'Interface Overlay', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'tapsp_search_bar_setting_fields', array(
+							array(
+								'id'      => 'tapsp_show_body_overlay',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Focus Overlay', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'Dim the background when search suggestions are active', 'th-advance-product-search-pro' ),
+								'default' => false
+							    ),
+						)
+					)
+				 ),
 
 			   )
 		     )
@@ -384,7 +399,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 									array(
 										'id'      => 'bar_text_clr',
 										'type'    => 'color',
-										'title'   => esc_html__( 'Placeholder Color', 'th-advance-product-search' ),
+										'title'   => esc_html__( 'Text Color', 'th-advance-product-search' ),
 										'alpha'   => true,
 									),
 									array(
@@ -500,7 +515,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		  );
 
 		 th_advance_product_search()->add_setting(
-			'search-configure', esc_html__( 'Search Configure (Premium)', 'th-advance-product-search-pro' ), apply_filters(
+			'search-configure', esc_html__( 'Search Configure (Pro)', 'th-advance-product-search-pro' ), apply_filters(
 			'tapsp_search_configure_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Search Scope in Product', 'th-advance-product-search-pro' ),
@@ -653,7 +668,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 
  th_advance_product_search()->add_setting(
 			'thaps_index_builder',
-			esc_html__( 'Boost Search (Premium)', 'th-advance-product-search-pro' ),
+			esc_html__( 'Boost Search (Pro)', 'th-advance-product-search-pro' ),
 			apply_filters(
 				'tapsp_index_builder_settings_section',
 				array(
@@ -689,7 +704,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		);
 		th_advance_product_search()->add_setting(
 	'thaps_fuzzy_settings',
-	esc_html__( 'Fuzzy Strings & Synonyms (Premium)', 'th-advance-product-search-pro' ),
+	esc_html__( 'Fuzzy Strings & Synonyms (Pro)', 'th-advance-product-search-pro' ),
 	apply_filters(
 		'thaps_fuzzy_settings_section',
 		array(

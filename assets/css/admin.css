@@ -86,7 +86,7 @@ text-align: left;
     background: transparent;
     border: 1px solid transparent;
     color: #6a7282;
-    font-size: .9rem;
+    font-size: .8rem;
     line-height: 1.8;
     position: relative;
     align-items: center;
@@ -172,6 +172,9 @@ p.thaps-button-wrapper {
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important;
     font-weight: 600;
+}
+.wp-core-ui .thaps-button-wrapper .button-primary:disabled{
+    background: #7DA6FF!important;
 }
 .thaps-button-wrapper #submit span {
     font-size: 12px;
@@ -507,7 +510,6 @@ p.thaps-button-wrapper {
 .th-code-box pre{
     margin:0;
     font-size:14px;
-    overflow:auto;
 }
 .th-code-box pre code {
     background: transparent;
@@ -515,7 +517,8 @@ p.thaps-button-wrapper {
 
 .thaps-setting-form .th-code-label{
     position:absolute;
-    top:-10px;
+    top: 50%;
+    transform: translateY(-50%);
     right:70px;
     background:#1e293b;
     color:#fff;
@@ -528,7 +531,8 @@ p.thaps-button-wrapper {
 
 .thaps-setting-form .copy-btn{
     position:absolute;
-    top:10px;
+    top: 50%;
+    transform: translateY(-50%);
     right:10px;
     background: #4F46E5;
     color:#fff;
@@ -1466,9 +1470,6 @@ h2.thaps_index_builderthaps_index_builder-section-0{
 .thaps-progress-bar{
     background: var(--highlight-color);
 }
-.themehunk_page_th-advance-product-search-pro .notice{
-    display: none!important;
-}
 #thaps_analytics .thaps-settings-label{
     display: none;
 }
@@ -1519,7 +1520,8 @@ h2.thaps_index_builderthaps_index_builder-section-0{
 
 
 /* * Premium Green Upgrade Button */ 
-a[title="Get Premium Version"] {
+.upgrade-button {
+    width: 200px;
     position: relative;
     display: inline-block;
     padding: 10px 24px;
@@ -1537,6 +1539,7 @@ a[title="Get Premium Version"] {
     margin-left: auto;
     margin-right: 9px;
     letter-spacing: .1rem;
+    text-align: center;
 }
 
 /* Gradient Animation */
@@ -1547,13 +1550,13 @@ a[title="Get Premium Version"] {
 }
 
 /* Hover Effect */
-a[title="Get Premium Version"]:hover {
+/*.upgrade-button:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 12px 35px rgba(0, 200, 83, 0.6);
-}
+}*/
 
 /* Shine Effect */
-a[title="Get Premium Version"]::before {
+.upgrade-button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1565,7 +1568,7 @@ a[title="Get Premium Version"]::before {
     transition: 0.7s;
 }
 
-a[title="Get Premium Version"]:hover::before {
+.upgrade-button:hover::before {
     left: 125%;
 }
 /* Premium Tab CSS Starts     */
@@ -1742,6 +1745,7 @@ a[title="Get Premium Version"]:hover::before {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    padding: 9px;
 }
 
 /* Section Headings */
@@ -1750,7 +1754,7 @@ a[title="Get Premium Version"]:hover::before {
     font-weight: 700 !important;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: #99a1af !important;
+    color: #99a1af;
 }
 
 /* Trending Chips */
@@ -1961,4 +1965,46 @@ a[title="Get Premium Version"]:hover::before {
 
 .tapsp-preview-style .tapsp-suggestion-more .tapsp-content-wrapp{
     justify-content: center;
+}
+
+.themehunk_page_th-advance-product-search .notice{
+    display: none!important;
+}
+@media (max-width: 767px) {
+    .thaps-section-wrapper{
+        width: 98%;
+        padding: .9rem;
+    }
+    .th-doc-left,
+    .th-doc-right,
+    .wp-admin .form-table select, .wp-core-ui select,
+    .style .setting-content,
+    .style .setting-preview-wrap{
+        width: 100%;
+    }
+    .th-doc-row{
+        flex-direction: column;
+    }
+    .thaps-setting-tab .thaps-settings-label{
+        width: 108px;
+    }
+    .thaps-setting-tab .description, .form-table td fieldset label,
+    .thaps-setting-tab .thaps-settings-label,
+    .form-table label{
+        font-size: .54rem;
+    }
+    .th-search-analytics-wrapper * {
+        max-width: 100%;
+    }
+    pre{
+        white-space: normal;
+    }
+    .thaps-setting-form .copy-btn,
+    .thaps-setting-form .th-code-label{
+        position: relative;
+        top: initial;
+        left: initial;
+        right: initial;
+        transform: initial;
+    }
 }
