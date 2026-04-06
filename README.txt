@@ -1,7 +1,7 @@
-====== Advance Product Search - Product Search for WooCommerce ========
+====== Advance Product Search- Voice & Ajax Search for WooCommerce ========
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
-Tags: Advnace woocommerce, product search, search, category search,ajax search
+Tags: product search, search, category search,ajax search,woocommerce search
 Requires at least: 5.0
 Tested up to: 6.9
 Stable tag: 1.4.1
@@ -154,6 +154,11 @@ Yes, You can translate our plugin to desired language.
 
 
 == Screenshots ==
+1. Advance Search 
+2. Product search frontend
+3. Dashboard settings
+4. Advance search style
+5. search analytics
 
 == Changelog ==
 
@@ -278,8 +283,10 @@ Fix: Resolved search issues and improved mobile responsiveness.
 
 == Upgrade Notice ==
 
-= 1.3.0 =
-* Update: _load_textdomain_just_in_time was called incorrectly issue resolved.
+= 1.4.1 =
+Update: category Image style updated.
+Update: Overlay style and z-index updated.
+Update: Border color updated with button background color.
 
 
 Thanks for using our plugin, I am sure you will create a great Product Search for your site. If you have any query then you can contact at our forum : https://themehunk.com/contact-us
