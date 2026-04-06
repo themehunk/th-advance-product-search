@@ -1,21 +1,20 @@
-====== Advance Product Search & Ajax Search for WooCommerce ========
+====== Advance Product Search - Product Search for WooCommerce ========
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
-Tags: Advnace woocommerce, product search, post search, page search, category search,ajax search, live search
+Tags: Advnace woocommerce, product search, search, category search,ajax search
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.3.2
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Upgrade WooCommerce search with fast Ajax product search, live results, and category-based search. Help customers find products instantly.
-
+Advanced Product Search boosts your store search with instant AJAX results, live suggestions, and smart category filtering, helping customers find products faster.
 
 == Description ==
 
-**WooCommerce Advance Product Search** – Fastest Ajax based live search plugin for WooCommerce. Supports live search and search results page display.
+**ThemeHunk Advance Product Search** – Fastest Ajax based live search plugin for WooCommerce. Supports live search and search results page display.
 
-TH Advance Product Search is a powerful WooCommerce search plugin designed to improve the default product search experience. It adds Ajax product search, live search results, and category-based search, allowing customers to find products quickly without page reloads.
+TH Advance Product Search is a powerful product search plugin designed to improve the default product search experience. It adds Ajax product search, live search results, and category-based search, allowing customers to find products quickly without page reloads.
 
 This Advance Product Search plugin is a powerful AJAX based search plugin which will display result for Product, Post and Pages. This plugin is capable to search across all your WooCommerce products ( Product title, Description, Categories, ID and SKU ). Plugin comes with user friendly settings, You can use shortcode and widget to display search bar at your desired location.
 
@@ -26,12 +25,12 @@ This plugin enhances product discovery, reduces search friction, and helps custo
 **Key Features:-**
 
 ⭐ Ajax Product Search for WooCommerce
-⭐ Advanced WooCommerce Product Search
+⭐ Advanced Product Search
 ⭐ Live Search Results Dropdown
 ⭐ Fast and Lightweight Search
 ⭐ Quick and Fast Search
 ⭐ Fully Responsive & Mobile Friendly
-⭐ Search WooCommerce products
+⭐ Search product search for WooCommerce
 ⭐ Search Analytics Support
 ⭐ Advanced Search for WooCommerce Product ( Categories, Description, Image, Price, SKU's )
 ⭐ Advanced Search for Post ( Categories, Description & Image )
@@ -61,9 +60,9 @@ This plugin enhances product discovery, reduces search friction, and helps custo
 ⭐ User Friendly Customize Pane
 ⭐ Priority 24×7 support available
 
-**💡 Why Improve WooCommerce Search?**
+**💡 Why Improve Advance Product Search?**
 
-The default WooCommerce search is limited. A smarter WooCommerce product search helps customers:
+The default Product Search is limited. A smarter Advance product search helps customers:
 
 * Find products instantly
 * Reduce frustration and bounce rate
@@ -71,10 +70,10 @@ The default WooCommerce search is limited. A smarter WooCommerce product search 
 
 **🔍 Ideal Use Cases**
 
-* WooCommerce stores with large product catalogs
+* Stores with large product catalogs
 * Stores needing faster and more accurate search
 * Shops using category-based navigation
-* Any store that wants better WooCommerce search functionality
+* Any store that wants better search functionality
 
 **⚙️ Built for Better Product Discovery**
 
@@ -88,11 +87,11 @@ Here are some additional plugins that were made with love.
 [Cart for Woocommerce](https://wordpress.org/plugins/th-all-in-one-woo-cart/) – All In One Woo Cart is a perfect choice to display Cart on your website and improve your potential customer’s buying experience.
 [Popup Builder](https://wordpress.org/plugins/wp-popup-builder/) – Popup Forms , Marketing PoPuP & Newsletter
 [Product Compare](https://wordpress.org/plugins/th-product-compare/) – Product Compare plugin helps you to create interactive product comparison tables.
-[ Variation Swatches](https://wordpress.org/plugins/th-variation-swatches/) – Variation Swatches is a Free easy to use WooCommerce Swatches Plugin
+[ Variation Swatches](https://wordpress.org/plugins/th-variation-swatches/) – Variation Swatches is a Free easy to use for WooCommerce Swatches Plugin
 
 
 == Supported Themes ==
-These themes have been tested and are compatible with search plugin without significant issues. Also you can use this plugin to your Block, Elementor, WooCommerce Pages:
+These themes have been tested and are compatible with search plugin without significant issues. Also you can use this plugin to your Block, Elementor:
 
 * [TH Shop Mania](https://wordpress.org/themes/th-shop-mania/) - by ThemeHunk
 * [Top Store](https://wordpress.org/themes/top-store/) - by ThemeHunk
@@ -157,6 +156,14 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.4.0 =
+New: Redesigned dashboard with a modern and user-friendly interface.
+New: Voice search functionality added to front-end search.
+New: Improved front-end UI with a more intuitive, user-friendly design.
+New: Dashboard optimized for mobile responsiveness and better usability.
+Update: Enhanced product search performance, including SKU and description-based search.
+Fix: Resolved search issues and improved mobile responsiveness.
 
 = 1.3.2 =
 * Update:Readme file update.
