@@ -15,15 +15,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    min-width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    margin: 0.3rem 0.2rem;
+    margin-right: 2px;
     padding: 0;
     color: var(--light-text-color1);
     transition: color 0.2s ease, background 0.2s ease;
     flex-shrink: 0;
+    border-radius: 50%;
 }
 .tapsp-voice-btn:hover {
     color: var(--highlight-color);
@@ -67,15 +64,18 @@ max-width:550px;
 }
 .thaps-from-wrap{
     display: flex;
+    align-items: center;
     background: #fff;
     border-radius: 2rem;
     position: relative;
     border: 1px solid;
     border-color: #e7f5ff;
+}
+.tapsp-overlay-active .thaps-from-wrap{
     z-index: 9999999!important
 }
 .thaps-from-wrap:focus-within{
-    box-shadow: 0px 0px 2px 1px var(--highlight-color);
+/*    box-shadow: 0px 0px 2px 1px var(--highlight-color);*/
     border: 1px solid var(--highlight-color);
 }
 .thaps-search-autocomplete:focus{
@@ -146,25 +146,31 @@ outline: 0!important;
 }
 
 .thaps-autocomplete-suggestion .thaps-img{
-    width: 80px;
+    width: 32px;
     height: auto;
     flex-shrink: 0;
-    border-radius: 16px;
+    border-radius: 6px;
     overflow: hidden;
     margin-right: 0;
     box-shadow: 0px 0px 2px 0 #b9b9b9;
 }
 
 .thaps-autocomplete-suggestion .thaps-img img{
-width: 100%;
+    width: 100%;
     height: auto;
     max-width: 100%;
-    border-radius: 9px;
     transition: alL .2s linear;
 }
 .thaps-autocomplete-suggestion:hover .thaps-img img{
     transform: scale(1.12);
     transition: alL .2s linear;
+}
+.thaps-autocomplete-suggestion.thaps-suggestion-product .thaps-img{
+    width: 80px;
+    border-radius: 16px;
+}
+.thaps-autocomplete-suggestion.thaps-suggestion-product .thaps-img img{
+    border-radius: 9px;
 }
 .thaps-autocomplete-suggestion .thaps-price{
     font-size: 16px;
@@ -498,9 +504,18 @@ font-size:1.62rem;
 }
 @media screen and (max-width: 767px){
 div.thaps-autocomplete-suggestions{
-    width: 95%!important;
+    width: 95% !important;
+    left: 0 !important;
+    right: 0!important;
+    margin: 0 auto!important;
+    margin-top: 9px!important;
 }
 .thaps-content-right{
     text-align: left;
 }
+}
+
+.tapsp-overlay-active .taiowc-fixed-cart .taiowc-content,
+.tapsp-overlay-active .taiowcp-fixed-cart .taiowcp-content{
+    z-index: 2!important;
 }
