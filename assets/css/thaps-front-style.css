@@ -502,6 +502,9 @@ font-size:1.62rem;
     display: none;
     z-index:1000008;
 }
+#wpadminbar:hover{
+  z-index: 9999999;
+}
 @media screen and (max-width: 767px){
 div.thaps-autocomplete-suggestions{
     width: 95% !important;
