@@ -166,6 +166,8 @@ Yes, You can translate our plugin to desired language.
 Update: category Image style updated.
 Update: Overlay style and z-index updated.
 Update: Border color updated with button background color.
+Update: Loader issue resolved..
+Update: Overlay and loader enabled by default.
 
 = 1.4.0 =
 New: Redesigned dashboard with a modern and user-friendly interface.

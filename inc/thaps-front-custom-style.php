@@ -55,6 +55,13 @@ $thaps_frnt_custom_css.=".thaps-from-wrap,input[type='text'].thaps-search-autoco
 
  #thaps-search-button:hover{background:{$bar_button_hvr_clr}; color:{$bar_button_txt_hvr_clr};}
 
+  .thaps-loading{
+                border: 3px solid {$bar_button_txt_hvr_clr}33;
+                border-top-color: {$bar_button_txt_hvr_clr};
+}
+.thaps-loading + .tapsp-voice-btn + #thaps-search-button,
+.thaps-loading + #thaps-search-button{color:{$bar_button_hvr_clr};}
+
  .submit-active #thaps-search-button .th-icon path{color:{$icon_clr};}";
 
 //suggestion box
