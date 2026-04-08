@@ -173,7 +173,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Focus Overlay', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'Dim the background when search suggestions are active', 'th-advance-product-search-pro' ),
-								'default' => false
+								'default' => true
 							    ),
 						)
 					)
