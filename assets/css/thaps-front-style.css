@@ -373,7 +373,7 @@ outline:none;
     color: #101828;
 }
 .thaps-autocomplete-suggestion .thaps-price{
-display:block;
+display:flex;
 }
 .thaps-sku{
 font-size: 0.8rem;

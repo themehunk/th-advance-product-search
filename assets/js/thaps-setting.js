@@ -303,8 +303,7 @@
       $(document).on("click", ".reset", function (e) {
           e.preventDefault();
           $(this).addClass('loader');
-          var confirmReset = confirm(THAPSPluginObject.reset_text);
-          if (confirmReset) {
+      
               $.ajax({
                 url: THAPSPluginObject.ajaxurl,
                 type: "POST",
@@ -317,7 +316,7 @@
                   location.reload();
                 },
               }); 
-          }
+          
               
       });
   },
