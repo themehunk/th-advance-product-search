@@ -164,6 +164,7 @@ Yes, You can translate our plugin to desired language.
 
 = 1.4.2 =
 Update: Reset reload isssue resolved.
+Update: Tested with WordPress 7.0.
 
 = 1.4.1 =
 Update: category Image style updated.
