@@ -84,9 +84,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 					  <p class="submit thaps-button-wrapper">
 						
 						
-						 <button  disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save All Changes', 'th-advance-product-search' ); ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span class="text"><?php esc_html_e( 'Save All Changes', 'th-advance-product-search-pro' ); ?></span>
+						 <button  disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save All Changes', 'th-advance-product-search' ); ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span class="text"><?php esc_html_e( 'Save All Changes', 'th-advance-product-search' ); ?></span>
 						 </button>
-						  <a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-advance-product-search' ); ?>');" class="reset" href="#"><?php esc_html_e( 'Reset all', 'th-advance-product-search-pro' ); ?>
+						  <a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-advance-product-search' ); ?>');" class="reset" href="#"><?php esc_html_e( 'Reset all', 'th-advance-product-search' ); ?>
 						</a>
 					</p>
 
@@ -566,27 +566,27 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
   <div class="th-doc-row">
     
     <div class="th-doc-left">
-      <h3><?php esc_html_e('Default Search Bar','th-advance-product-search-pro'); ?></h3>
-      <p><?php esc_html_e('Use the standard shortcode to display the default product search bar anywhere in your theme.','th-advance-product-search-pro'); ?></p>
+      <h3><?php esc_html_e('Default Search Bar', 'th-advance-product-search'); ?></h3>
+      <p><?php esc_html_e('Use the standard shortcode to display the default product search bar anywhere in your theme.', 'th-advance-product-search'); ?></p>
     </div>
 
     <div class="th-doc-right">
 
       <div class="th-search-preview">
         <input type="text" placeholder="Product Search">
-        <button><?php esc_html_e('Submit','th-advance-product-search-pro'); ?></button>
+        <button><?php esc_html_e('Submit', 'th-advance-product-search'); ?></button>
       </div>
 
       <div class="th-shortcode">
-        <span><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span> <code>[th-aps]</code>
+        <span><?php esc_html_e('Shortcode', 'th-advance-product-search'); ?></span> <code>[th-aps]</code>
       </div>
       <div class="th-code-box">
 
       	<pre><code>[th-aps]</code></pre>
       	<div class="right">
-        <span class="th-code-label"><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span>
+        <span class="th-code-label"><?php esc_html_e('Shortcode', 'th-advance-product-search'); ?></span>
 
-        <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
+        <button class="copy-btn"><?php esc_html_e('Copy', 'th-advance-product-search'); ?></button>
     	</div>
 
         
@@ -601,8 +601,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
   <div class="th-doc-row">
 
     <div class="th-doc-left">
-      <h3><?php esc_html_e('Search Bar with Icon','th-advance-product-search-pro'); ?></h3>
-      <p><?php esc_html_e('Display a more modern search bar that includes a search icon inside the input field.','th-advance-product-search-pro'); ?></p>
+      <h3><?php esc_html_e('Search Bar with Icon', 'th-advance-product-search'); ?></h3>
+      <p><?php esc_html_e('Display a more modern search bar that includes a search icon inside the input field.', 'th-advance-product-search'); ?></p>
     </div>
 
     <div class="th-doc-right">
@@ -613,14 +613,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
       </div>
 
       <div class="th-shortcode">
-        <span><?php esc_html_e('Shortcode:','th-advance-product-search-pro'); ?></span> <code>[th-aps layout="bar_style"]</code>
+        <span><?php esc_html_e('Shortcode:', 'th-advance-product-search'); ?></span> <code>[th-aps layout="bar_style"]</code>
       </div>
 
           <div class="th-code-box">
 
-        <span class="th-code-label"><?php esc_html_e('Shortcode','th-advance-product-search-pro'); ?></span>
+        <span class="th-code-label"><?php esc_html_e('Shortcode', 'th-advance-product-search'); ?></span>
 
-        <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
+        <button class="copy-btn"><?php esc_html_e('Copy', 'th-advance-product-search'); ?></button>
 
         <pre><code>[th-aps layout="bar_style"]</code></pre>
 
@@ -635,17 +635,17 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
   <div class="th-doc-row">
 
     <div class="th-doc-left">
-      <h3><?php esc_html_e('PHP Template Tag','th-advance-product-search-pro'); ?></h3>
-      <p><?php esc_html_e('For developers: Insert the search bar directly into your theme’s PHP templates.','th-advance-product-search-pro'); ?></p>
+      <h3><?php esc_html_e('PHP Template Tag', 'th-advance-product-search'); ?></h3>
+      <p><?php esc_html_e('For developers: Insert the search bar directly into your theme’s PHP templates.', 'th-advance-product-search'); ?></p>
     </div>
 
     <div class="th-doc-right">
 
       <div class="th-code-box">
 
-        <span class="th-code-label"><?php esc_html_e('PHP','th-advance-product-search-pro'); ?></span>
+        <span class="th-code-label"><?php esc_html_e('PHP', 'th-advance-product-search'); ?></span>
 
-        <button class="copy-btn"><?php esc_html_e('Copy','th-advance-product-search-pro'); ?></button>
+        <button class="copy-btn"><?php esc_html_e('Copy', 'th-advance-product-search'); ?></button>
 
         <pre><code>&lt;?php echo do_shortcode('[th-aps]'); ?&gt;</code></pre>
 

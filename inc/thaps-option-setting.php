@@ -172,7 +172,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'id'      => 'tapsp_show_body_overlay',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Focus Overlay', 'th-advance-product-search' ),
-								'desc'    => esc_html__( 'Dim the background when search suggestions are active', 'th-advance-product-search-pro' ),
+								'desc'    => esc_html__( 'Dim the background when search suggestions are active', 'th-advance-product-search' ),
 								'default' => true
 							    ),
 						)
@@ -248,8 +248,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 						   array(
 								'id'      => 'tapsp_enable_voice_search',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Voice Search', 'th-advance-product-search-pro' ),
-								'desc'    => esc_html__( 'Show a microphone button so users can search by voice', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Enable Voice Search', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'Show a microphone button so users can search by voice', 'th-advance-product-search' ),
 								'default' => false,
 							    ),
 							
@@ -515,72 +515,72 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		  );
 
 		 th_advance_product_search()->add_setting(
-			'search-configure', esc_html__( 'Search Configure (Pro)', 'th-advance-product-search-pro' ), apply_filters(
+			'search-configure', esc_html__( 'Search Configure (Pro)', 'th-advance-product-search' ), apply_filters(
 			'tapsp_search_configure_settings_section', array(
 				array(
-					'title'  => esc_html__( 'Search Scope in Product', 'th-advance-product-search-pro' ),
+					'title'  => esc_html__( 'Search Scope in Product', 'th-advance-product-search' ),
 					'fields' => apply_filters(
 						'tapsp_search_configure_setting_fields', array(
 							array(
 								'id'      => 'tapsp_search-in-category',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Search in Category', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Search in Category', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),	
 							array(
 								'id'      => 'tapsp_search-in-tag',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Search in Tags', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Search in Tags', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),
 							array(
 								'id'      => 'tapsp_search-in-brand',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Search in Brand', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Search in Brand', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),	
 							array(
 								'id'      => 'tapsp_search-in-attribute',
 								'type'    => 'checkbox',
-								'title'   => esc_html__('Search in Attributes', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__('Search in Attributes', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),
 							array(
 								'id'      => 'tapsp_search-in-description',
 								'type'    => 'checkbox',
-								'title'   => esc_html__('Search in Description', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__('Search in Description', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),	
 							array(
 								'id'      => 'tapsp_search-in-short-description',
 								'type'    => 'checkbox',
-								'title'   => esc_html__('Search in Short Description', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__('Search in Short Description', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),	
 							array(
 								'id'      => 'tapsp_search_in_product_sku',
 								'type'    => 'checkbox',
-								'title'   => esc_html__('Search in SKU', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__('Search in SKU', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),	
 							array(
 								'id'      => 'tapsp_search_in_custom_fld',
 								'type'    => 'selectize',
-								'title'   => esc_html__( 'Search in Custom Field', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Search in Custom Field', 'th-advance-product-search' ),
 								'options' => '',
 								
 							),
 							array(
 								'id'      => 'tapsp_search_in_custom_post_type',
 								'type'    => 'text',
-								'title'   => esc_html__( 'Search in Custom Post Type', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Search in Custom Post Type', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'Custom posts are generated using plugins. Include slugs separated by commas.','th-advance-product-search-pro' ),
 
 								
@@ -593,39 +593,39 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 				// search trend
 				
 				array(
-					'title'  => esc_html__( 'Suggested/Trending searches', 'th-advance-product-search-pro' ),
+					'title'  => esc_html__( 'Suggested/Trending searches', 'th-advance-product-search' ),
 					'fields' => apply_filters(
 						'tapsp_trending_setting_fields', array(
 							array(
 								'id'      => 'tapsp_trending_enable',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Suggested/Trending Enable', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Suggested/Trending Enable', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),
 							array(
 									'id'      => 'tapsp_specific_key_search',
 									'type'    => 'select',
-									'title'   => esc_html__( 'Searches to suggest', 'th-advance-product-search-pro' ),
+									'title'   => esc_html__( 'Searches to suggest', 'th-advance-product-search' ),
 									'default' => 'normal',
 									'options' => array(
-										'specific' => esc_html__( 'Specific', 'th-advance-product-search-pro' ),
-										'popular'  => esc_html__( 'Popular', 'th-advance-product-search-pro'),	
+										'specific' => esc_html__( 'Specific', 'th-advance-product-search' ),
+										'popular'  => esc_html__( 'Popular', 'th-advance-product-search'),	
 									),
 
 								),
 							array(
 								'id'      => 'tapsp_trending_search',
 								'type'    => 'text',
-								'title'   => esc_html__( 'Searches to suggest Keyword', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Searches to suggest Keyword', 'th-advance-product-search' ),
 								'desc'    => esc_html__( 'Enter the keywords, comma separated, for the suggested searches.','th-advance-product-search-pro' ),
      							'default' => 'Vintage dress, Black dress, Black boots, Red dress'
 							),
 							array(
 								'id'      => 'tapsp_trending_limit',
 								'type'    => 'number',
-								'title'   => esc_html__( 'Limit', 'th-advance-product-search-pro' ),
-								'desc'    => esc_html__( 'Show Search Result', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Limit', 'th-advance-product-search' ),
+								'desc'    => esc_html__( 'Show Search Result', 'th-advance-product-search' ),
 								'default' => 3,
 								'min'     => 1,
 								'max'     => 20,
@@ -634,27 +634,27 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 					 )
 				),
 				array(
-					'title'  => esc_html__( 'Highlight in Product', 'th-advance-product-search-pro' ),
+					'title'  => esc_html__( 'Highlight in Product', 'th-advance-product-search' ),
 					'fields' => apply_filters(
 						'tapsp_highlight_setting_fields', array(
 							array(
 								'id'      => 'tapsp_highlight-sale',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Sale', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Sale', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),
 							array(
 								'id'      => 'tapsp_highlight-featured',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Featured', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Featured', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),
 							array(
 								'id'      => 'tapsp_stock-availablity',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Stock Availablity', 'th-advance-product-search-pro' ),
+								'title'   => esc_html__( 'Stock Availablity', 'th-advance-product-search' ),
 								'desc'    => '',
 								'default' => false
 							),	
@@ -668,13 +668,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 
  th_advance_product_search()->add_setting(
 			'thaps_index_builder',
-			esc_html__( 'Boost Search (Pro)', 'th-advance-product-search-pro' ),
+			esc_html__( 'Boost Search (Pro)', 'th-advance-product-search' ),
 			apply_filters(
 				'tapsp_index_builder_settings_section',
 				array(
 					array(
-						'title'  => esc_html__( 'Search Optimization', 'th-advance-product-search-pro' ),
-						'subtitle'  => esc_html__( 'Manage and rebuild your search index to ensure your product catalog is always up-to-date and performing at its peak.', 'th-advance-product-search-pro' ),
+						'title'  => esc_html__( 'Search Optimization', 'th-advance-product-search' ),
+						'subtitle'  => esc_html__( 'Manage and rebuild your search index to ensure your product catalog is always up-to-date and performing at its peak.', 'th-advance-product-search' ),
 						'fields' => apply_filters(
 							'tapsp_index_builder_setting_fields',
 							array(
@@ -688,13 +688,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								array(
 							        'id'      => 'thaps_index_batch_limit',
 							        'type'    => 'number',
-							        'title'   => __('Index Batch Limit', 'th-advance-product-search-pro'),
+							        'title'   => __('Index Batch Limit', 'th-advance-product-search'),
 							        'default' => 300,
-							        'attrs'   => array(
-							            'min'  => 50,
-							            'step' => 50,
-							        ),
-							        'desc'    => __('Default is 300. Increase for faster indexing, but be aware it may increase server load during the process.', 'th-advance-product-search-pro'),
+									'min'     => 1,
+									'max'     => 2400,
+							        'desc'    => __('Default is 300. Increase for faster indexing, but be aware it may increase server load during the process.', 'th-advance-product-search'),
 							    ),
 							)
 						),
@@ -704,28 +702,28 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		);
 		th_advance_product_search()->add_setting(
 	'thaps_fuzzy_settings',
-	esc_html__( 'Fuzzy Strings & Synonyms (Pro)', 'th-advance-product-search-pro' ),
+	esc_html__( 'Fuzzy Strings & Synonyms (Pro)', 'th-advance-product-search' ),
 	apply_filters(
 		'thaps_fuzzy_settings_section',
 		array(
 			array(
-				'title'  => esc_html__( 'Fuzzy Search & Synonyms', 'th-advance-product-search-pro' ),
-				'subtitle'  => esc_html__( 'Enhance search accuracy by handling misspellings and mapping related terms for a more intuitive user experience.', 'th-advance-product-search-pro' ),
+				'title'  => esc_html__( 'Fuzzy Search & Synonyms', 'th-advance-product-search' ),
+				'subtitle'  => esc_html__( 'Enhance search accuracy by handling misspellings and mapping related terms for a more intuitive user experience.', 'th-advance-product-search' ),
 				'fields' => apply_filters(
 					'thaps_fuzzy_setting_fields',
 					array(
 						array(
 							'id'      => 'thaps_enable_fuzzy',
 							'type'    => 'checkbox',
-							'title'   => esc_html__( 'Enable Fuzzy Strings Matching', 'th-advance-product-search-pro' ),
-							'desc'    => esc_html__( 'Help users find results even with typos (e.g., "skrit" → "skirt").', 'th-advance-product-search-pro' ),
+							'title'   => esc_html__( 'Enable Fuzzy Strings Matching', 'th-advance-product-search' ),
+							'desc'    => esc_html__( 'Help users find results even with typos (e.g., "skrit" → "skirt").', 'th-advance-product-search' ),
 							'default' => false,
 						),
 						array(
 							'id'       => 'thaps_fuzzy_level',
 							'type'     => 'number',
-							'title'    => esc_html__( 'Matching Sensitivity', 'th-advance-product-search-pro' ),
-							'desc'     => esc_html__( 'Recommended: 50%. Higher values (80%+) may return more results but increase false positives.', 'th-advance-product-search-pro' ),
+							'title'    => esc_html__( 'Matching Sensitivity', 'th-advance-product-search' ),
+							'desc'     => esc_html__( 'Recommended: 50%. Higher values (80%+) may return more results but increase false positives.', 'th-advance-product-search' ),
 							'default'  => 50,
 							'min'      => 10,
 							'max'      => 100,
@@ -734,8 +732,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 						array(
 							'id'       => 'thaps_synonym_list',
 							'type'     => 'textarea',
-							'title'    => esc_html__( 'Define Synonyms', 'th-advance-product-search-pro' ),
-							'desc'     => esc_html__( 'Use commas (,) to separate synonyms within a group and pipe (|) to separate groups. Example: trousers, pants | denim, jeans | belt, waistband', 'th-advance-product-search-pro' ),
+							'title'    => esc_html__( 'Define Synonyms', 'th-advance-product-search' ),
+							'desc'     => esc_html__( 'Use commas (,) to separate synonyms within a group and pipe (|) to separate groups. Example: trousers, pants | denim, jeans | belt, waistband', 'th-advance-product-search' ),
 							'placeholder'  => 'trousers, pants | denim, jeans | belt, waistband',
 							'default'  => '',
 							'rows'     => 3,
