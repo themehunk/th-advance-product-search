@@ -20,7 +20,7 @@ This Advance Product Search plugin is a powerful AJAX based search plugin which 
 
 This plugin enhances product discovery, reduces search friction, and helps customers reach the checkout faster.
 
-[Live Demo](https://wpthemes.themehunk.com/advanced-product-search/) | [ Documentation ](https://themehunk.com/docs/th-advance-product-search/) | [More Details](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/) | [get PRO](https://wpthemes.themehunk.com/advanced-product-search/) |.
+[Live Demo](https://wpthemes.themehunk.com/advanced-product-search/) | [ Documentation ](https://themehunk.com/docs/th-advance-product-search/) | [More Details](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/) | [get PRO](https://themehunk.com/advance-product-search/#price) |.
 
 **Key Features:-**
 
