@@ -9,7 +9,7 @@
  * Requires at least:       5.0
  * Tested up to:            7.0
  * WC requires at least:    3.2
- * WC tested up to:         7.4
+ * WC tested up to:         10.8.0
  * Domain Path:             /languages
  * Text Domain:             th-advance-product-search
  */

@@ -113,7 +113,7 @@
 
                         });
 
-                 $("#search-configure input,#tapsp_specific_key_search-field,#thaps_enable_fuzzy-field").prop("disabled", true);
+                 $("#search-configure input,#tapsp_specific_key_search-field,#thaps_enable_fuzzy-field,#thaps_index_builder input,#thaps_fuzzy_settings input").prop("disabled", true);
           });
         },
         ColorPiker: function (){
