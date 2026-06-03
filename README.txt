@@ -20,7 +20,7 @@ This Advance Product Search plugin is a powerful AJAX based search plugin which 
 
 This plugin enhances product discovery, reduces search friction, and helps customers reach the checkout faster.
 
-[Live Demo](https://wpthemes.themehunk.com/advanced-product-search/) | [Docs](https://themehunk.com/docs/th-advance-product-search/) | [More Details](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/).
+[Live Demo](https://wpthemes.themehunk.com/advanced-product-search/) | [ Documentation ](https://themehunk.com/docs/th-advance-product-search/) | [More Details](https://themehunk.com/advanced-product-search/) | [support](https://themehunk.com/contact-us/) | [get PRO](https://wpthemes.themehunk.com/advanced-product-search/) |.
 
 **Key Features:-**
 
@@ -164,6 +164,8 @@ Yes, You can translate our plugin to desired language.
 
 = 1.4.3 =
 Update: undefine array max-key issue resolved.
+Update: Fuzzy Search and Search Optimization - background: #9f9ed3;
+Update: Woocommerce tested WC tested up to: 10.8.0.
 
 = 1.4.2 =
 Update: Reset reload isssue resolved.
