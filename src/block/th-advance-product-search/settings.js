@@ -229,13 +229,13 @@ const InsSettings = ({
         <InsSettingHeader value={ tab }
 					options={[
 						{
-							label: __( 'Setting', 'th-advance-product-search-pro' ),
+							label: __( 'Setting', 'th-advance-product-search' ),
 							value: 'setting',
                             icon:''
 							
 						},
 						{
-							label: __( 'Style', 'th-advance-product-search-pro' ),
+							label: __( 'Style', 'th-advance-product-search' ),
 							value: 'style',
                             icon:''
 							
@@ -263,7 +263,7 @@ const InsSettings = ({
 							/>
 
 <ResponsiveControl
-                            label={ __( 'Search Width', 'th-advance-product-search-pro' ) }
+                            label={ __( 'Search Width', 'th-advance-product-search' ) }
                             >	
                             <UnitChooser
                             value={getsearchWidthUnitValue()}
@@ -284,7 +284,7 @@ const InsSettings = ({
                             />
                             </ResponsiveControl>
                             <ResponsiveControl
-                                label={ __( 'Bar border radius', 'th-advance-product-search-pro' ) }
+                                label={ __( 'Bar border radius', 'th-advance-product-search' ) }
                               >
                                 <UnitChooser
                                 value={ attributes.barborderRadiusUnit }
