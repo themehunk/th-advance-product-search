@@ -381,7 +381,7 @@ font-size: 0.8rem;
     color: #555;
 }
 .thaps-desc{
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.25;
     display: block;
     margin-top: 3px;
@@ -389,7 +389,7 @@ font-size: 0.8rem;
     text-overflow: ellipsis;
     white-space: normal;
     max-width: 100%;
-    color: var(--light-text-color1);
+    color: #414141;
 }
 .thaps-content-right{
     text-align: right;

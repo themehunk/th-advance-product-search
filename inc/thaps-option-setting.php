@@ -240,7 +240,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'title'   => esc_html__( 'Description Length', 'th-advance-product-search' ),
 								
 								'desc'    => esc_html__( 'This option limit searched item description length. Count value in words.', 'th-advance-product-search' ),
-								'default' => 60,
+								'default' => 120,
 								'min'     => 1,
 								'max'     => 500
 							),
@@ -304,14 +304,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Enable Product Description', 'th-advance-product-search' ),
 								'desc'    => '',
-								'default' => false
+								'default' => true
 							    ),
 							array(
 								'id'      => 'enable_product_sku',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Enable Product SKU', 'th-advance-product-search' ),
 								'desc'    => '',
-								'default' => false
+								'default' => true
 							    ),
 							array(
 								'id'      => 'exclude_product_sku',
