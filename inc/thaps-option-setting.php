@@ -414,7 +414,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button BG Color ', 'th-advance-product-search' ),
 										'alpha'   => true,
-										'default'      => '#155dfc',
+										'default'      => '#000000',
 									),
 									array(
 										'id'      => 'bar_button_txt_clr',
@@ -428,7 +428,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 										'type'    => 'color',
 										'title'   => esc_html__( 'Submit Button BG Hover Color', 'th-advance-product-search' ),
 										'alpha'   => true,
-										'default'      => '#155dfc',
+										'default'      => '#000000',
 									),
 									array(
 										'id'      => 'bar_button_txt_hvr_clr',
