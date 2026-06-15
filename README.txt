@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: product search, search, live search,ajax search,woocommerce search
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -161,6 +161,13 @@ Yes, You can translate our plugin to desired language.
 5. search analytics
 
 == Changelog ==
+
+= 1.4.4 =
+* Update: Default search button and input border colors updated.
+* Update: Default description turned on.
+* Fix: Frontend image style issue fixed.
+* Fix: Issue caused by adding a description div has been fixed.
+
 
 = 1.4.3 =
 Update: undefine array max-key issue resolved.
