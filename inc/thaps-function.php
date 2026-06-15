@@ -262,24 +262,20 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
     // Excerpt Length
     /****************/   
 	public function thaps_excerpt_shw( $id , $length){
-       
-		$excerpt = get_the_excerpt($id);
 
-		if(strlen($excerpt) <= $length){
+		$excerpt = wp_strip_all_tags( get_the_excerpt($id) );
+
+		if ( strlen($excerpt) <= $length ) {
 
 			return $excerpt;
 
-		}else{
-			
-		$excerpte = substr($excerpt, 0, $length);
+		} else {
 
-		$result  = substr($excerpte, 0, strrpos($excerpte, ' '));
+			$excerpte = substr($excerpt, 0, $length);
+			$result   = substr($excerpte, 0, strrpos($excerpte, ' '));
+			return $result . ' ...';
 
-		return $result . '&nbsp;...';
-		
 		}
-
-		
 
 	}
 
