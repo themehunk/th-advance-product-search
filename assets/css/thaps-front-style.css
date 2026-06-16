@@ -173,12 +173,15 @@ outline: 0!important;
     border-radius: 5px;
 }
 .thaps-autocomplete-suggestion .thaps-price{
-    font-size: 14px;
+font-size: 14px;
     font-weight: 700;
     display: block;
     color: #101828 !important;
-    display:flex;
+    display: flex;
     align-items: center;
+    padding: 4px 4px;
+    border-radius: 5px;
+    border: 1px solid #f3f3f3;
 }
 
 .thaps-autocomplete-suggestion.thaps-suggestion-heading .thaps-title{
@@ -220,7 +223,7 @@ color: #333;
 line-height:normal;
 }
 .thaps-price del{
-color:#949494;
+color:#494949;
 margin-right:0.3rem;
 opacity: 0.5;
 }
