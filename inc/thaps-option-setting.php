@@ -515,7 +515,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 		  );
 
 		 th_advance_product_search()->add_setting(
-			'search-configure', esc_html__( 'Search Configure (Pro)', 'th-advance-product-search' ), apply_filters(
+			'search-configure', esc_html__( 'Search Configure', 'th-advance-product-search' ), apply_filters(
 			'tapsp_search_configure_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Search Scope in Product', 'th-advance-product-search' ),
@@ -593,7 +593,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 				// search trend
 				
 				array(
-					'title'  => esc_html__( 'Suggested/Trending searches', 'th-advance-product-search' ),
+					'title'  => esc_html__( 'Suggested/Trending searches (Pro)', 'th-advance-product-search' ),
 					'fields' => apply_filters(
 						'tapsp_trending_setting_fields', array(
 							array(
@@ -642,21 +642,21 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Sale', 'th-advance-product-search' ),
 								'desc'    => '',
-								'default' => false
+								'default' => true
 							),
 							array(
 								'id'      => 'tapsp_highlight-featured',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Featured', 'th-advance-product-search' ),
 								'desc'    => '',
-								'default' => false
+								'default' => true
 							),
 							array(
 								'id'      => 'tapsp_stock-availablity',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Stock Availablity', 'th-advance-product-search' ),
 								'desc'    => '',
-								'default' => false
+								'default' => true
 							),	
 							
 						)
