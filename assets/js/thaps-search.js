@@ -833,6 +833,9 @@
                     isPrice  = suggestion.price ? suggestion.price:'',
                     Descshw  = suggestion.desc ? suggestion.desc : '' ,
                     Skushw  = suggestion.sku ? suggestion.sku : '' ,
+                    sale       = suggestion.sale || false,
+                    featured   = suggestion.featured || false,
+                    stock      = suggestion.stock || '',
                     classNameT = '',
                     no_result_class = '';
 
@@ -877,14 +880,28 @@
                 }
 
                 html += '<div class="thaps-content-wrapp"><div class="thaps-content-left">'
+                
+                if (featured) {
+                html += '<span class="tapsp-featured"></span>';
+                }
+
                 html += '<div class="thaps-title">' + formatResult(suggestion, value, i) + '</div>';
                
+                if (sale) {
+                html += '<span class="tapsp-sale">sale</span>';
+                }
+
                 if(Skushw){
                 html += '<span class="thaps-sku">( SKU : ' + suggestion.sku + ' )</span>';
                 }
 
                 if(Descshw){
                 html += '<span class="thaps-desc">' + suggestion.desc + '</span>';
+                }
+
+
+                if (stock) {
+                html += '<span class="tapsp-stock">' + stock + ' in stock</span>';
                 }
 
                 html += '</div>';

@@ -31,12 +31,217 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		 */
 		public function __construct(){
 
-          
+          add_filter( 'posts_search',   [ $this, 'modify_search_sql' ], 501, 2 );
            add_action( 'wp_ajax_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
            add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
 
 
 		}
+
+ /* --------------------------------------------------------------------- */
+	/*  FUZZY + SYNONYMS EXPANSION LOGIC                                     */
+	/* --------------------------------------------------------------------- */
+	private function expand_synonyms( $term ) {
+		$raw = th_advance_product_search()->get_option( 'tapsp_synonym_list' );
+		$dictionary = [];
+
+		if ( ! empty( $raw ) ) {
+			$groups = array_filter( array_map( 'trim', explode( '|', $raw ) ) );
+			foreach ( $groups as $group ) {
+				$words = array_filter( array_map( 'trim', explode( ',', $group ) ) );
+				foreach ( $words as $word ) {
+					$dictionary[ strtolower( $word ) ] = $words;
+				}
+			}
+		}
+
+		$synonyms = $dictionary[ strtolower( $term ) ] ?? [];
+
+		// Apply fuzzy matching if enabled
+		if ( th_advance_product_search()->get_option( 'tapsp_enable_fuzzy' ) ) {
+			$level = (int) th_advance_product_search()->get_option( 'tapsp_fuzzy_level' );
+			foreach ( array_keys( $dictionary ) as $key ) {
+				similar_text( strtolower( $term ), $key, $percent );
+				if ( $percent >= $level && $key !== strtolower( $term ) ) {
+					$synonyms = array_merge( $synonyms, $dictionary[ $key ] );
+				}
+			}
+		}
+
+		return array_unique( array_merge( [ $term ], $synonyms ) );
+	}
+		 
+ /* --------------------------------------------------------------------- */
+	/*  1. UNIVERSAL SEARCH SQL (Fuzzy + Synonyms + Index + All Post Types)  */
+	/* --------------------------------------------------------------------- */
+	public function modify_search_sql( $search, $wp_query ) {
+		global $wpdb;
+
+		if ( empty( $search ) || empty( $wp_query->query_vars['s'] ) ) {
+			return $search;
+		}
+
+		$start_time = microtime(true);
+		$q         = $wp_query->query_vars;
+		$term      = sanitize_text_field( $q['s'] );
+		$post_type = $q['post_type'] ?? 'any';
+
+		// 🔹 Expand synonyms + fuzzy
+		$search_terms = array( $term );
+
+		// 🔹 Indexed table first
+		// 🔹 Indexed table only for products
+		// $indexed = false;
+		// if ( $post_type === 'product' ) {
+		// $indexed = $this->indexed_ids( $term );
+		// }
+		
+		// if ( $indexed ) {
+		// 	$ids = implode( ',', array_map( 'intval', $indexed ) );
+		// 	$sql  = " AND ({$wpdb->posts}.ID IN ($ids)) ";
+		// 	if ( ! is_user_logged_in() ) {
+		// 		$sql .= " AND ({$wpdb->posts}.post_password = '') ";
+		// 	}
+		// 	//error_log("⚡ Indexed Search used for: {$term}");
+		// 	return $sql;
+		// }
+
+		// // 🔹 Fallback fuzzy search
+		// $clauses = [];
+		$indexed = false;
+		// if ( $post_type === 'product' ) {
+		// $indexed = $this->indexed_ids( $term );
+		// }
+
+		$clauses = [];
+
+		if ( $indexed ) {
+		$clauses[] = "({$wpdb->posts}.ID IN (" . implode(',', $indexed) . "))";
+		}
+		foreach ( $search_terms as $like_term ) {
+			$like = "%" . $wpdb->esc_like( $like_term ) . "%";
+
+			// Title / content / excerpt
+			$clauses[] = "({$wpdb->posts}.post_title LIKE '{$like}')";
+			if ( th_advance_product_search()->get_option( 'tapsp_search-in-description' ) ) {
+				$clauses[] = "({$wpdb->posts}.post_content LIKE '{$like}')";
+			}
+			if ( th_advance_product_search()->get_option( 'tapsp_search-in-short-description' ) ) {
+				$clauses[] = "({$wpdb->posts}.post_excerpt LIKE '{$like}')";
+			}
+
+			// SKU (product only)
+			if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search_in_product_sku' ) ) {
+				$ids = $this->sku_ids( $like_term );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+			}
+
+			// Category / tag
+			if ( th_advance_product_search()->get_option( 'tapsp_search-in-category' ) ) {
+				$tax = $post_type === 'product' ? 'product_cat' : 'category';
+				$ids = $this->term_ids( [ $tax ], $like_term );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+			}
+			if ( th_advance_product_search()->get_option( 'tapsp_search-in-tag' ) ) {
+				$tax = $post_type === 'product' ? 'product_tag' : 'post_tag';
+				$ids = $this->term_ids( [ $tax ], $like_term );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+			}
+
+			// Attributes (product)
+			if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search-in-attribute' ) ) {
+				$ids = $this->attribute_ids( $like_term );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+			}
+
+			/* ✅ BRAND SEARCH */
+				if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search-in-brand' ) ) {
+				$ids = $this->term_ids( [ 'product_brand', 'pa_brand' ], $like_term );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+				}
+
+				// Custom fields
+			if ( th_advance_product_search()->get_option( 'tapsp_search_in_custom_fld' ) ) {
+				$ids = $this->custom_field_ids( $like_term, $post_type );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+			}
+
+			
+		}
+
+		$search = $clauses ? ' AND (' . implode( ' OR ', array_unique( $clauses ) ) . ')' : '';
+		if ( ! is_user_logged_in() ) {
+			$search .= " AND ({$wpdb->posts}.post_password = '') ";
+		}
+
+		$execution_time = round(microtime(true) - $start_time, 4);
+		//error_log("✅ TAPSP Search → {$term} | Type: {$post_type} | Clauses: " . count($clauses) . " | {$execution_time}s");
+
+		return $search;
+	}
+
+	/** Generic taxonomy (cat / tag) */
+	private function term_ids( array $taxonomies, $term ) {
+		global $wpdb;
+		$like = '%' . $wpdb->esc_like( $term ) . '%';
+		$placeholders = implode( ',', array_fill( 0, count( $taxonomies ), '%s' ) );
+		$sql = $wpdb->prepare(
+			"SELECT DISTINCT p.ID
+			 FROM {$wpdb->posts} p
+			 JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+			 JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+			 JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
+			 WHERE tt.taxonomy IN ($placeholders) AND t.name LIKE %s",
+			array_merge( $taxonomies, [ $like ] )
+		);
+		return array_map( 'intval', $wpdb->get_col( $sql ) );
+	}
+
+	/** Product attributes (pa_*) */
+	private function attribute_ids( $term ) {
+		$taxes = $this->attribute_taxonomies();
+		return $taxes ? $this->term_ids( $taxes, $term ) : [];
+	}
+
+	/** Custom meta fields */
+	private function custom_field_ids( $term, $post_type ) {
+		$keys = array_filter( array_map( 'trim', explode( ',', th_advance_product_search()->get_option( 'tapsp_search_in_custom_fld' ) ) ) );
+		if ( ! $keys ) { return []; }
+
+		global $wpdb;
+		$like = '%' . $wpdb->esc_like( $term ) . '%';
+		$placeholders = implode( ',', array_fill( 0, count( $keys ), '%s' ) );
+		$sql = $wpdb->prepare(
+			"SELECT DISTINCT post_id FROM {$wpdb->postmeta}
+			 WHERE meta_key IN ($placeholders) AND meta_value LIKE %s",
+			array_merge( $keys, [ $like ] )
+		);
+		return array_map( 'intval', $wpdb->get_col( $sql ) );
+	}
+
+	/** Generic meta lookup */
+	private function meta_ids( $key, $value, $post_type ) {
+		global $wpdb;
+		$like = '%' . $wpdb->esc_like( $value ) . '%';
+		return array_map( 'intval', $wpdb->get_col(
+			$wpdb->prepare(
+				"SELECT post_id FROM {$wpdb->postmeta}
+				 WHERE meta_key = %s AND meta_value LIKE %s",
+				$key, $like
+			)
+		) );
+	}
+
+		/** SKU → product IDs (incl. variation → parent) */
+	private function sku_ids( $term ) {
+		$ids = $this->meta_ids( '_sku', $term, 'product' );
+		$var = $this->meta_ids( '_sku', $term, 'product_variation' );
+		foreach ( $var as $v ) {
+			$p = wp_get_post_parent_id( $v );
+			if ( $p ) { $ids[] = $p; }
+		}
+		return array_unique( $ids );
+	}
 
 	 /**
      * Get tax query
@@ -370,6 +575,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
         $enable_page_desc =  esc_html(th_advance_product_search()->get_option( 'enable_page_desc' ));
 
+        $highlight_sale     = esc_html( th_advance_product_search()->get_option( 'tapsp_highlight-sale' ) );
+		$highlight_featured = esc_html( th_advance_product_search()->get_option( 'tapsp_highlight-featured' ) );
+		$stock_availability = esc_html( th_advance_product_search()->get_option( 'tapsp_stock-availablity' ) );
+
         /*********************/
         //fetch product result
         /*********************/
@@ -467,6 +676,19 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
                         $r['sku'] = $product->get_sku();
 
                 }
+
+                if ( $highlight_sale == true ) {
+				    $r['sale'] = $product->is_on_sale();
+				}
+
+				if ( $highlight_featured == true ) {
+				    $r['featured'] = $product->is_featured();
+				}
+
+				if ( $stock_availability == true ) {
+				    $r['stock'] = $product->get_stock_quantity();
+				}
+
                 
                 if ( $enable_product_desc == true) {
 
