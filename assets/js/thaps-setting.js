@@ -113,7 +113,7 @@
 
                         });
 
-                 $("#tapsp_specific_key_search-field,#thaps_enable_fuzzy-field,#thaps_index_builder input,#thaps_fuzzy_settings input").prop("disabled", true);
+                 $("#enable_product_sku-field,#tapsp_search_in_custom_fld-field,#tapsp_search_in_custom_post_type-field,#search-configuresearch-configure-section-1 input,#tapsp_specific_key_search-field,#thaps_enable_fuzzy-field,#thaps_index_builder input,#thaps_fuzzy_settings input").prop("disabled", true);
           });
         },
         ColorPiker: function (){

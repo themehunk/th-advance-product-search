@@ -167,8 +167,11 @@ Yes, You can translate our plugin to desired language.
 * Update: Default description turned on.
 * Fix: Frontend image style issue fixed.
 * Fix: Issue caused by adding a description div has been fixed.
+
 * New: Search Scope in Product settings added and integrated.
 * New: Highlight in Product settings added and integrated.
+* Update: Enable Product SKU amde disabled. 
+* Update: Highlight in Product renamned Visuals in Product and moved to advance setting tab.
 
 
 = 1.4.3 =

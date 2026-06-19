@@ -309,9 +309,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 							array(
 								'id'      => 'enable_product_sku',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Product SKU', 'th-advance-product-search' ),
+								'title'   => esc_html__( 'Enable Product SKU (Pro)', 'th-advance-product-search' ),
 								'desc'    => '',
-								'default' => true
+								'default' => false
 							    ),
 							array(
 								'id'      => 'exclude_product_sku',
@@ -325,6 +325,37 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 						)
 					)
 				 ),
+
+				array(
+					'title'  => esc_html__( 'Visuals in Product', 'th-advance-product-search' ),
+					'fields' => apply_filters(
+						'tapsp_highlight_setting_fields', array(
+							array(
+								'id'      => 'tapsp_highlight-sale',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Sale', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => true
+							),
+							array(
+								'id'      => 'tapsp_highlight-featured',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Featured', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => true
+							),
+							array(
+								'id'      => 'tapsp_stock-availablity',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Stock Availablity', 'th-advance-product-search' ),
+								'desc'    => '',
+								'default' => true
+							),	
+							
+						)
+					 )
+				  ),
+
 				 array(
 					'title'  => esc_html__( 'Post', 'th-advance-product-search' ),
 					'fields' => apply_filters(
@@ -633,35 +664,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 						)
 					 )
 				),
-				array(
-					'title'  => esc_html__( 'Highlight in Product', 'th-advance-product-search' ),
-					'fields' => apply_filters(
-						'tapsp_highlight_setting_fields', array(
-							array(
-								'id'      => 'tapsp_highlight-sale',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Sale', 'th-advance-product-search' ),
-								'desc'    => '',
-								'default' => true
-							),
-							array(
-								'id'      => 'tapsp_highlight-featured',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Featured', 'th-advance-product-search' ),
-								'desc'    => '',
-								'default' => true
-							),
-							array(
-								'id'      => 'tapsp_stock-availablity',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Stock Availablity', 'th-advance-product-search' ),
-								'desc'    => '',
-								'default' => true
-							),	
-							
-						)
-					 )
-				  ),
+				
 			   )
 		    )
 		  );
