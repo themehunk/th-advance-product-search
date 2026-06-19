@@ -1677,7 +1677,8 @@ h2.thaps_index_builderthaps_index_builder-section-0{
 .setting-wrap.style .th-premium-box,
 .setting-wrap.analytics .th-premium-box,
 .setting-wrap.reset .th-premium-box,
-.setting-wrap.help .th-premium-box{
+.setting-wrap.help .th-premium-box,
+.setting-wrap.search-configure .th-premium-box{
     display: none!important;
 }
 
