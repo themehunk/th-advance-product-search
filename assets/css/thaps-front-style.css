@@ -528,3 +528,57 @@ div.thaps-autocomplete-suggestions{
 .tapsp-overlay-active .taiowcp-fixed-cart .taiowcp-content{
     z-index: 2!important;
 }
+
+
+
+.tapsp-stock{
+    font-size: 9px;
+    display: block;
+    margin-top: 3px;
+    font-weight: 700;
+    text-transform: capitalize;
+    opacity: .5;
+}
+.th-traditional .tapsp-stock{
+    margin: 0 0 9px 0;
+}
+
+/* --- Stock --- */
+.thaps-autocomplete-suggestions > .thaps-suggestion-wrap.thaps-suggestion-product .tapsp-stock {
+    font-size: 9px;
+    display: block;
+    margin-top: 3px;
+    font-weight: 500;
+}
+
+.tapsp-sale{
+    background: #111;
+    color: #fff;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+    border-radius: 0.2rem;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    text-transform: capitalize;
+}
+.th-traditional .tapsp-sale{
+    margin-top: 0;
+    margin-bottom: 9px;
+}
+
+
+.tapsp-featured::before {
+    content: "\f155";
+    font-family: Dashicons;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    text-indent: 0px;
+    font-size:0.867rem;
+    color:#dab257;
+    margin-right:0.3rem;
+}

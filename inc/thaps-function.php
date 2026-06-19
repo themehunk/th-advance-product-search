@@ -131,10 +131,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 			}
 
 			// SKU (product only)
-			// if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search_in_product_sku' ) ) {
-			// 	$ids = $this->sku_ids( $like_term );
-			// 	if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
-			// }
+			if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search_in_product_sku' ) ) {
+				$ids = $this->sku_ids( $like_term );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+			}
 
 			// Category / tag
 			if ( th_advance_product_search()->get_option( 'tapsp_search-in-category' ) ) {
@@ -159,6 +159,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 				$ids = $this->term_ids( [ 'product_brand', 'pa_brand' ], $like_term );
 				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
 				}
+
+				// Custom fields
+			if ( th_advance_product_search()->get_option( 'tapsp_search_in_custom_fld' ) ) {
+				$ids = $this->custom_field_ids( $like_term, $post_type );
+				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+			}
 
 			
 		}
@@ -196,6 +202,47 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		$taxes = $this->attribute_taxonomies();
 		return $taxes ? $this->term_ids( $taxes, $term ) : [];
 	}
+
+	/** Custom meta fields */
+	private function custom_field_ids( $term, $post_type ) {
+		$keys = array_filter( array_map( 'trim', explode( ',', th_advance_product_search()->get_option( 'tapsp_search_in_custom_fld' ) ) ) );
+		if ( ! $keys ) { return []; }
+
+		global $wpdb;
+		$like = '%' . $wpdb->esc_like( $term ) . '%';
+		$placeholders = implode( ',', array_fill( 0, count( $keys ), '%s' ) );
+		$sql = $wpdb->prepare(
+			"SELECT DISTINCT post_id FROM {$wpdb->postmeta}
+			 WHERE meta_key IN ($placeholders) AND meta_value LIKE %s",
+			array_merge( $keys, [ $like ] )
+		);
+		return array_map( 'intval', $wpdb->get_col( $sql ) );
+	}
+
+	/** Generic meta lookup */
+	private function meta_ids( $key, $value, $post_type ) {
+		global $wpdb;
+		$like = '%' . $wpdb->esc_like( $value ) . '%';
+		return array_map( 'intval', $wpdb->get_col(
+			$wpdb->prepare(
+				"SELECT post_id FROM {$wpdb->postmeta}
+				 WHERE meta_key = %s AND meta_value LIKE %s",
+				$key, $like
+			)
+		) );
+	}
+
+		/** SKU → product IDs (incl. variation → parent) */
+	private function sku_ids( $term ) {
+		$ids = $this->meta_ids( '_sku', $term, 'product' );
+		$var = $this->meta_ids( '_sku', $term, 'product_variation' );
+		foreach ( $var as $v ) {
+			$p = wp_get_post_parent_id( $v );
+			if ( $p ) { $ids[] = $p; }
+		}
+		return array_unique( $ids );
+	}
+
 	 /**
      * Get tax query
      *
@@ -528,6 +575,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
         $enable_page_desc =  esc_html(th_advance_product_search()->get_option( 'enable_page_desc' ));
 
+        $highlight_sale     = esc_html( th_advance_product_search()->get_option( 'tapsp_highlight-sale' ) );
+		$highlight_featured = esc_html( th_advance_product_search()->get_option( 'tapsp_highlight-featured' ) );
+		$stock_availability = esc_html( th_advance_product_search()->get_option( 'tapsp_stock-availablity' ) );
+
         /*********************/
         //fetch product result
         /*********************/
@@ -625,6 +676,19 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
                         $r['sku'] = $product->get_sku();
 
                 }
+
+                if ( $highlight_sale == true ) {
+				    $r['sale'] = $product->is_on_sale();
+				}
+
+				if ( $highlight_featured == true ) {
+				    $r['featured'] = $product->is_featured();
+				}
+
+				if ( $stock_availability == true ) {
+				    $r['stock'] = $product->get_stock_quantity();
+				}
+
                 
                 if ( $enable_product_desc == true) {
 
