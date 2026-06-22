@@ -27,10 +27,10 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
              add_action( 'admin_enqueue_scripts', array( $this, 'script_enqueue' ) );
 
              add_action('wp_ajax_thaps_form_setting', array($this, 'thaps_form_setting'));
-			 add_action( 'wp_ajax_nopriv_thaps_form_setting', array($this, 'thaps_form_setting'));
+			 // add_action( 'wp_ajax_nopriv_thaps_form_setting', array($this, 'thaps_form_setting'));
 
 			 add_action('wp_ajax_thaps_reset_settings', array($this, 'thaps_reset_settings'));
-			 add_action( 'wp_ajax_nopriv_thaps_reset_settings', array($this, 'thaps_reset_settings'));
+			 // add_action( 'wp_ajax_nopriv_thaps_reset_settings', array($this, 'thaps_reset_settings'));
 
             }
         
@@ -149,7 +149,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 	    public function thaps_form_setting(){  
 
-	    	  if ( ! current_user_can( 'administrator' ) ) {
+	    	  if ( ! current_user_can( 'manage_options' ) ) {
 
 		            wp_die( - 1, 403 );
 		            
@@ -166,15 +166,165 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 		            
 		            die();  
 	    }
-        
-	    public function thaps_form_sanitize( $input ){
-				$new_input = array();
-				foreach ( $input as $key => $val ){
-					$new_input[ $key ] = ( isset( $input[ $key ] ) ) ? sanitize_text_field( $val ) :'';
-		   }
-		   return $new_input;
 
-	    }
+	    		private function sanitize_color( $value ) {
+
+				    $value = trim( sanitize_text_field( $value ) );
+
+				    // Hex colors
+				    if ( sanitize_hex_color( $value ) ) {
+				        return $value;
+				    }
+
+				    // transparent
+				    if ( 'transparent' === strtolower( $value ) ) {
+				        return 'transparent';
+				    }
+
+				    // rgb()
+				    if (
+				        preg_match(
+				            '/^rgb\(\s*(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\s*\)$/',
+				            $value
+				        )
+				    ) {
+				        return $value;
+				    }
+
+				    // rgba()
+				    if (
+				        preg_match(
+				            '/^rgba\(\s*(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\s*,\s*(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\s*,\s*(0|0?\.\d+|1(?:\.0+)?)\s*\)$/',
+				            $value
+				        )
+				    ) {
+				        return $value;
+				    }
+
+				    return '';
+				}
+
+	    		private function get_field_map() {
+
+				    $map = array();
+
+				    foreach ( $this->fields as $tab ) {
+
+				        foreach ( $tab['sections'] as $section ) {
+
+				            foreach ( $section['fields'] as $field ) {
+
+				                $map[ $field['id'] ] = $field;
+				            }
+				        }
+				    }
+
+				    return $map;
+				}
+
+        
+	   public function thaps_form_sanitize( $input ) {
+
+				    $sanitized = array();
+
+				    $field_map = $this->get_field_map();
+
+				    foreach ( $field_map as $field_id => $field ) {
+
+				        $value = isset( $input[ $field_id ] )
+				            ? $input[ $field_id ]
+				            : null;
+
+				        switch ( $field['type'] ) {
+
+				            case 'checkbox':
+
+				                $sanitized[ $field_id ] = ! empty( $value ) ? 1 : 0;
+
+				                break;
+
+				            case 'number':
+
+				                $number = absint( $value );
+
+				                if ( isset( $field['min'] ) ) {
+				                    $number = max(
+				                        absint( $field['min'] ),
+				                        $number
+				                    );
+				                }
+
+				                if ( isset( $field['max'] ) ) {
+				                    $number = min(
+				                        absint( $field['max'] ),
+				                        $number
+				                    );
+				                }
+
+				                $sanitized[ $field_id ] = $number;
+
+				                break;
+
+				            case 'color':
+
+				                $sanitized[ $field_id ] =
+				                    $this->sanitize_color( $value );
+
+				                break;
+
+				            case 'url':
+
+				                $sanitized[ $field_id ] =
+				                    esc_url_raw( $value );
+
+				                break;
+
+				            case 'textarea':
+
+				                $sanitized[ $field_id ] =
+				                    sanitize_textarea_field( $value );
+
+				                break;
+
+				            case 'select':
+
+				                $value = sanitize_text_field( $value );
+
+				                if (
+				                    ! empty( $field['options'] ) &&
+				                    array_key_exists(
+				                        $value,
+				                        $field['options']
+				                    )
+				                ) {
+
+				                    $sanitized[ $field_id ] = $value;
+
+				                } else {
+
+				                    $sanitized[ $field_id ] = '';
+				                }
+
+				                break;
+
+				            case 'html':
+				            case 'analytics-html':
+
+				                // Display-only fields
+				                break;
+
+				            case 'text':
+				            default:
+
+				                $sanitized[ $field_id ] =
+				                    sanitize_text_field( $value );
+
+				                break;
+				        }
+				    }
+
+				    return $sanitized;
+}
 	
 		public function options_tabs() {
 
@@ -853,7 +1003,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 		public function thaps_reset_settings() {
 
-			if ( ! current_user_can( 'administrator' ) ) {
+			if ( ! current_user_can( 'manage_options' ) ) {
   
 				wp_die( - 1, 403 );
 				
