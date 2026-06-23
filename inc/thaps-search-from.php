@@ -54,7 +54,7 @@ if(th_advance_product_search()->get_option('show_submit' )=='0'){
 
    <?php if(th_advance_product_search()->get_option( 'level_submit' )!==''){
 
-        echo esc_html__(th_advance_product_search()->get_option( 'level_submit' ));
+        echo esc_html(th_advance_product_search()->get_option( 'level_submit' ));
 
    }else{ 
 

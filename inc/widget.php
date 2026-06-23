@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Thaps_Widget extends WP_Widget {
  
@@ -72,11 +73,11 @@ class Thaps_Widget extends WP_Widget {
             $id = $selec_attr['id'];
 	        $optn = isset($instance[$id]) ? $instance[$id]: $selec_attr['default'] ;
 	      ?> 
-         <p><label for="<?php echo esc_attr($this->get_field_id($id)); ?>"><?php  echo esc_attr($custarr['label']); ?></label>
+         <p><label for="<?php echo esc_attr($this->get_field_id($id)); ?>"><?php  echo esc_attr($selec_attr['label']); ?></label>
          	
 	     <select id="<?php echo esc_attr($this->get_field_id($id)); ?>" name="<?php echo esc_attr($this->get_field_name($id)); ?>" >
 	     	<?php foreach( $selec_attr['option'] as $value => $title){ ?>
-	     		<option value ="<?php echo esc_attr($value); ?>" <?php if($optn==$value){ echo 'selected'; }?> ><?php echo esc_html($title); ?> </option>
+	     		<option value ="<?php echo esc_attr($value); ?>" <?php selected( $optn, $value ); ?> ><?php echo esc_html($title); ?> </option>
 	     		<?php } ?>
 	     </select>
 	        </p>
@@ -85,14 +86,27 @@ class Thaps_Widget extends WP_Widget {
     }
  
     public function update( $new_instance, $old_instance ) {
- 
-        $instance = array();
- 
-        $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-        $instance['thaps-style'] = ( !empty( $new_instance['thaps-style'] ) ) ? $new_instance['thaps-style'] : '';
- 
-        return $instance;
-    }
+
+    $instance = array();
+
+    $instance['title'] = ! empty( $new_instance['title'] )
+        ? sanitize_text_field( $new_instance['title'] )
+        : '';
+
+    $allowed_styles = array(
+        'default_style',
+        'bar_style',
+        'icon_style',
+        'flexible-style',
+    );
+
+    $instance['thaps-style'] = ! empty( $new_instance['thaps-style'] ) &&
+        in_array( $new_instance['thaps-style'], $allowed_styles, true )
+        ? $new_instance['thaps-style']
+        : 'default_style';
+
+    return $instance;
+}
  
 }
 function thaps_widgetinit(){

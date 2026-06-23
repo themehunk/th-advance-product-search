@@ -211,7 +211,7 @@ function th_advance_product_search_block($attr){
     if(th_advance_product_search()->get_option( 'show_submit' )=='1'){?>
     <button id='thaps-search-button' value="<?php echo esc_attr_x( 'Submit','submit button', 'th-advance-product-search' ); ?>" type='submit'>  
     <?php if(th_advance_product_search()->get_option( 'level_submit' )!==''){
-        echo esc_html__(th_advance_product_search()->get_option( 'level_submit' ));
+        echo esc_html(th_advance_product_search()->get_option( 'level_submit' ));
     }else{ 
         th_advance_product_search_icon_style_svg('icon-style', '');
     }?>
