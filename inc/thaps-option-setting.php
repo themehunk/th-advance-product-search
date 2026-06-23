@@ -304,7 +304,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Options' ) ):
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Enable Product Description', 'th-advance-product-search' ),
 								'desc'    => '',
-								'default' => true
+								'default' => false
 							    ),
 							array(
 								'id'      => 'enable_product_sku',

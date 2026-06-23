@@ -87,7 +87,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		$post_type = $q['post_type'] ?? 'any';
 
 		// 🔹 Expand synonyms + fuzzy
-		$search_terms = array( $term );
+			$search_terms = preg_split(
+			    '/\s+/u',
+			    trim( $term )
+			);
+
+			$search_terms = array_filter( $search_terms );
 
 		// 🔹 Indexed table first
 		// 🔹 Indexed table only for products
@@ -119,7 +124,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		$clauses[] = "({$wpdb->posts}.ID IN (" . implode(',', $indexed) . "))";
 		}
 		foreach ( $search_terms as $like_term ) {
-			$like = '%' . $wpdb->esc_like( $like_term ) . '%';
+			$like = "%" . $wpdb->esc_like( $like_term ) . "%";
 
 			$clauses[] = $wpdb->prepare(
 				"({$wpdb->posts}.post_title LIKE %s)",

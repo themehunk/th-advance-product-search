@@ -167,6 +167,7 @@ Yes, You can translate our plugin to desired language.
 * Update: inc/thaps-settings.php:30,33m Fix: Unauthenticated AJAX — Removed both wp_ajax_nopriv_ registrations for admin-only save/reset handlers.
 * Upxdate: CSS injection — All color values changed from esc_html() to sanitize_hex_color(); width values use absint().
 * Update: (color→sanitize_hex_color, number→intval, checkbox→bool, textarea→sanitize_textarea_field) via new get_field_type_map() helper
+* Update: // 🔹 Expand synonyms + fuzzy $search_terms = code modified.
 
 
 = 1.4.4 =
