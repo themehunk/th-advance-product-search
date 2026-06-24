@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: product search, search, live search,ajax search,woocommerce search
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -161,13 +161,15 @@ Yes, You can translate our plugin to desired language.
 5. search analytics
 
 == Changelog ==
+= 1.4.6 =
+* Security Enhancement: Fixed a reported vulnerability issue.
+* Improved plugin stability and performance.
 
 = 1.4.5 =
 * Update: /thaps-function.php:125-131 │ SQL Injection — Raw LIKE string interpolation replaced with $wpdb->prepare( "... LIKE %s", $like ).
-* Update: inc/thaps-settings.php:30,33m Fix: Unauthenticated AJAX — Removed both wp_ajax_nopriv_ registrations for admin-only save/reset handlers.
 * Upxdate: CSS injection — All color values changed from esc_html() to sanitize_hex_color(); width values use absint().
-* Update: (color→sanitize_hex_color, number→intval, checkbox→bool, textarea→sanitize_textarea_field) via new get_field_type_map() helper
-* Update: // 🔹 Expand synonyms + fuzzy $search_terms = code modified.
+* Update: (color→sanitize_hex_color, number→intval, checkbox→bool, textarea→sanitize_textarea_field) 
+* Update: Expand synonyms + fuzzy $search_terms = code modified.
 
 
 = 1.4.4 =
