@@ -1296,6 +1296,7 @@
     triggerSelectOnValidInput: false,
     paramName: 'match',
     dataType: 'json',
+    params: { nonce: th_advance_product_search_options.thaps_nonce },
    });
 
 });

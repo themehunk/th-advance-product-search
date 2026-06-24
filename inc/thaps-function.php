@@ -543,6 +543,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	/*************************/
 		public function thaps_ajax_get_search_value(){
 
+        check_ajax_referer( 'th_advance_product_search', 'nonce' );
+
         //setting value
         $select_srch_type = esc_html(th_advance_product_search()->get_option( 'select_srch_type' ));
     
