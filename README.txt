@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: product search, search, live search,ajax search,woocommerce search
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -161,6 +161,10 @@ Yes, You can translate our plugin to desired language.
 5. search analytics
 
 == Changelog ==
+
+= 1.4.7 =
+* Update: Language files added.
+
 = 1.4.6 =
 * Security Enhancement: Fixed a reported vulnerability issue.
 * Improved plugin stability and performance.
