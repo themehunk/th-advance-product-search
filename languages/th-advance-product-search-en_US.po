@@ -1,0 +1,1099 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Advance Product Search\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-30 10:17+0000\n"
+"PO-Revision-Date: 2026-06-30 10:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.5; wp-7.0; php-8.2.12\n"
+"X-Domain: th-advance-product-search"
+
+#: th-advance-product-search.php:75
+#: inc/themehunk-menu/th-option/th-option.php:179
+#: inc/themehunk-menu/th-option/th-option.php:187
+msgid "Settings"
+msgstr ""
+
+#: th-advance-product-search.php:101 inc/tapsp-help.php:15
+msgid "Documentation"
+msgstr ""
+
+#: th-advance-product-search.php:103
+#: inc/themehunk-menu/th-option/sidebar.php:36
+msgid "Support"
+msgstr ""
+
+#: th-advance-product-search.php:105
+msgid "Premium Version"
+msgstr ""
+
+#: inc/deactivate-feedback.php:40
+msgid "Submitting…"
+msgstr ""
+
+#: inc/deactivate-feedback.php:41 inc/deactivate-feedback.php:96
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: inc/deactivate-feedback.php:54
+msgid "I no longer need the plugin"
+msgstr ""
+
+#: inc/deactivate-feedback.php:55
+msgid "I found a better plugin"
+msgstr ""
+
+#: inc/deactivate-feedback.php:56
+msgid "I couldn't get the plugin to work"
+msgstr ""
+
+#: inc/deactivate-feedback.php:57
+msgid "It's a temporary deactivation"
+msgstr ""
+
+#: inc/deactivate-feedback.php:58
+msgid "Plugin is missing a required feature"
+msgstr ""
+
+#: inc/deactivate-feedback.php:59
+msgid "Other"
+msgstr ""
+
+#: inc/deactivate-feedback.php:72
+msgid "QUICK FEEDBACK"
+msgstr ""
+
+#: inc/deactivate-feedback.php:76
+msgid ""
+"If you have a moment, please share why you are deactivating Advance Product "
+"Search:"
+msgstr ""
+
+#: inc/deactivate-feedback.php:90
+msgid "Please share more details (optional)…"
+msgstr ""
+
+#: inc/deactivate-feedback.php:99
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: inc/deactivate-feedback.php:175
+msgid "Thank you for your feedback!"
+msgstr ""
+
+#: inc/tapsp-help.php:9 inc/tapsp-help.php:12
+#: inc/themehunk-menu/th-option/th-option.php:199
+msgid "Upgrade To Pro"
+msgstr ""
+
+#: inc/tapsp-help.php:10
+msgid ""
+"Lets remove users confusion & help them to choose the correct product. Make "
+"product selection easy & advanced, using Compare Pro."
+msgstr ""
+
+#: inc/tapsp-help.php:16
+msgid ""
+"Our plugin is well documented, Please go with documentation & learn to "
+"customise plugin."
+msgstr ""
+
+#: inc/tapsp-help.php:17
+msgid "Docs"
+msgstr ""
+
+#: inc/tapsp-help.php:20
+msgid "Contact Support"
+msgstr ""
+
+#: inc/tapsp-help.php:21
+msgid "If you need any help you can contact to our support team."
+msgstr ""
+
+#: inc/tapsp-help.php:22
+msgid "Need help ?"
+msgstr ""
+
+#: inc/tapsp-help.php:25
+msgid "Spread the News"
+msgstr ""
+
+#: inc/tapsp-help.php:26
+msgid ""
+"Enjoying this plugin? Help spread the the creation and show off your amazing "
+"website with such amazing functionality."
+msgstr ""
+
+#: inc/tapsp-help.php:33
+msgid " Click to Tweet"
+msgstr ""
+
+#: inc/tapsp-help.php:36 inc/themehunk-menu/th-option/sidebar.php:21
+msgid "Leave us a review"
+msgstr ""
+
+#: inc/tapsp-help.php:37 inc/themehunk-menu/th-option/sidebar.php:22
+msgid "We would love to hear your feedback."
+msgstr ""
+
+#: inc/tapsp-help.php:38 inc/themehunk-menu/th-option/sidebar.php:23
+msgid "Submit review"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:7
+msgid "Live Search Preview"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:14 inc/thaps-nav-menu.php:109 inc/widget.php:55
+msgid "Default"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:15
+msgid "Traditional"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:16
+msgid "Mordern"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:39 inc/thaps-function.php:572
+msgid "Category"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:41 inc/tapsp-live-preview.php:46
+#: inc/tapsp-live-preview.php:47 inc/tapsp-live-preview.php:48
+#: inc/tapsp-live-preview.php:82 inc/tapsp-live-preview.php:83
+#: inc/tapsp-live-preview.php:149 inc/tapsp-live-preview.php:163
+msgid "sample"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:41
+msgid "category"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:44 inc/tapsp-live-preview.php:79
+#: inc/tapsp-live-preview.php:136 inc/thaps-function.php:574
+#: inc/thaps-option-setting.php:38 inc/thaps-option-setting.php:285
+msgid "Product"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:46 inc/tapsp-live-preview.php:47
+#: inc/tapsp-live-preview.php:48 inc/tapsp-live-preview.php:82
+#: inc/tapsp-live-preview.php:83 inc/tapsp-live-preview.php:150
+#: inc/tapsp-live-preview.php:163
+msgid "product"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:46 inc/tapsp-live-preview.php:47
+#: inc/tapsp-live-preview.php:48 inc/tapsp-live-preview.php:82
+#: inc/tapsp-live-preview.php:83
+msgid "( SKU : Product 01 )"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:46 inc/tapsp-live-preview.php:47
+#: inc/tapsp-live-preview.php:48 inc/tapsp-live-preview.php:82
+#: inc/tapsp-live-preview.php:83
+msgid "This is a simple product."
+msgstr ""
+
+#: inc/tapsp-live-preview.php:46 inc/tapsp-live-preview.php:47
+#: inc/tapsp-live-preview.php:47 inc/tapsp-live-preview.php:48
+#: inc/tapsp-live-preview.php:48 inc/tapsp-live-preview.php:82
+#: inc/tapsp-live-preview.php:82 inc/tapsp-live-preview.php:83
+#: inc/tapsp-live-preview.php:83 inc/tapsp-live-preview.php:156
+#: inc/tapsp-live-preview.php:158 inc/tapsp-live-preview.php:163
+#: inc/tapsp-live-preview.php:163
+msgid "$"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:46 inc/tapsp-live-preview.php:47
+#: inc/tapsp-live-preview.php:48 inc/tapsp-live-preview.php:82
+#: inc/tapsp-live-preview.php:83 inc/tapsp-live-preview.php:157
+#: inc/tapsp-live-preview.php:163
+msgid "20.00"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:46 inc/tapsp-live-preview.php:47
+#: inc/tapsp-live-preview.php:48 inc/tapsp-live-preview.php:82
+#: inc/tapsp-live-preview.php:83 inc/tapsp-live-preview.php:158
+#: inc/tapsp-live-preview.php:163
+msgid "18.00"
+msgstr ""
+
+#: inc/tapsp-live-preview.php:49 inc/tapsp-live-preview.php:85
+#: inc/tapsp-live-preview.php:165
+msgid "See All Results  (6)"
+msgstr ""
+
+#: inc/tapsp-reset.php:11
+msgid "Reset All Settings?"
+msgstr ""
+
+#: inc/tapsp-reset.php:12
+msgid ""
+"This action will restore all configuration settings to their default factory "
+"values. Your \n"
+"                        current custom styles, colors, and behavior logic "
+"will be permanently deleted."
+msgstr ""
+
+#: inc/tapsp-reset.php:18 inc/thaps-settings.php:89 inc/thaps-settings.php:1085
+msgid "Are you sure to reset current settings?"
+msgstr ""
+
+#: inc/tapsp-reset.php:18
+msgid "RESET Settings"
+msgstr ""
+
+#. Author of the plugin
+#: inc/thaps-block.php:86 inc/themehunk-menu/admin-menu.php:48
+#: inc/themehunk-menu/admin-menu.php:48
+#: inc/themehunk-menu/th-option/th-option.php:19
+msgid "ThemeHunk"
+msgstr ""
+
+#: inc/thaps-block.php:206 inc/thaps-block.php:234 inc/thaps-block.php:250
+#: inc/thaps-block.php:270 inc/thaps-block.php:286 inc/thaps-search-from.php:35
+#: inc/thaps-search-from.php:87 inc/thaps-search-from.php:126
+#: inc/thaps-search-from.php:172 inc/thaps-search-from.php:206
+msgctxt "label"
+msgid "Search"
+msgstr ""
+
+#: inc/thaps-block.php:212 inc/thaps-block.php:231 inc/thaps-block.php:263
+#: inc/thaps-block.php:283 inc/thaps-search-from.php:53
+#: inc/thaps-search-from.php:84 inc/thaps-search-from.php:160
+#: inc/thaps-search-from.php:202
+msgctxt "submit button"
+msgid "Submit"
+msgstr ""
+
+#: inc/thaps-function.php:582 inc/thaps-option-setting.php:37
+#: inc/thaps-option-setting.php:47 inc/thaps-option-setting.php:360
+msgid "Post"
+msgstr ""
+
+#: inc/thaps-function.php:590 inc/thaps-option-setting.php:384
+msgid "Pages"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:73
+msgid "TH Advance Search bar"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:92
+msgid "Layout"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:110 inc/widget.php:56
+msgid "Search bar only"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:111 inc/widget.php:57
+msgid "Search Icon only"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:112 inc/widget.php:58
+msgid "Icon on mobile, search bar on desktop"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:170
+msgid "Add TH advance search as a menu item."
+msgstr ""
+
+#: inc/thaps-nav-menu.php:176
+msgid "TH advance search bar"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:186 inc/thaps-nav-menu.php:187
+msgid "Add to menu"
+msgstr ""
+
+#: inc/thaps-nav-menu.php:247
+msgid "Search bar"
+msgstr ""
+
+#: inc/thaps-option-setting.php:39 inc/thaps-option-setting.php:48
+msgid "Page"
+msgstr ""
+
+#: inc/thaps-option-setting.php:80 inc/thaps-settings.php:77
+msgid "Integration"
+msgstr ""
+
+#: inc/thaps-option-setting.php:83
+msgid "Integration Methods"
+msgstr ""
+
+#: inc/thaps-option-setting.php:89 inc/thaps-option-setting.php:539
+msgid "How To Add"
+msgstr ""
+
+#: inc/thaps-option-setting.php:99
+msgid "Basic Setting"
+msgstr ""
+
+#: inc/thaps-option-setting.php:102
+msgid "General Search Settings"
+msgstr ""
+
+#: inc/thaps-option-setting.php:108
+msgid "Minimum Character"
+msgstr ""
+
+#: inc/thaps-option-setting.php:110
+msgid ""
+"Search results will start appearing after the user types this many "
+"characters."
+msgstr ""
+
+#: inc/thaps-option-setting.php:118
+msgid "Search Bar Width"
+msgstr ""
+
+#: inc/thaps-option-setting.php:120
+msgid "Set a specific width or leave empty for 100% fluid width."
+msgstr ""
+
+#: inc/thaps-option-setting.php:129
+msgid "Submit Button"
+msgstr ""
+
+#: inc/thaps-option-setting.php:130
+msgid "Show a dedicated submit button next to the search field"
+msgstr ""
+
+#: inc/thaps-option-setting.php:137
+msgid "Button Label"
+msgstr ""
+
+#: inc/thaps-option-setting.php:144
+msgid "Placeholder Text"
+msgstr ""
+
+#: inc/thaps-option-setting.php:145
+msgid "Search for products..."
+msgstr ""
+
+#: inc/thaps-option-setting.php:152
+msgid "Loader"
+msgstr ""
+
+#: inc/thaps-option-setting.php:158
+msgid "Visual Loader"
+msgstr ""
+
+#: inc/thaps-option-setting.php:159
+msgid "Disable the loading animation during search queries"
+msgstr ""
+
+#: inc/thaps-option-setting.php:168
+msgid "Interface Overlay"
+msgstr ""
+
+#: inc/thaps-option-setting.php:174
+msgid "Focus Overlay"
+msgstr ""
+
+#: inc/thaps-option-setting.php:175
+msgid "Dim the background when search suggestions are active"
+msgstr ""
+
+#: inc/thaps-option-setting.php:186
+msgid "Advance Setting"
+msgstr ""
+
+#: inc/thaps-option-setting.php:189
+msgid "Search Autocomplete Settings"
+msgstr ""
+
+#: inc/thaps-option-setting.php:196
+msgid "Select Search Type"
+msgstr ""
+
+#: inc/thaps-option-setting.php:199
+msgid ""
+"This setting define what you want to search, For example if you select "
+"\"Product\" then search will display olny products in search result."
+msgstr ""
+
+#: inc/thaps-option-setting.php:205 inc/thaps-option-setting.php:658
+msgid "Limit"
+msgstr ""
+
+#: inc/thaps-option-setting.php:207 inc/thaps-option-setting.php:659
+msgid "Show Search Result"
+msgstr ""
+
+#: inc/thaps-option-setting.php:215
+msgid "No Result Label"
+msgstr ""
+
+#: inc/thaps-option-setting.php:216 inc/thaps-option-setting.php:224
+msgid "This text will display at the search result dropdown."
+msgstr ""
+
+#: inc/thaps-option-setting.php:217
+msgid "No Result Found"
+msgstr ""
+
+#: inc/thaps-option-setting.php:223
+msgid "More Result Label"
+msgstr ""
+
+#: inc/thaps-option-setting.php:225
+msgid "See All Results "
+msgstr ""
+
+#: inc/thaps-option-setting.php:231
+msgid "Enable Group Heading"
+msgstr ""
+
+#: inc/thaps-option-setting.php:233
+msgid "It's a main heading, Display in the search result dropdown."
+msgstr ""
+
+#: inc/thaps-option-setting.php:240
+msgid "Description Length"
+msgstr ""
+
+#: inc/thaps-option-setting.php:242
+msgid ""
+"This option limit searched item description length. Count value in words."
+msgstr ""
+
+#: inc/thaps-option-setting.php:251
+msgid "Enable Voice Search"
+msgstr ""
+
+#: inc/thaps-option-setting.php:252
+msgid "Show a microphone button so users can search by voice"
+msgstr ""
+
+#: inc/thaps-option-setting.php:260
+msgid "Search Category"
+msgstr ""
+
+#: inc/thaps-option-setting.php:266
+msgid "Show Category"
+msgstr ""
+
+#: inc/thaps-option-setting.php:267
+msgid "Check to display categories in the search result dropdown."
+msgstr ""
+
+#: inc/thaps-option-setting.php:273
+msgid "Enable Category Image"
+msgstr ""
+
+#: inc/thaps-option-setting.php:291
+msgid "Enable Product Image"
+msgstr ""
+
+#: inc/thaps-option-setting.php:298
+msgid "Enable Product price"
+msgstr ""
+
+#: inc/thaps-option-setting.php:305
+msgid "Enable Product Description"
+msgstr ""
+
+#: inc/thaps-option-setting.php:312
+msgid "Enable Product SKU (Pro)"
+msgstr ""
+
+#: inc/thaps-option-setting.php:319
+msgid "Exclude Product"
+msgstr ""
+
+#: inc/thaps-option-setting.php:320
+msgid "Exclude Product by SKU ID seperated by \" , \""
+msgstr ""
+
+#: inc/thaps-option-setting.php:330
+msgid "Visuals in Product"
+msgstr ""
+
+#: inc/thaps-option-setting.php:336
+msgid "Sale"
+msgstr ""
+
+#: inc/thaps-option-setting.php:343
+msgid "Featured"
+msgstr ""
+
+#: inc/thaps-option-setting.php:350
+msgid "Stock Availablity"
+msgstr ""
+
+#: inc/thaps-option-setting.php:366
+msgid "Enable Post Image"
+msgstr ""
+
+#: inc/thaps-option-setting.php:374
+msgid "Enable Post Description"
+msgstr ""
+
+#: inc/thaps-option-setting.php:390
+msgid "Enable Page Image"
+msgstr ""
+
+#: inc/thaps-option-setting.php:398
+msgid "Enable Page Description"
+msgstr ""
+
+#: inc/thaps-option-setting.php:412
+msgid "Style"
+msgstr ""
+
+#: inc/thaps-option-setting.php:415
+msgid "Search Bar"
+msgstr ""
+
+#: inc/thaps-option-setting.php:421
+msgid "Bar Background Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:427 inc/thaps-option-setting.php:499
+msgid "Border Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:433 inc/thaps-option-setting.php:518
+msgid "Text Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:446
+msgid "Submit Button BG Color "
+msgstr ""
+
+#: inc/thaps-option-setting.php:453
+msgid "Submit Button Text / Icon Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:460
+msgid "Submit Button BG Hover Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:467
+msgid "Submit Button Text Hover Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:475
+msgid "Suggestion Box"
+msgstr ""
+
+#: inc/thaps-option-setting.php:481
+msgid "Background Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:487
+msgid "Highlight Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:493
+msgid "Selected Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:505
+msgid "Group Title Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:511
+msgid "Title Color"
+msgstr ""
+
+#: inc/thaps-option-setting.php:530
+msgid "Search Analytics"
+msgstr ""
+
+#: inc/thaps-option-setting.php:533
+msgid "ADD SEARCH ANALYTICS IN YOUR THEME"
+msgstr ""
+
+#: inc/thaps-option-setting.php:549
+msgid "Search Configure"
+msgstr ""
+
+#: inc/thaps-option-setting.php:552
+msgid "Search Scope in Product"
+msgstr ""
+
+#: inc/thaps-option-setting.php:558
+msgid "Search in Category"
+msgstr ""
+
+#: inc/thaps-option-setting.php:565
+msgid "Search in Tags"
+msgstr ""
+
+#: inc/thaps-option-setting.php:572
+msgid "Search in Brand"
+msgstr ""
+
+#: inc/thaps-option-setting.php:579
+msgid "Search in Attributes"
+msgstr ""
+
+#: inc/thaps-option-setting.php:586
+msgid "Search in Description"
+msgstr ""
+
+#: inc/thaps-option-setting.php:593
+msgid "Search in Short Description"
+msgstr ""
+
+#: inc/thaps-option-setting.php:600
+msgid "Search in SKU"
+msgstr ""
+
+#: inc/thaps-option-setting.php:607
+msgid "Search in Custom Field (Pro)"
+msgstr ""
+
+#: inc/thaps-option-setting.php:614
+msgid "Search in Custom Post Type (Pro)"
+msgstr ""
+
+#: inc/thaps-option-setting.php:627
+msgid "Suggested/Trending searches (Pro)"
+msgstr ""
+
+#: inc/thaps-option-setting.php:633
+msgid "Suggested/Trending Enable"
+msgstr ""
+
+#: inc/thaps-option-setting.php:640
+msgid "Searches to suggest"
+msgstr ""
+
+#: inc/thaps-option-setting.php:643
+msgid "Specific"
+msgstr ""
+
+#: inc/thaps-option-setting.php:644
+msgid "Popular"
+msgstr ""
+
+#: inc/thaps-option-setting.php:651
+msgid "Searches to suggest Keyword"
+msgstr ""
+
+#: inc/thaps-option-setting.php:674
+msgid "Boost Search (Pro)"
+msgstr ""
+
+#: inc/thaps-option-setting.php:679
+msgid "Search Optimization"
+msgstr ""
+
+#: inc/thaps-option-setting.php:680
+msgid ""
+"Manage and rebuild your search index to ensure your product catalog is "
+"always up-to-date and performing at its peak."
+msgstr ""
+
+#: inc/thaps-option-setting.php:687
+msgid "Product Index"
+msgstr ""
+
+#: inc/thaps-option-setting.php:688
+msgid ""
+"Click below to build or rebuild the product search index table. This process "
+"ensures all your latest products are searchable."
+msgstr ""
+
+#: inc/thaps-option-setting.php:694
+msgid "Index Batch Limit"
+msgstr ""
+
+#: inc/thaps-option-setting.php:698
+msgid ""
+"Default is 300. Increase for faster indexing, but be aware it may increase "
+"server load during the process."
+msgstr ""
+
+#: inc/thaps-option-setting.php:708
+msgid "Fuzzy Strings & Synonyms (Pro)"
+msgstr ""
+
+#: inc/thaps-option-setting.php:713
+msgid "Fuzzy Search & Synonyms"
+msgstr ""
+
+#: inc/thaps-option-setting.php:714
+msgid ""
+"Enhance search accuracy by handling misspellings and mapping related terms "
+"for a more intuitive user experience."
+msgstr ""
+
+#: inc/thaps-option-setting.php:721
+msgid "Enable Fuzzy Strings Matching"
+msgstr ""
+
+#: inc/thaps-option-setting.php:722
+msgid "Help users find results even with typos (e.g., \"skrit\" → \"skirt\")."
+msgstr ""
+
+#: inc/thaps-option-setting.php:728
+msgid "Matching Sensitivity"
+msgstr ""
+
+#: inc/thaps-option-setting.php:729
+msgid ""
+"Recommended: 50%. Higher values (80%+) may return more results but increase "
+"false positives."
+msgstr ""
+
+#: inc/thaps-option-setting.php:738
+msgid "Define Synonyms"
+msgstr ""
+
+#: inc/thaps-option-setting.php:739
+msgid ""
+"Use commas (,) to separate synonyms within a group and pipe (|) to separate "
+"groups. Example: trousers, pants | denim, jeans | belt, waistband"
+msgstr ""
+
+#: inc/thaps-option-setting.php:752
+msgid "Reset All Setting"
+msgstr ""
+
+#: inc/thaps-option-setting.php:755
+msgid "Reset All Your Custom Settings."
+msgstr ""
+
+#: inc/thaps-option-setting.php:767 inc/thaps-option-setting.php:770
+msgid "Help"
+msgstr ""
+
+#: inc/thaps-search-from.php:44 inc/thaps-search-from.php:96
+#: inc/thaps-search-from.php:96 inc/thaps-search-from.php:135
+#: inc/thaps-search-from.php:135 inc/thaps-search-from.php:181
+#: inc/thaps-search-from.php:181 inc/thaps-search-from.php:215
+#: inc/thaps-search-from.php:215
+msgctxt "voice button"
+msgid "Voice Search"
+msgstr ""
+
+#: inc/thaps-settings.php:40
+msgid "Advance Search"
+msgstr ""
+
+#: inc/thaps-settings.php:65 inc/themehunk-menu/admin-menu.php:54
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: inc/thaps-settings.php:80 inc/thaps-settings.php:82
+msgid "Upgrade"
+msgstr ""
+
+#: inc/thaps-settings.php:87
+msgid "Save All Changes"
+msgstr ""
+
+#: inc/thaps-settings.php:89
+msgid "Reset all"
+msgstr ""
+
+#: inc/thaps-settings.php:719
+msgid "Default Search Bar"
+msgstr ""
+
+#: inc/thaps-settings.php:720
+msgid ""
+"Use the standard shortcode to display the default product search bar "
+"anywhere in your theme."
+msgstr ""
+
+#: inc/thaps-settings.php:727
+msgid "Submit"
+msgstr ""
+
+#: inc/thaps-settings.php:731 inc/thaps-settings.php:737
+#: inc/thaps-settings.php:771
+msgid "Shortcode"
+msgstr ""
+
+#: inc/thaps-settings.php:739 inc/thaps-settings.php:773
+#: inc/thaps-settings.php:798 inc/thaps-settings.php:825
+#: inc/thaps-settings.php:833
+msgid "Copy"
+msgstr ""
+
+#: inc/thaps-settings.php:754
+msgid "Search Bar with Icon"
+msgstr ""
+
+#: inc/thaps-settings.php:755
+msgid ""
+"Display a more modern search bar that includes a search icon inside the "
+"input field."
+msgstr ""
+
+#: inc/thaps-settings.php:766
+msgid "Shortcode:"
+msgstr ""
+
+#: inc/thaps-settings.php:788
+msgid "PHP Template Tag"
+msgstr ""
+
+#: inc/thaps-settings.php:789
+msgid ""
+"For developers: Insert the search bar directly into your theme’s PHP "
+"templates."
+msgstr ""
+
+#: inc/thaps-settings.php:796
+msgid "PHP"
+msgstr ""
+
+#: inc/thaps-settings.php:821
+msgid ""
+"Enable Site Search module Paste the following code into \"functions.php\" in "
+"your child theme."
+msgstr ""
+
+#: inc/thaps-settings.php:824 inc/thaps-settings.php:832
+msgid "Php"
+msgstr ""
+
+#: inc/thaps-settings.php:829
+msgid ""
+"To disable integrarion with Google Analytics paste following code "
+"\"functions.php\" your child theme.:"
+msgstr ""
+
+#: inc/thaps-settings.php:840
+msgid "Explore Doc"
+msgstr ""
+
+#: inc/thaps-settings.php:1080
+msgid "Choose an Image"
+msgstr ""
+
+#: inc/thaps-settings.php:1081
+msgid "Use Image"
+msgstr ""
+
+#: inc/thaps-settings.php:1082
+msgid "Add Media"
+msgstr ""
+
+#: inc/widget.php:9
+msgid "Show your TH Advance Search Bar"
+msgstr ""
+
+#: inc/widget.php:12
+msgid "TH Advance Search Widget"
+msgstr ""
+
+#: inc/widget.php:53
+msgid "Choose Product Type "
+msgstr ""
+
+#: inc/widget.php:67
+msgid "Title:"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:4
+msgid "Vayu Blocks"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:12
+msgid "TH Advance Product Search"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:25
+msgid "Th All In One Woo Cart"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:38
+msgid "Th Product Compare"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:51
+msgid "TH Variation Swatches"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:63
+msgid "Lead Form Builder"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:75
+msgid "WP Popup Builder – Popup Forms & Newsletter"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/header.php:19
+msgid "Plugins"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/header.php:31
+msgid "TH Shop Mania Free Theme"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/header.php:32
+msgid "Elementor + WooCommerce Free WordPress Theme."
+msgstr ""
+
+#: inc/themehunk-menu/th-option/header.php:34
+msgid "View Detail"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:4
+msgid "ThemeHunk Premium Plugins"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:7
+msgid ""
+"If you like the free version of this plugin, you will LOVE the full version "
+"of plugin which includes numerous  Advanced features, Custom Style and more "
+"useful options to customize your plugins."
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:8
+msgid "Upgrade To Premium Plugin"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:13
+msgid "Why Upgrade?"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:14
+msgid ""
+"Upgrading to Premium plugins you will unlock a dozen of unique features that "
+"will take your website to the next level."
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:15
+msgid "View Premium Plugins"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:29
+msgid "Video Tutorials"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:30
+msgid ""
+"Want a guide? We have video tutorials to walk you through getting started."
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:31
+msgid "Watch Videos"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:37
+msgid ""
+"Have a question, we are happy to help! Get in touch with our support team."
+msgstr ""
+
+#: inc/themehunk-menu/th-option/sidebar.php:38
+msgid "Submit a Ticket"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/th-option.php:23
+msgid "ThemeHunk Marketplace"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/th-option.php:25
+msgid "Grow your business with ThemeHunk free/pro themes & plugins."
+msgstr ""
+
+#: inc/themehunk-menu/th-option/th-option.php:83
+msgid "Activated"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/th-option.php:90
+msgid "Install Now"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/th-option.php:112
+msgid "Activate Now"
+msgstr ""
+
+#: inc/themehunk-menu/th-option/th-option.php:175
+#: inc/themehunk-menu/th-option/th-option.php:186
+msgid "View details"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block title"
+msgid "Advance Product Search"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block keyword"
+msgid "search"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block keyword"
+msgid "woocommerce"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block keyword"
+msgid "post"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block keyword"
+msgid "page"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block keyword"
+msgid "category"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block keyword"
+msgid "advance-search"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block keyword"
+msgid "themehunk"
+msgstr ""
+
+#: build/block/th-advance-product-search/block.json:1
+#: src/block/th-advance-product-search/block.json:1
+msgctxt "block description"
+msgid ""
+msgstr ""
+
+#. Name of the plugin
+msgid "Advance Product Search"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Responsive Search Plugin for WordPress and WooCommerce. Best Live Ajax "
+"Search Support Plugin. Plugin comes with user friendly settings, You can use "
+"shortcode and widget to display search bar at your desired location.This "
+"plugin provide you freedom to choose color and styling to match up with your "
+"website. It also supports Google search analytics to monitor your website "
+"visitor and searching behaviour. <a href=\"https://themehunk.com/plugins/\" "
+"target=\"_blank\">Get more plugins for your website on <strong>"
+"ThemeHunk</strong></a>"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://themehunk.com"
+msgstr ""
