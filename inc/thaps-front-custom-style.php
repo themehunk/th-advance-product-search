@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function thaps_safe_color( $color ) {
 
-    $color = trim( $color );
+    $color = trim( (string) $color );
 
     if ( sanitize_hex_color( $color ) ) {
         return $color;

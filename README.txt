@@ -165,6 +165,7 @@ Yes, You can translate our plugin to desired language.
 = 1.4.8 =
 * Update: Right side suggestion box issue resolved.
 * update: Style Improved.
+* Fix: Deprecated Notice - trim(): Passing null to parameter #1 ($string) of type string.
 
 = 1.4.7 =
 * Update: Language files added.
