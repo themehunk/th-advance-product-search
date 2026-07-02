@@ -169,10 +169,18 @@ background:#888;
 }
 .thaps-autocomplete-suggestion.thaps-suggestion-product .thaps-img{
     width: 46px;
-    border-radius: 5px;
+height: 46px;
+max-height: 46px;
+border-radius: 5px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .thaps-autocomplete-suggestion.thaps-suggestion-product .thaps-img img{
-    border-radius: 5px;
+    width: max-content;
+max-height: 46px;
+max-width: 100%;
+transition: alL .2s linear;
 }
 .thaps-autocomplete-suggestion .thaps-price{
  font-size: 14px;

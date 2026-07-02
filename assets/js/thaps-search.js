@@ -398,10 +398,29 @@
             }
 
             if (that.options.width === 'auto') {
-                styles.width = that.el.outerWidth() + 'px';
+                styles.width = that.el.outerWidth();
             }
 
-            $container.css(styles);
+            var viewportWidth = $(window).width();
+            var scrollLeft = $(window).scrollLeft();
+            // User ki width jo bhi hai
+var containerWidth = $container.outerWidth();
+
+// Screen ki right boundary
+var viewportLeft = $(window).scrollLeft();
+var viewportRight = viewportLeft + $(window).width();
+
+// Agar right side bahar ja raha hai to left shift karo
+if (styles.left + containerWidth > viewportRight) {
+    styles.left = viewportRight - containerWidth - 10;
+}
+
+// Agar left side bahar ja raha hai to right shift karo
+if (styles.left < viewportLeft + 10) {
+    styles.left = viewportLeft + 10;
+}
+
+$container.css(styles);
         },
 
         isCursorAtEnd: function () {
