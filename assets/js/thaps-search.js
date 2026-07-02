@@ -1303,3 +1303,28 @@
 
 
 }));
+
+
+window.addEventListener('resize', function() {
+    var dropdown = document.querySelector('.thaps-autocomplete-suggestions');
+    if (!dropdown || dropdown.style.display !== 'block') return;
+
+    var input = document.querySelector('.thaps-search-input'); // adjust to your input's actual class
+    if (!input) return;
+
+    positionSuggestions(input, dropdown);
+});
+
+function positionSuggestions(input, dropdown) {
+    var rect = input.getBoundingClientRect();
+    var dropWidth = Math.min(220, window.innerWidth - 30);
+    var left = rect.left + window.scrollX;
+
+    var maxLeft = window.innerWidth - dropWidth - 15;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 15) left = 15;
+
+    dropdown.style.setProperty('width', dropWidth + 'px', 'important');
+    dropdown.style.left = left + 'px';
+    dropdown.style.top = (rect.bottom + window.scrollY + 8) + 'px';
+}
