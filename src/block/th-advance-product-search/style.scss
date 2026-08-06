@@ -41,7 +41,7 @@
         color:var(--tapsp-searchBtnHvrTextClr);  
     }
     .thaps-from-wrap {
-        background: var(--tapsp-searchBarClr);
+        background: var(--tapsp-searchBarClr, #FFF);
         border-color:var(--tapsp-searchborderClr);
         border-radius:var(--tapsp-barborderRadius);
         
@@ -63,7 +63,7 @@
     .thaps-box-open .tapsp-icon-arrow {
         border-left-color: var(--tapsp-searchBarColor);
         border-top-color: var(--tapsp-searchBarColor);
-        background: var(--tapsp-searchBarClr);
+        background: var(--tapsp-searchBarClr, #FFF);
     }
     .icon_style .tapsp-search-form {
         min-width:320px;
