@@ -29,8 +29,8 @@
 }
 
 .wp-block-th-advance-product-search .thaps-search-form {
-  max-width: var(--tapsp-searchWidth);
-  width: var(--tapsp-searchWidth);
+  max-width: var(--tapsp-searchWidth, 550px);
+  width: var(--tapsp-searchWidth,500px);
 }
 .wp-block-th-advance-product-search #thaps-search-button {
   background: var(--tapsp-searchBtnBgClr);
@@ -44,7 +44,7 @@
   color: var(--tapsp-searchBtnHvrTextClr);
 }
 .wp-block-th-advance-product-search .thaps-from-wrap {
-  background: var(--tapsp-searchBarClr);
+  background: var(--tapsp-searchBarClr, #FFF);
   border-color: var(--tapsp-searchborderClr);
   border-radius: var(--tapsp-barborderRadius);
 }
@@ -68,7 +68,7 @@
 .wp-block-th-advance-product-search .thaps-box-open .tapsp-icon-arrow {
   border-left-color: var(--tapsp-searchBarColor);
   border-top-color: var(--tapsp-searchBarColor);
-  background: var(--tapsp-searchBarClr);
+  background: var(--tapsp-searchBarClr, #FFF);
 }
 .wp-block-th-advance-product-search .icon_style .tapsp-search-form {
   min-width: 320px;
