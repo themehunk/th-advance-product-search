@@ -453,21 +453,21 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		                if($select_srch_type == 'product_srch'){
 
 		                   $moreproduct['url'] = add_query_arg( array(
-		                    's'         => $match,
+		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'product',
 		                ), home_url() );
 
 		                }elseif($select_srch_type == 'post_srch'){
 
 		                     $moreproduct['url'] = add_query_arg( array(
-		                    's'         => $match,
+		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'post',
 		                ), home_url() );
 
 		                }elseif($select_srch_type == 'page_srch'){
 
 		                    $moreproduct['url'] = add_query_arg( array(
-		                    's'         => $match,
+		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'page',
 		                ), home_url() );
 
@@ -602,7 +602,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
         /*********************/
          if (isset($_REQUEST['match']) && $_REQUEST['match'] != ''){
 
-            $match_ = sanitize_text_field($_REQUEST['match']);
+            $match_ = sanitize_text_field( wp_unslash( $_REQUEST['match'] ) );
 
             if ($select_srch_type=='product_srch'){ 
               $args = array(
@@ -907,7 +907,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
           //search type product close 
          }
             
-        echo json_encode($items);
+        wp_send_json( $items );
 
             die();
          }
