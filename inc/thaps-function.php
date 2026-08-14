@@ -32,8 +32,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		public function __construct(){
 
           add_filter( 'posts_search',   [ $this, 'modify_search_sql' ], 501, 2 );
-           add_action( 'wp_ajax_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
-           add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
+           add_action( 'wp_ajax_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value_call' ));
+           add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value_call' ));
 
 
 		}
@@ -541,7 +541,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	/*************************/
     // search result function
 	/*************************/
-		public function thaps_ajax_get_search_value(){
+		public function thaps_ajax_get_search_value_call(){
 
         check_ajax_referer( 'th_advance_product_search', 'nonce' );
 
