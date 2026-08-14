@@ -32,8 +32,8 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		public function __construct(){
 
           add_filter( 'posts_search',   [ $this, 'modify_search_sql' ], 501, 2 );
-           add_action( 'wp_ajax_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
-           add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value' ));
+           add_action( 'wp_ajax_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value_call' ));
+           add_action( 'wp_ajax_nopriv_thaps_ajax_get_search_value',array( $this, 'thaps_ajax_get_search_value_call' ));
 
 
 		}
@@ -453,21 +453,21 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		                if($select_srch_type == 'product_srch'){
 
 		                   $moreproduct['url'] = add_query_arg( array(
-		                    's'         => $match,
+		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'product',
 		                ), home_url() );
 
 		                }elseif($select_srch_type == 'post_srch'){
 
 		                     $moreproduct['url'] = add_query_arg( array(
-		                    's'         => $match,
+		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'post',
 		                ), home_url() );
 
 		                }elseif($select_srch_type == 'page_srch'){
 
 		                    $moreproduct['url'] = add_query_arg( array(
-		                    's'         => $match,
+		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'page',
 		                ), home_url() );
 
@@ -541,7 +541,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	/*************************/
     // search result function
 	/*************************/
-		public function thaps_ajax_get_search_value(){
+		public function thaps_ajax_get_search_value_call(){
 
         check_ajax_referer( 'th_advance_product_search', 'nonce' );
 
@@ -602,7 +602,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
         /*********************/
          if (isset($_REQUEST['match']) && $_REQUEST['match'] != ''){
 
-            $match_ = sanitize_text_field($_REQUEST['match']);
+            $match_ = sanitize_text_field( wp_unslash( $_REQUEST['match'] ) );
 
             if ($select_srch_type=='product_srch'){ 
               $args = array(
@@ -907,7 +907,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
           //search type product close 
          }
             
-        echo json_encode($items);
+        wp_send_json( $items );
 
             die();
          }

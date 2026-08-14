@@ -55,6 +55,14 @@
 
         noop = $.noop;
 
+    function thapsEscapeHtml(value) {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
     function Autocomplete(el, options) {
         var that = this;
 
@@ -230,29 +238,50 @@
         },
 
         registerEventsSearchBar: function () {
-            var that = this;
-            var $submit = $('.thaps-search-form').find('#thaps-search-button');
+    var that = this;
+    var $submit = $('.thaps-search-form').find('#thaps-search-button');
 
-            if (document.readyState === 'complete') {
-                if ($submit.length > 0) {
-                    $submit.each(function () {   
-                var $preloader = $(this).closest('.thaps-search-form').find('.thaps-preloader');
-                        $preloader.css('right', $(this).outerWidth() + 'px');
-                });
-              }
-            } else {
+    if (document.readyState === 'complete') {
+        if ($submit.length > 0) {
+            $submit.each(function () {
+                var $preloader = $(this)
+                    .closest('.thaps-search-form')
+                    .find('.thaps-preloader');
 
-                $(window).on('load', function () {
-                    if ($submit.length > 0) {
-                    $submit.each(function () {   
-                    var $preloader = $(this).closest('.thaps-search-form').find('.thaps-preloader');
-                        $preloader.css('right', $(this).outerWidth() + 'px');
-                });
-              }
+                $preloader.css('right', $(this).outerWidth() + 'px');
+            });
+        }
+    } else {
+        $(window).on('load', function () {
+            if ($submit.length > 0) {
+                $submit.each(function () {
+                    var $preloader = $(this)
+                        .closest('.thaps-search-form')
+                        .find('.thaps-preloader');
+
+                    $preloader.css('right', $(this).outerWidth() + 'px');
                 });
             }
+        });
+    }
 
-        },
+    /*
+     * Prevent empty search form submission.
+     */
+    $('.thaps-search-form').each(function () {
+        $(this).on('submit.thapsAutocomplete', function (e) {
+            var $form = $(this);
+            var $input = $form.find('.thaps-search-autocomplete');
+            var value = $.trim($input.val());
+
+            if (!value) {
+                e.preventDefault();
+                that.hide();
+                return false;
+            }
+        });
+    });
+},
 
 
         onFocus: function () {
@@ -843,18 +872,47 @@ $container.css(styles);
             $.each(that.suggestions, function (i, suggestion){
 
                 //console.log(suggestion);
-                var url    = typeof suggestion.url == 'string' && suggestion.url.length ? suggestion.url : '#',
+               
                     
-                    isImg  = suggestion.imgsrc ? suggestion.imgsrc:'' ,
-                    isCatImg  = suggestion.cat_img ? suggestion.cat_img:'' ,
-                    attr_title ='',
-                    title = suggestion.title ? suggestion.title : '',
-                    isPrice  = suggestion.price ? suggestion.price:'',
-                    Descshw  = suggestion.desc ? suggestion.desc : '' ,
-                    Skushw  = suggestion.sku ? suggestion.sku : '' ,
-                    sale       = suggestion.sale || false,
-                    featured   = suggestion.featured || false,
-                    stock      = suggestion.stock || '',
+
+                var url = typeof suggestion.url == 'string' && suggestion.url.length
+                        ? thapsEscapeHtml(suggestion.url)
+                        : '#',
+
+                    isImg = suggestion.imgsrc
+                        ? thapsEscapeHtml(suggestion.imgsrc)
+                        : '',
+
+                    isCatImg = suggestion.cat_img
+                        ? thapsEscapeHtml(suggestion.cat_img)
+                        : '',
+
+                    attr_title = '',
+
+                    title = suggestion.title
+                        ? thapsEscapeHtml(suggestion.title)
+                        : '',
+
+                    isPrice = suggestion.price
+                        ? suggestion.price
+                        : '',
+
+                    Descshw = suggestion.desc
+                        ? thapsEscapeHtml(suggestion.desc)
+                        : '',
+
+                    Skushw = suggestion.sku
+                        ? thapsEscapeHtml(suggestion.sku)
+                        : '',
+
+                    sale = suggestion.sale || false,
+
+                    featured = suggestion.featured || false,
+
+                    stock = suggestion.stock
+                        ? thapsEscapeHtml(suggestion.stock)
+                        : '',
+
                     classNameT = '',
                     no_result_class = '';
 
@@ -889,13 +947,24 @@ $container.css(styles);
                 }
                 
                
-                html += '<a href="' + url + '" class="' + className + ' ' + classNameT + '"  data-index="' + i + '">'; 
-                if(isImg) {
-                html += '<span class="thaps-img"><img src="' + suggestion.imgsrc + '" alt="'+ title +'"/></span>';
+               html += '<a href="' + url + '" class="' +
+                className + ' ' + classNameT +
+                '" data-index="' + i + '">';
+
+                if (isImg) {
+                    html += '<span class="thaps-img"><img src="' +
+                        isImg +
+                        '" alt="' +
+                        title +
+                        '"/></span>';
                 }
 
-                if(isCatImg){
-                html += '<span class="thaps-img"><img src="' + isCatImg + '" alt="'+ title +'"/></span>';   
+                if (isCatImg) {
+                    html += '<span class="thaps-img"><img src="' +
+                        isCatImg +
+                        '" alt="' +
+                        title +
+                        '"/></span>';
                 }
 
                 html += '<div class="thaps-content-wrapp"><div class="thaps-content-left">'
@@ -910,17 +979,23 @@ $container.css(styles);
                 html += '<span class="tapsp-sale">sale</span>';
                 }
 
-                if(Skushw){
-                html += '<span class="thaps-sku">( SKU : ' + suggestion.sku + ' )</span>';
+               if (Skushw) {
+                    html += '<span class="thaps-sku">( SKU : ' +
+                        Skushw +
+                        ' )</span>';
                 }
 
-                if(Descshw){
-                html += '<span class="thaps-desc">' + suggestion.desc + '</span>';
+                if (Descshw) {
+                    html += '<span class="thaps-desc">' +
+                        Descshw +
+                        '</span>';
                 }
 
 
                 if (stock) {
-                html += '<span class="tapsp-stock">' + stock + ' in stock</span>';
+                    html += '<span class="tapsp-stock">' +
+                        stock +
+                        ' in stock</span>';
                 }
 
                 html += '</div>';

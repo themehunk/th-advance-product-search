@@ -4,12 +4,12 @@ if (!function_exists('themehunk_admin_menu')) {
     define('THEMEHUNK_PURL', plugin_dir_url(__FILE__));
     define('THEMEHUNK_PDIR', plugin_dir_path(__FILE__));
 
-    add_action( 'wp_ajax_themehunk_activeplugin','themehunk_activeplugin');
+    add_action( 'wp_ajax_themehunk_activeplugin','themehunk_activeplugin_call');
     add_action('admin_menu',  'themehunk_admin_menu');
     add_action( 'admin_enqueue_scripts', 'admin_scripts');
 
-     if ( !function_exists('themehunk_activeplugin') ) {
-        function themehunk_activeplugin(){
+     if ( !function_exists('themehunk_activeplugin_call') ) {
+        function themehunk_activeplugin_call(){
             if ( !is_user_logged_in() || ! current_user_can( 'administrator' ) ) {
                wp_die( - 1, 403 );
            }

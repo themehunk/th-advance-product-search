@@ -164,6 +164,9 @@ Yes, You can translate our plugin to desired language.
 
 = 1.4.9 =
 * Update: Block style issues resolved.
+* Update: Blank search issue resolved.
+* Update: Security issue resolved.
+* Update: Ajax same function call issue resolved.
 
 = 1.4.8 =
 * Update: Right side suggestion box issue resolved.
