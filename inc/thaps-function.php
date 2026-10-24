@@ -85,6 +85,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		$q         = $wp_query->query_vars;
 		$term      = sanitize_text_field( $q['s'] );
 		$post_type = $q['post_type'] ?? 'any';
+		$post_type = is_string( $post_type ) ? $post_type : 'any';
 
 		// 🔹 Expand synonyms + fuzzy
 			$search_terms = preg_split(
@@ -93,6 +94,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 			);
 
 			$search_terms = array_filter( $search_terms );
+
+			// Limit the number of words so a long query cannot build a huge SQL statement.
+			$search_terms = array_slice( array_unique( $search_terms ), 0, (int) apply_filters( 'thaps_max_search_terms', 10 ) );
 
 		// 🔹 Indexed table first
 		// 🔹 Indexed table only for products
@@ -120,27 +124,26 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
 		$clauses = [];
 
-		if ( $indexed ) {
-		$clauses[] = "({$wpdb->posts}.ID IN (" . implode(',', $indexed) . "))";
-		}
 		foreach ( $search_terms as $like_term ) {
 			$like = "%" . $wpdb->esc_like( $like_term ) . "%";
 
-			$clauses[] = $wpdb->prepare(
+			$term_clauses = [];
+
+			$term_clauses[] = $wpdb->prepare(
 				"({$wpdb->posts}.post_title LIKE %s)",
 				$like
 			);
 
 			
 			if ( th_advance_product_search()->get_option( 'tapsp_search-in-description' ) ) {
-				$clauses[] = $wpdb->prepare(
+				$term_clauses[] = $wpdb->prepare(
 					"({$wpdb->posts}.post_content LIKE %s)",
 					$like
 				);
 			}
 			
 			if ( th_advance_product_search()->get_option( 'tapsp_search-in-short-description' ) ) {
-				$clauses[] = $wpdb->prepare(
+				$term_clauses[] = $wpdb->prepare(
 					"({$wpdb->posts}.post_excerpt LIKE %s)",
 					$like
 				);
@@ -149,43 +152,50 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 			// SKU (product only)
 			if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search_in_product_sku' ) ) {
 				$ids = $this->sku_ids( $like_term );
-				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+				if ( $ids ) $term_clauses[] = $this->ids_clause( $ids );
 			}
 
 			// Category / tag
 			if ( th_advance_product_search()->get_option( 'tapsp_search-in-category' ) ) {
 				$tax = $post_type === 'product' ? 'product_cat' : 'category';
 				$ids = $this->term_ids( [ $tax ], $like_term );
-				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+				if ( $ids ) $term_clauses[] = $this->ids_clause( $ids );
 			}
 			if ( th_advance_product_search()->get_option( 'tapsp_search-in-tag' ) ) {
 				$tax = $post_type === 'product' ? 'product_tag' : 'post_tag';
 				$ids = $this->term_ids( [ $tax ], $like_term );
-				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+				if ( $ids ) $term_clauses[] = $this->ids_clause( $ids );
 			}
 
 			// Attributes (product)
 			if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search-in-attribute' ) ) {
 				$ids = $this->attribute_ids( $like_term );
-				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+				if ( $ids ) $term_clauses[] = $this->ids_clause( $ids );
 			}
 
 			/* ✅ BRAND SEARCH */
 				if ( $post_type === 'product' && th_advance_product_search()->get_option( 'tapsp_search-in-brand' ) ) {
 				$ids = $this->term_ids( [ 'product_brand', 'pa_brand' ], $like_term );
-				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+				if ( $ids ) $term_clauses[] = $this->ids_clause( $ids );
 				}
 
 				// Custom fields
 			if ( th_advance_product_search()->get_option( 'tapsp_search_in_custom_fld' ) ) {
 				$ids = $this->custom_field_ids( $like_term, $post_type );
-				if ( $ids ) $clauses[] = "({$wpdb->posts}.ID IN (" . implode( ',', $ids ) . "))";
+				if ( $ids ) $term_clauses[] = $this->ids_clause( $ids );
 			}
 
 			
+			$clauses[] = '(' . implode( ' OR ', array_unique( array_filter( $term_clauses ) ) ) . ')';
 		}
 
-		$search = $clauses ? ' AND (' . implode( ' OR ', array_unique( $clauses ) ) . ')' : '';
+		// Nothing usable left after sanitizing: keep the default WordPress search.
+		if ( ! $clauses ) {
+			return $search;
+		}
+
+		// Every word has to match (in any enabled field).
+		$search = ' AND (' . implode( ' AND ', $clauses ) . ')';
 		if ( ! is_user_logged_in() ) {
 			$search .= " AND ({$wpdb->posts}.post_password = '') ";
 		}
@@ -194,6 +204,17 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		//error_log("✅ TAPSP Search → {$term} | Type: {$post_type} | Clauses: " . count($clauses) . " | {$execution_time}s");
 
 		return $search;
+	}
+
+	/** "posts.ID IN (...)" clause, built with $wpdb->prepare() */
+	private function ids_clause( array $ids ) {
+		global $wpdb;
+		$ids = array_values( array_unique( array_filter( array_map( 'absint', $ids ) ) ) );
+		if ( ! $ids ) {
+			return '';
+		}
+		$placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
+		return $wpdb->prepare( "({$wpdb->posts}.ID IN ($placeholders))", $ids );
 	}
 
 	/** Generic taxonomy (cat / tag) */
@@ -217,6 +238,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	private function attribute_ids( $term ) {
 		$taxes = $this->attribute_taxonomies();
 		return $taxes ? $this->term_ids( $taxes, $term ) : [];
+	}
+
+	/** Registered product attribute taxonomies (pa_*) */
+	private function attribute_taxonomies() {
+		return function_exists( 'wc_get_attribute_taxonomy_names' ) ? array_values( wc_get_attribute_taxonomy_names() ) : [];
 	}
 
 	/** Custom meta fields */
@@ -354,39 +380,29 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
 	        $results = array();
 
-	        $args = array(
+	        // Match and limit in SQL instead of loading every term on each keystroke.
+	        // Term names are stored HTML-encoded ("&" => "&amp;").
+	        $productCategories = get_terms( array(
+	            'taxonomy'   => 'product_cat',
+	            'name__like' => str_replace( '&', '&amp;', $keyword ),
+	            'number'     => absint( $limit ),
+	            'hide_empty' => true,
+	        ) );
 
-	            'taxonomy' => 'product_cat',
-	        );
-
-	        $productCategories = get_terms( 'product_cat', $args );
-	        $keywordUnslashed = wp_unslash( $keyword );
-	  
-	        $i = 0;
+	        if ( is_wp_error( $productCategories ) ) {
+	            return $results;
+	        }
 
 	        foreach ( $productCategories as $cat ) {
 
-	            if ( $i < $limit ) {
-
-	                $catName = html_entity_decode( $cat->name );
-
-	                $pos = strpos( mb_strtolower( $catName ), mb_strtolower( $keywordUnslashed ) );
-				    
-	                if ( $pos !== false ) {
-	                    $results[$i] = array(
-	                        'term_id'     => $cat->term_id,
-	                        'taxonomy'    => 'product_cat',
-	                        'value'       => $catName,
-	                        'url'         => get_term_link( $cat, 'product_cat' ),
-	                        'cat_img'     => $this->thaps_getImages_src($cat->term_id,'woocommerce_thumbnail', $img_enable),
-	                        'type'        => 'taxonomy-product-cat',
-	                    );
-	                    $i++;
-
-	                }
-	            
-	            }
-	        
+	            $results[] = array(
+	                'term_id'     => $cat->term_id,
+	                'taxonomy'    => 'product_cat',
+	                'value'       => html_entity_decode( $cat->name ),
+	                'url'         => get_term_link( $cat, 'product_cat' ),
+	                'cat_img'     => $this->thaps_getImages_src($cat->term_id,'woocommerce_thumbnail', $img_enable),
+	                'type'        => 'taxonomy-product-cat',
+	            );
 	        }
 
 	        return $results;
@@ -399,39 +415,28 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
 	        $results = array();
 
-	        $args = array(
+	        // Match and limit in SQL instead of loading every term on each keystroke.
+	        // Term names are stored HTML-encoded ("&" => "&amp;").
+	        $productCategories = get_terms( array(
+	            'taxonomy'   => 'category',
+	            'name__like' => str_replace( '&', '&amp;', $keyword ),
+	            'number'     => absint( $limit ),
+	            'hide_empty' => true,
+	        ) );
 
-	            'taxonomy' => 'category',
-	        );
-
-	        $productCategories = get_terms( 'category', $args );
-
-	        $keywordUnslashed = wp_unslash( $keyword );
-	  
-	        $i = 0;
+	        if ( is_wp_error( $productCategories ) ) {
+	            return $results;
+	        }
 
 	        foreach ( $productCategories as $cat ) {
 
-	            if ( $i < $limit ) {
-
-	                $catName = html_entity_decode( $cat->name );
-
-	                $pos = strpos( mb_strtolower( $catName ), mb_strtolower( $keywordUnslashed ) );
-
-	                if ( $pos !== false ) {
-	                    $results[$i] = array(
-	                        'term_id'     => $cat->term_id,
-	                        'taxonomy'    => 'category',
-	                        'value'       => $catName,
-	                        'url'         => get_term_link( $cat, 'category' ),
-	                        'type'        => 'taxonomy-post-cat',
-	                    );
-
-	                    $i++;
-	                }
-	            
-	            }
-	        
+	            $results[] = array(
+	                'term_id'     => $cat->term_id,
+	                'taxonomy'    => 'category',
+	                'value'       => html_entity_decode( $cat->name ),
+	                'url'         => get_term_link( $cat, 'category' ),
+	                'type'        => 'taxonomy-post-cat',
+	            );
 	        }
 
 	        return $results;
@@ -455,21 +460,21 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 		                   $moreproduct['url'] = add_query_arg( array(
 		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'product',
-		                ), home_url() );
+		                ), home_url( '/' ) );
 
 		                }elseif($select_srch_type == 'post_srch'){
 
 		                     $moreproduct['url'] = add_query_arg( array(
 		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'post',
-		                ), home_url() );
+		                ), home_url( '/' ) );
 
 		                }elseif($select_srch_type == 'page_srch'){
 
 		                    $moreproduct['url'] = add_query_arg( array(
 		                    's'         => rawurlencode( $match ),
 		                    'post_type' => 'page',
-		                ), home_url() );
+		                ), home_url( '/' ) );
 
 		                }
 
@@ -510,13 +515,19 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
 		    $return = array();
 
-		     foreach ($skus as $sku){
+		     foreach ( (array) $skus as $sku ){
+
+		         $sku = trim( $sku );
 
 		         if (empty($sku)) {
 		             continue;
 		         }
 
-		         $return[] = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='_sku' AND meta_value='%s' LIMIT 1", $sku ) );
+		         $id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_sku' AND meta_value = %s LIMIT 1", $sku ) );
+
+		         if ( $id ) {
+		             $return[] = absint( $id );
+		         }
 		     }
 
 		     return $return;
@@ -538,6 +549,148 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	}
 
 
+	/************************/
+	// Client IP (proxy / CDN aware)
+	/************************/
+	private function get_client_ip(){
+
+		$remote = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+		$remote = filter_var( $remote, FILTER_VALIDATE_IP ) ? $remote : '';
+
+		$ip = $remote;
+
+		// Forwarding headers can be forged by anyone, so only read them when
+		// the request really comes from a proxy we trust.
+		if ( '' !== $remote && $this->is_trusted_proxy( $remote ) ) {
+
+			$ip = '';
+
+			if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+				$cf = trim( sanitize_text_field( wp_unslash( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) );
+				$ip = filter_var( $cf, FILTER_VALIDATE_IP ) ? $cf : '';
+			}
+
+			// Proxies append to X-Forwarded-For, so walk it right to left and
+			// take the first address that is not one of our own proxies.
+			if ( '' === $ip && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+				$chain = array_reverse( array_map( 'trim', explode( ',', sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) ) ) );
+				foreach ( $chain as $hop ) {
+					if ( ! filter_var( $hop, FILTER_VALIDATE_IP ) ) {
+						break;
+					}
+					$ip = $hop;
+					if ( ! $this->is_trusted_proxy( $hop ) ) {
+						break;
+					}
+				}
+			}
+
+			if ( '' === $ip && ! empty( $_SERVER['HTTP_X_REAL_IP'] ) ) {
+				$real = trim( sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_REAL_IP'] ) ) );
+				$ip   = filter_var( $real, FILTER_VALIDATE_IP ) ? $real : '';
+			}
+
+			// Behind a proxy but the visitor is unknown: return '' so the shared
+			// proxy address is never rate limited for every shopper at once.
+		}
+
+		$ip = apply_filters( 'thaps_client_ip', $ip, $remote );
+
+		return filter_var( $ip, FILTER_VALIDATE_IP ) ? $ip : '';
+	}
+
+	/************************/
+	// Is this address one of our own proxies / CDN edges?
+	/************************/
+	private function is_trusted_proxy( $ip ){
+
+		// Private and loopback addresses: local reverse proxy, load balancer, Docker, etc.
+		if ( ! filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) ) {
+			return true;
+		}
+
+		// Cloudflare edge ranges (https://www.cloudflare.com/ips/), plus any
+		// proxies the site adds, as single IPs or CIDR ranges.
+		$ranges = apply_filters( 'thaps_trusted_proxies', array(
+			'173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22',
+			'141.101.64.0/18', '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20',
+			'197.234.240.0/22', '198.41.128.0/17', '162.158.0.0/15', '104.16.0.0/13',
+			'104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22',
+			'2400:cb00::/32', '2606:4700::/32', '2803:f800::/32', '2405:b500::/32',
+			'2405:8100::/32', '2a06:98c0::/29', '2c0f:f248::/32',
+		) );
+
+		foreach ( (array) $ranges as $range ) {
+			if ( $this->ip_in_range( $ip, $range ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/************************/
+	// IPv4 / IPv6 CIDR match
+	/************************/
+	private function ip_in_range( $ip, $range ){
+
+		list( $subnet, $bits ) = array_pad( explode( '/', trim( $range ), 2 ), 2, null );
+
+		$ip_bin     = @inet_pton( $ip );
+		$subnet_bin = @inet_pton( $subnet );
+
+		if ( false === $ip_bin || false === $subnet_bin || strlen( $ip_bin ) !== strlen( $subnet_bin ) ) {
+			return false;
+		}
+
+		$max  = strlen( $ip_bin ) * 8;
+		$bits = ( null === $bits ) ? $max : (int) $bits;
+
+		if ( $bits < 0 || $bits > $max ) {
+			return false;
+		}
+
+		$bytes = intdiv( $bits, 8 );
+		$rest  = $bits % 8;
+
+		if ( substr( $ip_bin, 0, $bytes ) !== substr( $subnet_bin, 0, $bytes ) ) {
+			return false;
+		}
+
+		if ( 0 === $rest ) {
+			return true;
+		}
+
+		$mask = chr( ( 0xff << ( 8 - $rest ) ) & 0xff );
+
+		return ( $ip_bin[ $bytes ] & $mask ) === ( $subnet_bin[ $bytes ] & $mask );
+	}
+
+	/************************/
+	// Basic per-IP rate limit for the public search endpoint
+	/************************/
+	private function is_rate_limited(){
+
+		$max = (int) apply_filters( 'thaps_search_rate_limit', 120 ); // requests per minute
+
+		$ip = $this->get_client_ip();
+
+		if ( $max <= 0 || '' === $ip ) {
+			return false;
+		}
+
+		$key  = 'thaps_rl_' . md5( $ip . '|' . floor( time() / MINUTE_IN_SECONDS ) );
+		$hits = (int) get_transient( $key );
+
+		if ( $hits >= $max ) {
+			return true;
+		}
+
+		set_transient( $key, $hits + 1, MINUTE_IN_SECONDS );
+
+		return false;
+	}
+
 	/*************************/
     // search result function
 	/*************************/
@@ -545,10 +698,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
         check_ajax_referer( 'th_advance_product_search', 'nonce' );
 
+        if ( $this->is_rate_limited() ) {
+            wp_send_json( array( 'suggestions' => array() ), 429 );
+        }
+
         //setting value
         $select_srch_type = esc_html(th_advance_product_search()->get_option( 'select_srch_type' ));
     
-        $limit =  esc_html(th_advance_product_search()->get_option( 'result_length' ));
+        $limit =  max( 1, absint( th_advance_product_search()->get_option( 'result_length' ) ) );
 
         $no_reult_label =  esc_html(th_advance_product_search()->get_option( 'no_reult_label' ));
         $more_reult_label =  esc_html(th_advance_product_search()->get_option( 'more_reult_label' ));
@@ -575,7 +732,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
         
         $product_exclude = esc_html(th_advance_product_search()->get_option( 'exclude_product_sku' ));
         
-        $exp_length = esc_html(th_advance_product_search()->get_option( 'desc_excpt_length' ));
+        $exp_length = absint( th_advance_product_search()->get_option( 'desc_excpt_length' ) );
 
         // Post
 
@@ -604,9 +761,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
             $match_ = sanitize_text_field( wp_unslash( $_REQUEST['match'] ) );
 
+            // Cap the keyword length to keep the query cheap.
+            $match_ = mb_substr( $match_, 0, (int) apply_filters( 'thaps_max_search_length', 100 ) );
+
+            $items = array();
+
             if ($select_srch_type=='product_srch'){ 
               $args = array(
-                'posts_per_page'      => -1,
+                'posts_per_page'      => $limit,
                 'post_type'           => 'product',
                 'post_status'         => array('publish'),
                 'ignore_sticky_posts' => 1,
@@ -621,15 +783,14 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
                  $exclude_array = $this->to_convert_array($product_exclude);
 
-                 $args['post__not_in'] = $this->get_product_sku($exclude_array);
+                 $args['post__not_in'] = $this->get_product_sku( (array) $exclude_array );
              }
              
           
              $results = new WP_Query($args);
 
-             $count = ( isset( $results->posts ) ? count( $results->posts ) : 0 );
+             $count = absint( $results->found_posts );
 
-             $items = array();
 
              // category show 
 
@@ -741,13 +902,12 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	            array(
 	              'post_type'     => 'post',
 	              'post_status'   => array('publish'),
-	              'nopaging'      => true,
-	              'posts_per_page' => 100,
+	              'posts_per_page' => $limit,
 	              's'             => $match_,
 	             )
            );  
 
-             $count = ( isset( $results->posts ) ? count( $results->posts ) : 0 );
+             $count = absint( $results->found_posts );
 
              $items = array();   
 
@@ -838,14 +998,13 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 	             	array(
 	              'post_type'     => 'page',
 	              'post_status'   => array('publish'),
-	              'nopaging'      => true,
-	              'posts_per_page' => 100,
+	              'posts_per_page' => $limit,
 	              's'             => $match_,
 	             )
              );  
 
 
-             $count = ( isset( $results->posts ) ? count( $results->posts ) : 0 );
+             $count = absint( $results->found_posts );
 
              $items = array();   
 
@@ -911,6 +1070,9 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Functions' ) ):
 
             die();
          }
+
+         // Empty keyword: answer with an empty list instead of admin-ajax's "0".
+         wp_send_json( array( 'suggestions' => array() ) );
     }
 
 	

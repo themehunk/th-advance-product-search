@@ -65,9 +65,12 @@
 .wp-block-th-advance-product-search .thaps-search-box .icon-style, .wp-block-th-advance-product-search .thaps-search-box .click-icon {
   color: var(--tapsp-searchIconClr);
 }
-.wp-block-th-advance-product-search .thaps-box-open .tapsp-icon-arrow {
-  border-left-color: var(--tapsp-searchBarColor);
-  border-top-color: var(--tapsp-searchBarColor);
+.wp-block-th-advance-product-search .thaps-search-box.bar_style #thaps-search-button .th-icon {
+  color: var(--tapsp-searchIconClr, #111);
+}
+.wp-block-th-advance-product-search .thaps-box-open .thaps-icon-arrow {
+  border-left-color: var(--tapsp-searchborderClr);
+  border-top-color: var(--tapsp-searchborderClr);
   background: var(--tapsp-searchBarClr, #FFF);
 }
 .wp-block-th-advance-product-search .icon_style .tapsp-search-form {

@@ -60,9 +60,13 @@
     .thaps-search-box .icon-style,.thaps-search-box .click-icon{
         color:var(--tapsp-searchIconClr);  
     }
-    .thaps-box-open .tapsp-icon-arrow {
-        border-left-color: var(--tapsp-searchBarColor);
-        border-top-color: var(--tapsp-searchBarColor);
+    // Bar/flexi layouts: beat the front stylesheet's "#thaps-search-button .th-icon" colour.
+    .thaps-search-box.bar_style #thaps-search-button .th-icon{
+        color:var(--tapsp-searchIconClr, #111);
+    }
+    .thaps-box-open .thaps-icon-arrow {
+        border-left-color: var(--tapsp-searchborderClr);
+        border-top-color: var(--tapsp-searchborderClr);
         background: var(--tapsp-searchBarClr, #FFF);
     }
     .icon_style .tapsp-search-form {

@@ -10,10 +10,11 @@ if (!function_exists('themehunk_admin_menu')) {
 
      if ( !function_exists('themehunk_activeplugin_call') ) {
         function themehunk_activeplugin_call(){
-            if ( !is_user_logged_in() || ! current_user_can( 'administrator' ) ) {
+            if ( !is_user_logged_in() || ! current_user_can( 'activate_plugins' ) ) {
                wp_die( - 1, 403 );
            }
-           if (!wp_verify_nonce($_REQUEST['nonce'], 'thaps_admin_nonce')) {
+           $nonce = isset( $_REQUEST['nonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['nonce'] ) ) : '';
+           if ( ! wp_verify_nonce( $nonce, 'thaps_admin_nonce' ) ) {
              wp_die( - 1, 403 );
           }
           if ( ! current_user_can( 'install_plugins' ) || ! isset( $_POST['init'] ) || ! $_POST['init'] ) {
@@ -24,7 +25,17 @@ if (!function_exists('themehunk_admin_menu')) {
              )
            );
          }
-         $plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_text_field( $_POST['init'] ) : '';
+         $plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_text_field( wp_unslash( $_POST['init'] ) ) : '';
+
+         // Only allow activating a plugin that is actually installed.
+         if ( ! array_key_exists( $plugin_init, get_plugins() ) ) {
+           wp_send_json_error(
+             array(
+               'success' => false,
+               'message' => __( 'Invalid plugin', 'th-product-compare' ),
+             )
+           );
+         }
          $activate = activate_plugin( $plugin_init);
          if ( is_wp_error( $activate ) ) {
            wp_send_json_error(

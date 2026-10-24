@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: product search, search, live search,ajax search,woocommerce search
 Requires at least: 5.0
-Tested up to: 7.0
-Stable tag: 1.4.9
+Tested up to: 7.1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -152,6 +152,17 @@ It is compatible with all [ThemeHunk themes](https://themehunk.com/free-themes/)
 
 Yes, You can translate our plugin to desired language.
 
+= My site is behind a CDN or proxy. Is the live search rate limit shared by all shoppers? =
+
+No. The live search allows 120 requests per minute per visitor. Cloudflare and local proxies or load balancers (private IP addresses) are detected automatically, and the real visitor IP is read from `CF-Connecting-IP` / `X-Forwarded-For`. For any other CDN or proxy, add its IP addresses or ranges in your theme's `functions.php`:
+
+`add_filter( 'thaps_trusted_proxies', function ( $proxies ) {
+    $proxies[] = '203.0.113.0/24';
+    return $proxies;
+} );`
+
+Change the limit with `thaps_search_rate_limit` (return `0` to turn it off), or set the visitor IP yourself with `thaps_client_ip`.
+
 
 == Screenshots ==
 1. Advance Search 
@@ -161,6 +172,20 @@ Yes, You can translate our plugin to desired language.
 5. search analytics
 
 == Changelog ==
+
+= 1.5.0 =
+* Fix: Fatal error on product search when "Search in Attribute" was enabled.
+* Fix: Multi-word searches now return products matching every word, in any order.
+* Fix: Keyboard selection in the suggestion list now skips headings and opens the chosen result.
+* Fix: Script version now follows the plugin version so browsers load updated files.
+* Fix: "See All Results" link no longer redirects; empty search returns a valid response.
+* Fix: Search block - icon colour now applies in the Bar and Flexible styles.
+* Fix: Search block - Icon style arrow now uses the block's bar and border colours.
+* Fix: Search block - unknown style falls back to the default layout instead of rendering empty.
+* Security: All search SQL search length and word count are capped.
+* Security: Block colour/size attributes and inline colours are validated; nav menu and plugin activation input hardened.
+* Performance: Live search loads only the shown results and matching categories instead of every match.
+* Performance: Per-visitor rate limit for live search, with Cloudflare / proxy aware IP detectio.
 
 = 1.4.9 =
 * Update: Block style issues resolved.

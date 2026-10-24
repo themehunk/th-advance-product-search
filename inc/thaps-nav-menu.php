@@ -123,9 +123,11 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Nav_Menu' ) ):
 					return;
 				}
 
-				$layout_ = sanitize_text_field($_POST['menu-item-thaps-layout'][ $menu_item_db_id ]);
+				$layout = isset( $_POST['menu-item-thaps-layout'][ $menu_item_db_id ] ) ? sanitize_key( wp_unslash( $_POST['menu-item-thaps-layout'][ $menu_item_db_id ] ) ) : '';
 
-				$layout = isset( $layout_ ) ? $layout_ : '';
+				if ( ! array_key_exists( $layout, $this->getLayoutOptions() ) ) {
+					$layout = '';
+				}
 
 				update_post_meta($menu_item_db_id, '_menu_item_thaps_layout', $layout);
 

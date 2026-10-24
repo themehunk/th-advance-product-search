@@ -11,7 +11,7 @@ function thaps_safe_color( $color ) {
         return $color;
     }
 
-    if ( preg_match( '/^rgba?\(/', $color ) ) {
+    if ( preg_match( '/^rgba?\(\s*[\d.%\s,]+\)$/', $color ) ) {
         return $color;
     }
 

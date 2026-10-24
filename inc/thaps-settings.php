@@ -626,7 +626,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
             <fieldset>
             	<label class="th-toggle">
-            		<input <?php echo esc_attr($attrs); ?> type="checkbox" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="1" <?php echo esc_attr(checked( $value, true, false ));?>> <?php if ( ! empty( $args['desc'] ) ) {  echo esc_html($args['desc']); } ?>
+            		<input <?php echo esc_attr($attrs); ?> type="checkbox" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="1" <?php checked( $value, true ); ?>> <?php if ( ! empty( $args['desc'] ) ) {  echo esc_html($args['desc']); } ?>
             	</label>     
             </fieldset>
 
@@ -651,7 +651,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
 
 				<?php foreach($options as $key => $value){ ?>
 
-                <option <?php echo esc_attr(selected( $key, $valuee, false )) ;?> value="<?php echo esc_attr($key);?>">
+                <option <?php selected( $key, $valuee ); ?> value="<?php echo esc_attr($key);?>">
                 	
                 	<?php echo esc_html($value);?> 	
 
@@ -1073,7 +1073,7 @@ if ( ! class_exists( 'TH_Advancde_Product_Search_Set' ) ):
     true     // ✅ footer
 );
 
-				wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-setting.js', array('jquery'),true);
+				wp_enqueue_script( 'thaps-setting-script', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-setting.js', array('jquery'), TH_ADVANCE_PRODUCT_SEARCH_VERSION, true);
 
 				wp_localize_script(
 					'thaps-setting-script', 'THAPSPluginObject', array(

@@ -1183,8 +1183,17 @@ $container.css(styles);
             that.select(i);
         },
 
+        // Headings and "no result" rows are labels, not choices.
+        isSelectable: function (i) {
+            var suggestion = this.suggestions[i];
+            return !!suggestion && suggestion.type !== 'heading' && suggestion.type !== 'no-result';
+        },
+
         select: function (i) {
             var that = this;
+            if (!that.isSelectable(i)) {
+                return;
+            }
             that.hide();
             that.onSelect(i);
         },
@@ -1196,7 +1205,12 @@ $container.css(styles);
                 return;
             }
 
-            if (that.selectedIndex === 0) {
+            var prev = that.selectedIndex - 1;
+            while (prev >= 0 && !that.isSelectable(prev)) {
+                prev--;
+            }
+
+            if (prev < 0) {
                 $(that.suggestionsContainer).children('.' + that.classes.suggestion).first().removeClass(that.classes.selected);
                 that.selectedIndex = -1;
                 that.ignoreValueChange = false;
@@ -1205,17 +1219,22 @@ $container.css(styles);
                 return;
             }
 
-            that.adjustScroll(that.selectedIndex - 1);
+            that.adjustScroll(prev);
         },
 
         moveDown: function () {
             var that = this;
 
-            if (that.selectedIndex === (that.suggestions.length - 1)) {
+            var next = that.selectedIndex + 1;
+            while (next < that.suggestions.length && !that.isSelectable(next)) {
+                next++;
+            }
+
+            if (next >= that.suggestions.length) {
                 return;
             }
 
-            that.adjustScroll(that.selectedIndex + 1);
+            that.adjustScroll(next);
         },
 
         adjustScroll: function (index) {
@@ -1241,7 +1260,7 @@ $container.css(styles);
                 $(that.suggestionsContainer).scrollTop(offsetTop - that.options.maxHeight + heightDelta);
             }
 
-            if (!that.options.preserveInput) {
+            if (!that.options.preserveInput && that.suggestions[index].type !== 'more_item') {
                 // During onBlur event, browser will trigger "change" event,
                 // because value has changed, to avoid side effect ignore,
                 // that event, so that correct suggestion can be selected
@@ -1386,11 +1405,18 @@ $container.css(styles);
     serviceUrl:th_advance_product_search_options.ajaxUrl + '?action=' + 'thaps_ajax_get_search_value',
     showNoSuggestionNotice: true,
     minChars:parseInt(th_advance_product_search_options.thaps_length),
+    deferRequestBy: 200,
     autoSelectFirst: false,
     triggerSelectOnValidInput: false,
     paramName: 'match',
     dataType: 'json',
     params: { nonce: th_advance_product_search_options.thaps_nonce },
+    // Keyboard (Enter/Tab) selection: open the chosen result.
+    onSelect: function (suggestion) {
+        if (suggestion && typeof suggestion.url === 'string' && suggestion.url.length) {
+            window.location.href = suggestion.url;
+        }
+    },
    });
 
 });

@@ -121,58 +121,46 @@ add_action( 'enqueue_block_assets', 'th_advance_product_search_blocks_editor_ass
 function th_advance_product_search_blocks_render_callback( $attr ) {
 
     $thapsBlockStyle = '';
-    if (isset($attr['searchBtnBgClr'])) {
-        $thapsBlockStyle .= "--tapsp-searchBtnBgClr:{$attr['searchBtnBgClr']};";
-    }
-    if (isset($attr['searchBtnTextClr'])) {
-        $thapsBlockStyle .= "--tapsp-searchBtnTextClr:{$attr['searchBtnTextClr']};";
-    }
-    if (isset($attr['searchBtnHvrTextClr'])) {
-        $thapsBlockStyle .= "--tapsp-searchBtnHvrTextClr:{$attr['searchBtnHvrTextClr']};";
-    }
-    if (isset($attr['searchBtnHvrBgClr'])) {
-        $thapsBlockStyle .= "--tapsp-searchBtnHvrBgClr:{$attr['searchBtnHvrBgClr']};";
-    }
-    if (isset($attr['searchTextClr'])) {
-        $thapsBlockStyle .= "--tapsp-searchTextClr:{$attr['searchTextClr']};";
-    }
-    if (isset($attr['searchBarClr'])) {
-        $thapsBlockStyle .= "--tapsp-searchBarClr:{$attr['searchBarClr']};";
-    }
-    if (isset($attr['searchIconClr'])) {
-        $thapsBlockStyle .= "--tapsp-searchIconClr:{$attr['searchIconClr']};";
+
+    // Colors: only allow safe color values.
+    $color_vars = array(
+        'searchBtnBgClr'      => '--tapsp-searchBtnBgClr',
+        'searchBtnTextClr'    => '--tapsp-searchBtnTextClr',
+        'searchBtnHvrTextClr' => '--tapsp-searchBtnHvrTextClr',
+        'searchBtnHvrBgClr'   => '--tapsp-searchBtnHvrBgClr',
+        'searchTextClr'       => '--tapsp-searchTextClr',
+        'searchBarClr'        => '--tapsp-searchBarClr',
+        'searchIconClr'       => '--tapsp-searchIconClr',
+        'searchborder'        => '--tapsp-searchborderClr',
+    );
+    foreach ( $color_vars as $key => $var ) {
+        if ( isset( $attr[ $key ] ) ) {
+            $color = thaps_safe_color( $attr[ $key ] );
+            if ( '' !== $color ) {
+                $thapsBlockStyle .= "{$var}:{$color};";
+            }
+        }
     }
 
-    if (isset($attr['searchborder'])) {
-        $thapsBlockStyle .= "--tapsp-searchborderClr:{$attr['searchborder']};";
+    // Sizes: numeric value + whitelisted unit.
+    $size_vars = array(
+        'searchWidth'           => array( '--tapsp-searchWidth', 'searchWidthUnit' ),
+        'searchWidthTablet'     => array( '--tapsp-searchWidthTablet', 'searchWidthUnitTablet' ),
+        'searchWidthMobile'     => array( '--tapsp-searchWidthMobile', 'searchWidthUnitMobile' ),
+        'barborderRadius'       => array( '--tapsp-barborderRadius', 'barborderRadiusUnit' ),
+        'barborderRadiusTablet' => array( '--tapsp-barborderRadiusTablet', 'barborderRadiusUnit' ),
+        'barborderRadiusMobile' => array( '--tapsp-barborderRadiusMobile', 'barborderRadiusUnit' ),
+    );
+    foreach ( $size_vars as $key => $size ) {
+        if ( isset( $attr[ $key ] ) && is_numeric( $attr[ $key ] ) ) {
+            $unit = isset( $attr[ $size[1] ] ) ? $attr[ $size[1] ] : 'px';
+            $unit = in_array( $unit, array( 'px', '%', 'em', 'rem', 'vw', 'vh' ), true ) ? $unit : 'px';
+            $thapsBlockStyle .= "{$size[0]}:" . (float) $attr[ $key ] . "{$unit};";
+        }
     }
-    // searchwidth
-    if (isset($attr['searchWidth'])) {
-        $searchWidthUnit = isset($attr['searchWidthUnit']) ? $attr['searchWidthUnit'] : 'px';
-        $thapsBlockStyle .= "--tapsp-searchWidth: {$attr['searchWidth']}{$searchWidthUnit}; ";
-    }
-    if (isset($attr['searchWidthTablet'])) {
-        $searchWidthUnitTablet = isset($attr['searchWidthUnitTablet']) ? $attr['searchWidthUnitTablet'] : 'px';
-        $thapsBlockStyle .= "--tapsp-searchWidthTablet: {$attr['searchWidthTablet']}{$searchWidthUnitTablet}; ";
-    }
-    if (isset($attr['searchWidthMobile'])) {
-        $searchWidthUnitMobile = isset($attr['searchWidthUnitMobile']) ? $attr['searchWidthUnitMobile'] : 'px';
-        $thapsBlockStyle .= "--tapsp-searchWidthMobile: {$attr['searchWidthMobile']}{$searchWidthUnitMobile}; ";
-    }
-    // searchbar-radius
-    if (isset($attr['barborderRadius'])) {
-        $barborderRadiusUnit = isset($attr['barborderRadiusUnit']) ? $attr['barborderRadiusUnit'] : 'px';
-        $thapsBlockStyle .= "--tapsp-barborderRadius: {$attr['barborderRadius']}{$barborderRadiusUnit}; ";
-    }
-    if (isset($attr['barborderRadiusTablet'])) {
-        $thapsBlockStyle .= "--tapsp-barborderRadiusTablet: {$attr['barborderRadiusTablet']}{$barborderRadiusUnit}; ";
-    }
-    if (isset($attr['barborderRadiusMobile'])) {
-        $thapsBlockStyle .= "--tapsp-barborderRadiusMobile: {$attr['barborderRadiusMobile']}{$barborderRadiusUnit}; ";
-    }
-    $thapsBlockStyle = preg_replace('/\s+/', ' ', trim($thapsBlockStyle));
-    $unique_id = isset($attr['uniqueID']) ? esc_attr($attr['uniqueID']) : '';
-    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($attr['uniqueID']) . '"  class="wp-block wp-block-th-advance-product-search" style="' . esc_attr($thapsBlockStyle) . '">';
+
+    $unique_id = isset($attr['uniqueID']) ? sanitize_html_class($attr['uniqueID']) : '';
+    $block_content = '<div id="wp-block-th-advance-product-search-' . esc_attr($unique_id) . '"  class="wp-block wp-block-th-advance-product-search" style="' . esc_attr($thapsBlockStyle) . '">';
     $block_content .= th_advance_product_search_block($attr);
     $block_content .= '</div>';
     return $block_content;
@@ -182,7 +170,12 @@ function th_advance_product_search_block($attr){
     ob_start();
     $unique_id = isset($attr['uniqueID']) ? esc_attr($attr['uniqueID']) : '';
     $search_style      = isset($attr['searchStyle']) ? esc_attr($attr['searchStyle']) : 'default';
+    // Unknown style: show the default layout (same as the editor) instead of an empty block.
+    if ( ! in_array( $search_style, array( 'default', 'bar', 'icon', 'flexi' ), true ) ) {
+        $search_style = 'default';
+    }
     $select_srch_type = esc_html(th_advance_product_search()->get_option( 'select_srch_type' ));
+    $type = 'product';
     if($select_srch_type == 'product_srch'){
         $type = 'product';
         }elseif($select_srch_type == 'post_srch'){

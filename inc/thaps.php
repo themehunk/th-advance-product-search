@@ -112,7 +112,7 @@ if ( ! class_exists( 'TH_Advance_Product_Search' ) ):
           wp_add_inline_style('th-advance-product-search-front', th_advance_product_search_style());
           wp_enqueue_script( 'th-advance-product-search-front', TH_ADVANCE_PRODUCT_SEARCH_PLUGIN_URI. 'assets/js/thaps-search.js', array(
                     'jquery',
-                ),true);
+                ), TH_ADVANCE_PRODUCT_SEARCH_VERSION, true);
           
           wp_localize_script(
                 'th-advance-product-search-front', 'th_advance_product_search_options', apply_filters(
